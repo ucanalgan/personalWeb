@@ -58,4 +58,4 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 
 Umutcan Algan - [https://github.com/ucanalgan](https://github.com/ucanalgan) - umutcanalgan91@gmail.com
 
-Project Link: [https://github.com/ucanalgan/portfolio](https://github.com/ucanalgan/portfolio)
+Project Link: [https://github.com/ucanalgan/personalWeb](https://github.com/ucanalgan/personalWeb)
