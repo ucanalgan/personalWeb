@@ -56,6 +56,6 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-Umutcan Algan - [@whoisumutcan](https://x.com/whoisumutcan) - umutcanalgan91@gmail.com
+Umutcan Algan - [https://github.com/ucanalgan](https://github.com/ucanalgan) - umutcanalgan91@gmail.com
 
 Project Link: [https://github.com/ucanalgan/portfolio](https://github.com/ucanalgan/portfolio)
