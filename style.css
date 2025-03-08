@@ -69,6 +69,32 @@
     @apply text-primary/80 transition-all duration-300 group-hover:scale-110;
   }
 
+  /* You should add this to your style.css file */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skill-name {
+  font-weight: 500;
+  color: #f8f9fa; /* light text color */
+}
+
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-level {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease-in-out;
+}
+
+
   /* Proje Kartları */
   .project-card {
     @apply bg-gray-900/30 border border-gray-800 rounded-xl p-6 
