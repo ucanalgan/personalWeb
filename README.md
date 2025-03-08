@@ -1,16 +1,16 @@
-# Kişisel Web Sitesi
+# Personal Website
 
-Modern web teknolojileri kullanılarak geliştirilmiş kişisel portfolyo sitesi.
+A personal portfolio website developed using modern web technologies.
 
-## Özellikler
+## Features
 
-- Modern ve responsive tasarım
-- Tailwind CSS ile stil yönetimi
-- JavaScript ile dinamik içerik ve animasyonlar
-- Chart.js ile interaktif beceri grafiği
-- SEO uyumlu yapı
+- Modern and responsive design
+- Style management with Tailwind CSS
+- Dynamic content and animations with JavaScript
+- Interactive skill graph with Chart.js
+- SEO-friendly structure
 
-## Kullanılan Teknolojiler
+## Used Technologies
 
 - HTML5
 - Tailwind CSS
@@ -18,44 +18,44 @@ Modern web teknolojileri kullanılarak geliştirilmiş kişisel portfolyo sitesi
 - Chart.js
 - Remix Icons
 
-## Kurulum
+## Installation
 
-1. Projeyi klonlayın:
+1. Clone the project:
 ```bash
 git clone https://github.com/ucanalgan/portfolio.git
 ```
 
-2. Proje dizinine gidin:
+2. Go to the project directory:
 ```bash
 cd portfolio
 ```
 
-3. Web sunucunuzda veya lokalinizde çalıştırın:
+3. Run on your web server or locally:
 ```bash
-# Python ile basit bir HTTP sunucusu başlatmak için:
+# To start a simple HTTP server with Python:
 python -m http.server 8000
-# veya
+# or
 python3 -m http.server 8000
 ```
 
-4. Tarayıcınızda `http://localhost:8000` adresini açın.
+4. Open `http://localhost:8000` in your browser.
 
-## Geliştirme
+## Development
 
-Projeyi geliştirmek için:
+To develop the project:
 
-1. Bu depoyu forklayın
-2. Yeni bir branch oluşturun (`git checkout -b feature/yeniOzellik`)
-3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik: XYZ'`)
-4. Branch'inizi push edin (`git push origin feature/yeniOzellik`)
-5. Pull Request oluşturun
+1. Fork this repository
+2. Create a new branch (`git checkout -b feature/newFeature`)
+3. Commit your changes (`git commit -am 'New feature: XYZ'`)
+4. Push your branch (`git push origin feature/newFeature`)
+5. Create a Pull Request
 
-## Lisans
+## License
 
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for details.
 
-## İletişim
+## Contact
 
 Umutcan Algan - [@whoisumutcan](https://x.com/whoisumutcan) - umutcanalgan91@gmail.com
 
-Proje Linki: [https://github.com/ucanalgan/portfolio](https://github.com/ucanalgan/portfolio) 
+Project Link: [https://github.com/ucanalgan/portfolio](https://github.com/ucanalgan/portfolio)
