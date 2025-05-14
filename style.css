@@ -244,6 +244,11 @@
   img {
     @apply object-contain max-w-full max-h-[80vh] block;
   }
+
+  /* Mobile menu transitions */
+  .mobile-menu {
+    transition: transform 300ms ease-in-out, opacity 200ms ease-in-out;
+  }
 }
 
 /* Light Theme Overrides */

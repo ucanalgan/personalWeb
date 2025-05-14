@@ -353,11 +353,38 @@ async function loadGitHubProjects(container) {
           </span>
         </div>
       `;
+      // Add tech tags
+      if (project.topics && project.topics.length) {
+        const tagsContainer = document.createElement('div');
+        tagsContainer.className = 'mt-2 flex flex-wrap gap-2';
+        project.topics.forEach(topic => {
+          const tag = document.createElement('span');
+          tag.className = 'tech-tag cursor-pointer bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white';
+          tag.textContent = topic;
+          tag.dataset.filter = topic;
+          tag.addEventListener('click', () => {
+            filterProjects(topic === currentFilter ? null : topic);
+          });
+          tagsContainer.appendChild(tag);
+        });
+        projectCard.appendChild(tagsContainer);
+      }
       container.appendChild(projectCard);
     });
   } catch (error) {
     console.error('Error loading GitHub projects:', error);
-    container.innerHTML = '<p class="text-center text-red-400 py-10">Error loading projects. Please try again later.</p>';
+    container.innerHTML = `
+      <div class="bg-red-600 text-white p-6 rounded-lg shadow-lg text-center">
+        <p class="mb-4 font-semibold">Şu anda veriye ulaşılamıyor, tekrar denemek ister misiniz?</p>
+        <button id="retry-projects" class="px-4 py-2 bg-white text-red-600 rounded-md hover:bg-gray-200 transition">
+          Tekrar Dene
+        </button>
+      </div>
+    `;
+    document.getElementById('retry-projects')?.addEventListener('click', () => {
+      container.innerHTML = '<div class="flex justify-center"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>';
+      setTimeout(() => loadGitHubProjects(container), 500);
+    });
   }
 }
 
@@ -418,6 +445,22 @@ function loadSampleProjects(container) {
           </span>
         </div>
       `;
+      // Add tech tags for sample data
+      if (project.topics && project.topics.length) {
+        const tagsContainer = document.createElement('div');
+        tagsContainer.className = 'mt-2 flex flex-wrap gap-2';
+        project.topics.forEach(topic => {
+          const tag = document.createElement('span');
+          tag.className = 'tech-tag cursor-pointer bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white';
+          tag.textContent = topic;
+          tag.dataset.filter = topic;
+          tag.addEventListener('click', () => {
+            filterProjects(topic === currentFilter ? null : topic);
+          });
+          tagsContainer.appendChild(tag);
+        });
+        projectCard.appendChild(tagsContainer);
+      }
       container.appendChild(projectCard);
     });
     
@@ -429,7 +472,18 @@ function loadSampleProjects(container) {
     
   } catch (error) {
     console.error('Error loading sample projects:', error);
-    container.innerHTML = '<p class="text-center text-red-400 py-10">Error loading projects. Please try again later.</p>';
+    container.innerHTML = `
+      <div class="bg-red-600 text-white p-6 rounded-lg shadow-lg text-center">
+        <p class="mb-4 font-semibold">Şu anda veriye ulaşılamıyor, tekrar denemek ister misiniz?</p>
+        <button id="retry-sample-projects" class="px-4 py-2 bg-white text-red-600 rounded-md hover:bg-gray-200 transition">
+          Tekrar Dene
+        </button>
+      </div>
+    `;
+    document.getElementById('retry-sample-projects')?.addEventListener('click', () => {
+      container.innerHTML = '<div class="flex justify-center"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>';
+      setTimeout(() => loadSampleProjects(container), 500);
+    });
   }
 }
 

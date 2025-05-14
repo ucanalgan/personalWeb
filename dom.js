@@ -32,11 +32,6 @@ export const handlers = {
   scroll: () => {
     const scrolled = window.scrollY > config.scroll.threshold;
     const { scrollTopBtn, header, navLinks, sections } = elements;
-    // Scroll Top Button Visibility
-    if (scrollTopBtn) {
-      scrollTopBtn.classList.toggle('opacity-100', scrolled);
-      scrollTopBtn.classList.toggle('pointer-events-auto', scrolled);
-    }
     // Header Shadow
     if (header) {
       header.classList.toggle('shadow-lg', scrolled);
@@ -83,23 +78,28 @@ export function initializeMobileMenu() {
   const mobileMenu = elements.mobileMenu;
   const mobileLinks = selectAll('.mobile-menu a');
   if (!menuBtn || !closeBtn || !mobileMenu) return;
-  // Toggle off-canvas menu
+  // Initialize fade state
+  mobileMenu.classList.add('opacity-0');
+  // Open menu with fade-in and prevent body scroll
   menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('translate-x-full');
-    mobileMenu.classList.toggle('translate-x-0');
+    mobileMenu.classList.remove('translate-x-full');
+    mobileMenu.classList.add('translate-x-0');
+    mobileMenu.classList.remove('opacity-0');
+    document.body.classList.add('overflow-hidden');
   });
-  // Close menu on close button click
-  closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('translate-x-full');
-    mobileMenu.classList.remove('translate-x-0');
-  });
-  // Close menu when a link is clicked
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('translate-x-full');
+  // Helper to close menu with fade-out and restore body scroll
+  const hideMenu = () => {
+    mobileMenu.classList.add('opacity-0');
+    document.body.classList.remove('overflow-hidden');
+    setTimeout(() => {
       mobileMenu.classList.remove('translate-x-0');
-    });
-  });
+      mobileMenu.classList.add('translate-x-full');
+    }, 200);
+  };
+  // Close menu on close button click
+  closeBtn.addEventListener('click', hideMenu);
+  // Close menu when a link is clicked
+  mobileLinks.forEach(link => link.addEventListener('click', hideMenu));
 }
 
 // Header hide/show and scroll-to-top functionality
@@ -121,8 +121,13 @@ export function initializeScrollEvents() {
         else header.style.transform = 'translateY(0)';
       }
       if (scrollBtn) {
-        if (current > 500) scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
-        else scrollBtn.classList.add('opacity-0', 'pointer-events-none');
+        if (current > 500) {
+          scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
+          scrollBtn.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+          scrollBtn.classList.add('opacity-0', 'pointer-events-none');
+          scrollBtn.classList.remove('opacity-100', 'pointer-events-auto');
+        }
       }
       lastScroll = current;
     });
@@ -185,6 +190,11 @@ export function filterProjects(technology) {
   if (!technology) {
     cards.forEach(c => { c.style.display = 'flex'; setTimeout(() => { c.style.opacity = 1; c.style.transform = 'translateY(0)'; }, 50); });
     currentFilter = null;
+    // Remove filter UI when no filter
+    const filterBtns = selectAll('[data-filter]');
+    filterBtns.forEach(btn => btn.classList.remove('active'));
+    const infoDiv = document.getElementById('filter-info');
+    if (infoDiv) infoDiv.remove();
     return;
   }
   cards.forEach(c => {
@@ -200,4 +210,21 @@ export function filterProjects(technology) {
     }
   });
   currentFilter = technology;
+  // Update filter buttons active state
+  const filterBtns = selectAll('[data-filter]');
+  filterBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === technology);
+  });
+  // Display active filter info
+  const projectContainer = document.getElementById('github-projects');
+  let infoDiv = document.getElementById('filter-info');
+  if (!infoDiv && projectContainer) {
+    infoDiv = document.createElement('div');
+    infoDiv.id = 'filter-info';
+    infoDiv.className = 'mb-4 text-center font-semibold';
+    projectContainer.parentNode.insertBefore(infoDiv, projectContainer);
+  }
+  if (infoDiv) {
+    infoDiv.textContent = `You are viewing: [${technology}]`;
+  }
 } 

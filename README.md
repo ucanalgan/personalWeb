@@ -98,6 +98,32 @@ npm run build
 
 This will create a `dist` directory with optimized production files.
 
+### Deployment to GitHub Pages
+
+1. Install the `gh-pages` package:
+
+   ```bash
+   npm install --save-dev gh-pages
+   ```
+
+2. Add a deployment script to your `package.json`:
+
+   ```json
+   "scripts": {
+     /* existing scripts */,  
+     "deploy": "gh-pages -d dist"
+   }
+   ```
+
+3. Ensure `base` in `vite.config.js` is set to `/personalWeb/`, then run:
+
+   ```bash
+   npm run build
+   npm run deploy
+   ```
+
+Your site will be published to the `gh-pages` branch and available at: `https://ucanalgan.github.io/personalWeb/`.
+
 ## Usage
 
 After the server is running, navigate to `http://localhost:3000` in your browser. Use the theme toggle in the navigation bar to switch between dark and light modes. Scroll to see interactive charts, animations, and the 3D background.

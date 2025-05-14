@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Umutcan Algan - Full Stack Developer & Information Systems Engineer. Modern web technologies and software solutions.">
-  <meta name="keywords" content="full stack developer, web development, mobile app, python, javascript, react, portfolio, frontend, backend">
+  <meta name="description" content="I'm Umutcan Algan, a full stack developer focused on modern, responsive, and scalable web applications using JavaScript, Python, and cloud-native tools.">
+  <meta name="keywords" content="Umutcan Algan, full stack developer, software engineer, JavaScript, Python, React, Node.js, web developer, portfolio, modern web, GitHub, frontend, backend, mobile app">
   <meta name="author" content="Umutcan Algan">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ucanalgan.github.io/personalWeb">
   
-  <title>Umutcan Algan | Junior Software Developer</title>
+  <title>Umutcan Algan | Full Stack Developer & Software Engineer</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,11 +44,18 @@
   <link rel="stylesheet" href="style.css">
   <link href="/dist/output.css" rel="stylesheet">
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <!-- Modern JS with Modular Structure -->
-  <script type="module" src="app.js"></script>
+  <!-- Open Graph / Twitter Meta -->
+  <meta property="og:title" content="Umutcan Algan | Junior Software Developer">
+  <meta property="og:description" content="I specialize in developing innovative web and mobile applications using modern technologies.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/ucanalgan?s=400">
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Umutcan Algan | Junior Software Developer">
+  <meta name="twitter:description" content="I specialize in developing innovative web and mobile applications using modern technologies.">
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/ucanalgan?s=400">
+  <!-- Favicon and Touch Icons -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- AOS Animation CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -69,11 +78,6 @@
           <a href="#skills" class="nav-link">Skills</a>
           <a href="#github" class="nav-link">Projects</a>
           <a href="#contact" class="nav-link">Contact</a>
-          
-          <!-- Theme Toggle Button -->
-          <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800/50 text-gray-400 hover:bg-primary/10 hover:text-primary transition-colors">
-            <i class="ri-sun-line"></i>
-          </button>
         </div>
         
         <!-- Mobile Menu Button -->
@@ -97,11 +101,6 @@
       <a href="#skills" class="text-3xl font-display">Skills</a>
       <a href="#github" class="text-3xl font-display">Projects</a>
       <a href="#contact" class="text-3xl font-display">Contact</a>
-      
-      <!-- Mobile Theme Toggle Button -->
-      <button id="mobile-theme-toggle" class="mt-6 w-12 h-12 flex items-center justify-center rounded-lg bg-gray-800/50 text-gray-400 hover:bg-primary/10 hover:text-primary transition-colors">
-        <i class="ri-sun-line text-xl"></i>
-      </button>
     </div>
   </div>
 
@@ -148,7 +147,7 @@
         <!-- Hero Image -->
         <div class="relative lg:justify-self-end hero-image">
           <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden">
-            <img src="https://avatars.githubusercontent.com/ucanalgan?s=400" alt="Umutcan Algan" class="w-full h-full object-cover">
+            <img src="https://avatars.githubusercontent.com/ucanalgan?s=400" alt="Umutcan Algan" loading="lazy" width="400" height="400" class="w-full h-full object-cover">
           </div>
         </div>
       </div>
@@ -156,7 +155,7 @@
   </section>
 
   <!-- Scroll To Top Button -->
-  <button id="scroll-top" class="fixed bottom-6 right-6 px-4 py-2 rounded-lg bg-primary text-white opacity-0 pointer-events-none transition-all z-30 hover:bg-primary/80">
+  <button id="scroll-top" aria-label="Sayfa başına dön" class="fixed bottom-6 right-6 px-4 py-2 rounded-lg bg-primary text-white opacity-0 pointer-events-none transition-all z-30 hover:bg-primary/80">
     Yukarı çık
   </button>
 
@@ -164,18 +163,9 @@
   <section id="about" data-aos="fade-up" class="py-20">
     <div class="container mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-4xl font-display font-bold mb-8 scroll-animate fade-up">About Me</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="overflow-hidden rounded-lg">
-          <img src="https://avatars.githubusercontent.com/ucanalgan?s=400" alt="Umutcan Algan" class="w-full h-auto object-cover">
-        </div>
-        <div class="space-y-6 text-gray-400">
-          <p class="text-lg scroll-animate fade-up delay-1">
-            Hello! I'm Umutcan, working in full stack web development with my passion for the software world and my interest in modern technologies. I continuously improve myself by combining the theoretical knowledge I gained during my Information Systems Engineering education with practical projects.
-          </p>
-          <p class="text-lg scroll-animate fade-up delay-2">
-            I specifically work in the fields of web technologies, mobile application development, and artificial intelligence. I aim to produce modern and scalable solutions by prioritizing user experience in every project.
-          </p>
-        </div>
+      <div class="max-w-4xl mx-auto space-y-6 text-gray-400">
+        <p class="text-lg scroll-animate fade-up delay-1">Hello! I'm Umutcan, working in full stack web development with my passion for the software world and my interest in modern technologies. I continuously improve myself by combining the theoretical knowledge I gained during my Information Systems Engineering education with practical projects.</p>
+        <p class="text-lg scroll-animate fade-up delay-2">I specifically work in the fields of web technologies, mobile application development, and artificial intelligence. I aim to produce modern and scalable solutions by prioritizing user experience in every project.</p>
       </div>
     </div>
   </section>
@@ -310,7 +300,7 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="https://github.com/ucanalgan" target="_blank" class="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition-colors duration-300">
+        <a href="https://github.com/ucanalgan" target="_blank" class="btn-cta">
           <i class="ri-github-line mr-2"></i> View My GitHub Profile
         </a>
       </div>
@@ -321,30 +311,23 @@
   <section id="contact" data-aos="fade-up" class="py-20 bg-gray-900/50">
     <div class="container mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-4xl font-display font-bold mb-8 text-center md:text-left">Get In Touch</h2>
-      <p class="text-lg text-gray-400 mb-8 text-center md:text-left">
-        Do you have a project? You can reach me through the channels below.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <div class="overflow-hidden rounded-lg">
-          <img src="https://avatars.githubusercontent.com/ucanalgan?s=400" alt="Umutcan Algan" class="w-full h-auto object-cover">
-        </div>
-        <div>
-          <form id="contact-form" class="space-y-4 text-left">
-            <div class="form-control">
-              <label for="name" class="block text-gray-300">İsim</label>
-              <input type="text" id="name" data-name="İsim" pattern=".{3,}" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
-            </div>
-            <div class="form-control">
-              <label for="email" class="block text-gray-300">Email</label>
-              <input type="email" id="email" data-name="Email" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
-            </div>
-            <div class="form-control">
-              <label for="message" class="block text-gray-300">Mesaj</label>
-              <textarea id="message" data-name="Mesaj" required rows="4" class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100"></textarea>
-            </div>
-            <button type="submit" class="btn-primary w-full">Gönder</button>
-          </form>
-        </div>
+      <p class="text-lg text-gray-400 mb-12 text-center md:text-left">Do you have a project? You can reach me through the channels below.</p>
+      <div class="max-w-xl mx-auto">
+        <form id="contact-form" class="space-y-4 text-left">
+          <div class="form-control">
+            <label for="name" class="block text-gray-300">İsim</label>
+            <input type="text" id="name" data-name="İsim" pattern=".{3,}" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
+          </div>
+          <div class="form-control">
+            <label for="email" class="block text-gray-300">Email</label>
+            <input type="email" id="email" data-name="Email" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
+          </div>
+          <div class="form-control">
+            <label for="message" class="block text-gray-300">Mesaj</label>
+            <textarea id="message" data-name="Mesaj" required rows="4" class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full">Gönder</button>
+        </form>
       </div>
     </div>
   </section>
@@ -375,7 +358,7 @@
   </footer>
 
   <!-- AOS Animation JS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script type="module" src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script type="module" src="app.js" defer></script>
 </body>
 </html>

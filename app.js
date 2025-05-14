@@ -15,14 +15,17 @@ import {
 
 // Main application initialization
 export function initApp() {
-  // Initialize AOS animations
-  if (window.AOS) AOS.init({ duration: 800, once: true });
+  // Detect user preference for reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Initialize AOS animations if motion is not reduced
+  if (!prefersReducedMotion && window.AOS) AOS.init({ duration: 800, once: true });
 
   // Initialize theme based on user preference and setup toggle button
   initTheme();
 
-  // Section animations
-  initializeAnimations();
+  // Section animations if motion is not reduced
+  if (!prefersReducedMotion) initializeAnimations();
 
   // Mobile menu setup
   initializeMobileMenu();
@@ -33,8 +36,8 @@ export function initApp() {
   // Skill bars animation
   initializeSkillBars();
 
-  // Scroll reveal animations
-  initializeScrollAnimations();
+  // Scroll reveal animations if motion is not reduced
+  if (!prefersReducedMotion) initializeScrollAnimations();
 
   // Global scroll listener
   window.addEventListener('scroll', handlers.scroll);
