@@ -1,0 +1,319 @@
+/* Tailwind CSS with Custom Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans antialiased text-gray-300;
+    background-color: #0a192f; /* Default dark background as fallback */
+    color: #e6f1ff; /* Default text color as fallback */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body.dark {
+<<<<<<< Updated upstream
+    background-color: #0a192f;
+    color: #e6f1ff;
+  }
+  
+  body.light {
+    background-color: #f8f9fa;
+    color: #0a192f;
+  }
+
+  /* Fix for section visibility */
+  section {
+    opacity: 1 !important;
+    transform: none !important;
+=======
+    @apply bg-gradient-to-br from-dark via-dark/95 to-dark/90 text-gray-300;
+  }
+  
+  body.light {
+    @apply bg-gradient-to-br from-light via-light/95 to-light/90 text-gray-700;
+>>>>>>> Stashed changes
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/20 rounded-full hover:bg-primary/30 transition-colors;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Navigation */
+  .nav-link {
+    @apply relative text-gray-400 hover:text-primary transition-all duration-300
+           after:content-[''] after:absolute after:-bottom-1 after:left-1/2 
+           after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300
+           after:-translate-x-1/2 hover:after:w-full;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center px-6 py-3 rounded-lg bg-primary/10 text-primary 
+           border border-primary/20 hover:bg-primary/20 transition-all duration-300 
+           font-medium backdrop-blur-sm hover:scale-105 hover:shadow-lg hover:shadow-primary/20;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center px-6 py-3 rounded-lg bg-gray-800/50 text-gray-300 
+           border border-gray-700 hover:bg-gray-800 transition-all duration-300 
+           font-medium backdrop-blur-sm hover:scale-105 hover:border-primary/20;
+  }
+
+  /* Social Media Links */
+  .social-link {
+    @apply w-12 h-12 flex items-center justify-center rounded-xl 
+           bg-gray-800/50 text-gray-400 backdrop-blur-sm border border-gray-700/50
+           hover:bg-primary/10 hover:text-primary hover:border-primary/20 
+           transition-all duration-300 hover:scale-110 hover:-translate-y-1;
+  }
+
+  /* Skill Cards */
+  .skill-card {
+    @apply bg-gray-900/30 border border-gray-800 rounded-xl p-6 
+           backdrop-blur-sm hover:border-primary/20 transition-all duration-500
+           hover:shadow-xl hover:shadow-primary/5 hover:scale-105 hover:-translate-y-2;
+  }
+
+  .skill-card i {
+    @apply text-primary/80 transition-all duration-300 group-hover:scale-110;
+  }
+
+  /* Skill Item Styles */
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .skill-name {
+    font-weight: 500;
+    color: #f8f9fa; /* light text color */
+  }
+
+  .skill-bar {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skill-level {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+  }
+
+  /* Project Cards */
+  .project-card {
+    @apply bg-gray-900/30 border border-gray-800 rounded-xl p-6
+           backdrop-blur-sm hover:border-primary/20 transition-all duration-500
+           hover:shadow-xl hover:shadow-primary/10 flex flex-col h-full
+           hover:scale-105 hover:-translate-y-2 cursor-pointer hover:bg-gray-800/40;
+  }
+
+  .project-image {
+    @apply w-full h-48 object-cover rounded-lg mb-4 filter grayscale 
+           group-hover:grayscale-0 transition-all duration-500 scale-105
+           group-hover:scale-100;
+  }
+
+  /* Technology Tags */
+  .tech-tag {
+    @apply px-3 py-1 text-xs rounded-full bg-primary/10 text-primary 
+           whitespace-nowrap transition-all duration-300
+           hover:bg-primary/20 hover:scale-110;
+  }
+
+  /* Typewriter Animation */
+  .typewriter {
+    @apply relative;
+  }
+
+  .typewriter-text {
+    @apply relative inline-block;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #64ffda;
+    animation: 
+      typing 3s steps(30) infinite,
+      blink 0.75s step-end infinite;
+    animation-delay: 0.5s;
+    will-change: width;
+  }
+
+  @keyframes typing {
+    0% { width: 0 }
+    30%, 60% { width: 100% }
+    90%, 100% { width: 0 }
+  }
+
+  @keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #64ffda }
+  }
+
+  /* Page Transition Animations */
+  .section-animate {
+    @apply opacity-0 translate-y-10 transition-all duration-700;
+  }
+
+  .section-animate.animate {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Skill Progress Bars */
+  .skill-progress {
+    @apply h-2 bg-gray-800 rounded-full overflow-hidden relative;
+  }
+
+  .skill-progress-bar {
+    @apply h-full bg-gradient-to-r from-primary/80 to-primary 
+           absolute top-0 left-0 transition-all duration-1000;
+  }
+
+  /* Hover Effects */
+  .hover-glow {
+    @apply hover:shadow-lg hover:shadow-primary/20 transition-all duration-300;
+  }
+
+  .hover-scale {
+    @apply hover:scale-105 transition-all duration-300;
+  }
+
+  .hover-lift {
+    @apply hover:-translate-y-2 transition-all duration-300;
+  }
+
+<<<<<<< Updated upstream
+  /* Scroll Animations - Fixed for initial visibility */
+=======
+  /* Scroll Animations */
+>>>>>>> Stashed changes
+  .scroll-animate {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+<<<<<<< Updated upstream
+=======
+  .scroll-animate.fade-up {
+    transform: translateY(30px);
+  }
+
+  .scroll-animate.fade-down {
+    transform: translateY(-30px);
+  }
+
+  .scroll-animate.fade-left {
+    transform: translateX(-30px);
+  }
+
+  .scroll-animate.fade-right {
+    transform: translateX(30px);
+  }
+
+  .scroll-animate.scale-up {
+    transform: scale(0.9);
+  }
+
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+
+  .scroll-animate.not-visible {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+>>>>>>> Stashed changes
+  /* Helper Classes for Stagger Delay */
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+
+  /* Form Validation Feedback */
+  .form-control { @apply mb-4; }
+  .form-control.error input,
+  .form-control.error textarea { @apply border-red-500 focus:border-red-500; }
+  .form-control.error small { @apply text-red-500 block mt-1 text-sm; }
+  .form-control.success input,
+  .form-control.success textarea { @apply border-green-500 focus:border-green-500; }
+  .form-control.success small { @apply text-green-500 block mt-1 text-sm; }
+}
+
+/* Light Theme Overrides */
+.light .bg-dark {
+  background-color: #f8f9fa !important;
+}
+
+.light .bg-dark\/80, 
+.light .bg-dark\/95,
+.light .bg-dark\/90 {
+  background-color: rgba(248, 249, 250, 0.9) !important;
+}
+
+.light .bg-gray-900\/30 {
+  background-color: rgba(248, 249, 250, 0.7) !important;
+}
+
+.light .bg-gray-900\/50 {
+  background-color: rgba(240, 240, 245, 0.8) !important;
+}
+
+.light .bg-gray-900\/80 {
+  background-color: rgba(230, 230, 235, 0.9) !important;
+}
+
+.light .text-gray-300 {
+  color: #0a192f !important;
+}
+
+.light .text-gray-400 {
+  color: #1a2942 !important;
+}
+
+.light .border-gray-800,
+.light .border-gray-700 {
+  border-color: #d1d5db !important;
+}
+
+/* Loading Animation */
+#loader {
+  transition: opacity 0.5s ease-in-out;
+}
+
+#loader.fade-out {
+  opacity: 0;
+}
+
+/* Loading Animation */
+#loader {
+  transition: opacity 0.5s ease-in-out;
+}
+
+#loader.fade-out {
+  opacity: 0;
+}
