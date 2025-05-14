@@ -1,10 +1,7 @@
 import { initBackground3D } from './background3d.js';
 import { initAllAnimations } from './animations.js';
 import { initTheme } from './theme.js';
-<<<<<<< Updated upstream
 import { initGitHub } from './github.js';
-=======
->>>>>>> Stashed changes
 
 /**
  * Modern Personal Website
@@ -72,7 +69,6 @@ const utils = {
       rect.left <= windowWidth &&
       rect.right >= 0
     );
-<<<<<<< Updated upstream
   },
   
   // Throttle scroll events for performance
@@ -86,19 +82,12 @@ const utils = {
       lastCall = now;
       return callback(...args);
     };
-=======
->>>>>>> Stashed changes
   }
 };
 
 // Event Handlers
 const handlers = {
-<<<<<<< Updated upstream
-  // Throttled scroll handler for better performance
   scroll: utils.throttle(() => {
-=======
-  scroll: () => {
->>>>>>> Stashed changes
     const scrolled = window.scrollY > config.scroll.threshold;
     
     // Scroll Top Button
@@ -112,11 +101,6 @@ const handlers = {
       elements.header.classList.toggle('shadow-lg', scrolled);
     }
     
-<<<<<<< Updated upstream
-    // Active Section Detection (limited updates)
-=======
-    // Active Section Detection
->>>>>>> Stashed changes
     elements.sections.forEach(section => {
       if (utils.isInViewport(section)) {
         const id = section.getAttribute('id');
@@ -125,11 +109,7 @@ const handlers = {
         });
       }
     });
-<<<<<<< Updated upstream
   }, 100), // Only trigger at most every 100ms
-=======
-  },
->>>>>>> Stashed changes
   
   toggleMobileMenu: (force) => {
     const isOpen = force ?? !elements.mobileMenu.classList.contains('hidden');
@@ -201,12 +181,6 @@ function initIntersectionObserver() {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         entry.target.classList.remove('not-visible');
-<<<<<<< Updated upstream
-        
-        // Unobserve after animation to improve performance
-        animationObserver.unobserve(entry.target);
-=======
->>>>>>> Stashed changes
       }
     });
   }, observerOptions);
@@ -217,11 +191,7 @@ function initIntersectionObserver() {
     animationObserver.observe(element);
   });
   
-<<<<<<< Updated upstream
   // Observer for active section - with higher threshold for better accuracy
-=======
-  // Observer for active section
->>>>>>> Stashed changes
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -236,12 +206,8 @@ function initIntersectionObserver() {
       }
     });
   }, {
-<<<<<<< Updated upstream
     threshold: 0.4,
     rootMargin: '-10% 0px -10% 0px'
-=======
-    threshold: 0.3
->>>>>>> Stashed changes
   });
   
   // Observe all sections
@@ -250,128 +216,89 @@ function initIntersectionObserver() {
   });
 }
 
-<<<<<<< Updated upstream
-// Page Initialization with staggered loading for better performance
-function initApp() {
-  // First load critical UI elements
-  // Initialize theme immediately
-  initTheme();
-  
-  // Delay loading animations slightly
-  setTimeout(() => {
-    // Initialize GSAP animations
-    initAllAnimations();
+// Wrap all functions in a MainApp module for single global access
+const MainApp = (() => {
+  // Page Initialization with staggered loading for better performance
+  function initApp() {
+    // First load critical UI elements
+    // Initialize theme immediately
+    initTheme();
     
-    // Initialize GitHub integration
-    initGitHub();
-    
-    // Initialize Intersection Observer for scroll animations
-    initIntersectionObserver();
-  }, 100);
-  
-  // Delay loading 3D background to prioritize UI responsiveness
-  setTimeout(() => {
-    // Initialize 3D background only on desktop/larger screens
-    if (window.innerWidth > 768) {
-      initBackground3D();
-    }
-  }, 300);
-  
-  // Add event listeners
-  // Use passive: true for touch events to improve scrolling performance
-  window.addEventListener('scroll', handlers.scroll, { passive: true });
-=======
-// Page Initialization
-function initApp() {
-  // Initialize theme
-  initTheme();
-  
-  // Initialize 3D background
-  if (window.innerWidth > 768) {
-    initBackground3D();
-  }
-  
-  // Initialize GSAP animations
-  initAllAnimations();
-  
-  // Initialize Intersection Observer
-  initIntersectionObserver();
-  
-  // Scroll event listener
-  window.addEventListener('scroll', handlers.scroll);
->>>>>>> Stashed changes
-  
-  // Mobile menu buttons
-  if (elements.mobileMenuBtn) {
-    elements.mobileMenuBtn.addEventListener('click', () => handlers.toggleMobileMenu(true));
-  }
-  
-  if (elements.mobileMenuCloseBtn) {
-    elements.mobileMenuCloseBtn.addEventListener('click', () => handlers.toggleMobileMenu(false));
-  }
-  
-  // Mobile menu links
-  document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => handlers.toggleMobileMenu(false));
-  });
-  
-  // Scroll to top button
-  if (elements.scrollTopBtn) {
-    elements.scrollTopBtn.addEventListener('click', handlers.scrollTop);
-  }
-  
-<<<<<<< Updated upstream
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+    // Delay loading animations slightly
+    setTimeout(() => {
+      // Initialize GSAP animations
+      initAllAnimations();
       
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        e.preventDefault();
-        utils.scrollTo(targetElement);
+      // Initialize GitHub integration with error handling
+      try {
+        initGitHub();
+      } catch (error) {
+        console.error('GitHub yüklenirken hata oluştu:', error);
+        const projContainer = document.getElementById('github-projects');
+        if (projContainer) {
+          projContainer.innerHTML = '<p class="text-center text-red-400 py-10">GitHub verisi alınırken bir hata oluştu. Lütfen tekrar deneyin.</p>';
+        }
       }
+
+      // Initialize Intersection Observer for scroll animations
+      initIntersectionObserver();
+    }, 100);
+    
+    // Delay loading 3D background to prioritize UI responsiveness
+    setTimeout(() => {
+      // Initialize 3D background only on desktop/larger screens
+      if (window.innerWidth > 768) {
+        initBackground3D();
+      }
+    }, 300);
+    
+    // Add event listeners
+    // Use passive: true for touch events to improve scrolling performance
+    window.addEventListener('scroll', handlers.scroll, { passive: true });
+    
+    // Mobile menu buttons
+    if (elements.mobileMenuBtn) {
+      elements.mobileMenuBtn.addEventListener('click', () => handlers.toggleMobileMenu(true));
+    }
+    
+    if (elements.mobileMenuCloseBtn) {
+      elements.mobileMenuCloseBtn.addEventListener('click', () => handlers.toggleMobileMenu(false));
+    }
+    
+    // Mobile menu links
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => handlers.toggleMobileMenu(false));
     });
-  });
-  
-=======
->>>>>>> Stashed changes
-  // Filter buttons
-  document.querySelectorAll('[data-filter]').forEach(button => {
-    button.addEventListener('click', () => {
-      const tech = button.dataset.filter;
-      filterProjects(tech === currentFilter ? null : tech);
-      
-      // Update active filter button
-      document.querySelectorAll('[data-filter]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filter === tech && tech === currentFilter);
+    
+    // Scroll to top button
+    if (elements.scrollTopBtn) {
+      elements.scrollTopBtn.addEventListener('click', handlers.scrollTop);
+    }
+    
+    // Filter buttons
+    document.querySelectorAll('[data-filter]').forEach(button => {
+      button.addEventListener('click', () => {
+        const tech = button.dataset.filter;
+        filterProjects(tech === currentFilter ? null : tech);
+        
+        // Update active filter button
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.filter === tech && tech === currentFilter);
+        });
       });
     });
-  });
-<<<<<<< Updated upstream
-}
+  }
 
-// --- Ensure Loader Always Hides ---
-function hideLoader() {}
+  // Expose public API
+  return {
+    initApp,
+    filterProjects,
+    handlers,
+    initIntersectionObserver
+  };
+})();
 
-window.addEventListener('DOMContentLoaded', () => {});
-window.addEventListener('load', () => {});
-
-=======
-  
-  // All ready, remove loading animation
-  setTimeout(() => {
-    const loader = document.getElementById('loader');
-    if (loader) {
-      loader.classList.add('fade-out');
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 500);
-    }
-  }, 800);
-}
-
->>>>>>> Stashed changes
-// Initialize on DOMContentLoaded
-window.addEventListener('DOMContentLoaded', initApp); 
+// Attach MainApp to global window
+window.MainApp = MainApp;
+// Initialize application on DOMContentLoaded via MainApp
+window.addEventListener('DOMContentLoaded', MainApp.initApp); 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark transition-colors duration-500 ease-in-out">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,26 +46,18 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
   <!-- Modern JS with Modular Structure -->
-<<<<<<< Updated upstream
   <script type="module" src="app.js"></script>
-</head>
-<body class="font-sans text-gray-300 transition-colors duration-300">
-=======
-  <script type="module" src="main.js"></script>
-</head>
-<body class="font-sans text-gray-300 transition-colors duration-300">
-  <!-- Loading Animation -->
-  <div id="loader" class="fixed inset-0 z-50 flex items-center justify-center bg-dark">
-    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-primary"></div>
-  </div>
 
->>>>>>> Stashed changes
+  <!-- AOS Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-300 transition-colors duration-500 ease-in-out">
   <!-- 3D Background Canvas -->
   <canvas id="bg-canvas" class="fixed inset-0 -z-10"></canvas>
   
   <!-- Header -->
   <header class="fixed w-full top-0 z-40 bg-dark/80 backdrop-blur-sm transition-all">
-    <nav class="container mx-auto px-6 py-4">
+    <nav class="container mx-auto px-4 sm:px-6 py-4">
       <div class="flex items-center justify-between">
         <!-- Logo -->
         <a href="#" class="text-2xl font-display font-bold text-primary">UA</a>
@@ -75,11 +67,7 @@
           <a href="#home" class="nav-link">Home</a>
           <a href="#about" class="nav-link">About</a>
           <a href="#skills" class="nav-link">Skills</a>
-<<<<<<< Updated upstream
           <a href="#github" class="nav-link">Projects</a>
-=======
-          <a href="#projects" class="nav-link">Projects</a>
->>>>>>> Stashed changes
           <a href="#contact" class="nav-link">Contact</a>
           
           <!-- Theme Toggle Button -->
@@ -97,7 +85,7 @@
   </header>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu fixed inset-0 bg-dark/95 backdrop-blur-xl hidden z-50">
+  <div class="mobile-menu fixed inset-0 bg-dark/95 backdrop-blur-xl transform translate-x-full md:hidden transition-transform duration-300 ease-in-out z-50">
     <div class="absolute top-6 right-6">
       <button class="mobile-menu-close">
         <i class="ri-close-line text-2xl"></i>
@@ -107,11 +95,7 @@
       <a href="#home" class="text-3xl font-display">Home</a>
       <a href="#about" class="text-3xl font-display">About</a>
       <a href="#skills" class="text-3xl font-display">Skills</a>
-<<<<<<< Updated upstream
       <a href="#github" class="text-3xl font-display">Projects</a>
-=======
-      <a href="#projects" class="text-3xl font-display">Projects</a>
->>>>>>> Stashed changes
       <a href="#contact" class="text-3xl font-display">Contact</a>
       
       <!-- Mobile Theme Toggle Button -->
@@ -122,8 +106,8 @@
   </div>
 
   <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center pt-32">
-    <div class="container mx-auto px-6">
+  <section id="home" data-aos="fade-up" class="min-h-screen flex items-center pt-32">
+    <div class="container mx-auto px-4 sm:px-6">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Hero Content -->
         <div class="space-y-8">
@@ -164,7 +148,7 @@
         <!-- Hero Image -->
         <div class="relative lg:justify-self-end hero-image">
           <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden">
-            <img src="images/insta pp2.jpg" alt="Umutcan Algan" class="w-full h-full object-cover">
+            <img src="https://avatars.githubusercontent.com/ucanalgan?s=400" alt="Umutcan Algan" class="w-full h-full object-cover">
           </div>
         </div>
       </div>
@@ -172,28 +156,33 @@
   </section>
 
   <!-- Scroll To Top Button -->
-  <button id="scroll-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary/20 text-primary flex items-center justify-center opacity-0 pointer-events-none transition-all z-30 hover:bg-primary/30">
-    <i class="ri-arrow-up-line text-xl"></i>
+  <button id="scroll-top" class="fixed bottom-6 right-6 px-4 py-2 rounded-lg bg-primary text-white opacity-0 pointer-events-none transition-all z-30 hover:bg-primary/80">
+    Yukarı çık
   </button>
 
   <!-- About Section -->
-  <section id="about" class="py-20">
-    <div class="container mx-auto px-6">
+  <section id="about" data-aos="fade-up" class="py-20">
+    <div class="container mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-4xl font-display font-bold mb-8 scroll-animate fade-up">About Me</h2>
-      <div class="max-w-4xl space-y-6 text-gray-400">
-        <p class="text-lg scroll-animate fade-up delay-1">
-          Hello! I'm Umutcan, working in full stack web development with my passion for the software world and my interest in modern technologies. I continuously improve myself by combining the theoretical knowledge I gained during my Information Systems Engineering education with practical projects.
-        </p>
-        <p class="text-lg scroll-animate fade-up delay-2">
-          I specifically work in the fields of web technologies, mobile application development, and artificial intelligence. I aim to produce modern and scalable solutions by prioritizing user experience in every project.
-        </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="overflow-hidden rounded-lg">
+          <img src="https://avatars.githubusercontent.com/ucanalgan?s=400" alt="Umutcan Algan" class="w-full h-auto object-cover">
+        </div>
+        <div class="space-y-6 text-gray-400">
+          <p class="text-lg scroll-animate fade-up delay-1">
+            Hello! I'm Umutcan, working in full stack web development with my passion for the software world and my interest in modern technologies. I continuously improve myself by combining the theoretical knowledge I gained during my Information Systems Engineering education with practical projects.
+          </p>
+          <p class="text-lg scroll-animate fade-up delay-2">
+            I specifically work in the fields of web technologies, mobile application development, and artificial intelligence. I aim to produce modern and scalable solutions by prioritizing user experience in every project.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="py-20 bg-gray-900/50">
-    <div class="container mx-auto px-6">
+  <section id="skills" data-aos="fade-up" class="py-20 bg-gray-900/50">
+    <div class="container mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 scroll-animate fade-up">My Skills</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -290,9 +279,8 @@
     </div>
   </section>
 
-<<<<<<< Updated upstream
   <!-- GitHub Section -->
-  <section id="github" class="py-20 bg-dark/80 scroll-animate">
+  <section id="github" data-aos="fade-up" class="py-20 bg-dark/80 scroll-animate">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">My GitHub Projects</h2>
@@ -322,161 +310,51 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="https://github.com/ucanalgan" target="_blank" class="btn-primary">
+        <a href="https://github.com/ucanalgan" target="_blank" class="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition-colors duration-300">
           <i class="ri-github-line mr-2"></i> View My GitHub Profile
         </a>
-=======
-  <!-- Projects Section -->
-  <section id="projects" class="py-20">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 scroll-animate fade-up">My Projects</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Personal Website Project -->
-        <div class="project-card group scroll-animate fade-up delay-1" data-technologies="HTML,CSS,JavaScript">
-          <div class="relative overflow-hidden rounded-lg mb-4">
-            <img src="images/image.png" alt="Personal Website" class="project-image">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <div class="absolute bottom-4 left-4">
-                <a href="https://github.com/ucanalgan/personalWeb" target="_blank" 
-                   class="inline-flex items-center px-4 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
-                    <i class="ri-github-fill mr-2"></i>
-                    <span>View on GitHub</span>
-                  </a>
-              </div>
-            </div>
-          </div>
-          <h3 class="text-xl font-display font-bold mb-2">Personal Website</h3>
-          <p class="text-gray-400 mb-4">
-            Portfolio site developed using modern web technologies. Responsive design, performance optimization, and SEO-friendly structure. Features Tailwind CSS and modern JavaScript capabilities.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">Tailwind CSS</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">Responsive</span>
-          </div>
-          <div class="flex items-center justify-between text-sm text-gray-400">
-            <span class="flex items-center">
-              <i class="ri-star-fill mr-1 text-primary"></i>
-              Last Update: March 2024
-            </span>
-            <span class="flex items-center">
-              <i class="ri-git-branch-fill mr-1"></i>
-              Continuous Updates
-            </span>
-          </div>
-        </div>
-        
-        <!-- Port Scanner Project -->
-        <div class="project-card group scroll-animate fade-up delay-2" data-technologies="C++">
-          <div class="relative overflow-hidden rounded-lg mb-4">
-            <img src="images/port.jpg.jpg" alt="Port Scanner" class="project-image">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <div class="absolute bottom-4 left-4">
-                <a href="https://github.com/ucanalgan/PortScanner" target="_blank" 
-                   class="inline-flex items-center px-4 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
-                    <i class="ri-github-fill mr-2"></i>
-                    <span>View on GitHub</span>
-                  </a>
-              </div>
-            </div>
-          </div>
-          <h3 class="text-xl font-display font-bold mb-2">Port Scanner</h3>
-          <p class="text-gray-400 mb-4">
-            Port scanning tool developed with C++. This tool works efficiently with multi-threading architecture, capable of detecting open ports on target systems and performing network security analysis.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="tech-tag">C++</span>
-            <span class="tech-tag">Network Programming</span>
-            <span class="tech-tag">Security</span>
-          </div>
-          <div class="flex items-center justify-between text-sm text-gray-400">
-            <span class="flex items-center">
-              <i class="ri-star-fill mr-1 text-primary"></i>
-              Last Update: March 2024
-            </span>
-            <span class="flex items-center">
-              <i class="ri-git-branch-fill mr-1"></i>
-              Completed
-            </span>
-          </div>
-        </div>
-        
-        <!-- Keylogger Project -->
-        <div class="project-card group scroll-animate fade-up delay-3" data-technologies="Python">
-          <div class="relative overflow-hidden rounded-lg mb-4">
-            <img src="images/port.jpg.jpg" alt="Keylogger" class="project-image">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <div class="absolute bottom-4 left-4">
-                <a href="https://github.com/ucanalgan/Keylogger" target="_blank" 
-                   class="inline-flex items-center px-4 py-2 rounded-lg bg-primary/20 text-primary hover:bg-primary/30 transition-colors">
-                    <i class="ri-github-fill mr-2"></i>
-                    <span>View on GitHub</span>
-                  </a>
-              </div>
-            </div>
-          </div>
-          <h3 class="text-xl font-display font-bold mb-2">Keylogger</h3>
-          <p class="text-gray-400 mb-4">
-            Key logging application developed with Python. This application is designed for educational purposes and can be used to monitor and record keyboard inputs. A useful tool for cybersecurity research and ethical hacking training.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">Cybersecurity</span>
-            <span class="tech-tag">Data Capture</span>
-          </div>
-          <div class="flex items-center justify-between text-sm text-gray-400">
-            <span class="flex items-center">
-              <i class="ri-star-fill mr-1 text-primary"></i>
-              Last Update: February 2024
-            </span>
-            <span class="flex items-center">
-              <i class="ri-git-branch-fill mr-1"></i>
-              Completed
-            </span>
-          </div>
-        </div>
->>>>>>> Stashed changes
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-gray-900/50">
-    <div class="container mx-auto px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-display font-bold mb-8">Get In Touch</h2>
-        
-        <p class="text-lg text-gray-400 mb-12">
-          Do you have a project? You can reach me through the channels below.
-        </p>
-        
-        <form id="contact-form" class="max-w-xl mx-auto space-y-4 text-left">
-          <div class="form-control">
-            <label for="name" class="block text-gray-300">İsim</label>
-            <input type="text" id="name" data-name="İsim" pattern=".{3,}" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
-          </div>
-          <div class="form-control">
-            <label for="email" class="block text-gray-300">Email</label>
-            <input type="email" id="email" data-name="Email" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
-          </div>
-          <div class="form-control">
-            <label for="message" class="block text-gray-300">Mesaj</label>
-            <textarea id="message" data-name="Mesaj" required rows="4" class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100"></textarea>
-          </div>
-          <button type="submit" class="btn-primary w-full">Gönder</button>
-        </form>
+  <section id="contact" data-aos="fade-up" class="py-20 bg-gray-900/50">
+    <div class="container mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl md:text-4xl font-display font-bold mb-8 text-center md:text-left">Get In Touch</h2>
+      <p class="text-lg text-gray-400 mb-8 text-center md:text-left">
+        Do you have a project? You can reach me through the channels below.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div class="overflow-hidden rounded-lg">
+          <img src="https://avatars.githubusercontent.com/ucanalgan?s=400" alt="Umutcan Algan" class="w-full h-auto object-cover">
+        </div>
+        <div>
+          <form id="contact-form" class="space-y-4 text-left">
+            <div class="form-control">
+              <label for="name" class="block text-gray-300">İsim</label>
+              <input type="text" id="name" data-name="İsim" pattern=".{3,}" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
+            </div>
+            <div class="form-control">
+              <label for="email" class="block text-gray-300">Email</label>
+              <input type="email" id="email" data-name="Email" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
+            </div>
+            <div class="form-control">
+              <label for="message" class="block text-gray-300">Mesaj</label>
+              <textarea id="message" data-name="Mesaj" required rows="4" class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100"></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full">Gönder</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="py-12 bg-gray-900/80">
-    <div class="container mx-auto px-6">
+    <div class="container mx-auto px-4 sm:px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="text-center md:text-left mb-8 md:mb-0">
-          <h3 class="text-2xl font-display font-bold text-primary mb-2">Umutcan Algan</h3>
+          <p class="text-2xl font-display font-bold text-primary mb-2">Umutcan Algan</p>
           <p class="text-gray-400">Information Systems Engineering 2nd Year Student</p>
         </div>
         
@@ -495,11 +373,9 @@
       </div>
     </div>
   </footer>
-<<<<<<< Updated upstream
-  <script type="module" src="app.js"></script>
-=======
 
-  <script type="module" src="main.js"></script>
->>>>>>> Stashed changes
+  <!-- AOS Animation JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

@@ -17,7 +17,6 @@
   }
 
   body.dark {
-<<<<<<< Updated upstream
     background-color: #0a192f;
     color: #e6f1ff;
   }
@@ -31,13 +30,14 @@
   section {
     opacity: 1 !important;
     transform: none !important;
-=======
-    @apply bg-gradient-to-br from-dark via-dark/95 to-dark/90 text-gray-300;
   }
-  
-  body.light {
-    @apply bg-gradient-to-br from-light via-light/95 to-light/90 text-gray-700;
->>>>>>> Stashed changes
+
+  /* Typography adjustments */
+  p {
+    @apply text-base leading-relaxed;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-xl;
   }
 
   /* Custom Scrollbar */
@@ -58,21 +58,26 @@
 @layer components {
   /* Navigation */
   .nav-link {
-    @apply relative text-gray-400 hover:text-primary transition-all duration-300
+    @apply relative text-gray-400 hover:text-primary transform transition-transform duration-300 hover:scale-105 hover:shadow-lg
            after:content-[''] after:absolute after:-bottom-1 after:left-1/2 
            after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300
            after:-translate-x-1/2 hover:after:w-full;
   }
 
+  /* Mobile menu links */
+  .mobile-menu a {
+    @apply transform transition-transform duration-300 hover:scale-105 hover:shadow-lg;
+  }
+
   /* Buttons */
   .btn-primary {
-    @apply inline-flex items-center px-6 py-3 rounded-lg bg-primary/10 text-primary 
+    @apply inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-lg bg-primary/10 text-primary 
            border border-primary/20 hover:bg-primary/20 transition-all duration-300 
            font-medium backdrop-blur-sm hover:scale-105 hover:shadow-lg hover:shadow-primary/20;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center px-6 py-3 rounded-lg bg-gray-800/50 text-gray-300 
+    @apply inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-lg bg-gray-800/50 text-gray-300 
            border border-gray-700 hover:bg-gray-800 transition-all duration-300 
            font-medium backdrop-blur-sm hover:scale-105 hover:border-primary/20;
   }
@@ -123,10 +128,10 @@
 
   /* Project Cards */
   .project-card {
-    @apply bg-gray-900/30 border border-gray-800 rounded-xl p-6
+    @apply bg-gray-900/30 border border-gray-800 rounded-xl p-6 
            backdrop-blur-sm hover:border-primary/20 transition-all duration-500
            hover:shadow-xl hover:shadow-primary/10 flex flex-col h-full
-           hover:scale-105 hover:-translate-y-2 cursor-pointer hover:bg-gray-800/40;
+           hover:scale-105 hover:-translate-y-2;
   }
 
   .project-image {
@@ -203,50 +208,22 @@
     @apply hover:-translate-y-2 transition-all duration-300;
   }
 
-<<<<<<< Updated upstream
   /* Scroll Animations - Fixed for initial visibility */
-=======
-  /* Scroll Animations */
->>>>>>> Stashed changes
   .scroll-animate {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-<<<<<<< Updated upstream
-=======
-  .scroll-animate.fade-up {
-    transform: translateY(30px);
-  }
-
-  .scroll-animate.fade-down {
-    transform: translateY(-30px);
-  }
-
-  .scroll-animate.fade-left {
-    transform: translateX(-30px);
-  }
-
-  .scroll-animate.fade-right {
-    transform: translateX(30px);
-  }
-
-  .scroll-animate.scale-up {
-    transform: scale(0.9);
-  }
+  .scroll-animate.fade-up { transform: translateY(20px); }
+  .scroll-animate.fade-down { transform: translateY(-20px); }
+  .scroll-animate.fade-right { transform: translateX(-20px); }
+  .scroll-animate.fade-left { transform: translateX(20px); }
 
   .scroll-animate.visible {
     opacity: 1;
-    transform: translate(0) scale(1);
+    transform: translateX(0) translateY(0);
   }
 
-  .scroll-animate.not-visible {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
->>>>>>> Stashed changes
   /* Helper Classes for Stagger Delay */
   .delay-1 { transition-delay: 0.1s; }
   .delay-2 { transition-delay: 0.2s; }
@@ -262,6 +239,11 @@
   .form-control.success input,
   .form-control.success textarea { @apply border-green-500 focus:border-green-500; }
   .form-control.success small { @apply text-green-500 block mt-1 text-sm; }
+
+  /* Global Image Styles */
+  img {
+    @apply object-contain max-w-full max-h-[80vh] block;
+  }
 }
 
 /* Light Theme Overrides */
@@ -300,13 +282,10 @@
   border-color: #d1d5db !important;
 }
 
-/* Loading Animation */
-#loader {
-  transition: opacity 0.5s ease-in-out;
-}
-
-#loader.fade-out {
-  opacity: 0;
+/* Ensure form input and textarea text is dark in light mode for readability */
+.light input,
+.light textarea {
+  color: #0a192f !important;
 }
 
 /* Loading Animation */

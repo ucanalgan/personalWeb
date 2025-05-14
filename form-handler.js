@@ -57,6 +57,9 @@ function formatName(input) {
     input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
+// Anti-spam: track last submission time to prevent rapid resubmissions
+let lastSubmissionTime = 0;
+
 /**
  * Initialize form validation on the given selector
  */
@@ -65,15 +68,40 @@ export function initFormValidation(formSelector) {
   if (!form) return;
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    // Anti-spam: prevent multiple submissions within 10 seconds
+    const now = Date.now();
+    if (now - lastSubmissionTime < 10000) {
+      const existingSpam = form.parentElement.querySelector('.form-spam-error');
+      if (!existingSpam) {
+        const spamDiv = document.createElement('div');
+        spamDiv.className = 'form-spam-error text-red-500 mb-4';
+        spamDiv.innerText = 'Lütfen 10 saniyede bir form gönderin.';
+        form.insertAdjacentElement('beforebegin', spamDiv);
+        setTimeout(() => spamDiv.remove(), 5000);
+      }
+      return;
+    }
+    lastSubmissionTime = now;
     const inputs = form.querySelectorAll('input, textarea');
     let isFormValid = true;
     inputs.forEach(input => {
       if (!validateInput(input)) isFormValid = false;
     });
     if (isFormValid) {
-      // Optionally submit or show overall success feedback
       console.log('Form başarıyla doğrulandı.');
       form.reset();
+      // Remove existing success message if any
+      const existingMsg = form.parentElement.querySelector('.form-success-message');
+      if (existingMsg) existingMsg.remove();
+      // Create and show success message
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'form-success-message text-green-500 mb-4';
+      msgDiv.innerText = 'Teşekkür ederiz! Mesajınız başarıyla gönderildi.';
+      form.insertAdjacentElement('beforebegin', msgDiv);
+      // Remove the message after 5 seconds
+      setTimeout(() => {
+        msgDiv.remove();
+      }, 5000);
     }
   });
 } 

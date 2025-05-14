@@ -6,7 +6,7 @@
 
 A modern, responsive personal portfolio website built with the latest web technologies. Features a coding-themed 3D background, dark/light mode support, and smooth animations.
 
-![Portfolio Preview](images/image.png)
+![Portfolio Preview](https://raw.githubusercontent.com/ucanalgan/personalWeb/master/images/image.png)
 
 ## Table of Contents
 

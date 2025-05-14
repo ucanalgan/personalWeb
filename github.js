@@ -333,28 +333,26 @@ async function loadGitHubProjects(container) {
     container.innerHTML = '';
     
     projects.forEach(project => {
-      if (!project) return; // Skip null/undefined projects
-      
+      if (!project) return;
       const projectCard = document.createElement('div');
-      projectCard.className = 'project-card group';
-      
+      projectCard.className = 'group bg-white/5 dark:bg-slate-800 border border-slate-600 rounded-xl shadow-md p-5 transition-all duration-300 hover:scale-105 flex flex-col h-full';
       projectCard.innerHTML = `
-        <h3 class="text-xl font-semibold mb-2">${project.name || 'Unnamed Project'}</h3>
-        <p class="text-gray-400 mb-4">${project.description || 'No description available'}</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          ${project.topics && Array.isArray(project.topics) ? project.topics.map(topic => `<span class="tech-tag">${topic}</span>`).join('') : ''}
-        </div>
-        <div class="mt-auto flex justify-between items-center">
-          <div class="text-sm text-gray-400">
-            <i class="ri-star-line mr-1"></i> ${project.stargazers_count || 0}
-            <i class="ri-git-branch-line ml-3 mr-1"></i> ${project.forks_count || 0}
-          </div>
-          <a href="${project.html_url}" target="_blank" class="btn-primary py-2 px-4">
-            <i class="ri-github-line mr-2"></i> View
-          </a>
+        <h3 class="text-lg font-semibold mb-2 flex items-center">
+          <i class="ri-github-fill mr-2 text-lg text-slate-100 transition-colors group-hover:text-indigo-400"></i>
+          ${project.name || 'Unnamed Project'}
+        </h3>
+        <p class="${project.description ? 'text-sm text-gray-400' : 'text-sm text-gray-400 italic'} mb-4">
+          ${project.description || 'Proje açıklaması eklenmemiş.'}
+        </p>
+        <div class="mt-auto flex space-x-2">
+          <span class="bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white inline-block">
+            ⭐ ${project.stargazers_count || 0}
+          </span>
+          <span class="bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white inline-block">
+            🍴 ${project.forks_count || 0}
+          </span>
         </div>
       `;
-      
       container.appendChild(projectCard);
     });
   } catch (error) {
@@ -378,25 +376,15 @@ async function loadGitHubActivity(container) {
     container.innerHTML = '';
     
     activities.forEach(activity => {
-      if (!activity || !activity.repo) return; // Skip invalid activities
-      
+      if (!activity || !activity.repo) return;
       const activityItem = document.createElement('div');
-      activityItem.className = 'bg-gray-900/30 border border-gray-800 rounded-xl p-4 mb-3 hover:border-primary/20 transition-all duration-300';
-      
-      let repoName = activity.repo?.name ? activity.repo.name.split('/')[1] : '';
-      let eventDescription = formatEventType(activity.type || '');
-      let createdAt = formatDate(activity.created_at || new Date());
-      
+      activityItem.className = 'text-sm text-gray-300 py-2 border-b border-gray-700';
+      const repoName = activity.repo?.name ? activity.repo.name.split('/')[1] : '';
+      const eventDescription = formatEventType(activity.type || '');
+      const createdAt = formatDate(activity.created_at || new Date());
       activityItem.innerHTML = `
-        <div class="flex items-center">
-          <i class="ri-github-line text-xl text-primary mr-3"></i>
-          <div>
-            <p class="font-medium">${eventDescription} <a href="https://github.com/${activity.repo?.name || ''}" target="_blank" class="text-primary hover:underline">${repoName}</a></p>
-            <p class="text-sm text-gray-400">${createdAt}</p>
-          </div>
-        </div>
+        ${eventDescription} <a href="https://github.com/${activity.repo?.name || ''}" target="_blank" class="text-primary hover:underline">${repoName}</a> - <span class="text-xs text-gray-400">${createdAt}</span>
       `;
-      
       container.appendChild(activityItem);
     });
   } catch (error) {
@@ -412,25 +400,24 @@ function loadSampleProjects(container) {
     
     SAMPLE_PROJECTS.forEach(project => {
       const projectCard = document.createElement('div');
-      projectCard.className = 'project-card group';
-      
+      projectCard.className = 'group bg-white/5 dark:bg-slate-800 border border-slate-600 rounded-xl shadow-md p-5 transition-all duration-300 hover:scale-105 flex flex-col h-full';
       projectCard.innerHTML = `
-        <h3 class="text-xl font-semibold mb-2">${project.name || 'Unnamed Project'}</h3>
-        <p class="text-gray-400 mb-4">${project.description || 'No description available'}</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          ${project.topics && Array.isArray(project.topics) ? project.topics.map(topic => `<span class="tech-tag">${topic}</span>`).join('') : ''}
-        </div>
-        <div class="mt-auto flex justify-between items-center">
-          <div class="text-sm text-gray-400">
-            <i class="ri-star-line mr-1"></i> ${project.stargazers_count || 0}
-            <i class="ri-git-branch-line ml-3 mr-1"></i> ${project.forks_count || 0}
-          </div>
-          <a href="${project.html_url}" target="_blank" class="btn-primary py-2 px-4">
-            <i class="ri-github-line mr-2"></i> View
-          </a>
+        <h3 class="text-lg font-semibold mb-2 flex items-center">
+          <i class="ri-github-fill mr-2 text-lg text-slate-100 transition-colors group-hover:text-indigo-400"></i>
+          ${project.name || 'Unnamed Project'}
+        </h3>
+        <p class="${project.description ? 'text-sm text-gray-400' : 'text-sm text-gray-400 italic'} mb-4">
+          ${project.description || 'Proje açıklaması eklenmemiş.'}
+        </p>
+        <div class="mt-auto flex space-x-2">
+          <span class="bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white inline-block">
+            ⭐ ${project.stargazers_count || 0}
+          </span>
+          <span class="bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white inline-block">
+            🍴 ${project.forks_count || 0}
+          </span>
         </div>
       `;
-      
       container.appendChild(projectCard);
     });
     

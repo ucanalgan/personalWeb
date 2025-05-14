@@ -83,16 +83,23 @@ export function initializeMobileMenu() {
   const mobileMenu = elements.mobileMenu;
   const mobileLinks = selectAll('.mobile-menu a');
   if (!menuBtn || !closeBtn || !mobileMenu) return;
+  // Toggle off-canvas menu
   menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-    requestAnimationFrame(() => mobileMenu.classList.add('opacity-100'));
+    mobileMenu.classList.toggle('translate-x-full');
+    mobileMenu.classList.toggle('translate-x-0');
   });
-  const closeMobile = () => {
-    mobileMenu.classList.remove('opacity-100');
-    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-  };
-  closeBtn.addEventListener('click', closeMobile);
-  mobileLinks.forEach(link => link.addEventListener('click', closeMobile));
+  // Close menu on close button click
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenu.classList.remove('translate-x-0');
+  });
+  // Close menu when a link is clicked
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenu.classList.remove('translate-x-0');
+    });
+  });
 }
 
 // Header hide/show and scroll-to-top functionality

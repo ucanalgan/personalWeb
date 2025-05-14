@@ -1,5 +1,6 @@
 import * as utils from './utils.js';
 import { initFormValidation } from './form-handler.js';
+import { initTheme } from './theme.js';
 import {
   elements,
   handlers,
@@ -14,6 +15,12 @@ import {
 
 // Main application initialization
 export function initApp() {
+  // Initialize AOS animations
+  if (window.AOS) AOS.init({ duration: 800, once: true });
+
+  // Initialize theme based on user preference and setup toggle button
+  initTheme();
+
   // Section animations
   initializeAnimations();
 
@@ -35,10 +42,6 @@ export function initApp() {
   // Scroll to top button
   elements.scrollTopBtn?.addEventListener('click', handlers.scrollTop);
 
-  // Mobile menu toggles
-  elements.mobileMenuBtn?.addEventListener('click', () => handlers.toggleMobileMenu(true));
-  elements.mobileMenuCloseBtn?.addEventListener('click', () => handlers.toggleMobileMenu(false));
-
   // Navigation link smooth scrolling
   elements.navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -46,7 +49,17 @@ export function initApp() {
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
         utils.scrollTo(target);
-        handlers.toggleMobileMenu(false);
+      }
+    });
+  });
+
+  // Mobile menu smooth scrolling
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        utils.scrollTo(target);
       }
     });
   });
@@ -75,20 +88,22 @@ export function initApp() {
       .then(res => res.json())
       .then(repos => {
         container.innerHTML = ''; // clear spinner/loading state
-        repos.forEach(repo => {
-          const card = document.createElement('div');
-          card.className = 'project-card';
-          card.innerHTML = `
-            <h3 class="text-xl font-display font-bold mb-2 text-primary">
-              <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-            </h3>
-            <p class="text-gray-400 text-sm mb-4">${repo.description || 'Açıklama bulunamadı.'}</p>
-            <div class="flex items-center space-x-4 text-gray-400">
-              <span class="flex items-center"><i class="ri-star-fill mr-1"></i>${repo.stargazers_count}</span>
-              <span class="flex items-center"><i class="ri-git-branch-line mr-1"></i>${repo.forks_count}</span>
-            </div>
-          `;
-          container.appendChild(card);
+        repos.forEach((repo, index) => {
+          setTimeout(() => {
+            const card = document.createElement('div');
+            card.className = 'project-card group';
+            card.innerHTML = `
+              <h3 class="text-lg font-semibold text-primary group-hover:text-secondary">
+                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+              </h3>
+              <p class="text-sm text-gray-400 mt-2">${repo.description || 'Açıklama bulunamadı.'}</p>
+              <div class="flex items-center text-xs text-gray-400 mt-4">
+                <i class="ri-star-line mr-1"></i>${repo.stargazers_count}
+                <i class="ri-git-branch-line ml-4 mr-1"></i>${repo.forks_count}
+              </div>
+            `;
+            container.appendChild(card);
+          }, index * 300);
         });
       })
       .catch(err => {
@@ -108,12 +123,9 @@ export function initApp() {
         activityContainer.innerHTML = '';
         events.forEach(evt => {
           const div = document.createElement('div');
-          div.className = 'project-card';
+          div.className = 'project-card group';
           div.innerHTML = `
-            <p class="text-gray-400 text-sm mb-2">
-              ${evt.type.replace(/([A-Z])/g, ' $1').trim()} on
-              <a href="https://github.com/${evt.repo.name}" target="_blank" class="text-primary hover:underline">${evt.repo.name}</a>
-            </p>
+            <p class="text-sm text-gray-400">${evt.type.replace(/([A-Z])/g, ' $1').trim()} on <a href="https://github.com/${evt.repo.name}" target="_blank" class="text-primary hover:text-secondary">${evt.repo.name}</a></p>
           `;
           activityContainer.appendChild(div);
         });

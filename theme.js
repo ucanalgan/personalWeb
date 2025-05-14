@@ -27,8 +27,7 @@ export function applyTheme(theme) {
   document.body.classList.remove('dark', 'light');
   document.body.classList.add(theme);
   
-<<<<<<< Updated upstream
-  // Add specific CSS variables and background colors
+  // Update theme colors
   if (theme === 'dark') {
     document.documentElement.style.setProperty('--bg-color', '#0a192f');
     document.documentElement.style.setProperty('--text-color', '#e6f1ff');
@@ -39,15 +38,6 @@ export function applyTheme(theme) {
     document.documentElement.style.setProperty('--text-color', '#0a192f');
     document.body.style.backgroundColor = '#f8f9fa';
     document.body.style.color = '#0a192f';
-=======
-  // Update theme colors
-  if (theme === 'dark') {
-    document.documentElement.style.setProperty('--bg-color', '#0a192f');
-    document.documentElement.style.setProperty('--text-color', '#e6f1ff');
-  } else {
-    document.documentElement.style.setProperty('--bg-color', '#f8f9fa');
-    document.documentElement.style.setProperty('--text-color', '#0a192f');
->>>>>>> Stashed changes
   }
   
   // Save theme preference
@@ -63,23 +53,23 @@ function updateThemeToggle(theme) {
   const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
   
   if (theme === 'dark') {
-    // If dark, show sun icon (to switch to light)
+    // If dark, show sun emoji (to switch to light)
     if (themeToggle) {
-      themeToggle.innerHTML = '<i class="ri-sun-line"></i>';
+      themeToggle.textContent = '☀️';
       themeToggle.setAttribute('title', 'Switch to Light Mode');
     }
     if (mobileThemeToggle) {
-      mobileThemeToggle.innerHTML = '<i class="ri-sun-line text-xl"></i>';
+      mobileThemeToggle.textContent = '☀️';
       mobileThemeToggle.setAttribute('title', 'Switch to Light Mode');
     }
   } else {
-    // If light, show moon icon (to switch to dark)
+    // If light, show moon emoji (to switch to dark)
     if (themeToggle) {
-      themeToggle.innerHTML = '<i class="ri-moon-line"></i>';
+      themeToggle.textContent = '🌙';
       themeToggle.setAttribute('title', 'Switch to Dark Mode');
     }
     if (mobileThemeToggle) {
-      mobileThemeToggle.innerHTML = '<i class="ri-moon-line text-xl"></i>';
+      mobileThemeToggle.textContent = '🌙';
       mobileThemeToggle.setAttribute('title', 'Switch to Dark Mode');
     }
   }
@@ -98,13 +88,10 @@ export function initThemeToggle() {
   const themeToggle = document.getElementById('theme-toggle');
   const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
   
-<<<<<<< Updated upstream
-=======
   // Apply current theme
   const currentTheme = getThemePreference();
   applyTheme(currentTheme);
   
->>>>>>> Stashed changes
   // Add click event for desktop toggle
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
@@ -122,23 +109,10 @@ export function initThemeToggle() {
 
 // Initialize theme on page load
 export function initTheme() {
-<<<<<<< Updated upstream
-  // Force dark theme to start for better user experience
-  applyTheme('dark');
-  
-  // Then check user preference
-  const currentTheme = getThemePreference();
-  if (currentTheme !== 'dark') {
-    setTimeout(() => applyTheme(currentTheme), 100);
-  }
-  
-  // Initialize theme toggle
-=======
   const currentTheme = getThemePreference();
   applyTheme(currentTheme);
   
   // Initialize theme toggle on DOM ready
->>>>>>> Stashed changes
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initThemeToggle);
   } else {
