@@ -198,7 +198,9 @@ export function filterProjects(technology) {
     return;
   }
   cards.forEach(c => {
-    const techs = c.dataset.technologies?.split(',') || [];
+    // Retrieve technology tags from project card
+    const techTags = c.querySelectorAll('.tech-tag');
+    const techs = techTags.length ? Array.from(techTags).map(tag => tag.dataset.filter) : [];
     const show = techs.includes(technology);
     if (show) {
       c.style.display = 'flex';

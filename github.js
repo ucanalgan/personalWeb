@@ -1,5 +1,6 @@
-// GitHub API Integration
-const GITHUB_USERNAME = 'ucanalgan'; // GitHub username
+import { filterProjects, currentFilter } from './dom.js';
+
+// GitHub API Integrationconst GITHUB_USERNAME = 'ucanalgan'; // GitHub username
 const CACHE_DURATION = 60 * 60 * 1000; // Cache duration: 1 hour in milliseconds
 const API_TIMEOUT = 10000; // API timeout: 10 seconds
 const USE_SAMPLE_DATA = true; // Use sample data if API fails
@@ -335,7 +336,8 @@ async function loadGitHubProjects(container) {
     projects.forEach(project => {
       if (!project) return;
       const projectCard = document.createElement('div');
-      projectCard.className = 'group bg-white/5 dark:bg-slate-800 border border-slate-600 rounded-xl shadow-md p-5 transition-all duration-300 hover:scale-105 flex flex-col h-full';
+      projectCard.className = 'project-card group bg-white/5 dark:bg-slate-800 border border-slate-600 rounded-xl shadow-md p-5 transition-all duration-300 hover:scale-105 flex flex-col h-full';
+      projectCard.dataset.technologies = project.topics ? project.topics.join(',') : '';
       projectCard.innerHTML = `
         <h3 class="text-lg font-semibold mb-2 flex items-center">
           <i class="ri-github-fill mr-2 text-lg text-slate-100 transition-colors group-hover:text-indigo-400"></i>
@@ -427,7 +429,8 @@ function loadSampleProjects(container) {
     
     SAMPLE_PROJECTS.forEach(project => {
       const projectCard = document.createElement('div');
-      projectCard.className = 'group bg-white/5 dark:bg-slate-800 border border-slate-600 rounded-xl shadow-md p-5 transition-all duration-300 hover:scale-105 flex flex-col h-full';
+      projectCard.className = 'project-card group bg-white/5 dark:bg-slate-800 border border-slate-600 rounded-xl shadow-md p-5 transition-all duration-300 hover:scale-105 flex flex-col h-full';
+      projectCard.dataset.technologies = project.topics ? project.topics.join(',') : '';
       projectCard.innerHTML = `
         <h3 class="text-lg font-semibold mb-2 flex items-center">
           <i class="ri-github-fill mr-2 text-lg text-slate-100 transition-colors group-hover:text-indigo-400"></i>
