@@ -6,8 +6,6 @@
 
 A modern, responsive personal portfolio website built with the latest web technologies. Features a clean developer-friendly design with a dark theme, smooth animations, and GitHub integration.
 
-![Portfolio Preview](https://raw.githubusercontent.com/ucanalgan/personalWeb/master/images/image.png)
-
 ## Table of Contents
 
 - [Demo](#demo)
@@ -65,15 +63,18 @@ personalWeb/
 ├── dom.js               # DOM manipulation utilities and event handlers
 ├── form-handler.js      # Contact form validation and submission
 ├── github.js            # GitHub API integration for projects and activities
+├── github-section.html  # GitHub section template
 ├── index.html           # Main HTML file with page structure
+├── input.css            # Tailwind CSS input file
+├── LICENSE              # MIT License file
 ├── main.js              # JavaScript entry point
+├── package.json         # Project dependencies and scripts
+├── postcss.config.js    # PostCSS configuration for Tailwind
 ├── style.css            # Main stylesheet (Tailwind CSS)
+├── tailwind.config.js   # Tailwind CSS configuration with theme colors
 ├── theme.js             # Dark theme functionality
 ├── utils.js             # Utility functions and helpers
 ├── vite.config.js       # Vite configuration with critical CSS extraction
-├── tailwind.config.js   # Tailwind CSS configuration with theme colors
-├── postcss.config.js    # PostCSS configuration for Tailwind
-├── package.json         # Project dependencies and scripts
 └── README.md            # Project documentation
 ```
 
