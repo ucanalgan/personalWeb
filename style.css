@@ -199,55 +199,57 @@
 
   /* Scroll Animations - Fixed for initial visibility */
   .scroll-animate {
-    opacity: 0;
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transition: all 0.7s ease-in-out;
   }
 
-  .scroll-animate.fade-up { transform: translateY(20px); }
-  .scroll-animate.fade-down { transform: translateY(-20px); }
-  .scroll-animate.fade-right { transform: translateX(-20px); }
-  .scroll-animate.fade-left { transform: translateX(20px); }
+  /* Animation Directions */
+  .scroll-animate.fade-up { transform: translateY(0); }
+  .scroll-animate.fade-down { transform: translateY(0); }
+  .scroll-animate.fade-right { transform: translateX(0); }
+  .scroll-animate.fade-left { transform: translateX(0); }
 
   .scroll-animate.visible {
     opacity: 1;
-    transform: translateX(0) translateY(0);
+    transform: translate(0);
   }
 
-  /* Helper Classes for Stagger Delay */
+  /* Animation Delays */
   .delay-1 { transition-delay: 0.1s; }
   .delay-2 { transition-delay: 0.2s; }
   .delay-3 { transition-delay: 0.3s; }
   .delay-4 { transition-delay: 0.4s; }
   .delay-5 { transition-delay: 0.5s; }
 
-  /* Form Validation Feedback */
+  /* Form Styles */
   .form-control { @apply mb-4; }
   .form-control.error input,
-  .form-control.error textarea { @apply border-red-500 focus:border-red-500; }
+  .form-control.error textarea { @apply border-red-500; }
   .form-control.error small { @apply text-red-500 block mt-1 text-sm; }
   .form-control.success input,
-  .form-control.success textarea { @apply border-green-500 focus:border-green-500; }
+  .form-control.success textarea { @apply border-green-500; }
   .form-control.success small { @apply text-green-500 block mt-1 text-sm; }
 
-  /* Global Image Styles */
+  /* Fix for image loading */
   img {
-    @apply object-cover w-full h-auto;
-    max-height: 500px;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
   }
 
-  /* Mobile menu transitions */
+  /* Mobile Menu */
   .mobile-menu {
-    transition: transform 300ms ease-in-out, opacity 200ms ease-in-out;
+    @apply hidden;
   }
 }
 
-/* Loading Animation */
+/* Preloader Animation - Fades out after page load */
 #loader {
-  transition: opacity 0.5s ease-in-out;
+  @apply fixed inset-0 flex items-center justify-center bg-dark z-50 transition-opacity duration-500;
 }
 
 #loader.fade-out {
-  opacity: 0;
+  @apply opacity-0 pointer-events-none;
 }
 
 /* Optional dark mode override (if needed): */
