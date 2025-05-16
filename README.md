@@ -14,10 +14,13 @@ A modern, responsive personal portfolio website built with the latest web techno
 - [Features](#features)
 - [Technologies](#technologies)
 - [Project Structure](#project-structure)
+- [Color Scheme](#color-scheme)
 - [Prerequisites](#prerequisites)
 - [Installation & Setup](#installation--setup)
 - [Usage](#usage)
+- [GitHub Integration](#github-integration)
 - [Customization](#customization)
+- [Performance Optimizations](#performance-optimizations)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -38,6 +41,8 @@ A live demo of the website is available at: [Live Demo](https://ucanalgan.github
 - GitHub integration for projects and activities
 - Mobile-responsive with tailored experiences for all device sizes
 - Modular ES Modules architecture for maintainable code
+- Form validation for contact section
+- Critical CSS extraction for faster initial loading
 
 ## Technologies
 
@@ -48,27 +53,41 @@ A live demo of the website is available at: [Live Demo](https://ucanalgan.github
 - GSAP (Animations)
 - Remix Icons
 - GitHub API Integration
+- PostCSS & Autoprefixer
+- Rollup (bundling)
 
 ## Project Structure
 
 ```
 personalWeb/
-├── animations.js        # GSAP animations
-├── app.js               # Main application logic
-├── dom.js               # DOM manipulation utilities
-├── form-handler.js      # Contact form validation
-├── github.js            # GitHub API integration
-├── index.html           # Main HTML file
-├── main.js              # Entry point
+├── animations.js        # GSAP animations and scroll effects
+├── app.js               # Main application logic and initialization
+├── dom.js               # DOM manipulation utilities and event handlers
+├── form-handler.js      # Contact form validation and submission
+├── github.js            # GitHub API integration for projects and activities
+├── index.html           # Main HTML file with page structure
+├── main.js              # JavaScript entry point
 ├── style.css            # Main stylesheet (Tailwind CSS)
 ├── theme.js             # Dark theme functionality
-├── utils.js             # Utility functions
-├── vite.config.js       # Vite configuration
-├── tailwind.config.js   # Tailwind CSS configuration
-├── postcss.config.js    # PostCSS configuration
+├── utils.js             # Utility functions and helpers
+├── vite.config.js       # Vite configuration with critical CSS extraction
+├── tailwind.config.js   # Tailwind CSS configuration with theme colors
+├── postcss.config.js    # PostCSS configuration for Tailwind
 ├── package.json         # Project dependencies and scripts
 └── README.md            # Project documentation
 ```
+
+## Color Scheme
+
+The portfolio uses a carefully selected color palette that enhances readability and provides a developer-friendly experience:
+
+- **Primary Color**: `#64ffda` (Cyan accent for highlighting important elements)
+- **Background**: `#0a192f` (Dark blue background for the main theme)
+- **Text Colors**: Light gray variations for better readability on dark backgrounds
+- **Card Backgrounds**: Various opacity levels of `#112240` and `#233554` for depth
+- **Hover States**: Lighter variations of the primary color
+
+These colors can be customized in the `tailwind.config.js` file under the colors section.
 
 ## Prerequisites
 
@@ -101,7 +120,13 @@ npm run dev
 npm run build
 ```
 
-This will create a `dist` directory with optimized production files.
+This will create a `dist` directory with optimized production files. The build process includes:
+
+- JavaScript bundling and minification
+- CSS optimization with critical CSS extraction
+- Asset optimization
+- Console log removal in production
+- ES2015 compatibility
 
 ### Deployment to GitHub Pages
 
@@ -140,6 +165,32 @@ After the server is running, navigate to `http://localhost:5173` in your browser
 - **Contact Form**: Includes form validation for user input
 - **Smooth Scrolling**: For a better user experience when navigating between sections
 
+## GitHub Integration
+
+The portfolio automatically fetches and displays your GitHub projects and activities:
+
+### Project Display
+
+- Repositories are fetched from the GitHub API and displayed in a responsive grid
+- Each project card shows:
+  - Repository name with link
+  - Description (if available)
+  - Star count with icon
+  - Fork count with icon
+
+### Activity Timeline
+
+- Recent GitHub activities are displayed chronologically
+- Each activity shows:
+  - Activity type (Push, Pull Request, etc.)
+  - Repository name with link
+
+To customize the GitHub username, modify the `githubUsername` variable in `app.js`:
+
+```javascript
+const githubUsername = 'your-github-username';
+```
+
 ## Customization
 
 - **Theme Colors**: Modify colors in `tailwind.config.js`
@@ -147,6 +198,9 @@ After the server is running, navigate to `http://localhost:5173` in your browser
 - **GitHub Username**: Change the GitHub username in `app.js` to pull your own repos
 - **Projects Display**: Adjust the project card styling in `style.css`
 - **Animations**: Modify animation timings and effects in `animations.js`
+- **Skills**: Update your skill levels in the HTML markup in the skills section
+- **Social Links**: Add or modify social media links in the header and footer
+- **Form Handling**: Customize form validation in `form-handler.js`
 
 ## Performance Optimizations
 
@@ -156,8 +210,11 @@ This portfolio website implements several performance optimizations:
 - **Lazy Loading**: Images and heavy components load only when needed
 - **Proper Image Sizing**: Images use srcset for responsive loading
 - **CSS Optimization**: Tailwind's JIT compiler for minimal CSS
+- **Critical CSS Extraction**: Uses Rollup plugin for inline critical CSS
 - **Deferred Animations**: Non-critical animations are deferred until idle time
 - **Accessibility**: Supports prefers-reduced-motion for users who prefer minimal animations
+- **Console Cleanup**: Production builds remove console logs
+- **Conditional Loading**: Features like animations are only loaded if the user hasn't enabled reduced motion
 
 ## Contributing
 
