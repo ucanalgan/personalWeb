@@ -1,4 +1,3 @@
-import { initBackground3D } from './background3d.js';
 import { initAllAnimations } from './animations.js';
 import { initTheme } from './theme.js';
 import { initGitHub } from './github.js';
@@ -248,7 +247,7 @@ const MainApp = (() => {
     setTimeout(() => {
       // Initialize 3D background only on desktop/larger screens
       if (window.innerWidth > 768) {
-        initBackground3D();
+        // Background 3D removed
       }
     }, 300);
     
