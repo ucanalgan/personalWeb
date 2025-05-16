@@ -4,7 +4,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/ucanalgan/personalWeb?style=social)](https://github.com/ucanalgan/personalWeb/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/ucanalgan/personalWeb?style=social)](https://github.com/ucanalgan/personalWeb/network/members)
 
-A modern, responsive personal portfolio website built with the latest web technologies. Features a coding-themed 3D background, dark/light mode support, and smooth animations.
+A modern, responsive personal portfolio website built with the latest web technologies. Features a clean developer-friendly design with a dark theme, smooth animations, and GitHub integration.
 
 ![Portfolio Preview](https://raw.githubusercontent.com/ucanalgan/personalWeb/master/images/image.png)
 
@@ -29,11 +29,14 @@ A live demo of the website is available at: [Live Demo](https://ucanalgan.github
 ## Features
 
 - Modern design with a professional and responsive layout
-- 3D coding-themed particle background using Three.js
-- Dark/Light mode toggle with persistent user preference
+- Developer-friendly dark theme with primary cyan accent color (#64ffda)
+- Performance-optimized with Vite/Rollup bundling for JS/CSS
+- Lazy-loading for heavy components
+- Optimized image loading with srcset and proper dimensions
 - Smooth animations powered by GSAP
-- Performance-optimized scroll animations with Intersection Observer API
-- Fully responsive design using Tailwind CSS
+- Accessibility improvements with semantic landmarks and ARIA attributes
+- GitHub integration for projects and activities
+- Mobile-responsive with tailored experiences for all device sizes
 - Modular ES Modules architecture for maintainable code
 
 ## Technologies
@@ -41,28 +44,30 @@ A live demo of the website is available at: [Live Demo](https://ucanalgan.github
 - HTML5
 - CSS3 (Tailwind CSS)
 - JavaScript (ES6+)
-- Three.js
-- GSAP
-- Chart.js
-- Vite
+- Vite (Build tool)
+- GSAP (Animations)
 - Remix Icons
+- GitHub API Integration
 
 ## Project Structure
 
 ```
 personalWeb/
-├── animations.js         # GSAP animations
-├── background3d.js       # Three.js 3D background
-├── theme.js              # Dark/light theme functionality
-├── script.js             # Additional JS scripts
-├── main.js               # Main JavaScript entry point
-├── index.html            # Main HTML file
-├── style.css             # Main stylesheet
-├── package.json          # Project dependencies and scripts
-├── vite.config.js        # Vite configuration
-├── tailwind.config.js    # Tailwind CSS configuration
-├── postcss.config.js     # PostCSS configuration
-└── README.md             # Project documentation
+├── animations.js        # GSAP animations
+├── app.js               # Main application logic
+├── dom.js               # DOM manipulation utilities
+├── form-handler.js      # Contact form validation
+├── github.js            # GitHub API integration
+├── index.html           # Main HTML file
+├── main.js              # Entry point
+├── style.css            # Main stylesheet (Tailwind CSS)
+├── theme.js             # Dark theme functionality
+├── utils.js             # Utility functions
+├── vite.config.js       # Vite configuration
+├── tailwind.config.js   # Tailwind CSS configuration
+├── postcss.config.js    # PostCSS configuration
+├── package.json         # Project dependencies and scripts
+└── README.md            # Project documentation
 ```
 
 ## Prerequisites
@@ -87,7 +92,7 @@ npm install
 npm run dev
 
 # Open your browser and visit:
-# http://localhost:3000
+# http://localhost:5173
 ```
 
 ### Building for Production
@@ -126,13 +131,33 @@ Your site will be published to the `gh-pages` branch and available at: `https://
 
 ## Usage
 
-After the server is running, navigate to `http://localhost:3000` in your browser. Use the theme toggle in the navigation bar to switch between dark and light modes. Scroll to see interactive charts, animations, and the 3D background.
+After the server is running, navigate to `http://localhost:5173` in your browser. The site features:
+
+- **Responsive Navigation**: Menu adapts to all screen sizes with a mobile drawer
+- **GitHub Projects Section**: Displays your latest GitHub repositories with stars and forks
+- **GitHub Activities**: Shows your recent GitHub activity
+- **Skills Section**: Visualizes your technical skills with progress bars
+- **Contact Form**: Includes form validation for user input
+- **Smooth Scrolling**: For a better user experience when navigating between sections
 
 ## Customization
 
-- **Theme Colors**: Modify colors in `tailwind.config.js`.
-- **3D Background**: Tweak particle settings in `background3d.js`.
-- **Animations**: Adjust GSAP timelines in `animations.js`.
+- **Theme Colors**: Modify colors in `tailwind.config.js`
+- **Profile Information**: Update personal details in `index.html`
+- **GitHub Username**: Change the GitHub username in `app.js` to pull your own repos
+- **Projects Display**: Adjust the project card styling in `style.css`
+- **Animations**: Modify animation timings and effects in `animations.js`
+
+## Performance Optimizations
+
+This portfolio website implements several performance optimizations:
+
+- **Code Splitting**: JavaScript is modularized for better loading performance
+- **Lazy Loading**: Images and heavy components load only when needed
+- **Proper Image Sizing**: Images use srcset for responsive loading
+- **CSS Optimization**: Tailwind's JIT compiler for minimal CSS
+- **Deferred Animations**: Non-critical animations are deferred until idle time
+- **Accessibility**: Supports prefers-reduced-motion for users who prefer minimal animations
 
 ## Contributing
 
