@@ -25,7 +25,13 @@ A modern, responsive personal portfolio website built with the latest web techno
 
 ## Demo
 
-A live demo of the website is available at: [Live Demo](https://ucanalgan.github.io/personalWeb)
+### ✨ [Live Demo](https://ucanalgan.github.io/personalWeb/) ✨
+
+View the live portfolio website deployed on GitHub Pages. The site features smooth animations, GitHub integration, and a responsive design that works perfectly on all devices.
+
+![Dark Theme](https://img.shields.io/badge/Theme-Dark-0a192f)
+![Responsive](https://img.shields.io/badge/Design-Responsive-64ffda)
+![Performance](https://img.shields.io/badge/Performance-Optimized-brightgreen)
 
 ## Features
 
