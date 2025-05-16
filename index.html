@@ -8,41 +8,20 @@
   <meta name="author" content="Umutcan Algan">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://ucanalgan.github.io/personalWeb">
+  <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap">
   
   <title>Umutcan Algan | Full Stack Developer & Software Engineer</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Modern CSS Framework -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: '#64ffda',
-            secondary: '#0a192f',
-            dark: '#0a192f',
-            light: '#f8f9fa'
-          },
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   
   <!-- Modern Icon Set -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css">
-  <link href="/dist/output.css" rel="stylesheet">
+  <!-- -  <link rel="stylesheet" href="./output.css"> -->
 
   <!-- Open Graph / Twitter Meta -->
   <meta property="og:title" content="Umutcan Algan | Full Stack Developer & Software Engineer">
@@ -61,14 +40,13 @@
 
   <!-- AOS Animation CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <script defer src="app.js" type="module"></script>
 </head>
 <body class="font-sans text-gray-300 transition-colors duration-500 ease-in-out">
-  <!-- 3D Background Canvas -->
-  <canvas id="bg-canvas" class="fixed inset-0 -z-10"></canvas>
-  
   <!-- Header -->
   <header class="fixed w-full top-0 z-40 bg-dark/80 backdrop-blur-sm transition-all">
-    <nav class="container mx-auto px-4 sm:px-6 py-4">
+    <nav role="navigation" class="container mx-auto px-4 sm:px-6 py-4">
       <div class="flex items-center justify-between">
         <!-- Logo -->
         <a href="#" class="text-2xl font-display font-bold text-primary">UA</a>
@@ -83,7 +61,7 @@
         </div>
         
         <!-- Mobile Menu Button -->
-        <button class="md:hidden mobile-menu-btn">
+        <button aria-label="Open mobile menu" class="md:hidden mobile-menu-btn">
           <i class="ri-menu-line text-2xl"></i>
         </button>
       </div>
@@ -91,9 +69,9 @@
   </header>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu fixed inset-0 bg-dark/95 backdrop-blur-xl transform translate-x-full md:hidden transition-transform duration-300 ease-in-out z-50">
+  <nav role="navigation" class="mobile-menu fixed inset-0 bg-dark/95 backdrop-blur-xl transform translate-x-full md:hidden transition-transform duration-300 ease-in-out z-50">
     <div class="absolute top-6 right-6">
-      <button class="mobile-menu-close">
+      <button aria-label="Close mobile menu" class="mobile-menu-close">
         <i class="ri-close-line text-2xl"></i>
       </button>
     </div>
@@ -104,8 +82,9 @@
       <a href="#github" class="text-3xl font-display">Projects</a>
       <a href="#contact" class="text-3xl font-display">Contact</a>
     </div>
-  </div>
+  </nav>
 
+  <main>
   <!-- Hero Section -->
   <section id="home" data-aos="fade-up" class="min-h-screen flex items-center pt-32">
     <div class="container mx-auto px-4 sm:px-6">
@@ -125,7 +104,7 @@
           </p>
           
           <div class="flex flex-wrap gap-4">
-            <a href="#projects" class="btn-primary">
+            <a href="#proje" class="btn-primary">
               <span>My Projects</span>
               <i class="ri-arrow-right-line ml-2"></i>
             </a>
@@ -148,8 +127,17 @@
         
         <!-- Hero Image -->
         <div class="relative lg:justify-self-end hero-image">
-          <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden">
-            <img src="https://avatars.githubusercontent.com/ucanalgan?s=400" alt="Umutcan Algan" loading="lazy" width="400" height="400" class="object-cover h-48 w-full">
+          <div class="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary shadow-lg">
+            <img
+              src="https://avatars.githubusercontent.com/ucanalgan?s=400"
+              srcset="https://avatars.githubusercontent.com/ucanalgan?s=200 200w, https://avatars.githubusercontent.com/ucanalgan?s=400 400w, https://avatars.githubusercontent.com/ucanalgan?s=800 800w"
+              sizes="(max-width: 768px) 100vw, 400px"
+              alt="Umutcan Algan"
+              loading="lazy"
+              width="400"
+              height="400"
+              class="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
@@ -157,15 +145,15 @@
   </section>
 
   <!-- Scroll To Top Button -->
-  <button id="scroll-top" aria-label="Sayfa başına dön" class="fixed bottom-6 right-6 px-4 py-2 rounded-lg bg-primary text-white opacity-0 pointer-events-none transition-all z-30 hover:bg-primary/80">
-    Yukarı çık
+  <button id="scroll-top" aria-label="Scroll to top" class="fixed bottom-6 right-6 px-4 py-2 rounded-lg bg-primary text-white opacity-0 pointer-events-none transition-all z-30 hover:bg-primary/80">
+    Scroll Up
   </button>
 
   <!-- About Section -->
   <section id="about" data-aos="fade-up" class="py-20">
     <div class="container mx-auto px-4 sm:px-6">
       <h2 class="text-3xl md:text-4xl font-display font-bold mb-8 scroll-animate fade-up">About Me</h2>
-      <div class="max-w-4xl mx-auto space-y-6 text-gray-400">
+      <div class="max-w-4xl space-y-6 text-gray-400">
         <p class="text-lg scroll-animate fade-up delay-1">Hello! I'm Umutcan, working in full stack web development with my passion for the software world and my interest in modern technologies. I continuously improve myself by combining the theoretical knowledge I gained during my Information Systems Engineering education with practical projects.</p>
         <p class="text-lg scroll-animate fade-up delay-2">I specifically work in the fields of web technologies, mobile application development, and artificial intelligence. I aim to produce modern and scalable solutions by prioritizing user experience in every project.</p>
       </div>
@@ -272,8 +260,8 @@
   </section>
 
   <!-- GitHub Section -->
-  <section id="github" data-aos="fade-up" class="py-20 bg-dark/80 scroll-animate">
-    <div class="container mx-auto px-4">
+  <section id="github" data-aos="fade-up" class="py-20 bg-dark px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">My GitHub Projects</h2>
         <p class="text-gray-400 max-w-3xl mx-auto">
@@ -283,7 +271,7 @@
 
       <div class="mb-16">
         <h3 class="text-2xl font-bold mb-6 px-2">Recent Projects</h3>
-        <div id="github-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="github-projects" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Projects will be loaded by JavaScript -->
           <div class="flex justify-center">
             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
@@ -293,7 +281,7 @@
 
       <div>
         <h3 class="text-2xl font-bold mb-6 px-2">Recent Activities</h3>
-        <div id="github-activity" class="max-w-3xl mx-auto">
+        <div id="github-activity" class="grid grid-cols-1 gap-4 mt-8 max-w-3xl mx-auto bg-[#0d1b2a]/70 border border-gray-700 rounded-xl p-4">
           <!-- Activities will be loaded by JavaScript -->
           <div class="flex justify-center">
             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
@@ -302,8 +290,8 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="https://github.com/ucanalgan" target="_blank" class="btn-cta">
-          <i class="ri-github-line mr-2"></i> View My GitHub Profile
+        <a href="https://github.com/ucanalgan" target="_blank" class="btn-primary inline-flex items-center gap-2 mx-auto mt-8">
+          <i class="ri-github-line"></i> View My GitHub Profile
         </a>
       </div>
     </div>
@@ -317,24 +305,24 @@
       <div class="max-w-xl mx-auto">
         <form id="contact-form" class="space-y-4 text-left">
           <div class="form-control">
-            <label for="name" class="block text-gray-300">İsim</label>
-            <input type="text" id="name" data-name="İsim" pattern=".{3,}" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
+            <label for="name" class="block text-gray-300">Name</label>
+            <input type="text" id="name" data-name="Name" pattern=".{3,}" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
           </div>
           <div class="form-control">
             <label for="email" class="block text-gray-300">Email</label>
             <input type="email" id="email" data-name="Email" required class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100" />
           </div>
           <div class="form-control">
-            <label for="message" class="block text-gray-300">Mesaj</label>
-            <textarea id="message" data-name="Mesaj" required rows="4" class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100"></textarea>
+            <label for="message" class="block text-gray-300">Message</label>
+            <textarea id="message" data-name="Message" required rows="4" class="w-full p-2 rounded border border-gray-600 bg-gray-800 text-gray-100"></textarea>
           </div>
-          <button type="submit" class="btn-primary w-full">Gönder</button>
+          <button type="submit" class="btn-primary w-full">Send</button>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  </main>
   <footer class="py-12 bg-gray-900/80">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
@@ -361,6 +349,6 @@
 
   <!-- AOS Animation JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
-  <script type="module" src="app.js" defer></script>
+  <script type="module" src="/src/index.js" defer></script>
 </body>
 </html>

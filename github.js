@@ -336,23 +336,16 @@ async function loadGitHubProjects(container) {
     projects.forEach(project => {
       if (!project) return;
       const projectCard = document.createElement('div');
-      projectCard.className = 'project-card group bg-white/5 dark:bg-slate-800 border border-slate-600 rounded-xl shadow-md p-5 transition-all duration-300 hover:scale-105 flex flex-col h-full';
+      projectCard.className = 'project-card';
       projectCard.dataset.technologies = project.topics ? project.topics.join(',') : '';
       projectCard.innerHTML = `
-        <h3 class="text-lg font-semibold mb-2 flex items-center">
-          <i class="ri-github-fill mr-2 text-lg text-slate-100 transition-colors group-hover:text-indigo-400"></i>
-          ${project.name || 'Unnamed Project'}
-        </h3>
-        <p class="${project.description ? 'text-sm text-gray-400' : 'text-sm text-gray-400 italic'} mb-4">
-          ${project.description || 'Proje açıklaması eklenmemiş.'}
+        <h3 class="text-primary font-semibold mb-2">${project.name || 'Unnamed Project'}</h3>
+        <p class="text-gray-400 text-sm ${project.description ? '' : 'italic opacity-60'} mb-4">
+          ${project.description || 'Açıklama eklenmemiş.'}
         </p>
         <div class="mt-auto flex space-x-2">
-          <span class="bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white inline-block">
-            ⭐ ${project.stargazers_count || 0}
-          </span>
-          <span class="bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white inline-block">
-            🍴 ${project.forks_count || 0}
-          </span>
+          <span class="tech-tag">⭐ ${project.stargazers_count || 0}</span>
+          <span class="tech-tag">🍴 ${project.forks_count || 0}</span>
         </div>
       `;
       // Add tech tags
@@ -412,7 +405,7 @@ async function loadGitHubActivity(container) {
       const eventDescription = formatEventType(activity.type || '');
       const createdAt = formatDate(activity.created_at || new Date());
       activityItem.innerHTML = `
-        ${eventDescription} <a href="https://github.com/${activity.repo?.name || ''}" target="_blank" class="text-primary hover:underline">${repoName}</a> - <span class="text-xs text-gray-400">${createdAt}</span>
+        <i class="ri-github-line mr-2"></i>${eventDescription} <a href="https://github.com/${activity.repo?.name || ''}" target="_blank" class="text-primary hover:underline">${repoName}</a> - <span class="text-xs text-gray-400">${createdAt}</span>
       `;
       container.appendChild(activityItem);
     });
@@ -429,23 +422,16 @@ function loadSampleProjects(container) {
     
     SAMPLE_PROJECTS.forEach(project => {
       const projectCard = document.createElement('div');
-      projectCard.className = 'project-card group bg-white/5 dark:bg-slate-800 border border-slate-600 rounded-xl shadow-md p-5 transition-all duration-300 hover:scale-105 flex flex-col h-full';
+      projectCard.className = 'project-card';
       projectCard.dataset.technologies = project.topics ? project.topics.join(',') : '';
       projectCard.innerHTML = `
-        <h3 class="text-lg font-semibold mb-2 flex items-center">
-          <i class="ri-github-fill mr-2 text-lg text-slate-100 transition-colors group-hover:text-indigo-400"></i>
-          ${project.name || 'Unnamed Project'}
-        </h3>
-        <p class="${project.description ? 'text-sm text-gray-400' : 'text-sm text-gray-400 italic'} mb-4">
-          ${project.description || 'Proje açıklaması eklenmemiş.'}
+        <h3 class="text-primary font-semibold mb-2">${project.name || 'Unnamed Project'}</h3>
+        <p class="text-gray-400 text-sm ${project.description ? '' : 'italic opacity-60'} mb-4">
+          ${project.description || 'Açıklama eklenmemiş.'}
         </p>
         <div class="mt-auto flex space-x-2">
-          <span class="bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white inline-block">
-            ⭐ ${project.stargazers_count || 0}
-          </span>
-          <span class="bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white inline-block">
-            🍴 ${project.forks_count || 0}
-          </span>
+          <span class="tech-tag">⭐ ${project.stargazers_count || 0}</span>
+          <span class="tech-tag">🍴 ${project.forks_count || 0}</span>
         </div>
       `;
       // Add tech tags for sample data

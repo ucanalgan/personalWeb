@@ -6,15 +6,8 @@ const themeConfig = {
 
 // Get user theme preference
 export function getThemePreference() {
-  // Get theme preference from local storage
-  const userPreference = localStorage.getItem(themeConfig.storageKey);
-  if (userPreference) {
-    return userPreference;
-  }
-  
-  // Check system preference
-  const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  return systemPreference;
+  // Always use dark mode
+  return themeConfig.defaultTheme;
 }
 
 // Apply theme

@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     './index.html',
-    './**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'class', // Koyu tema desteği eklemek için (class bazlı)
   theme: {
