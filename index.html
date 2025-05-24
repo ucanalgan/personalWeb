@@ -40,8 +40,8 @@
   <!-- AOS Animation CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <script type="module" crossorigin src="/personalWeb/assets/main-D1W2y484.js"></script>
-  <link rel="stylesheet" crossorigin href="/personalWeb/assets/main-DWbv_Vhl.css">
+  <script type="module" crossorigin src="/personalWeb/assets/main-BuahwwsZ.js"></script>
+  <link rel="stylesheet" crossorigin href="/personalWeb/assets/main-DS1lHArC.css">
 </head>
 <body class="font-sans text-gray-300 transition-colors duration-500 ease-in-out">
   <!-- Header -->
@@ -278,109 +278,465 @@
     Scroll Up
   </button>
 
-  <!-- About Section -->
-  <section id="about" data-aos="fade-up" class="py-20">
-    <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl md:text-4xl font-display font-bold mb-8 scroll-animate fade-up">About Me</h2>
-      <div class="max-w-4xl space-y-6 text-gray-400">
-        <p class="text-lg scroll-animate fade-up delay-1">Hello! I'm Umutcan, working in full stack web development with my passion for the software world and my interest in modern technologies. I continuously improve myself by combining the theoretical knowledge I gained during my Information Systems Engineering education with practical projects.</p>
-        <p class="text-lg scroll-animate fade-up delay-2">I specifically work in the fields of web technologies, mobile application development, and artificial intelligence. I aim to produce modern and scalable solutions by prioritizing user experience in every project.</p>
+  <!-- Enhanced About Section -->
+  <section id="about" data-aos="fade-up" class="py-20 bg-gradient-to-br from-gray-900/30 via-dark/50 to-gray-800/30 relative overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-blue-500/5"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl opacity-40"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-gradient-to-r from-primary to-purple-500 rounded-2xl flex items-center justify-center">
+            <i class="ri-user-heart-line text-white text-2xl"></i>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
+            About Me
+          </h2>
+        </div>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Passionate developer crafting digital experiences with modern technologies
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <!-- Personal Story -->
+        <div class="space-y-8">
+          <!-- Story Card -->
+          <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center">
+                <i class="ri-lightbulb-line text-primary text-xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-200">My Journey</h3>
+            </div>
+            
+            <div class="space-y-6 text-gray-400 leading-relaxed">
+              <p class="text-lg">
+                Hello! I'm <span class="text-primary font-semibold">Umutcan</span>, a passionate full-stack developer 
+                with a love for creating <span class="text-blue-400 font-medium">innovative web experiences</span>. 
+                Currently pursuing Information Systems Engineering, I blend academic knowledge with practical expertise.
+              </p>
+              
+              <p>
+                I specialize in <span class="text-green-400 font-medium">modern web technologies</span>, 
+                <span class="text-purple-400 font-medium">mobile application development</span>, and 
+                <span class="text-yellow-400 font-medium">AI integration</span>. My goal is to craft 
+                scalable solutions that prioritize user experience and clean, maintainable code.
+              </p>
+            </div>
+          </div>
+
+          <!-- Quick Facts -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-gradient-to-br from-primary/10 to-blue-500/10 border border-primary/20 rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+              <div class="text-3xl font-bold text-primary mb-2">2+</div>
+              <div class="text-sm text-gray-400">Years Coding</div>
+            </div>
+            <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+              <div class="text-3xl font-bold text-green-400 mb-2" id="about-projects">10+</div>
+              <div class="text-sm text-gray-400">Projects Built</div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+              <div class="text-3xl font-bold text-purple-400 mb-2">∞</div>
+              <div class="text-sm text-gray-400">Learning Mode</div>
+            </div>
+            <div class="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300">
+              <div class="text-3xl font-bold text-yellow-400 mb-2">100%</div>
+              <div class="text-sm text-gray-400">Dedication</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education & Interests -->
+        <div class="space-y-8">
+          <!-- Education Timeline -->
+          <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-8">
+              <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
+                <i class="ri-graduation-cap-line text-blue-400 text-xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-200">Education & Focus</h3>
+            </div>
+
+            <div class="space-y-6">
+              <!-- Current Education -->
+              <div class="relative pl-8 border-l-2 border-primary/30">
+                <div class="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full animate-pulse"></div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-3">
+                    <h4 class="text-lg font-semibold text-gray-200">Information Systems Engineering</h4>
+                    <span class="px-3 py-1 bg-primary/20 text-primary text-xs rounded-full">Current</span>
+                  </div>
+                  <p class="text-gray-400">2nd Year Student • Focus on Software Development</p>
+                  <p class="text-sm text-gray-500">Building strong foundation in system design, algorithms, and modern development practices.</p>
+                </div>
+              </div>
+
+              <!-- Learning Areas -->
+              <div class="grid grid-cols-1 gap-4 mt-8">
+                <h4 class="text-lg font-semibold text-gray-200 mb-4">Current Focus Areas</h4>
+                <div class="flex flex-wrap gap-3">
+                  <span class="px-4 py-2 bg-gradient-to-r from-primary/20 to-blue-500/20 border border-primary/30 rounded-xl text-sm text-gray-300 hover:scale-105 transition-all duration-300">
+                    <i class="ri-code-s-slash-line mr-2"></i>Full Stack Development
+                  </span>
+                  <span class="px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl text-sm text-gray-300 hover:scale-105 transition-all duration-300">
+                    <i class="ri-smartphone-line mr-2"></i>Mobile Development
+                  </span>
+                  <span class="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl text-sm text-gray-300 hover:scale-105 transition-all duration-300">
+                    <i class="ri-brain-line mr-2"></i>AI Integration
+                  </span>
+                  <span class="px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-xl text-sm text-gray-300 hover:scale-105 transition-all duration-300">
+                    <i class="ri-palette-line mr-2"></i>UI/UX Design
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Personal Interests -->
+          <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center">
+                <i class="ri-heart-3-line text-purple-400 text-xl"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-200">Beyond Code</h3>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-700/30 transition-all duration-300">
+                <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-book-open-line text-blue-400"></i>
+                </div>
+                <span class="text-gray-300 text-sm">Tech Blogs</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-700/30 transition-all duration-300">
+                <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-gamepad-line text-green-400"></i>
+                </div>
+                <span class="text-gray-300 text-sm">Gaming</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-700/30 transition-all duration-300">
+                <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-music-line text-purple-400"></i>
+                </div>
+                <span class="text-gray-300 text-sm">Music</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-700/30 transition-all duration-300">
+                <div class="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                  <i class="ri-camera-line text-yellow-400"></i>
+                </div>
+                <span class="text-gray-300 text-sm">Photography</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" data-aos="fade-up" class="py-20 bg-gray-900/50">
-    <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl md:text-4xl font-display font-bold mb-12 scroll-animate fade-up">My Skills</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Skills List -->
-        <div class="relative scroll-animate fade-right">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="skill-category">
-              <h3 class="text-xl font-display font-bold mb-4 text-primary">Frontend</h3>
-              <ul class="space-y-2">
-                <li class="skill-item">
-                  <span class="skill-name">HTML5</span>
-                  <div class="skill-bar bg-gray-800">
-                    <div class="skill-level bg-primary" style="width: 70%;"></div>
+  <!-- Enhanced Skills Section -->
+  <section id="skills" data-aos="fade-up" class="py-20 bg-gradient-to-br from-dark via-gray-900/90 to-gray-800/80 relative overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5"></div>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-green-500/10 rounded-full blur-3xl opacity-60"></div>
+    <div class="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl opacity-50"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl flex items-center justify-center">
+            <i class="ri-tools-line text-white text-2xl"></i>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+            My Skills
+          </h2>
+        </div>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Technologies and tools I use to bring ideas to life
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8 mb-16">
+        <!-- Frontend Skills -->
+        <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-green-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/5">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center">
+              <i class="ri-palette-line text-green-400 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-200">Frontend</h3>
+          </div>
+
+          <div class="space-y-6">
+            <!-- HTML5 -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-html5-line text-orange-400"></i>
                   </div>
-                </li>
-                <li class="skill-item">
-                  <span class="skill-name">CSS3 (Tailwind CSS)</span>
-                  <div class="skill-bar bg-gray-800">
-                    <div class="skill-level bg-primary" style="width: 75%;"></div>
-                  </div>
-                </li>
-                <li class="skill-item">
-                  <span class="skill-name">JavaScript (ES6+)</span>
-                  <div class="skill-bar bg-gray-800">
-                    <div class="skill-level bg-primary" style="width: 70%;"></div>
-                  </div>
-                </li>
-                <li class="skill-item">
-                  <span class="skill-name">React</span>
-                  <div class="skill-bar bg-gray-800">
-                    <div class="skill-level bg-primary" style="width: 40%;"></div>
-                  </div>
-                </li>
-              </ul>
+                  <span class="font-semibold text-gray-200">HTML5</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">85%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-orange-500 to-red-500" style="width: 85%"></div>
+              </div>
             </div>
 
-            <div class="skill-category">
-              <h3 class="text-xl font-display font-bold mb-4 text-primary">Backend</h3>
-              <ul class="space-y-2">
-                <li class="skill-item">
-                  <span class="skill-name">Node.js</span>
-                  <div class="skill-bar bg-gray-800">
-                    <div class="skill-level bg-primary" style="width: 30%;"></div>
+            <!-- CSS3 -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-css3-line text-blue-400"></i>
                   </div>
-                </li>
-                <li class="skill-item">
-                  <span class="skill-name">Python (Flask)</span>
-                  <div class="skill-bar bg-gray-800">
-                    <div class="skill-level bg-primary" style="width: 80%;"></div>
+                  <span class="font-semibold text-gray-200">CSS3 / Tailwind</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">90%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-blue-500 to-cyan-500" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-javascript-line text-yellow-400"></i>
                   </div>
-                </li>
-                <li class="skill-item">
-                  <span class="skill-name">Java (Spring Boot)</span>
-                  <div class="skill-bar bg-gray-800">
-                    <div class="skill-level bg-primary" style="width: 60%;"></div>
+                  <span class="font-semibold text-gray-200">JavaScript ES6+</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">80%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-yellow-500 to-orange-500" style="width: 80%"></div>
+              </div>
+            </div>
+
+            <!-- React -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-reactjs-line text-cyan-400"></i>
                   </div>
-                </li>
-                <li class="skill-item">
-                  <span class="skill-name">Databases (MongoDB, PostgreSQL, SQLite)</span>
-                  <div class="skill-bar bg-gray-800">
-                    <div class="skill-level bg-primary" style="width: 35%;"></div>
-                  </div>
-                </li>
-              </ul>
+                  <span class="font-semibold text-gray-200">React</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">65%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-cyan-500 to-blue-500" style="width: 65%"></div>
+              </div>
             </div>
           </div>
         </div>
-        
-        <!-- Description -->
-        <div class="space-y-6 scroll-animate fade-left">
-          <p class="text-lg text-gray-400">
-            I develop web and desktop applications using modern technologies. I continuously improve myself, learn new technologies, and apply them in my projects.
-          </p>
+
+        <!-- Backend Skills -->
+        <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/5">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
+              <i class="ri-server-line text-blue-400 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-200">Backend</h3>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Node.js -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-nodejs-line text-green-400"></i>
+                  </div>
+                  <span class="font-semibold text-gray-200">Node.js</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">60%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-green-500 to-emerald-500" style="width: 60%"></div>
+              </div>
+            </div>
+
+            <!-- Python -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-file-code-line text-blue-400"></i>
+                  </div>
+                  <span class="font-semibold text-gray-200">Python / Flask</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">85%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-blue-500 to-indigo-500" style="width: 85%"></div>
+              </div>
+            </div>
+
+            <!-- Java -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-cup-line text-red-400"></i>
+                  </div>
+                  <span class="font-semibold text-gray-200">Java / Spring</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">75%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-red-500 to-orange-500" style="width: 75%"></div>
+              </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-database-2-line text-purple-400"></i>
+                  </div>
+                  <span class="font-semibold text-gray-200">Databases</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">70%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-purple-500 to-pink-500" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & Others -->
+        <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center">
+              <i class="ri-tools-fill text-purple-400 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-200">Tools & Others</h3>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Git -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-git-branch-line text-orange-400"></i>
+                  </div>
+                  <span class="font-semibold text-gray-200">Git / GitHub</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">90%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-orange-500 to-red-500" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <!-- Docker -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-ship-line text-blue-400"></i>
+                  </div>
+                  <span class="font-semibold text-gray-200">Docker</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">45%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-blue-500 to-cyan-500" style="width: 45%"></div>
+              </div>
+            </div>
+
+            <!-- AWS -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-cloud-line text-yellow-400"></i>
+                  </div>
+                  <span class="font-semibold text-gray-200">AWS / Cloud</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">40%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-yellow-500 to-orange-500" style="width: 40%"></div>
+              </div>
+            </div>
+
+            <!-- Design -->
+            <div class="skill-item-modern group">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-pink-500/20 rounded-lg flex items-center justify-center">
+                    <i class="ri-palette-line text-pink-400"></i>
+                  </div>
+                  <span class="font-semibold text-gray-200">UI/UX Design</span>
+                </div>
+                <span class="text-sm text-green-400 font-medium">75%</span>
+              </div>
+              <div class="skill-progress-modern">
+                <div class="skill-bar-modern bg-gradient-to-r from-pink-500 to-purple-500" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Philosophy & Approach -->
+      <div class="bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 text-center">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-gradient-to-r from-primary to-blue-500 rounded-2xl flex items-center justify-center">
+              <i class="ri-lightbulb-flash-line text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-200">My Development Philosophy</h3>
+          </div>
           
-          <div class="grid grid-cols-2 gap-4">
-            <div class="skill-card scroll-animate fade-up delay-1">
-              <i class="ri-code-s-slash-line text-3xl mb-4"></i>
-              <h3 class="text-xl font-display font-bold mb-2">Frontend</h3>
-              <p class="text-gray-400 text-sm">
-                Developing modern and responsive web interfaces
-              </p>
+          <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+            I believe in writing <span class="text-primary font-medium">clean, maintainable code</span> that not only works 
+            but also tells a story. Every project is an opportunity to learn something new and push the boundaries of 
+            what's possible with <span class="text-blue-400 font-medium">modern web technologies</span>.
+          </p>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center group cursor-pointer">
+              <div class="w-16 h-16 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-all duration-300">
+                <i class="ri-code-s-slash-line text-green-400 text-2xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-200 mb-1">Clean Code</h4>
+              <p class="text-sm text-gray-500">Readable & Maintainable</p>
             </div>
             
-            <div class="skill-card scroll-animate fade-up delay-2">
-              <i class="ri-terminal-box-line text-3xl mb-4"></i>
-              <h3 class="text-xl font-display font-bold mb-2">Backend</h3>
-              <p class="text-gray-400 text-sm">
-                Powerful and scalable server applications
-              </p>
+            <div class="text-center group cursor-pointer">
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-all duration-300">
+                <i class="ri-user-heart-line text-blue-400 text-2xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-200 mb-1">User-Centric</h4>
+              <p class="text-sm text-gray-500">Experience First</p>
+            </div>
+            
+            <div class="text-center group cursor-pointer">
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-all duration-300">
+                <i class="ri-rocket-line text-purple-400 text-2xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-200 mb-1">Performance</h4>
+              <p class="text-sm text-gray-500">Fast & Optimized</p>
+            </div>
+            
+            <div class="text-center group cursor-pointer">
+              <div class="w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-all duration-300">
+                <i class="ri-refresh-line text-yellow-400 text-2xl"></i>
+              </div>
+              <h4 class="font-semibold text-gray-200 mb-1">Always Learning</h4>
+              <p class="text-sm text-gray-500">Stay Updated</p>
             </div>
           </div>
         </div>
@@ -392,14 +748,14 @@
   <section id="github" data-aos="fade-up" class="py-20 bg-gradient-to-br from-dark via-gray-900/90 to-gray-800/80 relative overflow-hidden">
     <!-- Background Effects -->
     <div class="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5"></div>
-    <div class="absolute top-0 left-0 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-green-500/10 rounded-full blur-3xl opacity-60"></div>
+    <div class="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl opacity-50"></div>
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <!-- Section Header -->
       <div class="text-center mb-16">
         <div class="inline-flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+          <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl flex items-center justify-center">
             <i class="ri-github-fill text-white text-2xl"></i>
           </div>
           <h2 class="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
