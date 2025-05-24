@@ -40,47 +40,239 @@
   <!-- AOS Animation CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <script type="module" crossorigin src="/personalWeb/assets/main-BuahwwsZ.js"></script>
-  <link rel="stylesheet" crossorigin href="/personalWeb/assets/main-DS1lHArC.css">
+  <script type="module" crossorigin src="/personalWeb/assets/main-iSIegjat.js"></script>
+  <link rel="stylesheet" crossorigin href="/personalWeb/assets/main-AbI0rydS.css">
 </head>
 <body class="font-sans text-gray-300 transition-colors duration-500 ease-in-out">
-  <!-- Header -->
-  <header class="fixed w-full top-0 z-40 bg-dark/80 backdrop-blur-sm transition-all">
-    <nav role="navigation" class="container mx-auto px-4 sm:px-6 py-4">
+  <!-- Modern Enhanced Header -->
+  <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+    <!-- Background Blur Layer -->
+    <div class="absolute inset-0 bg-gradient-to-r from-dark/95 via-gray-900/90 to-dark/95 backdrop-blur-md border-b border-gray-800/50"></div>
+    
+    <!-- Navigation Container -->
+    <nav role="navigation" class="relative z-10 container mx-auto px-4 sm:px-6 py-4">
       <div class="flex items-center justify-between">
-        <!-- Logo -->
-        <a href="#" class="text-2xl font-display font-bold text-primary">UA</a>
         
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#home" class="nav-link">Home</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#skills" class="nav-link">Skills</a>
-          <a href="#github" class="nav-link">Projects</a>
-          <a href="#contact" class="nav-link">Contact</a>
+        <!-- Enhanced Logo Section -->
+        <div class="flex items-center gap-3">
+          <a href="#home" class="group flex items-center gap-3 hover:scale-105 transition-all duration-300">
+            <!-- Logo Container with Glow Effect -->
+            <div class="relative">
+              <div class="w-12 h-12 bg-gradient-to-br from-primary via-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/25 group-hover:shadow-xl group-hover:shadow-primary/40 transition-all duration-300 group-hover:rotate-3">
+                <span class="text-xl font-bold text-white">UA</span>
+              </div>
+              <!-- Animated Border -->
+              <div class="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-primary via-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+            </div>
+            
+            <!-- Brand Text -->
+            <div class="hidden sm:block">
+              <div class="text-lg font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                Umutcan Algan
+              </div>
+              <div class="text-xs text-gray-500 font-medium tracking-wide">
+                Full Stack Developer
+              </div>
+            </div>
+          </a>
         </div>
         
-        <!-- Mobile Menu Button -->
-        <button aria-label="Open mobile menu" class="md:hidden mobile-menu-btn">
-          <i class="ri-menu-line text-2xl"></i>
-        </button>
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-8">
+          <!-- Navigation Links -->
+          <div class="flex items-center gap-6">
+            <a href="#home" class="nav-link-modern group">
+              <i class="ri-home-4-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
+              <span>Home</span>
+              <div class="nav-indicator"></div>
+            </a>
+            
+            <a href="#about" class="nav-link-modern group">
+              <i class="ri-user-3-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
+              <span>About</span>
+              <div class="nav-indicator"></div>
+            </a>
+            
+            <a href="#skills" class="nav-link-modern group">
+              <i class="ri-tools-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
+              <span>Skills</span>
+              <div class="nav-indicator"></div>
+            </a>
+            
+            <a href="#github" class="nav-link-modern group">
+              <i class="ri-code-box-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
+              <span>Projects</span>
+              <div class="nav-indicator"></div>
+            </a>
+            
+            <a href="#contact" class="nav-link-modern group">
+              <i class="ri-mail-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
+              <span>Contact</span>
+              <div class="nav-indicator"></div>
+            </a>
+          </div>
+          
+          <!-- CTA Button -->
+          <a href="#contact" class="nav-cta-button group">
+            <span class="relative z-10">Let's Talk</span>
+            <i class="ri-arrow-right-line text-lg group-hover:translate-x-1 transition-transform duration-300 relative z-10"></i>
+            <div class="absolute inset-0 bg-gradient-to-r from-primary to-blue-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+        </div>
+        
+        <!-- Mobile & Tablet Navigation -->
+        <div class="flex lg:hidden items-center gap-4">
+          <!-- Quick Actions -->
+          <div class="hidden sm:flex items-center gap-2">
+            <a href="https://github.com/ucanalgan" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 hover:scale-105">
+              <i class="ri-github-line text-gray-400 hover:text-white transition-colors duration-300"></i>
+            </a>
+            <a href="https://linkedin.com/in/umutcan-algan/" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-800/50 hover:bg-blue-500/20 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
+              <i class="ri-linkedin-line text-gray-400 hover:text-blue-400 transition-colors duration-300"></i>
+            </a>
+          </div>
+          
+          <!-- Enhanced Mobile Menu Button -->
+          <button aria-label="Toggle mobile menu" class="mobile-menu-btn group relative w-12 h-12 flex items-center justify-center rounded-xl bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-primary/50 transition-all duration-300 hover:scale-105">
+            <div class="hamburger-lines">
+              <span class="hamburger-line hamburger-line-1"></span>
+              <span class="hamburger-line hamburger-line-2"></span>
+              <span class="hamburger-line hamburger-line-3"></span>
+            </div>
+          </button>
+        </div>
       </div>
+      
+      <!-- Progress Indicator -->
+      <div class="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300" id="nav-progress"></div>
     </nav>
   </header>
 
-  <!-- Mobile Menu -->
-  <nav role="navigation" class="mobile-menu fixed inset-0 bg-dark/95 backdrop-blur-xl transform translate-x-full md:hidden transition-transform duration-300 ease-in-out z-50">
-    <div class="absolute top-6 right-6">
-      <button aria-label="Close mobile menu" class="mobile-menu-close">
-        <i class="ri-close-line text-2xl"></i>
-      </button>
+  <!-- Enhanced Mobile Menu -->
+  <nav role="navigation" class="mobile-menu-overlay fixed inset-0 bg-dark/98 backdrop-blur-xl transform translate-x-full lg:hidden transition-transform duration-500 ease-in-out z-40">
+    <!-- Mobile Menu Header -->
+    <div class="absolute top-0 left-0 right-0 bg-gray-900/50 backdrop-blur-sm border-b border-gray-800/50">
+      <div class="flex items-center justify-between p-6">
+        <!-- Mobile Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-primary to-blue-500 rounded-xl flex items-center justify-center">
+            <span class="text-lg font-bold text-white">UA</span>
+          </div>
+          <div>
+            <div class="text-lg font-bold text-primary">Umutcan Algan</div>
+            <div class="text-xs text-gray-500">Full Stack Developer</div>
+          </div>
+        </div>
+        
+        <!-- Close Button -->
+        <button aria-label="Close mobile menu" class="mobile-menu-close group w-10 h-10 flex items-center justify-center rounded-xl bg-gray-800/50 hover:bg-red-500/20 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300">
+          <i class="ri-close-line text-xl text-gray-400 group-hover:text-red-400 transition-colors duration-300"></i>
+        </button>
+      </div>
     </div>
-    <div class="h-full flex flex-col items-center justify-center space-y-8">
-      <a href="#home" class="text-3xl font-display">Home</a>
-      <a href="#about" class="text-3xl font-display">About</a>
-      <a href="#skills" class="text-3xl font-display">Skills</a>
-      <a href="#github" class="text-3xl font-display">Projects</a>
-      <a href="#contact" class="text-3xl font-display">Contact</a>
+    
+    <!-- Mobile Menu Content -->
+    <div class="pt-24 pb-8 px-6 h-full overflow-y-auto">
+      <!-- Navigation Links -->
+      <div class="space-y-4 mb-12">
+        <a href="#home" class="mobile-nav-link group block">
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
+            <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-colors duration-300">
+              <i class="ri-home-4-line text-primary text-xl"></i>
+            </div>
+            <div>
+              <div class="text-lg font-semibold text-gray-200 group-hover:text-primary transition-colors duration-300">Home</div>
+              <div class="text-sm text-gray-500">Welcome & Hero</div>
+            </div>
+            <i class="ri-arrow-right-line text-gray-500 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
+          </div>
+        </a>
+        
+        <a href="#about" class="mobile-nav-link group block">
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300">
+              <i class="ri-user-3-line text-blue-400 text-xl"></i>
+            </div>
+            <div>
+              <div class="text-lg font-semibold text-gray-200 group-hover:text-blue-400 transition-colors duration-300">About Me</div>
+              <div class="text-sm text-gray-500">My Story & Journey</div>
+            </div>
+            <i class="ri-arrow-right-line text-gray-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
+          </div>
+        </a>
+        
+        <a href="#skills" class="mobile-nav-link group block">
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center group-hover:bg-green-500/30 transition-colors duration-300">
+              <i class="ri-tools-line text-green-400 text-xl"></i>
+            </div>
+            <div>
+              <div class="text-lg font-semibold text-gray-200 group-hover:text-green-400 transition-colors duration-300">Skills</div>
+              <div class="text-sm text-gray-500">Technologies & Tools</div>
+            </div>
+            <i class="ri-arrow-right-line text-gray-500 group-hover:text-green-400 group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
+          </div>
+        </a>
+        
+        <a href="#github" class="mobile-nav-link group block">
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
+            <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center group-hover:bg-purple-500/30 transition-colors duration-300">
+              <i class="ri-code-box-line text-purple-400 text-xl"></i>
+            </div>
+            <div>
+              <div class="text-lg font-semibold text-gray-200 group-hover:text-purple-400 transition-colors duration-300">Projects</div>
+              <div class="text-sm text-gray-500">GitHub & Portfolio</div>
+            </div>
+            <i class="ri-arrow-right-line text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
+          </div>
+        </a>
+        
+        <a href="#contact" class="mobile-nav-link group block">
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
+            <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors duration-300">
+              <i class="ri-mail-line text-yellow-400 text-xl"></i>
+            </div>
+            <div>
+              <div class="text-lg font-semibold text-gray-200 group-hover:text-yellow-400 transition-colors duration-300">Contact</div>
+              <div class="text-sm text-gray-500">Get In Touch</div>
+            </div>
+            <i class="ri-arrow-right-line text-gray-500 group-hover:text-yellow-400 group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
+          </div>
+        </a>
+      </div>
+      
+      <!-- Mobile Social Links -->
+      <div class="space-y-6">
+        <h3 class="text-lg font-semibold text-gray-300 mb-4">Connect With Me</h3>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <a href="https://github.com/ucanalgan" target="_blank" class="group flex items-center gap-3 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300">
+            <div class="w-10 h-10 bg-gray-600/20 rounded-xl flex items-center justify-center group-hover:bg-gray-600/30 transition-colors duration-300">
+              <i class="ri-github-line text-gray-400 group-hover:text-white transition-colors duration-300"></i>
+            </div>
+            <div>
+              <div class="text-sm font-medium text-gray-300">GitHub</div>
+              <div class="text-xs text-gray-500">@ucanalgan</div>
+            </div>
+          </a>
+          
+          <a href="https://linkedin.com/in/umutcan-algan/" target="_blank" class="group flex items-center gap-3 p-4 rounded-2xl bg-gray-800/30 hover:bg-blue-500/20 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300">
+            <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300">
+              <i class="ri-linkedin-line text-blue-400 text-lg"></i>
+            </div>
+            <div>
+              <div class="text-sm font-medium text-gray-300">LinkedIn</div>
+              <div class="text-xs text-gray-500">Connect</div>
+            </div>
+          </a>
+        </div>
+        
+        <!-- Mobile CTA -->
+        <a href="#contact" class="block w-full bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90 text-white text-center py-4 px-6 rounded-2xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/25">
+          <i class="ri-send-plane-line mr-2"></i>
+          Let's Start a Project
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -127,7 +319,7 @@
                 <span class="bg-gradient-to-r from-primary via-blue-400 to-purple-400 bg-clip-text text-transparent typewriter-enhanced">
                   Algan
                 </span>
-              </h1>
+            </h1>
             </div>
             
             <!-- Dynamic Subtitle with rotating text -->
@@ -226,9 +418,9 @@
             
             <!-- Image -->
             <div class="relative w-80 h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-4 border-gray-700 group-hover:border-primary/50 transition-all duration-500 shadow-2xl shadow-gray-900/50">
-              <img
-                src="https://avatars.githubusercontent.com/ucanalgan?s=400"
-                srcset="https://avatars.githubusercontent.com/ucanalgan?s=200 200w, https://avatars.githubusercontent.com/ucanalgan?s=400 400w, https://avatars.githubusercontent.com/ucanalgan?s=800 800w"
+            <img
+              src="https://avatars.githubusercontent.com/ucanalgan?s=400"
+              srcset="https://avatars.githubusercontent.com/ucanalgan?s=200 200w, https://avatars.githubusercontent.com/ucanalgan?s=400 400w, https://avatars.githubusercontent.com/ucanalgan?s=800 800w"
                 sizes="(max-width: 768px) 100vw, 420px"
                 alt="Umutcan Algan - Software Developer"
                 loading="eager"
@@ -544,7 +736,7 @@
               <i class="ri-server-line text-blue-400 text-2xl"></i>
             </div>
             <h3 class="text-2xl font-bold text-gray-200">Backend</h3>
-          </div>
+            </div>
 
           <div class="space-y-6">
             <!-- Node.js -->
@@ -612,7 +804,7 @@
             </div>
           </div>
         </div>
-
+        
         <!-- Tools & Others -->
         <div class="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5">
           <div class="flex items-center gap-4 mb-8">
@@ -1017,7 +1209,7 @@
                   <i class="ri-message-3-line text-gray-500"></i>
                 </div>
               </div>
-            </div>
+          </div>
 
             <!-- Submit Button -->
             <button 
@@ -1034,7 +1226,7 @@
             <p class="text-xs text-gray-500 text-center">
               Your information is secure and will never be shared with third parties.
             </p>
-          </form>
+        </form>
         </div>
       </div>
 
@@ -1060,7 +1252,7 @@
     
     <!-- Main Footer Content -->
     <div class="relative z-10 py-16">
-      <div class="container mx-auto px-4 sm:px-6">
+    <div class="container mx-auto px-4 sm:px-6">
         <!-- Footer Header -->
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-3 mb-6">
@@ -1229,7 +1421,7 @@
             </div>
           </div>
         </div>
-
+        
         <!-- Call to Action -->
         <div class="bg-gradient-to-r from-primary/20 to-blue-500/20 border border-primary/30 rounded-2xl p-8 text-center mb-12">
           <h5 class="text-2xl font-bold text-gray-200 mb-3">Ready to Start a Project?</h5>
