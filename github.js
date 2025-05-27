@@ -1,6 +1,7 @@
 import { filterProjects, currentFilter } from './dom.js';
 
-// GitHub API Integrationconst GITHUB_USERNAME = 'ucanalgan'; // GitHub username
+// GitHub API Integration
+const GITHUB_USERNAME = 'ucanalgan'; // GitHub username
 const CACHE_DURATION = 60 * 60 * 1000; // Cache duration: 1 hour in milliseconds
 const API_TIMEOUT = 10000; // API timeout: 10 seconds
 const USE_SAMPLE_DATA = true; // Use sample data if API fails
@@ -297,11 +298,307 @@ export function formatEventType(eventType) {
   return eventTypes[eventType] || eventType;
 }
 
+// Fetch GitHub language stats
+export async function fetchLanguageStats() {
+  try {
+    // First get repositories
+    const repos = await fetchGitHubProjects();
+    
+    if (!repos || repos.length === 0) {
+      throw new Error('No repositories found');
+    }
+    
+    // Store language stats
+    const languageStats = {};
+    let totalBytes = 0;
+    
+    // Process each repository
+    const languagePromises = repos.map(async (repo) => {
+      // Skip if using sample data
+      if (USE_SAMPLE_DATA) {
+        // Simulate language data for sample repos
+        const fakeLangs = {
+          "JavaScript": Math.floor(Math.random() * 100000) + 10000,
+          "HTML": Math.floor(Math.random() * 50000) + 5000,
+          "CSS": Math.floor(Math.random() * 30000) + 3000,
+        };
+        
+        // Add Python for some repos
+        if (repo.topics && repo.topics.includes("Python")) {
+          fakeLangs["Python"] = Math.floor(Math.random() * 80000) + 20000;
+        }
+        
+        // Add C++ for some repos
+        if (repo.topics && repo.topics.includes("C++")) {
+          fakeLangs["C++"] = Math.floor(Math.random() * 70000) + 30000;
+        }
+        
+        // Process fake language data
+        Object.entries(fakeLangs).forEach(([lang, bytes]) => {
+          if (!languageStats[lang]) {
+            languageStats[lang] = 0;
+          }
+          languageStats[lang] += bytes;
+          totalBytes += bytes;
+        });
+        
+        return;
+      }
+      
+      try {
+        // Fetch languages for this repo
+        const response = await fetchWithTimeout(
+          `https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/languages`,
+          {
+            headers: {
+              'Accept': 'application/vnd.github.v3+json'
+            }
+          }
+        );
+        
+        if (!response.ok) {
+          console.warn(`Could not fetch languages for ${repo.name}`);
+          return;
+        }
+        
+        const languages = await response.json();
+        
+        // Add language bytes to the stats
+        Object.entries(languages).forEach(([lang, bytes]) => {
+          if (!languageStats[lang]) {
+            languageStats[lang] = 0;
+          }
+          languageStats[lang] += bytes;
+          totalBytes += bytes;
+        });
+      } catch (error) {
+        console.warn(`Error fetching languages for ${repo.name}:`, error);
+      }
+    });
+    
+    // Wait for all language fetches to complete
+    await Promise.all(languagePromises);
+    
+    // Convert to percentages and sort
+    const sortedLanguages = Object.entries(languageStats)
+      .map(([name, bytes]) => ({
+        name,
+        bytes,
+        percentage: Math.round((bytes / totalBytes) * 1000) / 10 // Round to 1 decimal place
+      }))
+      .sort((a, b) => b.bytes - a.bytes);
+    
+    return sortedLanguages;
+  } catch (error) {
+    console.error('Error fetching language statistics:', error);
+    return [];
+  }
+}
+
+// Helper function to get language colors
+function getLanguageColor(language) {
+  // Common language colors
+  const colors = {
+    "JavaScript": ["from-yellow-500", "to-amber-500"],
+    "TypeScript": ["from-blue-500", "to-blue-400"],
+    "HTML": ["from-orange-600", "to-orange-400"],
+    "CSS": ["from-blue-600", "to-blue-400"],
+    "Python": ["from-blue-700", "to-green-400"],
+    "Java": ["from-red-600", "to-orange-500"],
+    "C++": ["from-blue-600", "to-purple-500"],
+    "C#": ["from-purple-600", "to-purple-400"],
+    "PHP": ["from-indigo-600", "to-indigo-400"],
+    "Ruby": ["from-red-700", "to-red-500"],
+    "Go": ["from-teal-500", "to-teal-300"],
+    "Rust": ["from-orange-700", "to-orange-500"],
+    "Swift": ["from-orange-600", "to-orange-400"],
+    "Kotlin": ["from-purple-600", "to-purple-400"],
+    "C": ["from-blue-700", "to-blue-500"],
+    "Assembly": ["from-gray-700", "to-gray-500"],
+    "Shell": ["from-green-700", "to-green-500"],
+    "PowerShell": ["from-blue-800", "to-blue-600"],
+    "Bash": ["from-green-800", "to-green-600"],
+    "Docker": ["from-blue-600", "to-blue-400"],
+    "YAML": ["from-purple-700", "to-purple-500"],
+    "JSON": ["from-amber-600", "to-amber-400"],
+    "XML": ["from-gray-600", "to-gray-400"],
+    "Markdown": ["from-blue-900", "to-blue-700"]
+  };
+  
+  return colors[language] || ["from-gray-600", "to-gray-400"]; // Default color
+}
+
+// Distribute language stats to Frontend, Backend, and Tools categories
+export function distributeLanguageStats(languages) {
+  if (!languages || languages.length === 0) {
+    console.warn('No language data available to distribute');
+    return;
+  }
+  
+  console.log('Distributing language data to skill categories:', languages);
+  
+  // Define which languages belong to which category
+  const categoryMapping = {
+    frontend: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Vue', 'React', 'Angular', 'Svelte', 'SCSS', 'SASS', 'Less', 'EJS'],
+    backend: ['Python', 'Java', 'PHP', 'Ruby', 'Go', 'C#', 'Node', 'TypeScript', 'Swift', 'Kotlin', 'Rust', 'Dart', 'Elixir', 'Django', 'Flask', 'Rails', 'Spring', 'Laravel', 'Express'],
+    tools: ['C', 'C++', 'Assembly', 'Shell', 'PowerShell', 'Bash', 'Batchfile', 'Makefile', 'Docker', 'Dockerfile', 'YAML', 'JSON', 'XML', 'Markdown', 'Text', 'R', 'MATLAB', 'Perl', 'Lua']
+  };
+  
+  // Use the global getLanguageColor function
+  
+  // Get icon for language
+  const getLanguageIcon = (language) => {
+    // Common language icons
+    const icons = {
+      "JavaScript": "ri-javascript-line",
+      "TypeScript": "ri-code-s-slash-line",
+      "HTML": "ri-html5-line",
+      "CSS": "ri-css3-line",
+      "Python": "ri-file-code-line",
+      "Java": "ri-cup-line",
+      "C++": "ri-terminal-box-line",
+      "C#": "ri-microsoft-line",
+      "PHP": "ri-code-box-line",
+      "Ruby": "ri-ruby-line",
+      "Go": "ri-code-s-slash-line",
+      "Rust": "ri-code-box-line",
+      "Swift": "ri-apple-line",
+      "Kotlin": "ri-android-line",
+      "C": "ri-terminal-line",
+      "Assembly": "ri-cpu-line",
+      "Shell": "ri-terminal-window-line",
+      "PowerShell": "ri-terminal-window-line",
+      "Bash": "ri-terminal-window-line",
+      "Docker": "ri-ship-line",
+      "YAML": "ri-file-list-line",
+      "JSON": "ri-braces-line",
+      "XML": "ri-file-code-line",
+      "Markdown": "ri-markdown-line"
+    };
+    
+    return icons[language] || "ri-code-s-slash-line"; // Default icon
+  };
+  
+  // Create a skill item element for a language
+  const createSkillItem = (language, percentage) => {
+    const [fromColor, toColor] = getLanguageColor(language);
+    const icon = getLanguageIcon(language);
+    const colorBase = fromColor.split('-')[1];
+    
+    return `
+      <div class="skill-item-modern group">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-${colorBase}-500/20 rounded-lg flex items-center justify-center">
+              <i class="${icon} text-${colorBase}-400"></i>
+            </div>
+            <span class="font-semibold text-gray-200">${language}</span>
+          </div>
+          <span class="text-sm text-green-400 font-medium">${percentage}%</span>
+        </div>
+        <div class="skill-progress-modern">
+          <div class="skill-bar-modern bg-gradient-to-r ${fromColor} ${toColor}" style="width: ${percentage}%"></div>
+        </div>
+      </div>
+    `;
+  };
+  
+  // Find container for skills based on category - now using IDs
+  const getSkillContainer = (category) => {
+    const containerId = `github-${category}-skills`;
+    return document.getElementById(containerId);
+  };
+  
+  // Add dynamic language skills to each category
+  const categorizedLanguages = {
+    frontend: [],
+    backend: [],
+    tools: []
+  };
+  
+  // Assign languages to categories
+  languages.forEach(lang => {
+    const langName = lang.name;
+    
+    if (categoryMapping.frontend.some(l => langName.includes(l))) {
+      categorizedLanguages.frontend.push(lang);
+    } else if (categoryMapping.backend.some(l => langName.includes(l))) {
+      categorizedLanguages.backend.push(lang);
+    } else {
+      // Default to tools/others if not matched
+      categorizedLanguages.tools.push(lang);
+    }
+  });
+  
+  // Distribute languages to each container
+  Object.entries(categorizedLanguages).forEach(([category, langs]) => {
+    const container = getSkillContainer(category);
+    if (!container) {
+      console.warn(`Container for ${category} skills not found with ID: github-${category}-skills`);
+      return;
+    }
+    
+    // Clear existing content
+    container.innerHTML = '';
+    
+    // Add a header for GitHub skills if we have languages
+    if (langs.length > 0) {
+      // Add header
+      const header = document.createElement('div');
+      header.className = 'flex items-center gap-2 mb-4';
+      header.innerHTML = `
+        <div class="w-6 h-6 bg-green-500/20 rounded-lg flex items-center justify-center">
+          <i class="ri-github-fill text-green-400"></i>
+        </div>
+        <h4 class="text-md font-semibold text-gray-200">From GitHub</h4>
+      `;
+      container.appendChild(header);
+      
+      // Add skills (up to 3 per category)
+      langs.slice(0, 3).forEach(lang => {
+        const skillItem = document.createElement('div');
+        skillItem.innerHTML = createSkillItem(lang.name, lang.percentage);
+        container.appendChild(skillItem.firstElementChild);
+      });
+    }
+  });
+}
+
 // Initialize GitHub component
 export function initGitHub() {
-  const projectsContainer = document.getElementById('github-projects');
-  const activityContainer = document.getElementById('github-activity');
+  // Load GitHub profile info
+  const reposElement = document.getElementById('github-repos');
+  const followersElement = document.getElementById('github-followers');
+  const followingElement = document.getElementById('github-following');
+  const starsElement = document.getElementById('github-stars');
+  const footerProjectsElement = document.getElementById('footer-projects');
   
+  // Load profile info
+  fetch(`https://api.github.com/users/${GITHUB_USERNAME}`)
+    .then(response => response.json())
+    .then(data => {
+      if (reposElement) reposElement.textContent = data.public_repos || '10+';
+      if (followersElement) followersElement.textContent = data.followers || '3';
+      if (followingElement) followingElement.textContent = data.following || '7';
+      if (footerProjectsElement) footerProjectsElement.textContent = data.public_repos || '10+';
+      
+      // Count stars (requires fetching all repos)
+      fetchGitHubProjects().then(repos => {
+        const stars = repos.reduce((total, repo) => total + repo.stargazers_count, 0);
+        if (starsElement) starsElement.textContent = stars || '0';
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching GitHub profile:', error);
+      if (reposElement) reposElement.textContent = '10+';
+      if (followersElement) followersElement.textContent = '3';
+      if (followingElement) followingElement.textContent = '7';
+      if (starsElement) starsElement.textContent = '0';
+      if (footerProjectsElement) footerProjectsElement.textContent = '10+';
+    });
+  
+  // Load GitHub projects
+  const projectsContainer = document.getElementById('github-projects');
   if (projectsContainer) {
     if (USE_SAMPLE_DATA) {
       loadSampleProjects(projectsContainer);
@@ -310,6 +607,8 @@ export function initGitHub() {
     }
   }
   
+  // Load GitHub activity
+  const activityContainer = document.getElementById('github-activity');
   if (activityContainer) {
     if (USE_SAMPLE_DATA) {
       loadSampleActivities(activityContainer);
@@ -317,6 +616,16 @@ export function initGitHub() {
       loadGitHubActivity(activityContainer);
     }
   }
+  
+  // Load language statistics and distribute to skill categories
+  fetchLanguageStats()
+    .then(languages => {
+      // Instead of rendering to a separate section, distribute to the categories
+      distributeLanguageStats(languages);
+    })
+    .catch(error => {
+      console.error('Error loading language statistics:', error);
+    });
 }
 
 // Load projects

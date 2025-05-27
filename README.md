@@ -1,248 +1,470 @@
-# Personal Portfolio Website
+# 🚀 Personal Portfolio Website
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/ucanalgan/personalWeb?style=social)](https://github.com/ucanalgan/personalWeb/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/ucanalgan/personalWeb?style=social)](https://github.com/ucanalgan/personalWeb/network/members)
+[![Vite](https://img.shields.io/badge/Vite-5.0+-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4+-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-3.12+-88CE02?logo=greensock&logoColor=white)](https://greensock.com/gsap/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-A modern, responsive personal portfolio website built with the latest web technologies. Features a clean developer-friendly design with a dark theme, smooth animations, and GitHub integration.
+## 🌟 About Project
 
-## Table of Contents
+This project is a modern, fully responsive, and performance-focused personal portfolio website developed using cutting-edge web technologies. It provides a professional platform showcasing Umutcan Algan's software development journey, projects, and skills. Features modular JavaScript architecture, advanced animations, and real-time GitHub integration that makes it stand out.
 
-- [Demo](#demo)
-- [Features](#features)
-- [Technologies](#technologies)
-- [Project Structure](#project-structure)
-- [Color Scheme](#color-scheme)
-- [Prerequisites](#prerequisites)
-- [Installation & Setup](#installation--setup)
-- [Usage](#usage)
-- [GitHub Integration](#github-integration)
-- [Customization](#customization)
-- [Performance Optimizations](#performance-optimizations)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+## ✨ Key Features
 
-## Demo
+### 🎨 **Modern & Responsive Design**
+- **Dark Theme Focused**: Developer-friendly dark theme (#0a192f background, #64ffda accent color)
+- **Mobile First**: Perfect appearance on all devices (phone, tablet, desktop)
+- **Gradient Effects**: Visual richness with modern CSS gradients
+- **Custom Font Integration**: Plus Jakarta Sans & Space Grotesk font families
+- **Responsive Navigation**: Hamburger menu for mobile devices with smooth transitions
 
-### ✨ [Live Demo](https://ucanalgan.github.io/personalWeb/) ✨
+### ⚡ **Performance & Optimization**
+- **Vite Build Tool**: Fast development and optimized production build
+- **Terser Minification**: Console log removal and code optimization
+- **Critical CSS**: Critical CSS extraction for faster initial loading
+- **Lazy Loading**: Deferred loading of heavy components
+- **ES2015 Target**: Modern browser compatibility
+- **Bundle Splitting**: Modular code structure and optimized chunking
 
-View the live portfolio website deployed on GitHub Pages. The site features smooth animations, GitHub integration, and a responsive design that works perfectly on all devices.
+### 🎭 **Advanced Animations**
+- **GSAP Integration**: Professional-grade animations with ScrollTrigger
+- **Accessibility Respect**: Prefers-reduced-motion support
+- **Staggered Animations**: Sequential component animations
+- **Hero Animations**: Scale, opacity and transform effects
+- **Scroll-triggered Animations**: Animations triggered by page scrolling
+- **Custom Keyframes**: Float and pulse-slow animations
 
-![Dark Theme](https://img.shields.io/badge/Theme-Dark-0a192f)
-![Responsive](https://img.shields.io/badge/Design-Responsive-64ffda)
-![Performance](https://img.shields.io/badge/Performance-Optimized-brightgreen)
+### 🔧 **GitHub Integration**
+- **Live Project List**: Automatic repository fetching via GitHub API
+- **Activity Timeline**: Display of recent GitHub activities
+- **Repository Statistics**: Dynamic display of star and fork counts
+- **Real-time Updates**: Fetching current GitHub data
+- **Error Handling**: Fallback systems for API limits and error states
 
-## Features
+### 📧 **Advanced Form Management**
+- **Real-time Validation**: Instant form validation system
+- **Visual Feedback**: Visual feedback for error and success states
+- **Anti-spam Protection**: Prevention of rapid form submissions
+- **Email Pattern Validation**: Advanced email format validation
+- **Character Length Validation**: Message length validation
+- **Dynamic Error Messages**: User-friendly error messages
 
-- Modern design with a professional and responsive layout
-- Developer-friendly dark theme with primary cyan accent color (#64ffda)
-- Performance-optimized with Vite/Rollup bundling for JS/CSS
-- Lazy-loading for heavy components
-- Optimized image loading with srcset and proper dimensions
-- Smooth animations powered by GSAP
-- Accessibility improvements with semantic landmarks and ARIA attributes
-- GitHub integration for projects and activities
-- Mobile-responsive with tailored experiences for all device sizes
-- Modular ES Modules architecture for maintainable code
-- Form validation for contact section
-- Critical CSS extraction for faster initial loading
+### 🌙 **Theme Management**
+- **Dark Mode Default**: Default dark theme
+- **LocalStorage Persistence**: Saving theme preferences
+- **CSS Custom Properties**: Dynamic color variables
+- **Smooth Transitions**: Smooth transitions during theme changes
+- **Multi-platform Support**: Desktop and mobile theme toggles
 
-## Technologies
+### 📱 **User Experience**
+- **Smooth Scrolling**: Fluid page transitions
+- **Progress Indicators**: Page scroll progress indicators
+- **Accessibility**: ARIA labels and semantic HTML structure
+- **Mobile Menu**: Advanced hamburger menu system
+- **Interactive Elements**: Hover effects and micro-interactions
 
-- HTML5
-- CSS3 (Tailwind CSS)
-- JavaScript (ES6+)
-- Vite (Build tool)
-- GSAP (Animations)
-- Remix Icons
-- GitHub API Integration
-- PostCSS & Autoprefixer
-- Rollup (bundling)
+## 🛠️ Technology Stack
 
-## Project Structure
+### **Frontend Core Technologies**
+- **HTML5**: Semantic structure and SEO optimization
+- **CSS3**: Modern CSS features, Flexbox/Grid, Custom Properties
+- **JavaScript ES6+**: Modern JS features, ES Modules, Async/Await
+- **Tailwind CSS**: Utility-first CSS framework with custom configuration
+
+### **Build Tools & Development**
+```javascript
+// Vite Configuration Highlights
+{
+  base: '/personalWeb/',
+  build: {
+    target: 'es2015',
+    minify: 'terser',
+    terserOptions: { compress: { drop_console: true } },
+    rollupOptions: { input: { main: 'index.html' } }
+  }
+}
+```
+
+- **Vite**: Next-generation frontend build tool
+- **PostCSS**: CSS transformation and optimization
+- **Autoprefixer**: Cross-browser CSS compatibility
+- **Terser**: JavaScript minification and optimization
+
+### **Animation & Interaction Libraries**
+- **GSAP (GreenSock)**: Professional-grade animations
+  - ScrollTrigger plugin for scroll-based animations
+  - Power easing functions
+  - Stagger animations
+- **Custom CSS Animations**: Float and pulse effects
+- **CSS Transitions**: Smooth hover and state transitions
+
+### **External Services & APIs**
+- **GitHub API**: Repository and activity data fetching
+- **Remix Icons**: Modern icon library (3.5.0)
+- **Google Fonts**: Plus Jakarta Sans & Space Grotesk
+- **GitHub Pages**: Static site hosting
+
+## 📂 Detailed Project Structure
 
 ```
 personalWeb/
-├── animations.js        # GSAP animations and scroll effects
-├── app.js               # Main application logic and initialization
-├── dom.js               # DOM manipulation utilities and event handlers
-├── form-handler.js      # Contact form validation and submission
-├── github.js            # GitHub API integration for projects and activities
-├── github-section.html  # GitHub section template
-├── index.html           # Main HTML file with page structure
-├── input.css            # Tailwind CSS input file
-├── LICENSE              # MIT License file
-├── main.js              # JavaScript entry point
-├── package.json         # Project dependencies and scripts
-├── postcss.config.js    # PostCSS configuration for Tailwind
-├── style.css            # Main stylesheet (Tailwind CSS)
-├── tailwind.config.js   # Tailwind CSS configuration with theme colors
-├── theme.js             # Dark theme functionality
-├── utils.js             # Utility functions and helpers
-├── vite.config.js       # Vite configuration with critical CSS extraction
-└── README.md            # Project documentation
+├── 📄 index.html              # Main HTML file (1534 lines)
+│                              # - Semantic HTML5 structure
+│                              # - Meta tags and SEO optimization
+│                              # - Responsive design elements
+│
+├── 🎨 CSS Files
+│   ├── style.css              # Tailwind CSS styles (743 lines)
+│   ├── input.css              # Tailwind input file (9 lines)
+│   └── tailwind.config.js     # Tailwind configuration (34 lines)
+│
+├── ⚡ JavaScript Modules
+│   ├── main.js                # Main JavaScript entry point (304 lines)
+│   ├── app.js                 # Application logic and init (630 lines)
+│   ├── animations.js          # GSAP animation system (168 lines)
+│   ├── github.js              # GitHub API integration (516 lines)
+│   ├── form-handler.js        # Form validation system (283 lines)
+│   ├── theme.js               # Theme management (115 lines)
+│   ├── dom.js                 # DOM manipulation utilities (233 lines)
+│   └── utils.js               # Utility functions (56 lines)
+│
+├── 🔧 Configuration Files
+│   ├── vite.config.js         # Vite build configuration (24 lines)
+│   ├── postcss.config.js      # PostCSS configuration (7 lines)
+│   ├── package.json           # Project dependencies (33 lines)
+│   └── package-lock.json      # Dependency lock file (6709 lines)
+│
+├── 📊 Template & Build Files
+│   ├── github-section.html    # GitHub section template (37 lines)
+│   ├── dist/                  # Production build directory
+│   └── assets/                # Built assets
+│
+├── 📋 Project Documentation
+│   ├── README.md              # This documentation file
+│   ├── LICENSE                # MIT license file (21 lines)
+│   └── .gitignore            # Git ignore rules (26 lines)
+│
+└── 🔒 Version Control
+    └── .git/                  # Git repository metadata
 ```
 
-## Color Scheme
+## 🎨 Detailed Color System
 
-The portfolio uses a carefully selected color palette that enhances readability and provides a developer-friendly experience:
+### **Primary Color Palette**
 
-- **Primary Color**: `#64ffda` (Cyan accent for highlighting important elements)
-- **Background**: `#0a192f` (Dark blue background for the main theme)
-- **Text Colors**: Light gray variations for better readability on dark backgrounds
-- **Card Backgrounds**: Various opacity levels of `#112240` and `#233554` for depth
-- **Hover States**: Lighter variations of the primary color
+| Color Name | Hex Code | RGB Value | Usage Area | CSS Class |
+|------------|----------|-----------|------------|-----------|
+| **Primary Cyan** | `#64ffda` | `rgb(100, 255, 218)` | Accent color, links, buttons | `text-primary`, `bg-primary` |
+| **Dark Background** | `#0a192f` | `rgb(10, 25, 47)` | Main background color | `bg-dark`, `bg-secondary` |
+| **Card Background** | `#112240` | `rgb(17, 34, 64)` | Card and section backgrounds | `bg-gray-900` |
+| **Secondary Dark** | `#233554` | `rgb(35, 53, 84)` | Secondary background colors | - |
+| **Text Light** | `#ccd6f6` | `rgb(204, 214, 246)` | Main text color | `text-gray-300` |
+| **Text Muted** | `#8892b0` | `rgb(136, 146, 176)` | Secondary text color | `text-gray-500` |
 
-These colors can be customized in the `tailwind.config.js` file under the colors section.
-
-## Prerequisites
-
-- Node.js (v14+ recommended)
-- npm (v6+ or later)
-- A modern browser (Chrome, Firefox, Edge, Safari)
-
-## Installation & Setup
-
-```powershell
-# Clone the repository
-git clone https://github.com/ucanalgan/personalWeb.git
-
-# Navigate to the project directory
-cd personalWeb
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-
-# Open your browser and visit:
-# http://localhost:5173
-```
-
-### Building for Production
-
-```powershell
-npm run build
-```
-
-This will create a `dist` directory with optimized production files. The build process includes:
-
-- JavaScript bundling and minification
-- CSS optimization with critical CSS extraction
-- Asset optimization
-- Console log removal in production
-- ES2015 compatibility
-
-### Deployment to GitHub Pages
-
-1. Install the `gh-pages` package:
-
-   ```bash
-   npm install --save-dev gh-pages
-   ```
-
-2. Add a deployment script to your `package.json`:
-
-   ```json
-   "scripts": {
-     /* existing scripts */,  
-     "deploy": "gh-pages -d dist"
-   }
-   ```
-
-3. Ensure `base` in `vite.config.js` is set to `/personalWeb/`, then run:
-
-   ```bash
-   npm run build
-   npm run deploy
-   ```
-
-Your site will be published to the `gh-pages` branch and available at: `https://ucanalgan.github.io/personalWeb/`.
-
-## Usage
-
-After the server is running, navigate to `http://localhost:5173` in your browser. The site features:
-
-- **Responsive Navigation**: Menu adapts to all screen sizes with a mobile drawer
-- **GitHub Projects Section**: Displays your latest GitHub repositories with stars and forks
-- **GitHub Activities**: Shows your recent GitHub activity
-- **Skills Section**: Visualizes your technical skills with progress bars
-- **Contact Form**: Includes form validation for user input
-- **Smooth Scrolling**: For a better user experience when navigating between sections
-
-## GitHub Integration
-
-The portfolio automatically fetches and displays your GitHub projects and activities:
-
-### Project Display
-
-- Repositories are fetched from the GitHub API and displayed in a responsive grid
-- Each project card shows:
-  - Repository name with link
-  - Description (if available)
-  - Star count with icon
-  - Fork count with icon
-
-### Activity Timeline
-
-- Recent GitHub activities are displayed chronologically
-- Each activity shows:
-  - Activity type (Push, Pull Request, etc.)
-  - Repository name with link
-
-To customize the GitHub username, modify the `githubUsername` variable in `app.js`:
+### **Tailwind Configuration**
 
 ```javascript
-const githubUsername = 'your-github-username';
+// tailwind.config.js
+module.exports = {
+  content: ['./index.html', './*.js'],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#64ffda',
+        secondary: '#0a192f',
+        dark: '#0a192f',
+        light: '#f8f9fa'
+      },
+      fontFamily: {
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif']
+      },
+      animation: {
+        'float': 'float 3s ease-in-out infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      }
+    }
+  }
+}
 ```
 
-## Customization
+## 🚀 Installation & Setup
 
-- **Theme Colors**: Modify colors in `tailwind.config.js`
-- **Profile Information**: Update personal details in `index.html`
-- **GitHub Username**: Change the GitHub username in `app.js` to pull your own repos
-- **Projects Display**: Adjust the project card styling in `style.css`
-- **Animations**: Modify animation timings and effects in `animations.js`
-- **Skills**: Update your skill levels in the HTML markup in the skills section
-- **Social Links**: Add or modify social media links in the header and footer
-- **Form Handling**: Customize form validation in `form-handler.js`
+### **System Requirements**
+- **Node.js**: v14.0+ (recommended: v16+)
+- **npm**: v6.0+ or **yarn**: v1.22+
+- **Modern Browser**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+- **Git**: For version control
 
-## Performance Optimizations
+### **Detailed Installation Steps**
 
-This portfolio website implements several performance optimizations:
+```bash
+# 1. Clone the repository
+git clone https://github.com/ucanalgan/personalWeb.git
 
-- **Code Splitting**: JavaScript is modularized for better loading performance
-- **Lazy Loading**: Images and heavy components load only when needed
-- **Proper Image Sizing**: Images use srcset for responsive loading
-- **CSS Optimization**: Tailwind's JIT compiler for minimal CSS
-- **Critical CSS Extraction**: Uses Rollup plugin for inline critical CSS
-- **Deferred Animations**: Non-critical animations are deferred until idle time
-- **Accessibility**: Supports prefers-reduced-motion for users who prefer minimal animations
-- **Console Cleanup**: Production builds remove console logs
-- **Conditional Loading**: Features like animations are only loaded if the user hasn't enabled reduced motion
+# 2. Navigate to project directory
+cd personalWeb
 
-## Contributing
+# 3. Check Node.js version
+node --version  # Should be v14.0+
 
-Contributions are welcome! Please follow these steps:
+# 4. Install dependencies
+npm install
+# or
+yarn install
 
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature/awesome-feature`
-3. Make your changes
-4. Commit your changes: `git commit -m 'Add awesome feature'`
-5. Push to the branch: `git push origin feature/awesome-feature`
-6. Open a Pull Request
+# 5. Start development server
+npm run dev
+# or
+yarn dev
 
-## License
+# 6. Open in browser
+# http://localhost:3000 (opens automatically)
+```
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### **Available Scripts**
 
-## Contact
+```bash
+# Development server (with hot reload)
+npm run dev
 
-Umutcan Algan  
-GitHub: [@ucanalgan](https://github.com/ucanalgan)  
-LinkedIn: [linkedin.com/in/umutcan-algan](https://www.linkedin.com/in/umutcan-algan/)  
-Email: umutcanalgan91@gmail.com
+# Production build (optimized)
+npm run build
 
-Project Link: [https://github.com/ucanalgan/personalWeb](https://github.com/ucanalgan/personalWeb)
+# Build preview (test production build)
+npm run preview
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+### **Build Process Details**
+
+During production build, the following occurs:
+- ✅ JavaScript transpiled to ES2015 format
+- ✅ Terser minification and console.log removal
+- ✅ CSS purging and optimization
+- ✅ Asset optimization and chunking
+- ✅ HTML minification
+- ✅ Source map generation
+
+## 🔧 Detailed Configuration
+
+### **GitHub Integration Setup**
+
+```javascript
+// Change GitHub username in app.js
+const githubUsername = 'your-github-username';
+
+// API settings in github.js
+const GITHUB_API_BASE = 'https://api.github.com';
+const REPOS_PER_PAGE = 6;
+const ACTIVITIES_LIMIT = 5;
+```
+
+### **Animation Settings**
+
+```javascript
+// Animation configuration in animations.js
+const animationConfig = {
+  heroAnimations: {
+    duration: 1,
+    ease: 'power3.out',
+    stagger: 0.3
+  },
+  scrollAnimations: {
+    trigger: 'top 85%',
+    duration: 0.6,
+    ease: 'power2.out'
+  }
+};
+```
+
+### **Theme Configuration**
+
+```javascript
+// Theme settings in theme.js
+const themeConfig = {
+  storageKey: 'theme-preference',
+  defaultTheme: 'dark',
+  transitions: {
+    duration: '500ms',
+    easing: 'ease-in-out'
+  }
+};
+```
+
+### **Form Validation Rules**
+
+```javascript
+// Validation rules in form-handler.js
+const validationRules = {
+  name: { required: true, minLength: 2 },
+  email: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
+  subject: { required: true, minLength: 5 },
+  message: { required: true, minLength: 10 }
+};
+```
+
+## 📊 Performance Optimizations
+
+### **Code Splitting & Bundling**
+- **ES Modules**: Modular JavaScript structure
+- **Dynamic Imports**: Module loading on demand
+- **Rollup Optimization**: Tree shaking and dead code elimination
+- **Asset Chunking**: Optimized splitting of CSS and JS files
+
+### **Loading Optimizations**
+- **Critical CSS**: Inline critical styles for initial page load
+- **Font Preloading**: Optimized Google Fonts loading
+- **Image Optimization**: Responsive images and lazy loading
+- **Resource Hints**: Preload, preconnect directives
+
+### **Runtime Performance**
+- **GSAP Optimization**: Loading only necessary plugins
+- **Event Debouncing**: Optimized scroll and resize events
+- **Memory Management**: Proper cleanup of event listeners
+- **Reduced Motion Support**: Animation control for accessibility
+
+## 🌐 Deployment & Hosting
+
+### **GitHub Pages Deployment**
+
+```bash
+# Automatic deployment
+npm run build
+npm run deploy
+
+# Manual deployment
+npm run build
+npx gh-pages -d dist
+```
+
+### **Build Verification**
+
+Post-production build checklist:
+- ✅ All assets are in correct paths
+- ✅ CSS and JS minification successful
+- ✅ GitHub API functionality working
+- ✅ Form validation active
+- ✅ Responsive design preserved
+
+## 🧪 Testing & Debug
+
+### **Browser Compatibility Testing**
+- **Chrome**: 90+ ✅
+- **Firefox**: 88+ ✅
+- **Safari**: 14+ ✅
+- **Edge**: 90+ ✅
+- **Mobile Safari**: iOS 14+ ✅
+- **Chrome Mobile**: Android 10+ ✅
+
+### **Performance Metrics**
+- **First Contentful Paint**: < 1.5s
+- **Largest Contentful Paint**: < 2.5s
+- **Cumulative Layout Shift**: < 0.1
+- **Time to Interactive**: < 3s
+
+## 🤝 Contributing
+
+### **Development Workflow**
+
+1. **Fork & Clone**
+   ```bash
+   git fork https://github.com/ucanalgan/personalWeb.git
+   git clone https://github.com/your-username/personalWeb.git
+   ```
+
+2. **Feature Branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+
+3. **Development**
+   ```bash
+   npm run dev  # Development server
+   # Make your code changes
+   ```
+
+4. **Testing**
+   ```bash
+   npm run build  # Production build test
+   npm run preview  # Build preview
+   ```
+
+5. **Commit & Push**
+   ```bash
+   git add .
+   git commit -m "feat: add amazing feature"
+   git push origin feature/amazing-feature
+   ```
+
+6. **Pull Request**
+   - Create PR with detailed description
+   - Add screenshots
+   - Wait for review
+
+### **Code Style Guidelines**
+- **JavaScript**: ES6+ standards
+- **CSS**: Tailwind utility classes
+- **HTML**: Semantic HTML5
+- **Comments**: English descriptions
+
+## 🐛 Known Issues & Solutions
+
+### **Common Issues**
+
+1. **GitHub API Rate Limit**
+   - **Issue**: Hitting API limits
+   - **Solution**: Use personal access token
+
+2. **Animation Performance**
+   - **Issue**: Slowdown on low-performance devices
+   - **Solution**: Prefers-reduced-motion support active
+
+3. **Font Loading**
+   - **Issue**: Font loading delay
+   - **Solution**: Font preloading and fallback fonts
+
+## 📄 License
+
+This project is licensed under the **MIT License**. This means you can:
+- ✅ Use commercially
+- ✅ Modify and distribute
+- ✅ Use privately
+- ✅ Sub-license
+
+See the [LICENSE](LICENSE) file for more details.
+
+## 📧 Contact & Support
+
+### **Developer Contact**
+**Umutcan Algan** - Full Stack Developer
+- 🐙 **GitHub**: [@ucanalgan](https://github.com/ucanalgan)
+- 💼 **LinkedIn**: [Umutcan Algan](https://linkedin.com/in/umutcan-algan/)
+- 🌐 **Portfolio**: [ucanalgan.github.io/personalWeb](https://ucanalgan.github.io/personalWeb/)
+- 📧 **Email**: umutcanalgan91@gmail.com
+
+### **Project Links**
+- 🔗 **Repository**: [github.com/ucanalgan/personalWeb](https://github.com/ucanalgan/personalWeb)
+- 🌐 **Live Demo**: [ucanalgan.github.io/personalWeb](https://ucanalgan.github.io/personalWeb/)
+- 📋 **Issues**: [github.com/ucanalgan/personalWeb/issues](https://github.com/ucanalgan/personalWeb/issues)
+
+### **Support**
+- 🐛 **Bug Reports**: Use GitHub Issues
+- 💡 **Feature Requests**: GitHub Discussions
+- ❓ **Questions**: GitHub Discussions or email
+
+---
+
+<div align="center">
+
+⭐ **If you like this project, please give it a star!** ⭐
+
+Made with ❤️ by [Umutcan Algan](https://github.com/ucanalgan)
+
+</div>
