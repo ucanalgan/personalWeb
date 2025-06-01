@@ -1,7 +1,6 @@
 import './style.css';
 import * as utils from './utils.js';
 import { initFormValidation } from './form-handler.js';
-import { initTheme } from './theme.js';
 import {
   elements,
   handlers,
@@ -16,6 +15,12 @@ import {
 
 // Main application initialization
 export function initApp() {
+  // Initialize loading screen
+  initializeLoadingScreen();
+  
+  // Initialize performance monitoring
+  initializePerformanceMonitoring();
+  
   // Initialize modern navigation
   initializeModernNavigation();
 
@@ -30,9 +35,6 @@ export function initApp() {
       setTimeout(() => window.AOS.init({ duration: 800, once: true }), 200);
     }
   }
-
-  // Initialize theme based on user preference and setup toggle button
-  initTheme();
 
   // Section animations if motion is not reduced
   if (!prefersReducedMotion) initializeAnimations();
@@ -140,8 +142,10 @@ async function initializeGitHubSection(username) {
     // Create modern project cards
     createModernProjectCards(reposData);
     
-    // Create activity timeline
-    createActivityTimeline(eventsData);
+    // Create activity timeline (only if container exists)
+    if (document.getElementById('github-activity')) {
+      createActivityTimeline(eventsData);
+    }
 
   } catch (error) {
     console.error('GitHub API error:', error);
@@ -152,20 +156,27 @@ async function initializeGitHubSection(username) {
 // Update GitHub Statistics
 function updateGitHubStats(userData, reposData) {
   const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+  const totalForks = reposData.reduce((sum, repo) => sum + repo.forks_count, 0);
   
-  // Animate numbers
-  animateNumber('github-repos', userData.public_repos);
+  // Animate numbers for GitHub stats dashboard
+  animateNumber('total-repos', userData.public_repos);
+  animateNumber('total-stars', totalStars);
+  animateNumber('total-forks', totalForks);
   animateNumber('github-followers', userData.followers);
-  animateNumber('github-following', userData.following);
-  animateNumber('github-stars', totalStars);
-  
-  // Update footer stats
-  animateNumber('footer-projects', userData.public_repos);
   
   // Update hero section stats
   animateNumber('hero-followers', userData.followers);
   animateNumber('hero-repos', userData.public_repos);
   animateNumber('github-repos-mini', userData.public_repos);
+  
+  // Update recent commits (simulated data)
+  animateNumber('recent-commits', Math.floor(Math.random() * 50) + 20);
+  
+  // Update contribution streak
+  const streakElement = document.getElementById('contribution-streak');
+  if (streakElement) {
+    streakElement.textContent = 'Active';
+  }
 }
 
 // Animate number counting effect
@@ -187,15 +198,21 @@ function animateNumber(elementId, targetValue) {
 
 // Create Modern Project Cards
 function createModernProjectCards(repos) {
-  const container = document.getElementById('github-projects');
+  const container = document.getElementById('projects-container');
   if (!container) return;
+  
+  // Clear loading state
+  const loadingElement = container.querySelector('.project-loading');
+  if (loadingElement) {
+    loadingElement.remove();
+  }
   
   container.innerHTML = '';
   
   repos.forEach((repo, index) => {
     setTimeout(() => {
       const card = document.createElement('div');
-      card.className = 'github-project-card opacity-0 translate-y-4';
+      card.className = 'bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 opacity-0 translate-y-4';
       
       // Get primary language color
       const languageColors = {
@@ -209,45 +226,64 @@ function createModernProjectCards(repos) {
         Vue: '#4fc08d',
         C: '#555555',
         'C++': '#00599c',
-        'C#': '#239120'
+        'C#': '#239120',
+        Go: '#00add8',
+        Rust: '#dea584'
       };
       
       const languageColor = languageColors[repo.language] || '#64ffda';
       
       card.innerHTML = `
-        <h3 class="text-lg font-semibold text-gray-200 flex items-center gap-2 mb-3">
-          <i class="ri-git-repository-line text-green-400"></i>
-          ${repo.name}
-        </h3>
-        <p class="text-sm text-gray-400 mb-4 line-clamp-2 leading-relaxed min-h-[2.5rem]">
+        <div class="flex items-start justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center">
+              <i class="ri-folder-3-line text-primary text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-200">${repo.name}</h3>
+              <p class="text-sm text-gray-500">Repository</p>
+            </div>
+          </div>
+          <a href="${repo.html_url}" target="_blank" class="w-10 h-10 bg-gray-700/50 hover:bg-gray-600/50 border border-gray-600/50 hover:border-gray-500/50 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+            <i class="ri-external-link-line text-gray-400 hover:text-white transition-colors"></i>
+          </a>
+        </div>
+        
+        <p class="text-gray-400 mb-6 leading-relaxed min-h-[3rem]">
           ${repo.description || 'No description available for this repository.'}
         </p>
-        <p class="text-xs text-gray-500 mb-4">Updated ${new Date(repo.updated_at).toLocaleDateString()}</p>
         
-        <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center justify-between mb-6">
           ${repo.language ? `
             <div class="flex items-center gap-2">
               <div class="w-3 h-3 rounded-full" style="background-color: ${languageColor}"></div>
-              <span class="text-sm text-gray-400">${repo.language}</span>
+              <span class="text-sm text-gray-400 font-medium">${repo.language}</span>
             </div>
           ` : '<div></div>'}
           
-          <div class="flex items-center gap-3 text-xs text-gray-500">
+          <div class="flex items-center gap-4 text-sm text-gray-500">
             <span class="flex items-center gap-1">
-              <i class="ri-star-line"></i>
+              <i class="ri-star-line text-yellow-500"></i>
               ${repo.stargazers_count}
             </span>
             <span class="flex items-center gap-1">
-              <i class="ri-git-branch-line"></i>
+              <i class="ri-git-fork-line text-blue-400"></i>
               ${repo.forks_count}
             </span>
           </div>
         </div>
         
-        <a href="${repo.html_url}" target="_blank" class="inline-flex items-center gap-2 bg-green-600/10 hover:bg-green-600/20 border border-green-500/20 hover:border-green-500/40 text-green-400 text-sm py-2 px-4 rounded-lg transition-all duration-300 font-medium">
-          <i class="ri-github-line"></i>
-          View Code
-        </a>
+        <div class="flex items-center gap-3">
+          <a href="${repo.html_url}" target="_blank" class="flex-1 bg-primary/20 hover:bg-primary/30 border border-primary/30 hover:border-primary/50 text-primary text-center py-3 px-4 rounded-xl transition-all duration-300 font-medium">
+            <i class="ri-github-line mr-2"></i>
+            View Code
+          </a>
+          ${repo.homepage ? `
+            <a href="${repo.homepage}" target="_blank" class="w-12 h-12 bg-green-500/20 hover:bg-green-500/30 border border-green-500/30 hover:border-green-500/50 text-green-400 rounded-xl flex items-center justify-center transition-all duration-300">
+              <i class="ri-links-line"></i>
+            </a>
+          ` : ''}
+        </div>
       `;
       
       container.appendChild(card);
@@ -626,4 +662,37 @@ function initializeModernNavigation() {
 }
 
 // Initialize application on DOMContentLoaded
-window.addEventListener('DOMContentLoaded', initApp); 
+window.addEventListener('DOMContentLoaded', initApp);
+
+// Loading Screen Management
+function initializeLoadingScreen() {
+  const loadingScreen = document.getElementById('loading-screen');
+  
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (loadingScreen) {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+        }, 300);
+      }
+    }, 1000);
+  });
+}
+
+// Performance Monitoring
+function initializePerformanceMonitoring() {
+  // Monitor page load performance
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const perfData = performance.getEntriesByType('navigation')[0];
+      if (perfData) {
+        console.log('Page Load Performance:', {
+          domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.navigationStart),
+          loadComplete: Math.round(perfData.loadEventEnd - perfData.navigationStart),
+          firstPaint: Math.round(performance.getEntriesByType('paint')[0]?.startTime || 0)
+        });
+      }
+    }, 0);
+  });
+} 

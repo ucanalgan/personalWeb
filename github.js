@@ -4,33 +4,69 @@ import { filterProjects, currentFilter } from './dom.js';
 const GITHUB_USERNAME = 'ucanalgan'; // GitHub username
 const CACHE_DURATION = 60 * 60 * 1000; // Cache duration: 1 hour in milliseconds
 const API_TIMEOUT = 10000; // API timeout: 10 seconds
-const USE_SAMPLE_DATA = true; // Use sample data if API fails
+const USE_SAMPLE_DATA = false; // Use real GitHub API data
 
-// Sample data for fallback
+// Sample data for fallback (updated with real projects)
 const SAMPLE_PROJECTS = [
   {
-    name: "PortScanner",
-    description: "A port scanner tool developed with C++. Uses multi-threading for efficient scanning.",
-    html_url: "https://github.com/ucanalgan/PortScanner",
-    topics: ["C++", "Network", "Security"],
-    stargazers_count: 2,
-    forks_count: 0
-  },
-  {
-    name: "Keylogger",
-    description: "Educational keylogger application for cybersecurity training.",
-    html_url: "https://github.com/ucanalgan/Keylogger",
-    topics: ["Python", "Security", "Education"],
-    stargazers_count: 1,
-    forks_count: 0
-  },
-  {
     name: "personalWeb",
-    description: "Personal portfolio website showcasing my projects and skills",
+    description: "Modern responsive portfolio website built with HTML, CSS, JavaScript, and Tailwind CSS featuring GSAP animations and GitHub API integration",
     html_url: "https://github.com/ucanalgan/personalWeb",
-    topics: ["HTML", "CSS", "JavaScript", "Portfolio"],
+    topics: ["html", "css", "javascript", "portfolio", "tailwind-css", "gsap", "responsive-design"],
     stargazers_count: 0,
-    forks_count: 0
+    forks_count: 0,
+    language: "HTML",
+    updated_at: new Date().toISOString()
+  },
+  {
+    name: "Multi-Language-Port-Scanner",
+    description: "Advanced network scanning tool implemented in C++, Python, JavaScript, Rust, and Go with comprehensive port detection capabilities",
+    html_url: "https://github.com/ucanalgan/Multi-Language-Port-Scanner",
+    topics: ["cpp", "python", "javascript", "rust", "go", "network", "security", "port-scanner"],
+    stargazers_count: 2,
+    forks_count: 1,
+    language: "C++",
+    updated_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()
+  },
+  {
+    name: "Credit-Card-Debt-Tracker",
+    description: "Full-stack TypeScript application using React frontend and Express backend with PostgreSQL for comprehensive debt management",
+    html_url: "https://github.com/ucanalgan/Credit-Card-Debt-Tracker",
+    topics: ["typescript", "react", "express", "postgresql", "full-stack", "debt-management"],
+    stargazers_count: 1,
+    forks_count: 0,
+    language: "TypeScript",
+    updated_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString()
+  },
+  {
+    name: "Python-Keylogger",
+    description: "Educational cybersecurity tool developed in Python for understanding keystroke monitoring and security research",
+    html_url: "https://github.com/ucanalgan/Python-Keylogger",
+    topics: ["python", "cybersecurity", "education", "keylogger", "security-research"],
+    stargazers_count: 1,
+    forks_count: 0,
+    language: "Python",
+    updated_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
+  },
+  {
+    name: "Password-Security-Checker",
+    description: "Python-based tool to analyze and validate password strength with comprehensive security checks",
+    html_url: "https://github.com/ucanalgan/Password-Security-Checker",
+    topics: ["python", "security", "password", "validation", "cybersecurity"],
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "Python",
+    updated_at: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString()
+  },
+  {
+    name: "Email-Automation-System",
+    description: "Python automation script for streamlined email management and communication workflows",
+    html_url: "https://github.com/ucanalgan/Email-Automation-System",
+    topics: ["python", "automation", "email", "workflow", "productivity"],
+    stargazers_count: 0,
+    forks_count: 0,
+    language: "Python",
+    updated_at: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString()
   }
 ];
 
