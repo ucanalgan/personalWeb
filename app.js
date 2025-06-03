@@ -56,7 +56,9 @@ export function initApp() {
   window.addEventListener('scroll', handlers.scroll);
 
   // Scroll to top button
-  elements.scrollTopBtn?.addEventListener('click', handlers.scrollTop);
+  document.querySelectorAll('.scroll-top-button').forEach(btn => {
+    btn.addEventListener('click', handlers.scrollTop);
+  });
 
   // Navigation link smooth scrolling
   elements.navLinks.forEach(link => {

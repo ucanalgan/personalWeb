@@ -20,8 +20,6 @@ export const elements = {
   mobileMenu: select('.mobile-menu'),
   mobileMenuBtn: select('.mobile-menu-btn'),
   mobileMenuCloseBtn: select('.mobile-menu-close'),
-  scrollTopBtn: select('#scroll-top'), // Ana scroll button (footer'daki)
-  scrollTopButtons: selectAll('.scroll-top-button, #scroll-top'), // Tüm scroll butonları
   navLinks: selectAll('.nav-link'),
   sections: selectAll('section[id]'),
   skillCards: selectAll('.skill-card'),
@@ -32,7 +30,7 @@ export const elements = {
 export const handlers = {
   scroll: () => {
     const scrolled = window.scrollY > config.scroll.threshold;
-    const { scrollTopBtn, header, navLinks, sections } = elements;
+    const { header, navLinks, sections } = elements;
     // Header Shadow
     if (header) {
       header.classList.toggle('shadow-lg', scrolled);
@@ -106,7 +104,6 @@ export function initializeMobileMenu() {
 // Header hide/show and scroll-to-top functionality
 export function initializeScrollEvents() {
   const header = elements.header;
-  const scrollButtons = elements.scrollTopButtons; // Tüm scroll butonları
   let lastScroll = 0, scrollTimeout;
   window.addEventListener('scroll', () => {
     if (scrollTimeout) cancelAnimationFrame(scrollTimeout);
@@ -121,24 +118,18 @@ export function initializeScrollEvents() {
         if (current > lastScroll && current > 100) header.style.transform = 'translateY(-100%)';
         else header.style.transform = 'translateY(0)';
       }
-      // Tüm scroll butonlarını güncelle
-      scrollButtons.forEach(scrollBtn => {
-        if (scrollBtn) {
-          if (current > 500) {
-            scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
-            scrollBtn.classList.add('opacity-100', 'pointer-events-auto');
-          } else {
-            scrollBtn.classList.add('opacity-0', 'pointer-events-none');
-            scrollBtn.classList.remove('opacity-100', 'pointer-events-auto');
-          }
+      // Tüm scroll-top-button butonlarını güncelle
+      document.querySelectorAll('.scroll-top-button').forEach(scrollBtn => {
+        if (current > 500) {
+          scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
+          scrollBtn.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+          scrollBtn.classList.add('opacity-0', 'pointer-events-none');
+          scrollBtn.classList.remove('opacity-100', 'pointer-events-auto');
         }
       });
       lastScroll = current;
     });
-  });
-  // Tüm scroll butonlarına event listener ekle
-  scrollButtons.forEach(scrollBtn => {
-    scrollBtn?.addEventListener('click', handlers.scrollTop);
   });
 }
 
