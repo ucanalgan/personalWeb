@@ -29,7 +29,8 @@ const elements = {
   mobileMenu: document.querySelector('.mobile-menu'),
   mobileMenuBtn: document.querySelector('.mobile-menu-btn'),
   mobileMenuCloseBtn: document.querySelector('.mobile-menu-close'),
-  scrollTopBtn: document.querySelector('#scroll-top'),
+  scrollTopBtn: document.querySelector('#scroll-top'), // Ana scroll button (footer'daki)
+  scrollTopButtons: document.querySelectorAll('.scroll-top-button, #scroll-top'), // Tüm scroll butonları
   navLinks: document.querySelectorAll('.nav-link'),
   sections: document.querySelectorAll('section[id]'),
   skillCards: document.querySelectorAll('.skill-card'),
@@ -89,11 +90,15 @@ const handlers = {
   scroll: utils.throttle(() => {
     const scrolled = window.scrollY > config.scroll.threshold;
     
-    // Scroll Top Button
-    if (elements.scrollTopBtn) {
-      elements.scrollTopBtn.classList.toggle('opacity-100', scrolled);
-      elements.scrollTopBtn.classList.toggle('pointer-events-auto', scrolled);
-    }
+    // Scroll Top Buttons - Tüm scroll button'larını güncelle
+    elements.scrollTopButtons.forEach(btn => {
+      if (btn) {
+        btn.classList.toggle('opacity-100', scrolled);
+        btn.classList.toggle('pointer-events-auto', scrolled);
+        btn.classList.toggle('opacity-0', !scrolled);
+        btn.classList.toggle('pointer-events-none', !scrolled);
+      }
+    });
     
     // Header Shadow
     if (elements.header) {
@@ -269,10 +274,12 @@ const MainApp = (() => {
       link.addEventListener('click', () => handlers.toggleMobileMenu(false));
     });
     
-    // Scroll to top button
-    if (elements.scrollTopBtn) {
-      elements.scrollTopBtn.addEventListener('click', handlers.scrollTop);
-    }
+    // Scroll to top buttons - Tüm scroll butonlarına event listener ekle
+    elements.scrollTopButtons.forEach(btn => {
+      if (btn) {
+        btn.addEventListener('click', handlers.scrollTop);
+      }
+    });
     
     // Filter buttons
     document.querySelectorAll('[data-filter]').forEach(button => {
