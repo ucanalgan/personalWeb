@@ -1,6 +1,7 @@
 import './style.css';
 import * as utils from './utils.js';
 import { initFormValidation } from './form-handler.js';
+import { searchProjects } from './github.js';
 import {
   elements,
   handlers,
@@ -103,6 +104,9 @@ export function initApp() {
 
   // Initialize form validation on the contact form
   initFormValidation('#contact-form');
+
+  // Initialize project search functionality
+  initializeProjectSearch();
 
   // Fetch GitHub data
   const githubUsername = 'ucanalgan';
@@ -682,17 +686,144 @@ function initializeLoadingScreen() {
 
 // Performance Monitoring
 function initializePerformanceMonitoring() {
-  // Monitor page load performance
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const perfData = performance.getEntriesByType('navigation')[0];
-      if (perfData) {
-        console.log('Page Load Performance:', {
-          domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.navigationStart),
-          loadComplete: Math.round(perfData.loadEventEnd - perfData.navigationStart),
-          firstPaint: Math.round(performance.getEntriesByType('paint')[0]?.startTime || 0)
-        });
+  // Monitor key performance metrics
+  if ('performance' in window) {
+    window.addEventListener('load', () => {
+      const paintTimings = performance.getEntriesByType('paint');
+      const fcpEntry = paintTimings.find(entry => entry.name === 'first-contentful-paint');
+      
+      if (fcpEntry) {
+        console.log(`First Contentful Paint: ${fcpEntry.startTime.toFixed(2)}ms`);
       }
-    }, 0);
+    });
+  }
+}
+
+// Initialize project search functionality
+function initializeProjectSearch() {
+  const searchInput = document.getElementById('project-search');
+  if (!searchInput) return;
+
+  // Add debounced search functionality
+  let searchTimeout;
+  
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.trim();
+    
+    // Clear previous timeout
+    clearTimeout(searchTimeout);
+    
+    // Add visual feedback for search
+    searchInput.classList.add('searching');
+    
+    // Debounce search to avoid too many calls
+    searchTimeout = setTimeout(() => {
+      // Remove visual feedback
+      searchInput.classList.remove('searching');
+      
+      // Perform search
+      if (typeof searchProjects === 'function') {
+        searchProjects(searchTerm);
+      }
+      
+      // Update URL with search query (optional)
+      if (searchTerm) {
+        const url = new URL(window.location);
+        url.searchParams.set('search', searchTerm);
+        window.history.replaceState({}, '', url);
+      } else {
+        const url = new URL(window.location);
+        url.searchParams.delete('search');
+        window.history.replaceState({}, '', url);
+      }
+    }, 300); // 300ms debounce
   });
+
+  // Clear search on Escape key
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.blur();
+    }
+  });
+
+  // Initialize search from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialSearch = urlParams.get('search');
+  if (initialSearch) {
+    searchInput.value = initialSearch;
+    searchInput.dispatchEvent(new Event('input'));
+  }
+
+  // Add search highlight functionality
+  addSearchHighlighting();
+}
+
+// Add search highlighting functionality
+function addSearchHighlighting() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .search-highlight {
+      background-color: #64ffda;
+      color: #0a192f;
+      padding: 1px 2px;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+    
+    #project-search.searching {
+      border-color: #64ffda !important;
+      box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2) !important;
+    }
+    
+    .project-card {
+      background: linear-gradient(145deg, #112240 0%, #0a192f 100%);
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(100, 255, 218, 0.3);
+      box-shadow: 0 10px 40px rgba(100, 255, 218, 0.1);
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #64ffda, #4fc3f7);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover::before {
+      opacity: 1;
+    }
+    
+    .tech-tag {
+      background: rgba(100, 255, 218, 0.1);
+      color: #64ffda;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .tech-tag:hover {
+      background: rgba(100, 255, 218, 0.2);
+      border-color: rgba(100, 255, 218, 0.4);
+    }
+  `;
+  document.head.appendChild(style);
 } 

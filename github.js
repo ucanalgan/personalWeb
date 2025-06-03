@@ -6,6 +6,10 @@ const CACHE_DURATION = 60 * 60 * 1000; // Cache duration: 1 hour in milliseconds
 const API_TIMEOUT = 10000; // API timeout: 10 seconds
 const USE_SAMPLE_DATA = false; // Use real GitHub API data
 
+// Global variables for search functionality
+let allProjects = []; // Store all projects for searching
+let currentSearchTerm = ''; // Current search term
+
 // Sample data for fallback (updated with real projects)
 const SAMPLE_PROJECTS = [
   {
@@ -154,6 +158,9 @@ export async function fetchGitHubProjects() {
       // Save to cache
       cache.projects.data = data;
       cache.projects.timestamp = now;
+      
+      // Store projects for search functionality
+      allProjects = data;
       
       return data;
     } else {
@@ -676,41 +683,12 @@ async function loadGitHubProjects(container) {
       return;
     }
     
-    container.innerHTML = '';
+    // Store projects for search functionality
+    allProjects = projects;
     
-    projects.forEach(project => {
-      if (!project) return;
-      const projectCard = document.createElement('div');
-      projectCard.className = 'project-card';
-      projectCard.dataset.technologies = project.topics ? project.topics.join(',') : '';
-      projectCard.innerHTML = `
-        <h3 class="text-primary font-semibold mb-2">${project.name || 'Unnamed Project'}</h3>
-        <p class="text-gray-400 text-sm ${project.description ? '' : 'italic opacity-60'} mb-4">
-          ${project.description || 'Açıklama eklenmemiş.'}
-        </p>
-        <div class="mt-auto flex space-x-2">
-          <span class="tech-tag">⭐ ${project.stargazers_count || 0}</span>
-          <span class="tech-tag">🍴 ${project.forks_count || 0}</span>
-        </div>
-      `;
-      // Add tech tags
-      if (project.topics && project.topics.length) {
-        const tagsContainer = document.createElement('div');
-        tagsContainer.className = 'mt-2 flex flex-wrap gap-2';
-        project.topics.forEach(topic => {
-          const tag = document.createElement('span');
-          tag.className = 'tech-tag cursor-pointer bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white';
-          tag.textContent = topic;
-          tag.dataset.filter = topic;
-          tag.addEventListener('click', () => {
-            filterProjects(topic === currentFilter ? null : topic);
-          });
-          tagsContainer.appendChild(tag);
-        });
-        projectCard.appendChild(tagsContainer);
-      }
-      container.appendChild(projectCard);
-    });
+    // Display all projects initially
+    displayProjects(projects);
+    
   } catch (error) {
     console.error('Error loading GitHub projects:', error);
     container.innerHTML = `
@@ -763,40 +741,11 @@ async function loadGitHubActivity(container) {
 // Load sample projects (for fallback)
 function loadSampleProjects(container) {
   try {
-    container.innerHTML = '';
+    // Store sample projects for search functionality
+    allProjects = SAMPLE_PROJECTS;
     
-    SAMPLE_PROJECTS.forEach(project => {
-      const projectCard = document.createElement('div');
-      projectCard.className = 'project-card';
-      projectCard.dataset.technologies = project.topics ? project.topics.join(',') : '';
-      projectCard.innerHTML = `
-        <h3 class="text-primary font-semibold mb-2">${project.name || 'Unnamed Project'}</h3>
-        <p class="text-gray-400 text-sm ${project.description ? '' : 'italic opacity-60'} mb-4">
-          ${project.description || 'Açıklama eklenmemiş.'}
-        </p>
-        <div class="mt-auto flex space-x-2">
-          <span class="tech-tag">⭐ ${project.stargazers_count || 0}</span>
-          <span class="tech-tag">🍴 ${project.forks_count || 0}</span>
-        </div>
-      `;
-      // Add tech tags for sample data
-      if (project.topics && project.topics.length) {
-        const tagsContainer = document.createElement('div');
-        tagsContainer.className = 'mt-2 flex flex-wrap gap-2';
-        project.topics.forEach(topic => {
-          const tag = document.createElement('span');
-          tag.className = 'tech-tag cursor-pointer bg-gray-700 dark:bg-slate-600 px-2 py-1 rounded-full text-xs text-white';
-          tag.textContent = topic;
-          tag.dataset.filter = topic;
-          tag.addEventListener('click', () => {
-            filterProjects(topic === currentFilter ? null : topic);
-          });
-          tagsContainer.appendChild(tag);
-        });
-        projectCard.appendChild(tagsContainer);
-      }
-      container.appendChild(projectCard);
-    });
+    // Display all sample projects initially
+    displayProjects(SAMPLE_PROJECTS);
     
     // Add note about sample data
     const noteElement = document.createElement('div');
@@ -857,4 +806,177 @@ function loadSampleActivities(container) {
     console.error('Error loading sample activities:', error);
     container.innerHTML = '<p class="text-center text-red-400 py-10">Error loading activities. Please try again later.</p>';
   }
+}
+
+// Search functionality
+export function searchProjects(term) {
+  currentSearchTerm = term;
+  filterProjects(term);
+}
+
+// Filter projects
+export function filterProjects(term) {
+  if (!term) {
+    // If no term is provided, show all projects
+    displayProjects(allProjects);
+    return;
+  }
+
+  const searchTerm = term.toLowerCase();
+  
+  // Filter projects based on the search term
+  const filteredProjects = allProjects.filter(project => {
+    const nameMatch = project.name && project.name.toLowerCase().includes(searchTerm);
+    const descMatch = project.description && project.description.toLowerCase().includes(searchTerm);
+    const topicsMatch = project.topics && project.topics.some(topic => 
+      topic.toLowerCase().includes(searchTerm)
+    );
+    const languageMatch = project.language && project.language.toLowerCase().includes(searchTerm);
+    
+    return nameMatch || descMatch || topicsMatch || languageMatch;
+  });
+
+  displayProjects(filteredProjects);
+  
+  // Update search result info
+  updateSearchInfo(filteredProjects.length, allProjects.length, term);
+}
+
+// Update search information
+function updateSearchInfo(filteredCount, totalCount, searchTerm) {
+  // Remove existing search info
+  const existingInfo = document.querySelector('.search-info');
+  if (existingInfo) {
+    existingInfo.remove();
+  }
+  
+  if (searchTerm && searchTerm.trim()) {
+    const container = document.getElementById('projects-container');
+    if (container) {
+      const searchInfo = document.createElement('div');
+      searchInfo.className = 'search-info col-span-full mb-6 p-4 bg-gray-800/30 border border-gray-700/50 rounded-xl';
+      searchInfo.innerHTML = `
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <i class="ri-search-line text-primary text-lg"></i>
+            <span class="text-gray-300">
+              Found <span class="text-primary font-semibold">${filteredCount}</span> 
+              of <span class="text-gray-400">${totalCount}</span> projects 
+              matching "<span class="text-primary font-medium">${searchTerm}</span>"
+            </span>
+          </div>
+          <button onclick="document.getElementById('project-search').value = ''; document.getElementById('project-search').dispatchEvent(new Event('input'));" 
+                  class="text-gray-400 hover:text-primary transition-colors duration-200 text-sm flex items-center gap-1">
+            <i class="ri-close-line"></i>
+            Clear
+          </button>
+        </div>
+      `;
+      container.insertBefore(searchInfo, container.firstChild);
+    }
+  }
+}
+
+// Display projects
+export function displayProjects(projects) {
+  const container = document.getElementById('projects-container');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  if (projects.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full text-center py-12">
+        <div class="w-16 h-16 bg-gray-800/50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <i class="ri-search-line text-gray-500 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-300 mb-2">No projects found</h3>
+        <p class="text-gray-500">Try adjusting your search terms or filters</p>
+      </div>
+    `;
+    return;
+  }
+
+  projects.forEach(project => {
+    if (!project) return;
+    const projectCard = document.createElement('div');
+    projectCard.className = 'project-card group cursor-pointer';
+    projectCard.dataset.technologies = project.topics ? project.topics.join(',') : '';
+    
+    projectCard.innerHTML = `
+      <div class="flex items-start justify-between mb-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-primary/20 to-blue-500/20 rounded-xl flex items-center justify-center group-hover:from-primary/30 group-hover:to-blue-500/30 transition-all duration-300">
+          <i class="ri-folder-3-line text-primary text-xl"></i>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="tech-tag">⭐ ${project.stargazers_count || 0}</span>
+          <span class="tech-tag">🍴 ${project.forks_count || 0}</span>
+        </div>
+      </div>
+      
+      <h3 class="text-xl font-bold text-gray-200 mb-3 group-hover:text-primary transition-colors duration-300">
+        ${project.name || 'Unnamed Project'}
+      </h3>
+      
+      <p class="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
+        ${project.description || 'No description available.'}
+      </p>
+      
+      <div class="flex items-center justify-between mt-auto">
+        <div class="flex items-center gap-2">
+          ${project.language ? `
+            <span class="tech-tag">
+              <i class="ri-code-line text-xs"></i>
+              ${project.language}
+            </span>
+          ` : ''}
+        </div>
+        
+        <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="${project.html_url}" target="_blank" rel="noopener noreferrer" 
+             class="w-8 h-8 bg-gray-800/50 hover:bg-primary/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+             onclick="event.stopPropagation()">
+            <i class="ri-external-link-line text-gray-400 hover:text-primary text-sm"></i>
+          </a>
+          ${project.clone_url ? `
+            <button onclick="event.stopPropagation(); navigator.clipboard.writeText('${project.clone_url}')" 
+                    class="w-8 h-8 bg-gray-800/50 hover:bg-primary/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                    title="Copy clone URL">
+              <i class="ri-file-copy-line text-gray-400 hover:text-primary text-sm"></i>
+            </button>
+          ` : ''}
+        </div>
+      </div>
+    `;
+    
+    // Add tech tags
+    if (project.topics && project.topics.length) {
+      const tagsContainer = document.createElement('div');
+      tagsContainer.className = 'mt-4 flex flex-wrap gap-2';
+      project.topics.slice(0, 5).forEach(topic => { // Limit to 5 topics
+        const tag = document.createElement('span');
+        tag.className = 'tech-tag cursor-pointer hover:bg-primary/20 hover:text-primary transition-all duration-200';
+        tag.textContent = topic;
+        tag.dataset.filter = topic;
+        tag.addEventListener('click', (e) => {
+          e.stopPropagation();
+          // Trigger search with the topic
+          const searchInput = document.getElementById('project-search');
+          if (searchInput) {
+            searchInput.value = topic;
+            searchInput.dispatchEvent(new Event('input'));
+          }
+        });
+        tagsContainer.appendChild(tag);
+      });
+      projectCard.appendChild(tagsContainer);
+    }
+    
+    // Add click handler to open project
+    projectCard.addEventListener('click', () => {
+      window.open(project.html_url, '_blank', 'noopener,noreferrer');
+    });
+    
+    container.appendChild(projectCard);
+  });
 } 
