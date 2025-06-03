@@ -55,8 +55,11 @@ export function initApp() {
   // Global scroll listener
   window.addEventListener('scroll', handlers.scroll);
 
-  // Scroll to top button
-  document.querySelectorAll('.scroll-top-button').forEach(btn => {
+  // Scroll to top button - hem ID hem de class için
+  elements.scrollTopBtn?.addEventListener('click', handlers.scrollTop);
+  
+  // Tüm scroll-top buttonları için event listener ekle
+  document.querySelectorAll('#scroll-top, .scroll-top-button').forEach(btn => {
     btn.addEventListener('click', handlers.scrollTop);
   });
 

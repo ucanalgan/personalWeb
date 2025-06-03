@@ -548,10 +548,12 @@
   }
 
   /* Enhanced scroll to top button */
+  #scroll-top,
   .scroll-top-button {
     @apply transition-all duration-300;
   }
 
+  #scroll-top:hover,
   .scroll-top-button:hover {
     transform: translateY(-2px) scale(1.1);
   }
