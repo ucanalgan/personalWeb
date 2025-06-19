@@ -6,7 +6,7 @@
 [![GitHub Repository](https://img.shields.io/badge/📁_Repository-View_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ucanalgan/personalWeb)
 [![License: MIT](https://img.shields.io/badge/📜_License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-[![Vite](https://img.shields.io/badge/⚡_Vite-5.0+-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Vite](https://img.shields.io/badge/⚡_Vite-5.4+-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/🎨_Tailwind-3.4+-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![GSAP](https://img.shields.io/badge/🎭_GSAP-3.12+-88CE02?style=for-the-badge&logo=greensock&logoColor=white)](https://greensock.com/gsap/)
 [![JavaScript ES6+](https://img.shields.io/badge/⚡_JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -51,8 +51,8 @@ Bu proje, **modern web teknolojileri** kullanılarak geliştirilmiş, **tam resp
 - **🗜️ Advanced Minification**: Terser ile console log temizleme ve kod optimizasyonu
 - **⚡ Critical CSS**: Hızlı ilk yükleme için kritik CSS çıkarımı
 - **🔄 Lazy Loading**: Ağır componentlerin ertelenmiş yüklemesi
-- **🎯 ES2015 Target**: Modern browser uyumluluğu
-- **📦 Bundle Splitting**: Modüler kod yapısı ve optimize chunking
+- **🎯 ES2020 Target**: Modern browser uyumluluğu (ES2015'den güncellendi)
+- **📦 Bundle Splitting**: Gelişmiş modüler kod yapısı ve optimize chunking
 
 ### 🎭 **Professional-Grade Animations**
 - **🎪 GSAP Integration**: ScrollTrigger ile profesyonel animasyonlar
@@ -109,43 +109,52 @@ Bu proje, **modern web teknolojileri** kullanılarak geliştirilmiş, **tam resp
 ### **⚡ Build Tools & Development Environment**
 
 ```javascript
-// 🔧 Vite Configuration Highlights
-export default {
+// 🔧 Vite Configuration Highlights (Güncellenmiş)
+export default defineConfig({
   base: '/personalWeb/',
   build: {
-    target: 'es2015',
+    target: 'es2020', // Upgraded from es2015
     minify: 'terser',
     terserOptions: {
       compress: { 
-        drop_console: true,
+        drop_console: false, // Debugging enabled
         drop_debugger: true,
         pure_funcs: ['console.log']
       }
     },
     rollupOptions: {
-      input: { main: 'index.html' },
-      output: {
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
-      }
-    }
-  },
-  server: {
-    port: 3000,
-    open: true,
-    cors: true
+      // Advanced manual chunking strategy
+      manualChunks: (id) => {
+        // Vendor libraries chunking
+        if (id.includes('node_modules')) {
+          if (id.includes('gsap') || id.includes('aos')) {
+            return 'animation-vendor';
+          }
+          if (id.includes('crypto-js')) {
+            return 'crypto-vendor';
+          }
+          return 'vendor';
+        }
+        
+        // Application code chunking (modüler yapı)
+        if (id.includes('/js/utils/')) return 'app-utils';
+        if (id.includes('/js/modules/')) return 'app-modules';
+        if (id.includes('/js/services/')) return 'app-services';
+        if (id.includes('/js/security/')) return 'app-security';
+        if (id.includes('/components/')) return 'app-components';
+        if (id.includes('/app.js') || id.includes('/theme.js')) return 'app-core';
   }
 }
+  }
+});
 ```
 
 ### **🎨 Animation & Interaction Libraries**
 
 | Library | Version | Features | Implementation |
 |:---:|:---:|:---:|:---:|
-| **GSAP** | 3.12+ | Professional animations | ScrollTrigger, Power easing |
-| **Framer Motion** | 10.16+ | React-like animations | Advanced transitions |
-| **Three.js** | 0.159+ | 3D Graphics | Background effects |
+| **GSAP** | 3.12.5+ | Professional animations | ScrollTrigger, Power easing |
+| **AOS** | 2.3.4+ | Animate on scroll | Lightweight animations |
 | **CSS Animations** | Native | Custom keyframes | Float, pulse effects |
 
 ### **🌐 External Services & APIs**
@@ -157,53 +166,128 @@ export default {
 | **Google Fonts** | Typography | Plus Jakarta Sans, Space Grotesk | No limit |
 | **GitHub Pages** | Hosting | Static site deployment | Unlimited |
 
+### **🔧 Development Enhancements**
+
+| Tool | Version | Purpose | Features |
+|:---:|:---:|:---:|:---:|
+| **ESLint** | 9.0.0+ | Code quality | Modern linting rules |
+| **Prettier** | 3.0.0+ | Code formatting | Consistent style |
+| **Husky** | 9.0.0+ | Git hooks | Pre-commit & pre-push validation |
+| **Lint-Staged** | 15.0.0+ | Staged linting | Optimize commit performance |
+
 ---
 
-## 📂 **Detailed Project Architecture**
+## 📂 **Güncellenmiş Proje Mimarisi**
 
 ```
 personalWeb/
-├── 📄 index.html              # 🏠 Main HTML (1572 lines)
-│                              # ✅ Semantic HTML5 structure
-│                              # ✅ Advanced meta tags & SEO
-│                              # ✅ Responsive design elements
-│                              # ✅ Open Graph & Twitter Cards
+├── 📄 index.html                   # 🏠 Ana HTML
 │
-├── 🎨 **CSS Architecture**
-│   ├── style.css              # 🎨 Compiled Tailwind (743 lines)
-│   ├── input.css              # ⚡ Tailwind directives (9 lines)
-│   └── tailwind.config.js     # ⚙️ Tailwind config (34 lines)
+├── 🎨 **Modüler Bileşen Yapısı**
+│   ├── components/                 # 📦 Bileşen organizasyonu
+│   │   ├── common/                 # 🧱 Ortak bileşenler
+│   │   │   ├── ActivityCard.html   # 📊 Aktivite kartı
+│   │   │   ├── ButtonPrimary.html  # 🔘 Ana buton
+│   │   │   ├── ProjectCard.html    # 📱 Proje kartı
+│   │   │   ├── SocialIcons.html    # 📲 Sosyal medya ikonları
+│   │   │   └── ThemeToggle.html    # 🌓 Tema değiştirici
+│   │   ├── layout/                 # 📐 Düzen bileşenleri
+│   │   │   ├── Header.html         # 📑 Sayfa başlığı
+│   │   │   └── Footer.html         # 📑 Sayfa altlığı
+│   │   ├── sections/               # 📚 Sayfa bölümleri
+│   │   │   ├── aboutSection.html   # 👤 Hakkında
+│   │   │   ├── contactSection.html # ✉️ İletişim
+│   │   │   ├── footerSection.html  # 📑 Alt bölüm
+│   │   │   ├── githubSection.html  # 📊 GitHub bölümü
+│   │   │   ├── heroSection.html    # 🏆 Ana bölüm
+│   │   │   └── skillsSection.html  # 🛠️ Yetenekler
+│   │   └── ui/                     # 🎛️ UI elemanları
+│   │       └── buttons.html        # 🔘 Buton çeşitleri
 │
-├── ⚡ **JavaScript Modules**
-│   ├── main.js                # 🚀 Entry point (304 lines)
-│   ├── app.js                 # 🎯 Core application (699 lines)
-│   ├── animations.js          # 🎭 GSAP animations (168 lines)
-│   ├── github.js              # 🐙 GitHub API (861 lines)
-│   ├── form-handler.js        # 📧 Form validation (283 lines)
-│   ├── theme.js               # 🌙 Theme management (115 lines)
-│   ├── dom.js                 # 🏗️ DOM utilities (233 lines)
-│   └── utils.js               # 🔧 Helper functions (56 lines)
+├── ⚡ **Modüler JavaScript**
+│   ├── js/                         # 📂 JavaScript organizasyonu
+│   │   ├── app.js                  # 🚀 Uygulama başlatıcı
+│   │   ├── animations.js           # 🎭 GSAP animasyonları
+│   │   ├── github.js               # 🐙 GitHub entegrasyonu
+│   │   ├── theme.js                # 🌓 Tema yönetimi
+│   │   ├── utils.js                # 🔧 Yardımcı fonksiyonlar
+│   │   ├── components/             # 📦 Component-specific JS
+│   │   │   └── githubDisplay.js    # 📊 GitHub görüntüleme
+│   │   ├── data/                   # 📊 Statik veri
+│   │   ├── modules/                # 🧩 Modül sistemi
+│   │   │   ├── componentLoader.js  # 📥 Bileşen yükleyici
+│   │   │   ├── componentManager.js # 🧠 Bileşen yönetimi
+│   │   │   └── componentRegistry.js# 📋 Bileşen kaydı
+│   │   ├── security/               # 🔐 Güvenlik modülleri
+│   │   │   ├── csrfManager.js      # 🛡️ CSRF yönetimi
+│   │   │   └── securityConfig.js   # 🔒 Güvenlik yapılandırma
+│   │   ├── services/               # 🔌 Servis entegrasyonları
+│   │   │   ├── cacheManager.js     # 💾 Önbellek yönetimi
+│   │   │   └── githubApi.js        # 🔌 GitHub API servisi
+│   │   └── utils/                  # 🔧 Yardımcı modüller
+│   │       ├── cache.js            # 💾 Önbellek yardımcısı
+│   │       ├── componentHelpers.js # 🛠️ Bileşen yardımcıları
+│   │       ├── componentLoader.js  # 📥 Bileşen yükleme
+│   │       └── errorBoundary.js    # 🐛 Hata yakalama
 │
-├── 🔧 **Configuration Files**
-│   ├── vite.config.js         # ⚡ Vite setup (24 lines)
-│   ├── postcss.config.js      # 🎨 PostCSS config (7 lines)
-│   ├── package.json           # 📦 Dependencies (33 lines)
-│   ├── package-lock.json      # 🔒 Lock file (6709 lines)
-│   └── manifest.json          # 📱 PWA manifest (27 lines)
+├── 🎨 **CSS & Styling**
+│   ├── input.css                   # 📥 Tailwind direktifleri
+│   ├── style.css                   # 📤 Derlenmiş CSS
+│   ├── styles/                     # 🎭 Stil organizasyonu
+│   │   ├── base.css               # 🧱 Temel stiller
+│   │   ├── components.css         # 🧩 Bileşen stilleri
+│   │   ├── critical.css           # ⚡ Kritik yükleme CSS
+│   │   ├── layout.css             # 📏 Düzen stilleri
+│   │   └── themes.css             # 🎨 Tema stilleri
 │
-├── 📊 **Templates & Build**
-│   ├── github-section.html    # 🐙 GitHub template (37 lines)
-│   ├── dist/                  # 🏗️ Production build
-│   └── assets/                # 📁 Built assets
+├── 🔧 **Yapılandırma Dosyaları**
+│   ├── vite.config.js             # ⚡ Vite yapılandırma (güncel)
+│   ├── postcss.config.js          # 🎨 PostCSS yapılandırma
+│   ├── tailwind.config.js         # 🎨 Tailwind yapılandırma
+│   ├── .eslintrc.js               # 🧹 ESLint yapılandırma (yeni)
+│   ├── .prettierrc                # 💅 Prettier yapılandırma (yeni)
+│   ├── package.json               # 📦 Bağımlılık yönetimi
+│   ├── package-lock.json          # 🔒 Bağımlılık kilidi
+│   └── manifest.json              # 📱 PWA manifest
 │
 ├── 📋 **Documentation**
-│   ├── README.md              # 📚 This documentation
-│   ├── LICENSE                # ⚖️ MIT license (21 lines)
-│   └── .gitignore            # 🚫 Git ignore rules (26 lines)
-│
-└── 🔒 **Version Control**
-    └── .git/                  # 📝 Git repository metadata
+│   ├── README.md                   # 📚 Proje dokümantasyonu
+│   └── LICENSE                     # ⚖️ MIT lisansı
 ```
+
+---
+
+## 🔄 **Güncel Değişiklikler ve İyileştirmeler**
+
+### **📦 Modüler Mimari Yenilikleri**
+- **🧱 Component-Based File Structure**: HTML bileşenleri modüler organizasyon ile ayrıştırıldı
+- **📂 Enhanced Directory Structure**: Daha düzenli ve ölçeklenebilir dosya organizasyonu
+- **🧩 Component Registry System**: Bileşenlerin merkezi kayıt ve yönetim sistemi
+- **📥 Dynamic Component Loading**: Bileşenlerin ihtiyaç anında yüklenmesi
+- **🔍 Code Splitting**: Daha verimli JavaScript yüklemesi için gelişmiş kod bölme
+
+### **🔧 Teknik Geliştirmeler**
+- **🔒 Enhanced Security**: CSRF yönetimi ve güvenlik yapılandırmaları eklendi
+- **💾 Advanced Caching**: Performans için API yanıtları ve bileşen önbelleği
+- **🧹 Code Quality Tools**: ESLint ve Prettier yapılandırması eklendi
+- **🔀 Git Hooks**: Husky ve lint-staged entegrasyonu ile kod kalite kontrolü
+- **🎯 ES2020 Target**: Modern JavaScript özellikleri için hedef yükseltildi
+- **🛡️ Error Boundaries**: Daha sağlam hata yakalama ve kurtarma mekanizmaları
+
+### **⚡ Performans İyileştirmeleri**
+- **📊 Bundle Analysis**: Chunk dağılımı ve optimize kod bölme
+- **🎯 Critical CSS**: İlk yükleme için kritik CSS ayırma
+- **📉 Reduced Bundle Size**: Minifikasyon ve tree-shaking optimizasyonları
+- **🚀 Lazy Loading**: Gecikmeli bileşen ve resim yüklemesi
+- **🗜️ Code Splitting**: Daha verimli kod bölümleme stratejileri
+- **📱 Mobile Performance**: Mobil cihazlarda optimize performans
+
+### **🧪 Test ve Kalite Kontrol**
+- **🧹 ESLint Integration**: Kod kalite kontrolü
+- **💅 Prettier Integration**: Tutarlı kod formatlaması
+- **🔀 Pre-commit Hooks**: Commit öncesi kod kalite kontrolü
+- **🔍 Pre-push Validation**: Push öncesi lint ve build kontrolü
+- **🤖 Automated Validation**: Otomatik kod formatı ve linting
 
 ---
 
@@ -243,371 +327,41 @@ personalWeb/
 }
 ```
 
-### **⚙️ Advanced Tailwind Configuration**
+### **🚀 Component Structure**
 
 ```javascript
-// 🎨 tailwind.config.js - Comprehensive Setup
-module.exports = {
-  content: ['./index.html', './*.js', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          50: '#f0fdfc',
-          100: '#ccfbf1',
-          500: '#64ffda',
-          600: '#4fc3f7',
-          700: '#00acc1',
-          900: '#0a192f'
-        },
-        dark: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          800: '#1e293b',
-          900: '#0a192f'
-        }
-      },
-      fontFamily: {
-        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
-      },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'bounce-slow': 'bounce 3s infinite',
-        'spin-slow': 'spin 8s linear infinite',
-        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite'
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' }
-        },
-        glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(100, 255, 218, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(100, 255, 218, 0.6)' }
-        }
-      },
-      backdropBlur: {
-        xs: '2px',
-        sm: '4px',
-        md: '12px',
-        lg: '16px',
-        xl: '24px'
-      }
-    }
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/aspect-ratio')
-  ]
+// 🧩 Modüler Component Loader Örneği
+export class ComponentLoader {
+  static getComponentPath(componentName) {
+    const componentMap = {
+      // Layout components
+      'header': './components/layout/Header.html',
+      'footer': './components/layout/Footer.html',
+      
+      // Section components
+      'heroSection': './components/sections/heroSection.html',
+      'aboutSection': './components/sections/aboutSection.html',
+      'skillsSection': './components/sections/skillsSection.html',
+      'githubSection': './components/sections/githubSection.html',
+      'contactSection': './components/sections/contactSection.html',
+      'footerSection': './components/sections/footerSection.html',
+      
+      // Common components
+      'projectCard': './components/common/ProjectCard.html',
+      'activityCard': './components/common/ActivityCard.html',
+      'socialIcons': './components/common/SocialIcons.html',
+      'themeToggle': './components/common/ThemeToggle.html',
+      'buttonPrimary': './components/common/ButtonPrimary.html'
+    };
+    
+    return componentMap[componentName] || `./components/sections/${componentName}.html`;
+  }
 }
 ```
 
 ---
 
-## 🚀 **Installation & Development Guide**
-
-### **🔧 System Requirements**
-
-| Requirement | Minimum | Recommended | Notes |
-|:---:|:---:|:---:|:---:|
-| **Node.js** | v14.0+ | v18.0+ | LTS version preferred |
-| **npm** | v6.0+ | v8.0+ | Or Yarn v1.22+ |
-| **Browser** | Chrome 90+ | Latest | ES2015 support required |
-| **Git** | v2.20+ | Latest | For version control |
-| **RAM** | 4GB | 8GB+ | For smooth development |
-| **Storage** | 500MB | 2GB+ | Including node_modules |
-
-### **⚡ Quick Start Guide**
-
-```bash
-# 🚀 1. Clone the repository
-git clone https://github.com/ucanalgan/personalWeb.git
-
-# 📁 2. Navigate to project directory
-cd personalWeb
-
-# 🔍 3. Verify Node.js version
-node --version  # Should be v14.0+
-npm --version   # Should be v6.0+
-
-# 📦 4. Install dependencies (choose one)
-npm install          # Using npm
-# OR
-yarn install        # Using yarn
-# OR
-pnpm install        # Using pnpm
-
-# ⚡ 5. Start development server
-npm run dev         # Development with hot reload
-# OR
-yarn dev           # Alternative command
-
-# 🌐 6. Open in browser
-# 🔗 http://localhost:3000 (opens automatically)
-```
-
-### **📜 Available Scripts Reference**
-
-```bash
-# 🔧 Development Commands
-npm run dev          # Start development server with HMR
-npm run dev:host     # Start dev server accessible from network
-npm run dev:debug    # Start with debugging enabled
-
-# 🏗️ Build Commands
-npm run build        # Create production build
-npm run build:analyze # Build with bundle analyzer
-npm run build:stats  # Generate build statistics
-
-# 👀 Preview Commands
-npm run preview      # Preview production build locally
-npm run preview:network # Preview accessible from network
-
-# 🚀 Deployment Commands
-npm run deploy       # Deploy to GitHub Pages
-npm run deploy:force # Force deploy (ignores cache)
-
-# 🧹 Maintenance Commands
-npm run clean        # Clean dist folder
-npm run update       # Update dependencies
-npm run audit        # Security audit
-```
-
-### **🔧 Advanced Development Setup**
-
-```bash
-# 🛠️ Development with specific configurations
-npm run dev -- --port 4000          # Custom port
-npm run dev -- --host 0.0.0.0       # External access
-npm run dev -- --open /about        # Open specific page
-
-# 📊 Performance analysis
-npm run build:analyze                # Bundle size analysis
-npm run lighthouse                   # Performance audit
-npm run perf                        # Performance testing
-
-# 🧪 Testing & Quality
-npm run lint                        # ESLint check
-npm run lint:fix                    # Auto-fix linting issues
-npm run format                      # Prettier formatting
-npm run type-check                  # TypeScript checking
-```
-
----
-
-## ⚙️ **Configuration & Customization**
-
-### **🐙 GitHub Integration Setup**
-
-```javascript
-// 📁 app.js - GitHub Configuration
-const githubConfig = {
-  username: 'ucanalgan',              // 👤 Your GitHub username
-  apiBase: 'https://api.github.com',  // 🌐 GitHub API endpoint
-  reposPerPage: 6,                    // 📊 Repositories to show
-  activitiesLimit: 5,                 // 📈 Recent activities count
-  cacheTime: 300000,                  // ⏰ Cache duration (5 min)
-  retryAttempts: 3,                   // 🔄 Retry failed requests
-  timeout: 10000                      // ⏱️ Request timeout (10s)
-};
-
-// 🔐 Optional: Personal Access Token for higher rate limits
-const githubToken = 'your_personal_access_token'; // Optional
-```
-
-### **🎭 Animation Configuration**
-
-```javascript
-// 📁 animations.js - GSAP Settings
-const animationConfig = {
-  // 🦸 Hero Section Animations
-  heroAnimations: {
-    duration: 1.2,
-    ease: 'power3.out',
-    stagger: 0.3,
-    delay: 0.5
-  },
-  
-  // 📜 Scroll-Based Animations
-  scrollAnimations: {
-    trigger: 'top 85%',
-    duration: 0.8,
-    ease: 'power2.out',
-    scrub: 1
-  },
-  
-  // 🎯 Micro-Interactions
-  microInteractions: {
-    duration: 0.3,
-    ease: 'power1.inOut',
-    scale: 1.05
-  },
-  
-  // ♿ Accessibility Settings
-  accessibility: {
-    respectsReducedMotion: true,
-    fallbackDuration: 0.1
-  }
-};
-
-// 🎨 Custom Animation Presets
-const animationPresets = {
-  fadeInUp: { y: 50, opacity: 0 },
-  fadeInLeft: { x: -50, opacity: 0 },
-  fadeInRight: { x: 50, opacity: 0 },
-  scaleIn: { scale: 0.8, opacity: 0 },
-  slideInTop: { y: -100, opacity: 0 }
-};
-```
-
-### **🌙 Theme System Configuration**
-
-```javascript
-// 📁 theme.js - Theme Management
-const themeConfig = {
-  // 💾 Storage Settings
-  storageKey: 'portfolio-theme',
-  defaultTheme: 'dark',
-  
-  // 🎨 Theme Definitions
-  themes: {
-    dark: {
-      primary: '#64ffda',
-      background: '#0a192f',
-      surface: '#112240',
-      text: '#ccd6f6'
-    },
-    light: {
-      primary: '#00acc1',
-      background: '#ffffff',
-      surface: '#f8f9fa',
-      text: '#2d3748'
-    }
-  },
-  
-  // 🔄 Transition Settings
-  transitions: {
-    duration: '500ms',
-    easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-    properties: ['background-color', 'color', 'border-color']
-  }
-};
-```
-
-### **📧 Form Validation Rules**
-
-```javascript
-// 📁 form-handler.js - Validation Configuration
-const validationConfig = {
-  // 👤 Name Validation
-  name: {
-    required: true,
-    minLength: 2,
-    maxLength: 50,
-    pattern: /^[a-zA-ZÀ-ÿ\s]+$/,
-    messages: {
-      required: 'Name is required',
-      minLength: 'Name must be at least 2 characters',
-      pattern: 'Name can only contain letters and spaces'
-    }
-  },
-  
-  // 📧 Email Validation
-  email: {
-    required: true,
-    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    messages: {
-      required: 'Email is required',
-      pattern: 'Please enter a valid email address'
-    }
-  },
-  
-  // 📝 Subject Validation
-  subject: {
-    required: true,
-    minLength: 5,
-    maxLength: 100,
-    messages: {
-      required: 'Subject is required',
-      minLength: 'Subject must be at least 5 characters'
-    }
-  },
-  
-  // 💬 Message Validation
-  message: {
-    required: true,
-    minLength: 10,
-    maxLength: 1000,
-    messages: {
-      required: 'Message is required',
-      minLength: 'Message must be at least 10 characters',
-      maxLength: 'Message cannot exceed 1000 characters'
-    }
-  },
-  
-  // 🛡️ Anti-Spam Settings
-  antiSpam: {
-    cooldown: 30000,      // 30 seconds between submissions
-    maxAttempts: 3,       // Max attempts per hour
-    honeypot: true        // Hidden honeypot field
-  }
-};
-```
-
----
-
-## 📊 **Performance Optimizations & Metrics**
-
-### **⚡ Build Optimizations**
-
-| Optimization | Implementation | Impact | Metrics |
-|:---:|:---:|:---:|:---:|
-| **Code Splitting** | Rollup chunks | -40% initial bundle | 120KB → 72KB |
-| **Tree Shaking** | ES modules | -25% unused code | Remove dead code |
-| **Minification** | Terser | -30% file size | 180KB → 126KB |
-| **Gzip Compression** | Server config | -70% transfer | 126KB → 38KB |
-| **Image Optimization** | WebP format | -60% image size | Better quality |
-| **CSS Purging** | Tailwind JIT | -80% CSS size | Only used styles |
-
-### **🚀 Runtime Performance**
-
-```javascript
-// 📊 Performance Monitoring
-const performanceMetrics = {
-  // 🎯 Core Web Vitals
-  vitals: {
-    FCP: '< 1.5s',      // First Contentful Paint
-    LCP: '< 2.5s',      // Largest Contentful Paint
-    FID: '< 100ms',     // First Input Delay
-    CLS: '< 0.1',       // Cumulative Layout Shift
-    TTI: '< 3.0s'       // Time to Interactive
-  },
-  
-  // 📈 Custom Metrics
-  custom: {
-    heroRender: '< 800ms',
-    apiResponse: '< 2s',
-    routeChange: '< 300ms',
-    scrollSmooth: '60fps'
-  }
-};
-
-// 🔧 Performance Optimization Techniques
-const optimizations = {
-  lazyLoading: 'Images and components',
-  prefetching: 'Critical resources',
-  caching: 'API responses and assets',
-  debouncing: 'Scroll and resize events',
-  memoization: 'Expensive calculations'
-};
-```
-
-### **💾 Caching Strategy**
+## 💾 **Caching Strategy**
 
 ```javascript
 // 🗄️ Advanced Caching Configuration
@@ -667,129 +421,47 @@ VITE_GITHUB_USERNAME=ucanalgan
 VITE_GITHUB_TOKEN=your_token_here
 VITE_CONTACT_EMAIL=your@email.com
 VITE_ANALYTICS_ID=GA_TRACKING_ID
-VITE_API_BASE_URL=https://api.github.com
 ```
-
-### **🔧 Build Verification Checklist**
-
-- ✅ **Bundle Size**: < 500KB total
-- ✅ **Assets Optimization**: Images compressed
-- ✅ **CSS Purging**: Unused styles removed
-- ✅ **JavaScript Minification**: Console logs removed
-- ✅ **Source Maps**: Generated for debugging
-- ✅ **SEO Tags**: Meta tags present
-- ✅ **Accessibility**: ARIA labels added
-- ✅ **Performance**: Lighthouse score > 90
-- ✅ **Mobile Responsiveness**: All breakpoints tested
-- ✅ **Browser Compatibility**: Modern browsers supported
 
 ---
 
-## 🧪 **Testing & Quality Assurance**
-
-### **🔍 Browser Compatibility Matrix**
-
-| Browser | Version | Status | Notes |
-|:---:|:---:|:---:|:---:|
-| **Chrome** | 90+ | ✅ Full Support | Primary development |
-| **Firefox** | 88+ | ✅ Full Support | All features work |
-| **Safari** | 14+ | ✅ Full Support | iOS compatible |
-| **Edge** | 90+ | ✅ Full Support | Chromium based |
-| **Opera** | 76+ | ✅ Full Support | Chromium based |
-| **Chrome Mobile** | 90+ | ✅ Full Support | Android 10+ |
-| **Safari Mobile** | 14+ | ✅ Full Support | iOS 14+ |
-
-### **📊 Performance Benchmarks**
+## 🖥️ **Performance Metrics**
 
 ```javascript
-// 🎯 Performance Testing Results
-const benchmarks = {
-  // 🚀 Loading Performance
-  loading: {
-    firstPaint: '~1.2s',
-    firstContentfulPaint: '~1.4s',
-    largestContentfulPaint: '~2.1s',
-    timeToInteractive: '~2.8s'
+const performanceMetrics = {
+  // 🎯 Core Web Vitals
+  vitals: {
+    FCP: '< 1.5s',      // First Contentful Paint
+    LCP: '< 2.5s',      // Largest Contentful Paint
+    FID: '< 100ms',     // First Input Delay
+    CLS: '< 0.1',       // Cumulative Layout Shift
+    TTI: '< 3.0s'       // Time to Interactive
   },
   
-  // 🎭 Animation Performance
-  animations: {
-    frameRate: '60fps',
-    scrollPerformance: 'Smooth',
-    hoverResponsiveness: '< 16ms',
-    transitionSmooth: 'Excellent'
-  },
-  
-  // 📡 API Performance
-  api: {
-    githubResponse: '~1.5s',
-    cacheHitRatio: '85%',
-    errorHandling: 'Robust',
-    offlineSupport: 'Graceful'
+  // 📈 Custom Metrics
+  custom: {
+    heroRender: '< 800ms',
+    apiResponse: '< 2s',
+    routeChange: '< 300ms',
+    scrollSmooth: '60fps'
   }
+};
+
+// 🔧 Performance Optimization Techniques
+const optimizations = {
+  lazyLoading: 'Images and components',
+  prefetching: 'Critical resources',
+  caching: 'API responses and assets',
+  debouncing: 'Scroll and resize events',
+  memoization: 'Expensive calculations'
 };
 ```
 
-### **🔧 Development Tools & Testing**
-
-```bash
-# 🛠️ Development Quality Tools
-npm run lint                    # ESLint code quality
-npm run lint:fix               # Auto-fix linting issues
-npm run format                 # Prettier code formatting
-npm run type-check            # TypeScript validation
-npm run test                  # Unit tests (if configured)
-npm run lighthouse           # Performance audit
-npm run accessibility       # A11y testing
-
-# 📊 Performance Analysis
-npm run analyze              # Bundle analyzer
-npm run perf                # Performance profiling
-npm run size-limit          # Bundle size limits
-```
-
 ---
 
-## 🤝 **Contributing & Development**
-
-### **🔄 Development Workflow**
-
-```bash
-# 🍴 1. Fork & Clone
-git clone https://github.com/your-username/personalWeb.git
-cd personalWeb
-
-# 🌿 2. Create Feature Branch
-git checkout -b feature/amazing-new-feature
-
-# 📦 3. Install Dependencies
-npm install
-
-# ⚡ 4. Start Development Server
-npm run dev
-
-# 🧪 5. Make Changes & Test
-# Edit files, test in browser
-npm run lint                # Check code quality
-npm run build              # Test production build
-
-# 💾 6. Commit Changes
-git add .
-git commit -m "feat: add amazing new feature
-
-- Add new component for user profiles
-- Improve responsive design
-- Update documentation"
-
-# 🚀 7. Push & Create PR
-git push origin feature/amazing-new-feature
-# Create Pull Request on GitHub
-```
-
-### **📝 Code Style Guidelines**
+## 📋 **Code Style Guidelines**
 
 ```javascript
-// 🎨 JavaScript Style Guide
 const codeStyle = {
   // 🔤 Naming Conventions
   variables: 'camelCase',           // userName, isLoading
@@ -798,7 +470,7 @@ const codeStyle = {
   classes: 'PascalCase',            // UserProfile, ApiService
   
   // 📁 File Organization
-  components: 'PascalCase.js',      // UserCard.js, NavBar.js
+  components: 'PascalCase.html',    // UserCard.html, NavBar.html
   utilities: 'camelCase.js',        // apiHelper.js, validators.js
   constants: 'UPPER_SNAKE.js',      // API_ENDPOINTS.js
   
@@ -825,6 +497,10 @@ const cssStyle = {
 };
 ```
 
+---
+
+## 🤝 **Katkıda Bulunma**
+
 ### **🔍 Pull Request Guidelines**
 
 - **📝 Clear Description**: Explain what changes were made and why
@@ -837,123 +513,12 @@ const cssStyle = {
 
 ---
 
-## 🐛 **Troubleshooting & FAQ**
+## 🙏 **Teşekkürler**
 
-### **❓ Common Issues & Solutions**
-
-| Issue | Symptoms | Solution | Prevention |
-|:---:|:---:|:---:|:---:|
-| **GitHub API Rate Limit** | API calls failing | Add personal token | Use caching |
-| **Slow Animations** | Laggy interactions | Check reduced motion | Optimize GSAP |
-| **Font Loading Delay** | Text flashing | Add font preload | Use font-display |
-| **Large Bundle Size** | Slow initial load | Enable code splitting | Monitor bundle |
-| **Build Failures** | Deploy errors | Check dependencies | Use lock files |
-
-### **🔧 Debug Commands**
-
-```bash
-# 🐛 Debugging Tools
-npm run dev:debug              # Development with debugging
-npm run build:verbose          # Verbose build output
-npm run analyze               # Bundle size analysis
-npm run lighthouse:debug      # Detailed performance report
-
-# 🔍 Log Analysis
-console.log('Debug mode:', process.env.NODE_ENV);
-performance.mark('script-start');
-// Your code here
-performance.measure('script-duration', 'script-start');
-```
-
-### **📞 Support Channels**
-
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/ucanalgan/personalWeb/issues)
-- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/ucanalgan/personalWeb/discussions)
-- ❓ **Questions**: GitHub Discussions or email
-- 📧 **Direct Contact**: umutcanalgan91@gmail.com
+Bu proje üzerinde çalışma ve deneyim paylaşma fırsatı verdiğiniz için teşekkür ederim.
 
 ---
 
-## 📄 **License & Legal**
+## 📜 **License**
 
-This project is licensed under the **MIT License**. This means you can:
-
-| Permission | Description | Conditions |
-|:---:|:---:|:---:|
-| ✅ **Commercial Use** | Use for commercial projects | Include license |
-| ✅ **Modification** | Modify and adapt code | Include license |
-| ✅ **Distribution** | Share and distribute | Include license |
-| ✅ **Private Use** | Use privately | Include license |
-| ✅ **Sub-licensing** | Grant rights to others | Include license |
-
-**📋 Requirements:**
-- Include the original license and copyright notice
-- State any significant changes made to the code
-
-**🚫 Limitations:**
-- No warranty or liability provided
-- No trademark rights granted
-
-See the [LICENSE](LICENSE) file for full details.
-
----
-
-## 📧 **Contact & Professional Links**
-
-<div align="center">
-
-### **🧑‍💻 Umutcan Algan**
-**Full Stack Developer & Software Engineer**
-
-[![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Visit_Website-00D4AA?style=for-the-badge&logo=vercel&logoColor=white)](https://ucanalgan.github.io/personalWeb/)
-[![GitHub](https://img.shields.io/badge/📁_GitHub-View_Repositories-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ucanalgan)
-[![LinkedIn](https://img.shields.io/badge/💼_LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/umutcan-algan/)
-[![Email](https://img.shields.io/badge/📧_Email-Send_Message-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:umutcanalgan91@gmail.com)
-
-</div>
-
-### **🔗 Project Links**
-
-| Link Type | URL | Description |
-|:---:|:---:|:---:|
-| **🚀 Live Demo** | [ucanalgan.github.io/personalWeb](https://ucanalgan.github.io/personalWeb/) | Production website |
-| **📁 Repository** | [github.com/ucanalgan/personalWeb](https://github.com/ucanalgan/personalWeb) | Source code |
-| **📋 Issues** | [Issues Page](https://github.com/ucanalgan/personalWeb/issues) | Bug reports |
-| **💬 Discussions** | [Discussions Page](https://github.com/ucanalgan/personalWeb/discussions) | Feature requests |
-| **⭐ Releases** | [Releases Page](https://github.com/ucanalgan/personalWeb/releases) | Version history |
-
-### **💬 Support & Feedback**
-
-- 🐛 **Found a Bug?** → [Report it](https://github.com/ucanalgan/personalWeb/issues/new?template=bug_report.md)
-- 💡 **Have an Idea?** → [Suggest it](https://github.com/ucanalgan/personalWeb/issues/new?template=feature_request.md)
-- ❓ **Need Help?** → [Ask a Question](https://github.com/ucanalgan/personalWeb/discussions/new)
-- ⭐ **Like the Project?** → [Give it a Star](https://github.com/ucanalgan/personalWeb/stargazers)
-
----
-
-<div align="center">
-
-## 🌟 **Project Statistics**
-
-![GitHub stars](https://img.shields.io/github/stars/ucanalgan/personalWeb?style=social)
-![GitHub forks](https://img.shields.io/github/forks/ucanalgan/personalWeb?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/ucanalgan/personalWeb?style=social)
-![GitHub contributors](https://img.shields.io/github/contributors/ucanalgan/personalWeb)
-![GitHub last commit](https://img.shields.io/github/last-commit/ucanalgan/personalWeb)
-![GitHub repo size](https://img.shields.io/github/repo-size/ucanalgan/personalWeb)
-
-### ⭐ **If you found this project helpful, please give it a star!** ⭐
-
-**Made with ❤️ by [Umutcan Algan](https://github.com/ucanalgan)**
-
-*"Building the future, one line of code at a time."*
-
-</div>
-
----
-
-<div align="center">
-
-**🔥 Last Updated:** December 2024 | **📊 Version:** 2.0.0 | **🚀 Status:** Active Development
-
-</div>
+Mit License @ 2023 [Umutcan Algan](https://github.com/ucanalgan)
