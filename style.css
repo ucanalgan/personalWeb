@@ -1,744 +1,317 @@
-/* Tailwind CSS with Custom Styles */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* File: style.css
+ * Description: Ana stil dosyası - modüler CSS dosyalarını import eder ve genel stilleri yönetir
+ */
 
-/* Base Styles */
-@layer base {
-  html {
-    @apply scroll-smooth;
-  }
+/* Import Modular CSS Files */
+@import './styles/base.css';
+@import './styles/layout.css';
+@import './styles/components.css';
+@import './styles/themes.css';
 
-  body {
-    @apply bg-[#0a192f] text-gray-300;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-  }
-
-  /* Fix for section visibility */
-  section {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  /* Typography adjustments */
-  p {
-    @apply text-base leading-relaxed;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-xl;
-  }
-
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    @apply w-1.5;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-dark;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary/20 rounded-full hover:bg-primary/30 transition-colors;
-  }
+/* Fix for section visibility - Override for component system */
+section {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
-/* Component Styles */
-@layer components {
-  /* Modern Navigation Styles */
-  .nav-link-modern {
-    @apply relative flex items-center gap-2 px-4 py-2 rounded-xl text-gray-400 
-           hover:text-primary transition-all duration-300 font-medium
-           hover:bg-gray-800/30 hover:scale-105;
-  }
+/* Enhanced focus styles for better accessibility */
+.focus-visible-enhanced {
+  outline: none;
+}
 
-  .nav-indicator {
-    @apply absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 
-           transition-all duration-300 -translate-x-1/2 rounded-full;
-  }
+.focus-visible-enhanced:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.5);
+}
 
-  .nav-link-modern:hover .nav-indicator {
-    @apply w-full;
+/* Legacy browser support for CSS custom properties */
+@supports not (color: var(--primary)) {
+  :root {
+    color: #e2e8f0;
+    background-color: #0a192f;
   }
-
-  /* Active Navigation State */
-  .nav-link-modern.active {
-    @apply text-primary bg-gray-800/50;
-  }
-
-  .nav-link-modern.active .nav-indicator {
-    @apply w-full;
-  }
-
-  .nav-cta-button {
-    @apply relative inline-flex items-center gap-2 px-6 py-3 rounded-xl 
-           border border-primary/30 text-primary font-semibold
-           hover:text-white transition-all duration-300 overflow-hidden
-           hover:scale-105 hover:shadow-lg hover:shadow-primary/25;
-  }
-
-  /* Hamburger Menu Animation */
-  .hamburger-lines {
-    @apply relative w-6 h-5 flex flex-col justify-between;
-  }
-
-  .hamburger-line {
-    @apply w-full h-0.5 bg-gray-400 rounded-full transition-all duration-300 
-           transform-gpu origin-center;
-  }
-
-  .mobile-menu-btn:hover .hamburger-line {
-    @apply bg-primary;
-  }
-
-  .mobile-menu-btn.active .hamburger-line-1 {
-    @apply rotate-45 translate-y-2;
-  }
-
-  .mobile-menu-btn.active .hamburger-line-2 {
-    @apply opacity-0 scale-0;
-  }
-
-  .mobile-menu-btn.active .hamburger-line-3 {
-    @apply -rotate-45 -translate-y-2;
-  }
-
-  /* Mobile Menu Overlay */
-  .mobile-menu-overlay {
-    @apply backdrop-blur-xl;
-    background: rgba(10, 25, 47, 0.98);
-  }
-
-  .mobile-menu-overlay.open {
-    @apply translate-x-0;
-  }
-
-  /* Mobile Navigation Links */
-  .mobile-nav-link {
-    @apply block transform transition-all duration-300;
-  }
-
-  .mobile-nav-link:hover {
-    transform: translateX(8px);
-  }
-
-  /* Navigation Progress Bar */
-  #nav-progress {
-    width: 0%;
-    transition: width 0.3s ease;
-  }
-
-  /* Enhanced Navbar Scroll Effect */
-  #navbar.scrolled {
-    @apply bg-dark/95 backdrop-blur-xl shadow-lg shadow-gray-900/20;
-    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-  }
-
-  #navbar.scrolled .nav-link-modern {
-    @apply text-gray-300;
-  }
-
-  /* Logo Glow Animation */
-  @keyframes logoGlow {
-    0%, 100% { 
-      box-shadow: 0 0 20px rgba(100, 255, 218, 0.3); 
-    }
-    50% { 
-      box-shadow: 0 0 30px rgba(100, 255, 218, 0.5); 
-    }
-  }
-
-  .logo-glow:hover {
-    animation: logoGlow 2s ease-in-out infinite;
-  }
-
-  /* Navigation */
-  .nav-link {
-    @apply relative text-gray-400 hover:text-primary transform transition-transform duration-300 hover:scale-105 hover:shadow-lg
-           after:content-[''] after:absolute after:-bottom-1 after:left-1/2 
-           after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300
-           after:-translate-x-1/2 hover:after:w-full;
-  }
-
-  /* Mobile menu links */
-  .mobile-menu a {
-    @apply transform transition-transform duration-300 hover:scale-105 hover:shadow-lg;
-  }
-
-  /* Buttons */
+  
   .btn-primary {
-    @apply inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-lg bg-primary/10 text-primary 
-           border border-primary/20 hover:bg-primary/20 transition-all duration-300 
-           font-medium backdrop-blur-sm hover:scale-105 hover:shadow-lg hover:shadow-primary/20;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-lg bg-gray-800/50 text-gray-300 
-           border border-gray-700 hover:bg-gray-800 transition-all duration-300 
-           font-medium backdrop-blur-sm hover:scale-105 hover:border-primary/20;
-  }
-
-  /* Social Media Links */
-  .social-link {
-    @apply w-12 h-12 flex items-center justify-center rounded-xl 
-           bg-gray-800/50 text-gray-400 backdrop-blur-sm border border-gray-700/50
-           hover:bg-primary/10 hover:text-primary hover:border-primary/20 
-           transition-all duration-300 hover:scale-110 hover:-translate-y-1;
-  }
-
-  /* Skill Cards */
-  .skill-card {
-    @apply bg-gray-900/30 border border-gray-800 rounded-xl p-6 
-           backdrop-blur-sm hover:border-primary/20 transition-all duration-500
-           hover:shadow-xl hover:shadow-primary/5 hover:scale-105 hover:-translate-y-2;
-  }
-
-  .skill-card i {
-    @apply text-primary/80 transition-all duration-300 group-hover:scale-110;
-  }
-
-  /* Skill Item Styles */
-  .skill-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .skill-name {
-    font-weight: 500;
-    color: #f8f9fa; /* light text color */
-  }
-
-  .skill-bar {
-    width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .skill-level {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease-in-out;
-  }
-
-  /* Project Cards - Simplified for GitHub section */
-  .github-project-card {
-    @apply bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 
-           hover:border-gray-600/50 transition-all duration-300 hover:bg-gray-800/40;
-  }
-
-  .github-project-card h3 {
-    @apply text-lg font-semibold text-gray-200 mb-3;
-  }
-
-  .github-project-card p {
-    @apply text-sm text-gray-400 mb-4 leading-relaxed;
-  }
-
-  /* Technology Tags */
-  .tech-tag {
-    @apply px-3 py-1 text-xs rounded-full bg-primary/10 text-primary 
-           whitespace-nowrap transition-all duration-300
-           hover:bg-primary/20 hover:scale-110;
-  }
-
-  /* Typewriter Animation */
-  .typewriter {
-    @apply relative;
-  }
-
-  .typewriter-text {
-    @apply relative inline-block;
-    width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid #64ffda;
-    animation: typing 3s steps(40) infinite, blink 5s step-end infinite;
-    animation-delay: 0.5s;
-    will-change: width;
-  }
-
-  @keyframes typing {
-    0% { width: 0 }
-    50% { width: 100% }
-    100% { width: 0 }
-  }
-
-  @keyframes blink {
-    from, to { border-color: transparent }
-    50% { border-color: #64ffda }
-  }
-
-  /* Page Transition Animations */
-  .section-animate {
-    @apply opacity-0 translate-y-10 transition-all duration-700;
-  }
-
-  .section-animate.animate {
-    @apply opacity-100 translate-y-0;
-  }
-
-  /* Skill Progress Bars */
-  .skill-progress {
-    @apply h-2 bg-gray-800 rounded-full overflow-hidden relative;
-  }
-
-  .skill-progress-bar {
-    @apply h-full bg-gradient-to-r from-primary/80 to-primary 
-           absolute top-0 left-0 transition-all duration-1000;
-  }
-
-  /* Hover Effects */
-  .hover-glow {
-    @apply hover:shadow-lg hover:shadow-primary/20 transition-all duration-300;
-  }
-
-  .hover-scale {
-    @apply hover:scale-105 transition-all duration-300;
-  }
-
-  .hover-lift {
-    @apply hover:-translate-y-2 transition-all duration-300;
-  }
-
-  /* Scroll Animations - Fixed for initial visibility */
-  .scroll-animate {
-    opacity: 1;
-    transition: all 0.7s ease-in-out;
-  }
-
-  /* Animation Directions */
-  .scroll-animate.fade-up { transform: translateY(0); }
-  .scroll-animate.fade-down { transform: translateY(0); }
-  .scroll-animate.fade-right { transform: translateX(0); }
-  .scroll-animate.fade-left { transform: translateX(0); }
-
-  .scroll-animate.visible {
-    opacity: 1;
-    transform: translate(0);
-  }
-
-  /* Animation Delays */
-  .delay-1 { transition-delay: 0.1s; }
-  .delay-2 { transition-delay: 0.2s; }
-  .delay-3 { transition-delay: 0.3s; }
-  .delay-4 { transition-delay: 0.4s; }
-  .delay-5 { transition-delay: 0.5s; }
-
-  /* Form Styles */
-  .form-group { @apply mb-6; }
-  .form-group.error .relative input,
-  .form-group.error .relative textarea { 
-    @apply border-red-500 focus:border-red-500 focus:ring-red-500/20; 
-  }
-  .form-group.success .relative input,
-  .form-group.success .relative textarea { 
-    @apply border-green-500 focus:border-green-500 focus:ring-green-500/20; 
-  }
-
-  /* Contact section specific styles */
-  .contact-card {
-    @apply bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 
-           hover:bg-gray-800/70 transition-all duration-300;
-  }
-
-  .contact-icon {
-    @apply w-12 h-12 rounded-full flex items-center justify-center 
-           group-hover:scale-110 transition-transform duration-300;
-  }
-
-  /* Form input focus states with enhanced styling */
-  .form-group input:focus,
-  .form-group textarea:focus {
-    @apply outline-none ring-2 transition-all duration-300;
-  }
-
-  /* Custom scrollbar for textarea */
-  .form-group textarea::-webkit-scrollbar {
-    @apply w-2;
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    border-color: rgba(100, 255, 218, 0.2);
   }
   
-  .form-group textarea::-webkit-scrollbar-track {
-    @apply bg-gray-800 rounded;
-  }
-  
-  .form-group textarea::-webkit-scrollbar-thumb {
-    @apply bg-gray-600 rounded hover:bg-gray-500;
-  }
-
-  /* Loading animation for submit button */
-  .btn-loading {
-    @apply opacity-80 cursor-not-allowed;
-  }
-
-  /* Form animation classes */
-  .form-slide-in {
-    animation: slideInUp 0.6s ease-out;
-  }
-
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Contact section background animations */
-  .contact-bg-effect {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    25% { transform: translateY(-10px) rotate(1deg); }
-    50% { transform: translateY(-5px) rotate(-1deg); }
-    75% { transform: translateY(-15px) rotate(0.5deg); }
-  }
-
-  /* Enhanced hover effects for contact cards */
-  .contact-card:hover {
-    @apply shadow-lg shadow-primary/10;
-    transform: translateY(-2px);
-  }
-
-  .contact-card:hover .contact-icon {
-    @apply shadow-lg;
-  }
-
-  /* Fix for image loading */
-  img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-  }
-
-  /* Mobile Menu */
-  .mobile-menu {
-    @apply hidden;
-  }
-
-  /* GitHub Section Styles - Simplified */
-  .github-project-card {
-    @apply bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 
-           hover:border-gray-600/50 transition-all duration-300 hover:bg-gray-800/40;
-  }
-
-  .github-project-card h3 {
-    @apply text-lg font-semibold text-gray-200 mb-3;
-  }
-
-  .github-project-card p {
-    @apply text-sm text-gray-400 mb-4 leading-relaxed;
-  }
-
-  /* Activity timeline styles */
-  .activity-timeline-item {
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .activity-timeline-item:hover {
-    transform: translateX(4px);
-  }
-
-  /* Line clamp utility for descriptions */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* Modern Skills Section Styles */
-  .skill-item-modern {
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .skill-progress-modern {
-    @apply w-full h-2 bg-gray-700/50 rounded-full overflow-hidden;
-  }
-
-  .skill-bar-modern {
-    @apply h-full rounded-full transition-all duration-1000 ease-out relative;
-    animation: skillBarFill 1.5s ease-out forwards;
-    transform-origin: left;
-  }
-
-  .skill-bar-modern::after {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0;
-    animation: skillBarShine 2s ease-out 0.5s forwards;
-  }
-
-  @keyframes skillBarFill {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
-  }
-
-  @keyframes skillBarShine {
-    0% {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-  }
-
-  /* Skill item hover effects */
-  .skill-item-modern:hover .skill-bar-modern {
-    @apply shadow-lg;
-    box-shadow: 0 0 20px currentColor;
-  }
-
-  /* Footer Styles */
-  .footer-link {
-    @apply relative;
-  }
-
-  .footer-link::before {
-    content: '';
-    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300;
-  }
-
-  .footer-link:hover::before {
-    @apply w-full;
-  }
-
-  /* Technology Badges */
-  .tech-badge {
-    @apply px-2 py-1 text-xs rounded-md bg-gray-700/50 text-gray-300 
-           border border-gray-600/50 hover:border-primary/40 
-           hover:bg-primary/10 hover:text-primary transition-all duration-300
-           cursor-default hover:scale-105;
-  }
-
-  /* Footer Contact Items */
-  .footer-contact-item {
-    @apply flex items-center gap-3 p-3 rounded-xl 
-           hover:bg-gray-700/20 transition-all duration-300;
-  }
-
-  /* Social Cards in Footer */
-  .social-card-footer {
-    @apply flex items-center gap-3 p-3 bg-gray-700/30 rounded-xl 
-           hover:bg-gray-700/50 transition-all duration-300 border border-gray-600/30
-           hover:border-gray-500/50 hover:scale-105;
-  }
-
-  /* Footer animations */
-  .footer-float {
-    animation: footerFloat 6s ease-in-out infinite;
-  }
-
-  @keyframes footerFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-
-  /* Enhanced scroll to top button */
-  #scroll-top,
-  .scroll-top-button {
-    @apply transition-all duration-300;
-  }
-
-  #scroll-top:hover,
-  .scroll-top-button:hover {
-    transform: translateY(-2px) scale(1.1);
-  }
-
-  /* Footer background gradient animation */
-  footer::before {
-    content: '';
-    @apply absolute inset-0 opacity-50;
-    background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
-    animation: gradientShift 8s ease-in-out infinite;
-  }
-
-  @keyframes gradientShift {
-    0%, 100% { transform: translateX(-100%); }
-    50% { transform: translateX(100%); }
-  }
-
-  /* Hero Section Animations */
-  .animate-slide-in-up {
-    animation: slideInUp 0.8s ease-out forwards;
-  }
-
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Animation Delays */
-  .animation-delay-200 { animation-delay: 0.2s; }
-  .animation-delay-400 { animation-delay: 0.4s; }
-  .animation-delay-600 { animation-delay: 0.6s; }
-  .animation-delay-800 { animation-delay: 0.8s; }
-  .animation-delay-1000 { animation-delay: 1.0s; }
-  .animation-delay-1200 { animation-delay: 1.2s; }
-  .animation-delay-1400 { animation-delay: 1.4s; }
-
-  /* Custom Animations */
-  .animate-spin-slow {
-    animation: spin 8s linear infinite;
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-
-  /* Enhanced Typewriter */
-  .typewriter-enhanced {
-    position: relative;
-  }
-
-  .typewriter-enhanced::after {
-    content: '';
-    position: absolute;
-    right: -4px;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, #64ffda, #3b82f6);
-    animation: blink 1.5s infinite;
-  }
-
-  /* Rotating Text Animation */
-  .rotating-text {
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Scroll Indicator */
-  .animate-scroll-indicator {
-    animation: scrollIndicator 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollIndicator {
-    0%, 100% { 
-      transform: translateY(0);
-      opacity: 1;
-    }
-    50% { 
-      transform: translateY(15px);
-      opacity: 0.3;
-    }
-  }
-
-  /* Hero Image Enhancements */
-  .hero-image-container {
-    position: relative;
-  }
-
-  .hero-image-container::before {
-    content: '';
-    position: absolute;
-    inset: -20px;
-    background: conic-gradient(from 0deg, transparent, rgba(100, 255, 218, 0.1), transparent);
-    border-radius: 50%;
-    animation: rotate 10s linear infinite;
-    z-index: -1;
-  }
-
-  @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  /* Status Badge Pulse */
-  .status-badge-pulse {
-    animation: statusPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes statusPulse {
-    0%, 100% { 
-      box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4);
-    }
-    50% { 
-      box-shadow: 0 0 0 8px rgba(100, 255, 218, 0);
-    }
-  }
-
-  /* Enhanced Button Effects */
-  .enhanced-button {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .enhanced-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: left 0.5s;
-  }
-
-  .enhanced-button:hover::before {
-    left: 100%;
-  }
-
-  /* Achievement Badges Glow */
-  .achievement-badge {
-    position: relative;
-    transition: all 0.3s ease;
-  }
-
-  .achievement-badge:hover {
-    transform: translateY(-2px) scale(1.05);
-    filter: brightness(1.2);
-  }
-
-  .achievement-badge:hover::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: inherit;
-    border-radius: inherit;
-    filter: blur(8px);
-    opacity: 0.6;
-    z-index: -1;
+  .nav-link-modern:hover {
+    color: #64ffda;
   }
 }
 
-/* Preloader Animation - Fades out after page load */
+/* Additional utilities that don't fit in other modules */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom utilities for specific use cases */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Scroll to top button */
+#scroll-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(var(--primary-rgb), 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+#scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#scroll-top:hover {
+  box-shadow: 0 8px 25px var(--shadow-primary);
+  background-color: rgba(var(--primary-rgb), 0.2);
+  transform: scale(1.1);
+}
+
+/* Loading screen */
 #loader {
-  @apply fixed inset-0 flex items-center justify-center bg-dark z-50 transition-opacity duration-500;
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  transition: opacity 0.5s ease;
 }
 
 #loader.fade-out {
-  @apply opacity-0 pointer-events-none;
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* Optional dark mode override (if needed): */
-/* body.dark { @apply bg-[#0a192f]; } */
+#loader .loader-content {
+  text-align: center;
+}
+
+#loader .loader-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+#loader .loader-text {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Mobile menu overlay specific styles */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  backdrop-filter: blur(16px);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  background: var(--backdrop-blur);
+}
+
+.mobile-menu-overlay.open {
+  transform: translateX(0);
+}
+
+/* Progress bar for navigation */
+#nav-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 0.25rem;
+  background: linear-gradient(to right, var(--primary), #3b82f6);
+  transition: all 0.3s ease-out;
+  z-index: 50;
+  width: 0%;
+}
+
+/* Form validation animations */
+.form-slide-in {
+  animation: slideInDown 0.5s ease forwards;
+}
+
+/* Footer before pseudo element */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 5rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, var(--primary), #3b82f6);
+  border-radius: 9999px;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Navbar scrolled state */
+#navbar.scrolled {
+  background-color: var(--backdrop-blur);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+#navbar.scrolled .nav-link-modern {
+  color: var(--text-primary);
+}
+
+/* Activity card specific styles */
+.github-project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.github-project-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.github-project-card p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .mobile-menu a {
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu a:last-child {
+    border-bottom: 0;
+  }
+  
+  .mobile-menu a:hover {
+    background-color: rgba(var(--bg-secondary-rgb), 0.3);
+    transform: translateX(8px);
+  }
+}
+
+/* Component-specific overrides */
+.component-container {
+  position: relative;
+  min-height: 0;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.component-container:empty {
+  display: none;
+}
+
+.component-container[data-loading="true"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.component-container[data-loading="true"]::after {
+  content: "Loading...";
+  color: var(--text-accent);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Lazy loading images */
+img[data-lazy] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+img[data-lazy].loaded {
+  opacity: 1;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-scroll {
+  will-change: scroll-position;
+}
+
+/* Automatic theme determination */
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --bg-primary: var(--dark-bg-primary);
+    --bg-secondary: var(--dark-bg-secondary);
+    --bg-surface: var(--dark-bg-surface);
+    --text-primary: var(--dark-text-primary);
+    --text-secondary: var(--dark-text-secondary);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="auto"] {
+    --bg-primary: var(--light-bg-primary);
+    --bg-secondary: var(--light-bg-secondary);
+    --bg-surface: var(--light-bg-surface);
+    --text-primary: var(--light-text-primary);
+    --text-secondary: var(--light-text-secondary);
+  }
+}

@@ -1,1557 +1,507 @@
 <!DOCTYPE html>
-<html lang="en" class="dark transition-colors duration-500 ease-in-out">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="I'm Umutcan Algan, a full stack developer focused on modern, responsive, and scalable web applications using JavaScript, Python, and cloud-native tools.">
-  <meta name="keywords" content="Umutcan Algan, full stack developer, software engineer, JavaScript, Python, React, Node.js, web developer, portfolio, modern web, GitHub, frontend, backend, mobile app">
+  <meta name="description" content="Umutcan Algan - Junior Software Developer, Full Stack Developer. Modern web teknolojileri ile kullanıcı odaklı çözümler geliştiriyorum.">
+  <meta name="keywords" content="Umutcan Algan, Software Developer, Full Stack, Frontend, Backend, JavaScript, React, Node.js, Python, Web Development">
   <meta name="author" content="Umutcan Algan">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://ucanalgan.github.io/personalWeb">
-  <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap">
   
-  <title>Umutcan Algan | Software Engineer</title>
+  <!-- SEO Meta Tags -->
+  <link rel="canonical" href="https://umutcanalgan.dev">
+  <link rel="alternate" hreflang="tr" href="https://umutcanalgan.dev">
+  <link rel="alternate" hreflang="x-default" href="https://umutcanalgan.dev">
+  <meta name="theme-color" content="#64ffda">
+  <meta name="msapplication-TileColor" content="#64ffda">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umutcanalgan.dev">
+  <meta property="og:title" content="Umutcan Algan - Junior Software Developer">
+  <meta property="og:description" content="Modern web teknolojileri ile kullanıcı odaklı çözümler geliştiren software developer.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/ucanalgan">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://umutcanalgan.dev">
+  <meta property="twitter:title" content="Umutcan Algan - Junior Software Developer">
+  <meta property="twitter:description" content="Modern web teknolojileri ile kullanıcı odaklı çözümler geliştiren software developer.">
+  <meta property="twitter:image" content="https://avatars.githubusercontent.com/ucanalgan">
+
+  <title>Umutcan Algan - Junior Software Developer | Full Stack Developer</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://api.github.com" crossorigin>
+  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
   
-  <!-- Modern Icon Set -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <!-- Fonts - Preload for performance -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
   
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="./style.css">
+  <!-- Icons - Preload for performance -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"></noscript>
+  
+  <!-- Critical CSS - Preload for performance -->
+  <link rel="preload" href="styles/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="styles/critical.css" rel="stylesheet"></noscript>
+  
+  <!-- Styles - Load modular CSS files -->
+  <link href="style.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="style.css" rel="stylesheet"></noscript>
+  
+  <!-- AOS Animation Library - Preload for performance -->
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
+  
+  <!-- Preload Animation Libraries for Better Performance -->
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" as="script">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" as="script">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Umutcan Algan",
+    "url": "https://umutcanalgan.dev",
+    "image": "https://avatars.githubusercontent.com/ucanalgan",
+    "jobTitle": "Junior Software Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelance Developer"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Piri Reis University",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "TR"
+      }
+    },
+    "email": "umutcanalgan@hotmail.com",
+    "telephone": "+90-XXX-XXX-XXXX",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "TR",
+      "addressLocality": "Istanbul"
+    },
+    "birthPlace": {
+      "@type": "Place",
+      "name": "Turkey"
+    },
+    "nationality": "Turkish",
+    "knowsLanguage": [
+      {
+        "@type": "Language",
+        "name": "Turkish",
+        "alternateName": "tr"
+      },
+      {
+        "@type": "Language",
+        "name": "English",
+        "alternateName": "en"
+      }
+    ],
+    "knowsAbout": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Python",
+      "Full Stack Development",
+      "Web Development",
+      "Software Engineering",
+      "Frontend Development",
+      "Backend Development",
+      "Tailwind CSS",
+      "HTML5",
+      "CSS3"
+    ],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Information Systems Engineering Student",
+      "educationalLevel": "University Level",
+      "credentialCategory": "degree"
+    },
+    "sameAs": [
+      "https://github.com/ucanalgan",
+      "https://linkedin.com/in/umutcan-algan/",
+      "https://twitter.com/umutcanalgan",
+      "https://instagram.com/umutcanalgan"
+    ],
+    "description": "Full Stack Developer specializing in modern web technologies and user-centric solutions. Currently studying Information Systems Engineering while working as a freelance developer.",
+    "seeks": {
+      "@type": "Occupation",
+      "name": "Software Developer",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Remote or Istanbul, Turkey"
+      }
+    },
+    "memberOf": {
+      "@type": "Organization",
+      "name": "Developer Community",
+      "description": "Active member of software development communities"
+    }
+  }
+  </script>
+  
+  <!-- Website Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Umutcan Algan Portfolio",
+    "alternateName": "Umutcan Algan - Software Developer",
+    "url": "https://umutcanalgan.dev",
+    "description": "Personal portfolio website of Umutcan Algan, showcasing full stack development projects and skills",
+    "author": {
+      "@type": "Person",
+      "name": "Umutcan Algan"
+    },
+    "inLanguage": [
+      "tr-TR",
+      "en-US"
+    ],
+    "dateCreated": "2024-01-01",
+    "dateModified": "2024-12-28",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://umutcanalgan.dev/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Umutcan Algan"
+    }
+  }
+  </script>
+  
+  <!-- Portfolio/Creative Work Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Umutcan Algan Portfolio Website",
+    "creator": {
+      "@type": "Person",
+      "name": "Umutcan Algan"
+    },
+    "url": "https://umutcanalgan.dev",
+    "description": "A modern, responsive portfolio website showcasing full stack development skills and projects",
+    "dateCreated": "2024-01-01",
+    "dateModified": "2024-12-28",
+    "genre": "Portfolio Website",
+    "inLanguage": "tr-TR",
+    "keywords": "portfolio, web development, full stack, React, Node.js, JavaScript",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Employers, Clients, Developers"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Software Development",
+      "description": "Full stack web development services and portfolio"
+    }
+  }
+  </script>
 
-  <!-- Open Graph / Twitter Meta -->
-  <meta property="og:title" content="Umutcan Algan | Full Stack Developer & Software Engineer">
-  <meta property="og:description" content="Check out my portfolio showcasing modern full-stack web development projects, GitHub activity, and skills.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/ucanalgan?s=400">
-  <meta property="og:url" content="https://ucanalgan.github.io/personalWeb">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Umutcan Algan | Junior Software Developer">
-  <meta name="twitter:description" content="I specialize in developing innovative web and mobile applications using modern technologies.">
-  <meta name="twitter:image" content="https://avatars.githubusercontent.com/ucanalgan?s=400">
-  <!-- Favicon and Touch Icons -->
-  <link rel="icon" href="./favicon.ico">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-
-  <!-- AOS Animation CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-  <script defer src="app.js" type="module"></script>
+  <!-- CSRF Token Placeholder -->
+  <meta name="csrf-token" content="__CSRF_TOKEN__">
 </head>
-<body class="font-sans text-gray-300 transition-colors duration-500 ease-in-out">
-  <!-- Modern Enhanced Header -->
-  <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
-    <!-- Background Blur Layer -->
-    <div class="absolute inset-0 bg-gradient-to-r from-dark/95 via-gray-900/90 to-dark/95 backdrop-blur-md border-b border-gray-800/50"></div>
+
+<body class="bg-dark text-white overflow-x-hidden" data-theme="dark" aria-label="Umutcan Algan Portfolio Website">
+  
+  <!-- Skip Navigation Link for Accessibility -->
+  <a href="#main-content" class="skip-link focus-visible-enhanced">
+    Skip to main content
+  </a>
+  
+  <!-- Component Loading Screen -->
+  <div id="loader" class="fixed inset-0 bg-bg-primary z-50 flex items-center justify-center">
+    <div class="text-center">
+      <div class="w-16 h-16 border-4 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-4"></div>
+      <p class="text-text-accent">Loading Portfolio...</p>
+    </div>
+  </div>
+
+  <!-- Header Component Container -->
+  <div id="header-container" class="component-container" data-component="header">
+    <!-- Header component will be loaded here via JS -->
+  </div>
+
+  <!-- Main Content Container -->
+  <main role="main" id="main-content" tabindex="-1">
+    <!-- Hero Section Component Container -->
+    <section id="hero-section" class="component-container scroll-animate fade-up" data-component="heroSection">
+      <!-- Hero section component will be loaded here via JS -->
+    </section>
     
-    <!-- Navigation Container -->
-    <nav role="navigation" class="relative z-10 container mx-auto px-4 sm:px-6 py-4">
-      <div class="flex items-center justify-between">
-        
-        <!-- Enhanced Logo Section -->
-        <div class="flex items-center gap-3">
-          <a href="#home" class="group flex items-center gap-3 hover:scale-105 transition-all duration-300">
-            <!-- Logo Container with Glow Effect -->
-            <div class="relative">
-              <div class="w-12 h-12 bg-gradient-to-br from-primary via-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/25 group-hover:shadow-xl group-hover:shadow-primary/40 transition-all duration-300 group-hover:rotate-3">
-                <span class="text-xl font-bold text-white">UA</span>
-              </div>
-              <!-- Animated Border -->
-              <div class="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-primary via-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
-            </div>
-            
-            <!-- Brand Text -->
-            <div class="hidden sm:block">
-              <div class="text-lg font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-                Umutcan Algan
-              </div>
-              <div class="text-xs text-gray-500 font-medium tracking-wide">
-                Software Developer
-                
-              </div>
-            </div>
-          </a>
-        </div>
-        
-        <!-- Desktop Navigation -->
-        <div class="hidden lg:flex items-center gap-8">
-          <!-- Navigation Links -->
-          <div class="flex items-center gap-6">
-            <a href="#home" class="nav-link-modern group">
-              <i class="ri-home-4-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
-              <span>Home</span>
-              <div class="nav-indicator"></div>
-            </a>
-            
-            <a href="#about" class="nav-link-modern group">
-              <i class="ri-user-3-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
-              <span>About</span>
-              <div class="nav-indicator"></div>
-            </a>
-            
-            <a href="#skills" class="nav-link-modern group">
-              <i class="ri-tools-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
-              <span>Skills</span>
-              <div class="nav-indicator"></div>
-            </a>
-            
-            <a href="#github" class="nav-link-modern group">
-              <i class="ri-github-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
-              <span>Projects</span>
-              <div class="nav-indicator"></div>
-            </a>
-            
-            <a href="#contact" class="nav-link-modern group">
-              <i class="ri-mail-line text-lg group-hover:scale-110 transition-transform duration-300"></i>
-              <span>Contact</span>
-              <div class="nav-indicator"></div>
-            </a>
-        </div>
-        
-          <!-- CTA Button -->
-          <a href="#contact" class="nav-cta-button group">
-            <span class="relative z-10">Let's Talk</span>
-            <i class="ri-arrow-right-line text-lg group-hover:translate-x-1 transition-transform duration-300 relative z-10"></i>
-            <div class="absolute inset-0 bg-gradient-to-r from-primary to-blue-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </a>
-        </div>
-        
-        <!-- Mobile & Tablet Navigation -->
-        <div class="flex lg:hidden items-center gap-4">
-          <!-- Quick Actions -->
-          <div class="hidden sm:flex items-center gap-2">
-            <a href="https://github.com/ucanalgan" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 hover:scale-105">
-              <i class="ri-github-line text-gray-400 hover:text-white transition-colors duration-300"></i>
-            </a>
-            <a href="https://linkedin.com/in/umutcan-algan/" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-800/50 hover:bg-blue-500/20 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
-              <i class="ri-linkedin-line text-gray-400 hover:text-blue-400 transition-colors duration-300"></i>
-            </a>
-          </div>
-          
-          <!-- Enhanced Mobile Menu Button -->
-          <button aria-label="Toggle mobile menu" class="mobile-menu-btn group relative w-12 h-12 flex items-center justify-center rounded-xl bg-gray-800/50 hover:bg-gray-700/50 border border-gray-700/50 hover:border-primary/50 transition-all duration-300 hover:scale-105">
-            <div class="hamburger-lines">
-              <span class="hamburger-line hamburger-line-1"></span>
-              <span class="hamburger-line hamburger-line-2"></span>
-              <span class="hamburger-line hamburger-line-3"></span>
-            </div>
+    <!-- About Section Component Container -->
+    <section id="about-section" class="component-container scroll-animate fade-up" data-component="aboutSection">
+      <!-- About section component will be loaded here via JS -->
+    </section>
+    
+    <!-- Skills Section Component Container -->
+    <section id="skills-section" class="component-container scroll-animate fade-up" data-component="skillsSection">
+      <!-- Skills section component will be loaded here via JS -->
+    </section>
+    
+    <!-- Projects/GitHub Section Component Container -->
+    <section id="projects-section" class="component-container scroll-animate fade-up" data-component="githubSection">
+      <!-- Projects section component will be loaded here via JS -->
+    </section>
+    
+    <!-- Contact Section Component Container -->
+    <section id="contact-section" class="component-container scroll-animate fade-up" data-component="contactSection">
+      <!-- Contact section component will be loaded here via JS -->
+    </section>
+  </main>
+
+  <!-- Footer Component Container -->
+  <div id="footer-container" class="component-container" data-component="footerSection">
+    <!-- Footer component will be loaded here via JS -->
+  </div>
+
+  <!-- Error Boundary Container -->
+  <div id="error-boundary" class="hidden fixed inset-0 bg-bg-primary/95 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div class="bg-bg-secondary border border-border-color rounded-xl p-8 max-w-md mx-4 text-center">
+      <i class="fas fa-exclamation-triangle text-yellow-500 text-4xl mb-4"></i>
+      <h3 class="text-xl font-bold text-text-primary mb-2">Something went wrong</h3>
+      <p class="text-text-secondary mb-6">We're experiencing technical difficulties. Please refresh the page or try again later.</p>
+      <div class="space-x-4">
+        <button onclick="window.location.reload()" class="btn-base btn-primary">
+          <i class="fas fa-refresh"></i>
+          Refresh Page
+        </button>
+        <button onclick="document.getElementById('error-boundary').classList.add('hidden')" class="btn-base btn-ghost">
+          Close
         </button>
       </div>
-      </div>
+    </div>
+  </div>
+
+  <!-- Scripts - Modular Architecture with ES6 Modules -->
+  <!-- Core Libraries - Preloaded for performance -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+  
+  <!-- Animation Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  
+  <!-- Legacy Browser Support -->
+  <script nomodule src="https://polyfill.io/v3/polyfill.min.js?features=es6,IntersectionObserver"></script>
+  
+  <!-- Modern ES6 Module System -->
+  <script type="module">
+    // Import and initialize core modules
+    import './js/app.js';
+  </script>
+  
+  <!-- Fallback for older browsers -->
+  <script nomodule>
+    // Fallback loader for non-module browsers
+    (function() {
+      const scripts = [
+        'js/utils/errorBoundary.js',
+        'js/security/csrfManager.js',
+        'js/services/cacheManager.js',
+        'js/services/githubApi.js',
+        'js/utils.js',
+        'js/theme.js',
+        'js/animations.js',
+        'js/github.js',
+        'form-handler.js'
+      ];
       
-      <!-- Progress Indicator -->
-      <div class="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300" id="nav-progress"></div>
-    </nav>
-  </header>
-
-  <!-- Enhanced Mobile Menu -->
-  <nav role="navigation" class="mobile-menu-overlay fixed inset-0 bg-dark/98 backdrop-blur-xl transform translate-x-full lg:hidden transition-transform duration-500 ease-in-out z-40">
-    <!-- Mobile Menu Header -->
-    <div class="absolute top-0 left-0 right-0 bg-gray-900/50 backdrop-blur-sm border-b border-gray-800/50">
-      <div class="flex items-center justify-between p-6">
-        <!-- Mobile Logo -->
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-primary to-blue-500 rounded-xl flex items-center justify-center">
-            <span class="text-lg font-bold text-white">UA</span>
-          </div>
-          <div>
-            <div class="text-lg font-bold text-primary">Umutcan Algan</div>
-            <div class="text-xs text-gray-500">Full Stack Developer</div>
-          </div>
-        </div>
-        
-        <!-- Close Button -->
-        <button aria-label="Close mobile menu" class="mobile-menu-close group w-10 h-10 flex items-center justify-center rounded-xl bg-gray-800/50 hover:bg-red-500/20 border border-gray-700/50 hover:border-red-500/50 transition-all duration-300">
-          <i class="ri-close-line text-xl text-gray-400 group-hover:text-red-400 transition-colors duration-300"></i>
-      </button>
-    </div>
-    </div>
-    
-    <!-- Mobile Menu Content -->
-    <div class="pt-24 pb-8 px-6 h-full overflow-y-auto">
-      <!-- Navigation Links -->
-      <div class="space-y-4 mb-12">
-        <a href="#home" class="mobile-nav-link group block">
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
-            <div class="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-colors duration-300">
-              <i class="ri-home-4-line text-primary text-xl"></i>
-            </div>
-            <div>
-              <div class="text-lg font-semibold text-gray-200 group-hover:text-primary transition-colors duration-300">Home</div>
-              <div class="text-sm text-gray-500">Welcome & Hero</div>
-            </div>
-            <i class="ri-arrow-right-line text-gray-500 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
-          </div>
-        </a>
-        
-        <a href="#about" class="mobile-nav-link group block">
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
-            <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300">
-              <i class="ri-user-3-line text-blue-400 text-xl"></i>
-            </div>
-            <div>
-              <div class="text-lg font-semibold text-gray-200 group-hover:text-blue-400 transition-colors duration-300">About Me</div>
-              <div class="text-sm text-gray-500">My Story & Journey</div>
-            </div>
-            <i class="ri-arrow-right-line text-gray-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
-          </div>
-        </a>
-        
-        <a href="#skills" class="mobile-nav-link group block">
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
-            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center group-hover:bg-green-500/30 transition-colors duration-300">
-              <i class="ri-tools-line text-green-400 text-xl"></i>
-            </div>
-            <div>
-              <div class="text-lg font-semibold text-gray-200 group-hover:text-green-400 transition-colors duration-300">Skills</div>
-              <div class="text-sm text-gray-500">Technologies & Tools</div>
-            </div>
-            <i class="ri-arrow-right-line text-gray-500 group-hover:text-green-400 group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
-          </div>
-        </a>
-        
-        <a href="#github" class="mobile-nav-link group block">
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
-            <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center group-hover:bg-purple-500/30 transition-colors duration-300">
-              <i class="ri-github-line text-purple-400 text-xl"></i>
-            </div>
-            <div>
-              <div class="text-lg font-semibold text-gray-200 group-hover:text-purple-400 transition-colors duration-300">Projects</div>
-              <div class="text-sm text-gray-500">GitHub & Portfolio</div>
-            </div>
-            <i class="ri-arrow-right-line text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
-          </div>
-        </a>
-        
-        <a href="#contact" class="mobile-nav-link group block">
-          <div class="flex items-center gap-4 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/50 hover:border-primary/30 transition-all duration-300">
-            <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors duration-300">
-              <i class="ri-mail-line text-yellow-400 text-xl"></i>
-            </div>
-            <div>
-              <div class="text-lg font-semibold text-gray-200 group-hover:text-yellow-400 transition-colors duration-300">Contact</div>
-              <div class="text-sm text-gray-500">Get In Touch</div>
-            </div>
-            <i class="ri-arrow-right-line text-gray-500 group-hover:text-yellow-400 group-hover:translate-x-1 transition-all duration-300 ml-auto"></i>
-          </div>
-        </a>
-      </div>
+      function loadScript(src, callback) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = callback;
+        script.onerror = function() {
+          console.error('Failed to load script:', src);
+          if (callback) callback();
+        };
+        document.head.appendChild(script);
+      }
       
-      <!-- Mobile Social Links -->
-      <div class="space-y-6">
-        <h3 class="text-lg font-semibold text-gray-300 mb-4">Connect With Me</h3>
+      function loadScriptsSequentially(scripts, index = 0) {
+        if (index >= scripts.length) {
+          // All scripts loaded, initialize app
+          if (window.initApp) {
+            window.initApp();
+          }
+          return;
+        }
         
-        <div class="grid grid-cols-2 gap-4">
-          <a href="https://github.com/ucanalgan" target="_blank" class="group flex items-center gap-3 p-4 rounded-2xl bg-gray-800/30 hover:bg-gray-700/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300">
-            <div class="w-10 h-10 bg-gray-600/20 rounded-xl flex items-center justify-center group-hover:bg-gray-600/30 transition-colors duration-300">
-              <i class="ri-github-line text-gray-400 group-hover:text-white transition-colors duration-300"></i>
-            </div>
-            <div>
-              <div class="text-sm font-medium text-gray-300">GitHub</div>
-              <div class="text-xs text-gray-500">@ucanalgan</div>
-            </div>
-          </a>
-          
-          <a href="https://linkedin.com/in/umutcan-algan/" target="_blank" class="group flex items-center gap-3 p-4 rounded-2xl bg-gray-800/30 hover:bg-blue-500/20 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300">
-            <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300">
-              <i class="ri-linkedin-line text-blue-400 text-lg"></i>
-            </div>
-            <div>
-              <div class="text-sm font-medium text-gray-300">LinkedIn</div>
-              <div class="text-xs text-gray-500">Connect</div>
-            </div>
-          </a>
-        </div>
-        
-        <!-- Mobile CTA -->
-        <a href="#contact" class="block w-full bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90 text-white text-center py-4 px-6 rounded-2xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/25">
-          <i class="ri-send-plane-line mr-2"></i>
-          Let's Start a Project
-        </a>
-      </div>
-    </div>
-  </nav>
+        loadScript(scripts[index], function() {
+          loadScriptsSequentially(scripts, index + 1);
+        });
+      }
+      
+      loadScriptsSequentially(scripts);
+    })();
+  </script>
 
-  <main>
-  <!-- Hero Section -->
-  <section id="home" data-aos="fade-up" class="min-h-screen flex items-center relative overflow-hidden pt-20">
-    <!-- Enhanced Background Effects -->
-    <div class="absolute inset-0 bg-gradient-to-br from-dark via-gray-900/95 to-gray-800/90"></div>
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl opacity-40"></div>
-    <div class="absolute top-1/2 left-1/4 w-[200px] h-[200px] bg-purple-500/10 rounded-full blur-2xl opacity-50 animate-bounce"></div>
-    
-    <!-- Floating Geometric Shapes -->
-    <div class="absolute top-20 left-10 w-16 h-16 border border-primary/30 rotate-45 animate-spin-slow opacity-20"></div>
-    <div class="absolute top-40 right-20 w-8 h-8 bg-blue-500/20 rounded-full animate-float opacity-30"></div>
-    <div class="absolute bottom-40 left-20 w-12 h-12 border-2 border-purple-500/20 rotate-12 animate-pulse"></div>
-    <div class="absolute bottom-20 right-40 w-6 h-6 bg-primary/30 transform rotate-45 animate-ping"></div>
-
-    <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Enhanced Hero Content -->
-        <div class="space-y-10">
-          <!-- Status Badge -->
-          <div class="inline-flex items-center gap-3 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-full px-4 py-2 text-sm font-medium text-gray-300 hover:border-primary/50 transition-all duration-300">
-            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span>Available for new opportunities</span>
-          </div>
-
-          <div class="space-y-6">
-            <!-- Greeting with animation -->
-            <div class="overflow-hidden">
-              <p class="text-xl md:text-2xl text-primary font-medium animate-slide-in-up opacity-0 animation-delay-200">
-                👋 Hello, I'm
-              </p>
-            </div>
-            
-            <!-- Enhanced Main Title -->
-            <div class="overflow-hidden">
-              <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-tight animate-slide-in-up opacity-0 animation-delay-400">
-                <span class="bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent hover:from-primary hover:to-blue-400 transition-all duration-500">
-                  Umutcan
-                </span>
-                <br>
-                <span class="bg-gradient-to-r from-primary via-blue-400 to-purple-400 bg-clip-text text-transparent typewriter-enhanced">
-                  Algan
-                </span>
-            </h1>
-          </div>
-          
-            <!-- Dynamic Subtitle with rotating text -->
-            <div class="overflow-hidden">
-              <div class="animate-slide-in-up opacity-0 animation-delay-600">
-                <h2 class="text-2xl md:text-4xl text-gray-400 font-light">
-                  <span class="text-gray-500">I'm a</span>
-                  <span class="text-primary font-semibold ml-2 rotating-text" id="rotating-text">
-                    Junior Software Developer
-                  </span>
-                </h2>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Enhanced Description -->
-          <div class="overflow-hidden">
-            <p class="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl animate-slide-in-up opacity-0 animation-delay-800">
-              I develop <span class="text-primary font-medium">user-centric solutions</span> using 
-              <span class="text-blue-400 font-medium">modern technologies</span> and turn ideas into 
-              <span class="text-green-400 font-medium">functional software</span>. I focus on 
-              <span class="text-purple-400 font-medium">learning</span>, 
-              <span class="text-yellow-400 font-medium">building</span>, and delivering 
-              <span class="text-pink-400 font-medium">effective results</span> throughout the development process.
-            </p>
-          </div>
-          
-          <!-- Enhanced Action Buttons -->
-          <div class="flex flex-col sm:flex-row gap-6 animate-slide-in-up opacity-0 animation-delay-1000">
-            <a href="#github" class="group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90 text-white px-8 py-4 rounded-2xl transition-all duration-300 font-semibold hover:scale-105 hover:shadow-xl hover:shadow-primary/25 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <i class="ri-code-box-line text-xl group-hover:rotate-12 transition-transform duration-300"></i>
-              <span class="relative z-10">Explore My Work</span>
-              <i class="ri-arrow-right-line text-xl group-hover:translate-x-1 transition-transform duration-300"></i>
-            </a>
-            
-            <a href="#contact" class="group inline-flex items-center gap-3 bg-gray-800/50 hover:bg-gray-700/50 backdrop-blur-sm border border-gray-700 hover:border-primary/50 text-gray-300 hover:text-white px-8 py-4 rounded-2xl transition-all duration-300 font-semibold hover:scale-105">
-              <i class="ri-send-plane-line text-xl group-hover:rotate-12 transition-transform duration-300"></i>
-              <span>Let's Connect</span>
-            </a>
-          </div>
-          
-          <!-- Enhanced Social Links with stats -->
-          <div class="flex items-center gap-6 animate-slide-in-up opacity-0 animation-delay-1200">
-            <div class="flex items-center gap-4">
-              <a href="https://github.com/ucanalgan" target="_blank" class="group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600 hover:bg-gray-700/50 transition-all duration-300 hover:scale-110 hover:-translate-y-1">
-                <i class="ri-github-fill text-2xl text-gray-400 group-hover:text-white transition-colors duration-300"></i>
-                <div class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-all duration-300 scale-0 group-hover:scale-100">
-                  <span id="github-repos-mini">0</span>
-                </div>
-              </a>
+  <!-- Lazy Loading Implementation -->
+  <script>
+    // Lazy loading for images and iframes
+    function initLazyLoading() {
+      if ('IntersectionObserver' in window) {
+        const lazyElements = document.querySelectorAll('[data-lazy]');
+        const lazyElementObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const lazyElement = entry.target;
               
-              <a href="https://linkedin.com/in/umutcan-algan/" target="_blank" class="group relative w-14 h-14 flex items-center justify-center rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300 hover:scale-110 hover:-translate-y-1">
-                <i class="ri-linkedin-fill text-2xl text-gray-400 group-hover:text-blue-400 transition-colors duration-300"></i>
-                <div class="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 animate-pulse"></div>
-            </a>
-          </div>
-            
-            <!-- Social Stats -->
-            <div class="hidden md:flex items-center gap-6 text-sm text-gray-500">
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span><span id="hero-followers" class="text-gray-300 font-medium">0</span> followers</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-                <span><span id="hero-repos" class="text-gray-300 font-medium">0</span> repositories</span>
-              </div>
-          </div>
-        </div>
-        
-          <!-- Achievement Badges -->
-          <div class="flex flex-wrap gap-3 animate-slide-in-up opacity-0 animation-delay-1400">
-            
-            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-full px-4 py-2 text-sm">
-              <i class="ri-rocket-line text-purple-500"></i>
-              <span class="text-gray-300">Startup-Minded</span>
-            </div>
-            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-full px-4 py-2 text-sm">
-              <i class="ri-briefcase-line text-green-500"></i>
-              <span class="text-gray-300">Freelance Ready</span>
-            </div>
-            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/10 to-yellow-500/10 border border-orange-500/20 rounded-full px-4 py-2 text-sm">
-              <i class="ri-focus-3-line text-orange-500"></i>
-              <span class="text-gray-300">Project-Oriented</span>
-            </div>
-            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-red-500/10 to-pink-500/10 border border-red-500/20 rounded-full px-4 py-2 text-sm">
-              <i class="ri-cpu-line text-red-500"></i>
-              <span class="text-gray-300">Tech Generalist</span>
-            </div>
-            
-          </div>
-        </div>
-        
-        <!-- Enhanced Hero Image -->
-        <div class="relative lg:justify-self-end hero-image-container animate-slide-in-up opacity-0 animation-delay-600">
-          <!-- Decorative Elements -->
-          <div class="absolute -top-4 -left-4 w-24 h-24 border-2 border-primary/30 rounded-2xl rotate-12 animate-spin-slow"></div>
-          <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl rotate-45 animate-pulse"></div>
-          
-          <!-- Main Image Container -->
-          <div class="relative group">
-            <!-- Glow Effect -->
-            <div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-blue-500/30 rounded-full blur-2xl opacity-0 group-hover:opacity-70 transition-all duration-500 scale-110"></div>
-            
-            <!-- Image -->
-            <div class="relative w-80 h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-4 border-gray-700 group-hover:border-primary/50 transition-all duration-500 shadow-2xl shadow-gray-900/50">
-            <img
-              src="https://avatars.githubusercontent.com/ucanalgan?s=400"
-              srcset="https://avatars.githubusercontent.com/ucanalgan?s=200 200w, https://avatars.githubusercontent.com/ucanalgan?s=400 400w, https://avatars.githubusercontent.com/ucanalgan?s=800 800w"
-                sizes="(max-width: 768px) 100vw, 420px"
-                alt="Umutcan Algan - Software Developer"
-                loading="eager"
-                width="420"
-                height="420"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
+              if (lazyElement.tagName === 'IMG') {
+                lazyElement.src = lazyElement.dataset.lazy;
+                lazyElement.classList.add('fade-in');
+              } else if (lazyElement.tagName === 'IFRAME') {
+                lazyElement.src = lazyElement.dataset.lazy;
+              }
               
-              <!-- Overlay Effects -->
-              <div class="absolute inset-0 bg-gradient-to-t from-dark/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </div>
-            
-            <!-- Floating Info Cards -->
-            <div class="absolute -left-4 top-1/4 bg-gray-800/90 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-500 delay-200">
-              <div class="flex items-center gap-2">
-                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <span class="text-xs text-gray-300 font-medium">Available for work</span>
-        </div>
-            </div>
-            
-            <div class="absolute -right-4 top-3/4 bg-gray-800/90 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-3 opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 transition-all duration-500 delay-300">
-              <div class="flex items-center gap-2">
-                <i class="ri-map-pin-line text-primary text-sm"></i>
-                <span class="text-xs text-gray-300 font-medium">Turkey</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Background Pattern -->
-          <div class="absolute inset-0 -z-10 opacity-10">
-            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 1px 1px, rgba(100, 255, 218, 0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
-        <div class="w-1 h-3 bg-primary rounded-full mt-2 animate-scroll-indicator"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Scroll To Top Button -->
-  <button id="scroll-top" aria-label="Scroll to top" class="fixed bottom-6 right-6 px-4 py-2 rounded-lg bg-primary text-white opacity-0 pointer-events-none transition-all z-30 hover:bg-primary/80">
-    Scroll Up
-  </button>
-
-  <!-- Enhanced About Section -->
-  <section id="about" data-aos="fade-up" class="py-20 bg-gradient-to-br from-gray-900/30 via-dark/50 to-gray-800/30 relative overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-blue-500/5"></div>
-    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl opacity-50"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl opacity-40"></div>
-
-    <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <!-- Section Header -->
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-r from-primary to-purple-500 rounded-2xl flex items-center justify-center">
-            <i class="ri-user-heart-line text-white text-2xl"></i>
-      </div>
-          <h2 class="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
-            About Me
-          </h2>
-    </div>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Passionate developer crafting digital experiences with modern technologies
-        </p>
-      </div>
-
-      <!-- About Me Cards Grid Layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              lazyElement.removeAttribute('data-lazy');
+              lazyElementObserver.unobserve(lazyElement);
+            }
+          });
+        }, {
+          rootMargin: '50px 0px',
+          threshold: 0.01
+        });
         
-        <!-- My Journey Card - Spans 2 columns -->
-        <div class="lg:col-span-2 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center">
-              <i class="ri-lightbulb-line text-primary text-2xl"></i>
-              </div>
-              <h3 class="text-2xl font-bold text-gray-200">My Journey</h3>
-            </div>
-            
-            <div class="space-y-6 text-gray-400 leading-relaxed">
-              <p class="text-lg">
-                Hello! I'm <span class="text-primary font-semibold">Umutcan</span>, a 
-                <span class="text-blue-400 font-medium">multidisciplinary developer</span> and 
-                <span class="text-purple-400 font-medium">aspiring entrepreneur</span> currently studying 
-                Information Systems Engineering. My journey started with 
-                <span class="text-green-400 font-medium">curiosity for how technology works</span>, and evolved into a 
-                <span class="text-yellow-400 font-medium">mission to build purposeful digital products</span>.
-              </p>
-              
-              <p>
-                I craft software that balances <span class="text-primary font-medium">functionality</span>, 
-                <span class="text-green-400 font-medium">clean code</span>, and 
-                <span class="text-blue-400 font-medium">user-centric design</span>. Whether it's a 
-                web platform, a mobile app, or an automation tool, I love turning 
-                <span class="text-purple-400 font-medium">ideas into scalable and impactful solutions</span>.
-              </p>
+        lazyElements.forEach(element => {
+          lazyElementObserver.observe(element);
+        });
+      } else {
+        // Fallback for browsers without IntersectionObserver
+        const lazyElements = document.querySelectorAll('[data-lazy]');
+        lazyElements.forEach(element => {
+          if (element.tagName === 'IMG') {
+            element.src = element.dataset.lazy;
+          } else if (element.tagName === 'IFRAME') {
+            element.src = element.dataset.lazy;
+          }
+          element.removeAttribute('data-lazy');
+        });
+      }
+    }
+
+    // Performance optimization: Preload critical resources
+    function preloadCriticalResources() {
+      const criticalImages = [
+        'https://avatars.githubusercontent.com/ucanalgan',
+        // Add other critical images here
+      ];
+      
+      criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+      });
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize lazy loading
+      initLazyLoading();
+      
+      // Preload critical resources
+      preloadCriticalResources();
+      
+      // Security initialization
+      if (window.csrfManager) {
+        window.csrfManager.initialize();
+      }
+    });
+
+    // Initialize after all deferred scripts are loaded
+    window.addEventListener('load', () => {
+      // Error boundary initialization
+      window.errorBoundary?.initialize();
+      
+      // AOS initialization
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true,
+          offset: 100
+        });
+      }
+
+      // Performance monitoring
+      console.log('🚀 Page loaded successfully');
+      console.log('📊 Performance:', {
+        loadTime: performance.now(),
+        components: componentLoader?.getLoadedComponents()?.length || 0,
+        memory: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1024 / 1024) + 'MB' : 'N/A'
+      });
+    });
+
+    // Component loading status
+    document.addEventListener('componentsLoaded', () => {
+      console.log('✅ All components loaded and initialized');
+      
+      // Re-initialize lazy loading for dynamically loaded content
+      initLazyLoading();
+      
+      // Initialize theme after components are loaded
+      if (window.themeManager) {
+        window.themeManager.init();
+      }
+      
+      // Initialize GitHub API
+      if (window.githubAPI) {
+        window.githubAPI.init();
+      }
+    });
+
+    // Error handling for component loading
+    window.addEventListener('error', (e) => {
+      console.error('🚨 Global error:', e.error);
+      if (window.errorBoundary) {
+        window.errorBoundary.handleError(e.error);
+      }
+    });
+
+    // Performance monitoring for Core Web Vitals
+    if ('web-vital' in window || typeof webVitals !== 'undefined') {
+      function sendToAnalytics(metric) {
+        console.log('📈 Web Vital:', metric);
+        // Send to your analytics service here
+      }
+
+      // Monitor Core Web Vitals
+      try {
+        if (typeof webVitals !== 'undefined') {
+          webVitals.getCLS(sendToAnalytics);
+          webVitals.getFID(sendToAnalytics);
+          webVitals.getFCP(sendToAnalytics);
+          webVitals.getLCP(sendToAnalytics);
+          webVitals.getTTFB(sendToAnalytics);
+        }
+      } catch (e) {
+        console.log('Web Vitals not available');
+      }
+    }
+  </script>
 
-              <p>
-                Besides academic projects, I actively work as a 
-                <span class="text-orange-400 font-medium">freelance developer</span>, improving my skills across 
-                <span class="text-cyan-400 font-medium">React</span>, 
-                <span class="text-green-400 font-medium">Node.js</span>, 
-                <span class="text-blue-400 font-medium">Python</span>, 
-                <span class="text-orange-400 font-medium">HTML5</span>, 
-                <span class="text-teal-400 font-medium">Tailwind CSS</span> and experimenting with areas like 
-                <span class="text-purple-400 font-medium">AI</span>, 
-                <span class="text-pink-400 font-medium">IoT</span>, and 
-                <span class="text-yellow-400 font-medium">digital design</span>.
-              </p>
-
-              <p>
-                I believe in <span class="text-primary font-medium">continuous learning</span>, 
-                <span class="text-green-400 font-medium">meaningful collaboration</span>, and building things that 
-                <span class="text-blue-400 font-medium">actually make a difference</span>.
-              </p>
-                  </div>
-                  </div>
-
-        <!-- Education Card -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-          <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-              <i class="ri-graduation-cap-line text-blue-400 text-2xl"></i>
-                  </div>
-              <h3 class="text-2xl font-bold text-gray-200">Education</h3>
-                  </div>
-
-            <div class="space-y-6">
-              <!-- Current Education -->
-              <div class="relative pl-8 border-l-2 border-primary/30">
-                <div class="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full animate-pulse"></div>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3">
-                    <h4 class="text-lg font-semibold text-gray-200">Information Systems Engineering</h4>
-                    <span class="px-3 py-1 bg-primary/20 text-primary text-xs rounded-full">Current</span>
-                  </div>
-                  <p class="text-gray-400 font-medium">2nd Year Student · Focused on <span class="text-green-400">Practical Software Development</span></p>
-                  
-                  <div class="space-y-3 text-sm leading-relaxed">
-                    <p class="text-gray-400">
-                      Currently studying Information Systems Engineering at 
-                      <span class="text-primary font-medium">Piri Reis University</span>, where I'm building a strong foundation in 
-                      <span class="text-blue-400 font-medium">system architecture</span>, 
-                      <span class="text-green-400 font-medium">algorithms</span>, and 
-                      <span class="text-purple-400 font-medium">software engineering principles</span>. 
-                    </p>
-                  </div>
-                  </div>
-              </div>
-
-              <!-- Learning Areas -->
-              <div class="grid grid-cols-1 gap-4 mt-8">
-                <h4 class="text-lg font-semibold text-gray-200 mb-4">Current Focus Areas</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-gradient-to-r from-primary/20 to-blue-500/20 border border-primary/30 rounded-lg text-xs text-gray-300">
-                  <i class="ri-code-s-slash-line mr-1"></i>Full Stack
-                  </span>
-                <span class="px-3 py-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg text-xs text-gray-300">
-                  <i class="ri-smartphone-line mr-1"></i>Mobile
-                  </span>
-                <span class="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg text-xs text-gray-300">
-                  <i class="ri-brain-line mr-1"></i>AI
-                  </span>
-                <span class="px-3 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-lg text-xs text-gray-300">
-                  <i class="ri-palette-line mr-1"></i>UI/UX
-                  </span>
-                </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Work Experience Card -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-            <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-              <i class="ri-briefcase-line text-blue-400 text-2xl"></i>
-              </div>
-            <h3 class="text-2xl font-bold text-gray-200">Work Experience</h3>
-            </div>
-          
-          <div class="space-y-5">
-            <div class="border-l-2 border-blue-500/30 pl-4">
-              <div class="text-lg font-semibold text-gray-200 mb-1">IT Student Assistant</div>
-              <div class="text-sm text-blue-400 font-medium mb-1">Piri Reis University</div>
-              <div class="text-xs text-gray-400 mb-2">Sep 2023 - Jun 2024</div>
-              <div class="text-sm text-gray-300">Assisted with programming projects, system analysis, and technical support for university IT operations.</div>
-                </div>
-            
-            <div class="border-l-2 border-green-500/30 pl-4">
-              <div class="text-lg font-semibold text-gray-200 mb-1">Freelance Developer</div>
-              <div class="text-sm text-green-400 font-medium mb-1">Self-employed</div>
-              <div class="text-xs text-gray-400 mb-2">2022 - Present</div>
-              <div class="text-sm text-gray-300">Developing custom web applications and responsive websites for various clients using modern technologies.</div>
-              </div>
-                </div>
-              </div>
-            
-        <!-- Interests & Goals Card -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-            <div class="flex items-center gap-4 mb-6">
-              <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center">
-              <i class="ri-star-line text-purple-400 text-2xl"></i>
-              </div>
-            <h3 class="text-2xl font-bold text-gray-200">Interests & Goals</h3>
-            </div>
-          
-          <div class="space-y-4 text-gray-400">
-            <p class="text-sm leading-relaxed">
-              I'm passionate about <span class="text-purple-400 font-medium">emerging technologies</span> and their potential to solve real-world problems. 
-              Currently exploring <span class="text-cyan-400 font-medium">AI integration</span> in web applications and 
-              <span class="text-green-400 font-medium">sustainable development practices</span>.
-            </p>
-            
-            <div class="space-y-3">
-                <div class="flex items-center gap-3">
-                <i class="ri-rocket-line text-purple-400"></i>
-                <span class="text-sm">Building scalable SaaS products</span>
-                </div>
-                <div class="flex items-center gap-3">
-                <i class="ri-team-line text-blue-400"></i>
-                <span class="text-sm">Contributing to open-source projects</span>
-              </div>
-                <div class="flex items-center gap-3">
-                <i class="ri-global-line text-green-400"></i>
-                <span class="text-sm">Remote collaboration & teamwork</span>
-                </div>
-              </div>
-                </div>
-              </div>
-
-        <!-- Quick Contact Card -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center">
-              <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                </div>
-            <h3 class="text-2xl font-bold text-gray-200">Let's Connect</h3>
-              </div>
-            
-          <div class="space-y-4">
-            <div class="flex items-center justify-between p-3 rounded-xl bg-gray-800/30 border border-gray-700/30">
-                <div class="flex items-center gap-3">
-                <i class="ri-checkbox-circle-line text-green-400"></i>
-                <span class="text-gray-300 text-sm">Available for Work</span>
-            </div>
-          </div>
-
-            <div class="flex items-center justify-between p-3 rounded-xl bg-gray-800/30 border border-gray-700/30">
-                <div class="flex items-center gap-3">
-                <i class="ri-time-line text-blue-400"></i>
-                <span class="text-gray-300 text-sm">Response &lt; 24h</span>
-        </div>
-      </div>
-
-            <div class="flex items-center justify-between p-3 rounded-xl bg-gray-800/30 border border-gray-700/30">
-                <div class="flex items-center gap-3">
-                <i class="ri-map-pin-line text-purple-400"></i>
-                <span class="text-gray-300 text-sm">Turkey (GMT+3)</span>
-    </div>
-                </div>
-              </div>
-
-          <!-- Quick Contact Buttons -->
-          <div class="mt-6 grid grid-cols-1 gap-3">
-            <a href="mailto:umutcanalgan@hotmail.com" class="flex items-center justify-center gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 hover:border-primary/50 text-primary px-4 py-3 rounded-xl transition-all duration-300 group font-medium">
-              <i class="ri-mail-line group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm">Email Me</span>
-            </a>
-            <a href="https://linkedin.com/in/umutcan-algan/" target="_blank" class="flex items-center justify-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/30 hover:border-blue-500/50 text-blue-400 px-4 py-3 rounded-xl transition-all duration-300 group font-medium">
-              <i class="ri-linkedin-line group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm">LinkedIn</span>
-            </a>
-              </div>
-            </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <!-- Footer Bottom -->
-    <div class="relative z-10 border-t border-gray-800/50">
-      <div class="container mx-auto px-4 sm:px-6 py-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="text-center md:text-left">
-            <!-- Copyright text removed -->
-          </div>
-
-          <div class="flex items-center gap-4 text-xs text-gray-500">
-            <!-- Open Source text removed -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top-button" aria-label="Scroll to top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary hover:bg-primary/90 text-white rounded-full opacity-0 pointer-events-none transition-all duration-300 z-30 hover:scale-110 shadow-lg shadow-primary/25 group">
-      <i class="ri-arrow-up-line text-xl group-hover:animate-bounce"></i>
-    </button>
-  </footer>
-
-  <!-- Enhanced Skills Section -->
-  <section id="skills" data-aos="fade-up" class="py-20 bg-gradient-to-br from-dark/50 via-gray-900/30 to-gray-800/50 relative overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5"></div>
-    <div class="absolute top-0 left-0 w-96 h-96 bg-green-500/10 rounded-full blur-3xl opacity-50"></div>
-    <div class="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl opacity-40"></div>
-
-    <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <!-- Section Header -->
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl flex items-center justify-center">
-            <i class="ri-tools-line text-white text-2xl"></i>
-          </div>
-          <h2 class="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-            Skills & Technologies
-          </h2>
-        </div>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Technologies and tools I use to build modern, scalable applications
-              </p>
-            </div>
-            
-      <!-- Skills Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-        
-        <!-- Frontend Skills -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-              <i class="ri-palette-line text-blue-400 text-2xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-200">Frontend Development</h3>
-          </div>
-
-          <div class="grid grid-cols-2 gap-4">
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300">
-                  <i class="ri-reactjs-line text-blue-400 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">React</h4>
-                  <div class="text-xs text-gray-400">Advanced</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-blue-400 to-blue-500 h-2 rounded-full" style="width: 85%"></div>
-              </div>
-            </div>
-
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center group-hover:bg-orange-500/30 transition-colors duration-300">
-                  <i class="ri-html5-line text-orange-400 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">HTML5</h4>
-                  <div class="text-xs text-gray-400">Expert</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-orange-400 to-orange-500 h-2 rounded-full" style="width: 95%"></div>
-              </div>
-            </div>
-
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center group-hover:bg-blue-600/30 transition-colors duration-300">
-                  <i class="ri-css3-line text-blue-500 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">CSS3</h4>
-                  <div class="text-xs text-gray-400">Advanced</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full" style="width: 90%"></div>
-              </div>
-            </div>
-
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors duration-300">
-                  <i class="ri-tailwind-css-line text-cyan-400 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">Tailwind</h4>
-                  <div class="text-xs text-gray-400">Advanced</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-cyan-400 to-cyan-500 h-2 rounded-full" style="width: 88%"></div>
-              </div>
-            </div>
-
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-yellow-500/20 rounded-xl flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors duration-300">
-                  <i class="ri-javascript-line text-yellow-400 text-xl"></i>
-          </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">JavaScript</h4>
-                  <div class="text-xs text-gray-400">Advanced</div>
-        </div>
-            </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 h-2 rounded-full" style="width: 85%"></div>
-              </div>
-          </div>
-
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-blue-400/20 rounded-xl flex items-center justify-center group-hover:bg-blue-400/30 transition-colors duration-300">
-                  <i class="ri-code-s-slash-line text-blue-300 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">TypeScript</h4>
-                  <div class="text-xs text-gray-400">Intermediate</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-blue-300 to-blue-400 h-2 rounded-full" style="width: 70%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Backend Skills -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center">
-              <i class="ri-server-line text-green-400 text-2xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-200">Backend Development</h3>
-            </div>
-
-          <div class="grid grid-cols-2 gap-4">
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center group-hover:bg-green-500/30 transition-colors duration-300">
-                  <i class="ri-nodejs-line text-green-400 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">Node.js</h4>
-                  <div class="text-xs text-gray-400">Advanced</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-green-400 to-green-500 h-2 rounded-full" style="width: 80%"></div>
-              </div>
-            </div>
-
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300">
-                  <i class="ri-code-box-line text-blue-400 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">Express.js</h4>
-                  <div class="text-xs text-gray-400">Advanced</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-blue-400 to-blue-500 h-2 rounded-full" style="width: 82%"></div>
-              </div>
-            </div>
-
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-yellow-600/20 rounded-xl flex items-center justify-center group-hover:bg-yellow-600/30 transition-colors duration-300">
-                  <i class="ri-javascript-line text-yellow-500 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">Python</h4>
-                  <div class="text-xs text-gray-400">Intermediate</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 h-2 rounded-full" style="width: 75%"></div>
-              </div>
-            </div>
-
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center group-hover:bg-blue-600/30 transition-colors duration-300">
-                  <i class="ri-database-2-line text-blue-500 text-xl"></i>
-                  </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">SQL</h4>
-                  <div class="text-xs text-gray-400">Intermediate</div>
-                </div>
-              </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full" style="width: 72%"></div>
-              </div>
-            </div>
-            
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-green-600/20 rounded-xl flex items-center justify-center group-hover:bg-green-600/30 transition-colors duration-300">
-                  <i class="ri-leaf-line text-green-500 text-xl"></i>
-              </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">MongoDB</h4>
-                  <div class="text-xs text-gray-400">Intermediate</div>
-            </div>
-          </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-green-500 to-green-600 h-2 rounded-full" style="width: 68%"></div>
-          </div>
-        </div>
-        
-            <div class="skill-card group">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-red-500/20 rounded-xl flex items-center justify-center group-hover:bg-red-500/30 transition-colors duration-300">
-                  <i class="ri-cloud-line text-red-400 text-xl"></i>
-          </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">REST APIs</h4>
-                  <div class="text-xs text-gray-400">Advanced</div>
-      </div>
-          </div>
-              <div class="w-full bg-gray-700/30 rounded-full h-2 mb-2">
-                <div class="bg-gradient-to-r from-red-400 to-red-500 h-2 rounded-full" style="width: 85%"></div>
-          </div>
-          </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tools & Technologies -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Development Tools -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center">
-              <i class="ri-tools-fill text-purple-400 text-2xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-200">Development Tools</h3>
-          </div>
-
-          <div class="space-y-4">
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-                <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center group-hover:bg-orange-500/30 transition-colors duration-300">
-                    <i class="ri-git-branch-line text-orange-400"></i>
-                  </div>
-                <span class="text-gray-300 font-medium">Git & GitHub</span>
-                </div>
-              <span class="text-orange-400 text-sm font-semibold">Advanced</span>
-              </div>
-
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300">
-                  <i class="ri-code-line text-blue-400"></i>
-              </div>
-                <span class="text-gray-300 font-medium">VS Code</span>
-              </div>
-              <span class="text-blue-400 text-sm font-semibold">Expert</span>
-            </div>
-
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-                <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center group-hover:bg-green-500/30 transition-colors duration-300">
-                  <i class="ri-terminal-line text-green-400"></i>
-                  </div>
-                <span class="text-gray-300 font-medium">Terminal/CLI</span>
-                </div>
-              <span class="text-green-400 text-sm font-semibold">Advanced</span>
-              </div>
-
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors duration-300">
-                  <i class="ri-npmjs-line text-yellow-400"></i>
-              </div>
-                <span class="text-gray-300 font-medium">NPM/Yarn</span>
-        </div>
-              <span class="text-yellow-400 text-sm font-semibold">Advanced</span>
-            </div>
-
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-                <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center group-hover:bg-purple-500/30 transition-colors duration-300">
-                  <i class="ri-window-line text-purple-400"></i>
-                  </div>
-                <span class="text-gray-300 font-medium">Postman</span>
-                </div>
-              <span class="text-purple-400 text-sm font-semibold">Advanced</span>
-              </div>
-              </div>
-            </div>
-
-        <!-- Specialized Skills -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 bg-pink-500/20 rounded-2xl flex items-center justify-center">
-              <i class="ri-star-line text-pink-400 text-2xl"></i>
-                  </div>
-            <h3 class="text-2xl font-bold text-gray-200">Specialized Skills</h3>
-                </div>
-
-          <div class="space-y-4">
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors duration-300">
-                  <i class="ri-smartphone-line text-cyan-400"></i>
-              </div>
-                <span class="text-gray-300 font-medium">Responsive Design</span>
-              </div>
-              <span class="text-cyan-400 text-sm font-semibold">Expert</span>
-            </div>
-
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center group-hover:bg-red-500/30 transition-colors duration-300">
-                  <i class="ri-palette-line text-red-400"></i>
-          </div>
-                <span class="text-gray-300 font-medium">UI/UX Design</span>
-        </div>
-              <span class="text-red-400 text-sm font-semibold">Intermediate</span>
-      </div>
-
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-indigo-500/20 rounded-lg flex items-center justify-center group-hover:bg-indigo-500/30 transition-colors duration-300">
-                  <i class="ri-search-eye-line text-indigo-400"></i>
-            </div>
-                <span class="text-gray-300 font-medium">SEO Optimization</span>
-              </div>
-              <span class="text-indigo-400 text-sm font-semibold">Intermediate</span>
-          </div>
-          
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/30 transition-colors duration-300">
-                  <i class="ri-rocket-line text-emerald-400"></i>
-            </div>
-                <span class="text-gray-300 font-medium">Performance Optimization</span>
-              </div>
-              <span class="text-emerald-400 text-sm font-semibold">Advanced</span>
-          </div>
-            
-            <div class="flex items-center justify-between p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-teal-500/20 rounded-lg flex items-center justify-center group-hover:bg-teal-500/30 transition-colors duration-300">
-                  <i class="ri-bug-line text-teal-400"></i>
-        </div>
-                <span class="text-gray-300 font-medium">Testing & Debugging</span>
-            </div>
-              <span class="text-teal-400 text-sm font-semibold">Advanced</span>
-              </div>
-            </div>
-              </div>
-            </div>
-
-      <!-- Skills Summary -->
-      <div class="mt-12 text-center">
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300">
-          <h3 class="text-2xl font-bold text-gray-200 mb-4">Always Learning</h3>
-          <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
-            I'm constantly exploring new technologies and improving my skills. Currently diving deeper into 
-            <span class="text-primary font-medium">modern web frameworks</span>, 
-            <span class="text-green-400 font-medium">cloud technologies</span>, and 
-            <span class="text-purple-400 font-medium">emerging development practices</span>.
-          </p>
-          
-          <div class="flex flex-wrap justify-center gap-3">
-            <span class="px-4 py-2 bg-gradient-to-r from-primary/20 to-blue-500/20 border border-primary/30 rounded-full text-sm text-gray-300">
-              <i class="ri-focus-3-line mr-2"></i>Currently Learning: Next.js
-            </span>
-            <span class="px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full text-sm text-gray-300">
-              <i class="ri-cloud-line mr-2"></i>Exploring: Cloud Services
-            </span>
-            <span class="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-sm text-gray-300">
-              <i class="ri-brain-line mr-2"></i>Interested in: AI/ML
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <!-- Footer Bottom -->
-    <div class="relative z-10 border-t border-gray-800/50">
-      <div class="container mx-auto px-4 sm:px-6 py-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="text-center md:text-left">
-            <!-- Copyright text removed -->
-          </div>
-
-          <div class="flex items-center gap-4 text-xs text-gray-500">
-            <!-- Open Source text removed -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top-button" aria-label="Scroll to top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary hover:bg-primary/90 text-white rounded-full opacity-0 pointer-events-none transition-all duration-300 z-30 hover:scale-110 shadow-lg shadow-primary/25 group">
-      <i class="ri-arrow-up-line text-xl group-hover:animate-bounce"></i>
-    </button>
-  </footer>
-
-  <!-- Enhanced GitHub Projects Section -->
-  <section id="github" data-aos="fade-up" class="py-20 bg-gradient-to-br from-gray-900/30 via-dark/50 to-gray-800/30 relative overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5"></div>
-    <div class="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl opacity-50"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl opacity-40"></div>
-
-    <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <!-- Section Header -->
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
-            <i class="ri-github-line text-white text-2xl"></i>
-          </div>
-          <h2 class="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Projects & Code
-          </h2>
-          </div>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Explore my latest projects and contributions on GitHub
-          </p>
-      </div>
-
-      <!-- GitHub Stats Dashboard -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-        <!-- Total Repositories -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 text-center">
-          <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="ri-folder-line text-blue-400 text-2xl"></i>
-              </div>
-          <div class="text-2xl font-bold text-gray-200 mb-1" id="total-repos">--</div>
-            <div class="text-sm text-gray-400">Repositories</div>
-          </div>
-
-        <!-- Total Stars -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 text-center">
-          <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="ri-star-line text-yellow-400 text-2xl"></i>
-          </div>
-          <div class="text-2xl font-bold text-gray-200 mb-1" id="total-stars">--</div>
-          <div class="text-sm text-gray-400">Stars Earned</div>
-          </div>
-
-        <!-- Total Forks -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 text-center">
-          <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="ri-git-fork-line text-green-400 text-2xl"></i>
-          </div>
-          <div class="text-2xl font-bold text-gray-200 mb-1" id="total-forks">--</div>
-          <div class="text-sm text-gray-400">Forks</div>
-      </div>
-
-        <!-- GitHub Profile -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 text-center">
-          <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <i class="ri-user-line text-purple-400 text-2xl"></i>
-          </div>
-          <div class="text-2xl font-bold text-gray-200 mb-1" id="github-followers">--</div>
-          <div class="text-sm text-gray-400">Followers</div>
-        </div>
-        </div>
-        
-      <!-- Filter and Search -->
-      <div class="flex flex-col md:flex-row gap-4 mb-8">
-        <div class="flex-1">
-            <div class="relative">
-            <input 
-              type="text" 
-              id="project-search" 
-              placeholder="Search projects..." 
-              class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 pl-12 text-gray-200 placeholder-gray-500 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
-            >
-            <i class="ri-search-line absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
-            </div>
-          </div>
-        
-        <div class="flex gap-3">
-          <button 
-            class="filter-btn active px-6 py-3 rounded-xl bg-primary/20 border border-primary/30 text-primary font-medium hover:bg-primary/30 transition-all duration-300" 
-            data-filter="all"
-          >
-            All Projects
-          </button>
-          <button 
-            class="filter-btn px-6 py-3 rounded-xl bg-gray-800/50 border border-gray-700/50 text-gray-400 font-medium hover:bg-gray-700/50 hover:text-gray-300 transition-all duration-300" 
-            data-filter="javascript"
-          >
-            JavaScript
-          </button>
-          <button 
-            class="filter-btn px-6 py-3 rounded-xl bg-gray-800/50 border border-gray-700/50 text-gray-400 font-medium hover:bg-gray-700/50 hover:text-gray-300 transition-all duration-300" 
-            data-filter="python"
-          >
-            Python
-          </button>
-        </div>
-      </div>
-
-      <!-- Projects Grid -->
-      <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        <!-- Projects will be loaded dynamically from GitHub -->
-        
-        <!-- Loading State -->
-        <div class="project-loading col-span-full text-center py-12">
-          <div class="inline-flex items-center gap-3 text-gray-400">
-            <div class="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
-            <span>Loading projects from GitHub...</span>
-          </div>
-          </div>
-        </div>
-        
-                </div>
-            </div>
-          </div>
-
-      <!-- GitHub Activity -->
-      <div class="mt-16 text-center">
-        <h3 class="text-3xl font-bold text-gray-200 mb-8">GitHub Activity</h3>
-        
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Recent Commits -->
-              <div class="text-center">
-              <div class="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <i class="ri-git-commit-line text-green-400 text-3xl"></i>
-              </div>
-              <h4 class="text-xl font-bold text-gray-200 mb-2">Recent Commits</h4>
-              <p class="text-gray-400 mb-4">Latest code contributions and updates</p>
-              <div class="text-2xl font-bold text-green-400" id="recent-commits">--</div>
-            </div>
-
-            <!-- Languages Used -->
-              <div class="text-center">
-              <div class="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <i class="ri-code-s-slash-line text-blue-400 text-3xl"></i>
-          </div>
-              <h4 class="text-xl font-bold text-gray-200 mb-2">Top Languages</h4>
-              <p class="text-gray-400 mb-4">Most used programming languages</p>
-              <div id="top-languages" class="space-y-2">
-                <!-- Languages will be loaded dynamically -->
-        </div>
-      </div>
-
-            <!-- Contribution Streak -->
-      <div class="text-center">
-              <div class="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <i class="ri-fire-line text-purple-400 text-3xl"></i>
-              </div>
-              <h4 class="text-xl font-bold text-gray-200 mb-2">Contribution Streak</h4>
-              <p class="text-gray-400 mb-4">Consistent coding activity</p>
-              <div class="text-2xl font-bold text-purple-400" id="contribution-streak">Active</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-      <!-- CTA Section -->
-      <div class="mt-16 text-center">
-        <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-3xl p-8">
-          <h3 class="text-2xl font-bold text-gray-200 mb-4">Want to Collaborate?</h3>
-          <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
-            I'm always open to interesting projects and collaborations. 
-            Check out my repositories or reach out to discuss your ideas!
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://github.com/ucanalgan" 
-              target="_blank"
-              class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25"
-            >
-              <i class="ri-github-line text-xl"></i>
-              <span>View GitHub Profile</span>
-              <i class="ri-external-link-line text-lg"></i>
-            </a>
-            
-            <a 
-              href="#contact"
-              class="inline-flex items-center gap-3 bg-gray-800/50 hover:bg-gray-700/50 backdrop-blur-sm border border-gray-700 hover:border-purple-500/50 text-gray-300 hover:text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105"
-            >
-              <i class="ri-mail-line text-xl"></i>
-              <span>Get In Touch</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <!-- Footer Bottom -->
-    <div class="relative z-10 border-t border-gray-800/50">
-      <div class="container mx-auto px-4 sm:px-6 py-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="text-center md:text-left">
-            <!-- Copyright text removed -->
-          </div>
-
-          <div class="flex items-center gap-4 text-xs text-gray-500">
-            <!-- Open Source text removed -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top-button" aria-label="Scroll to top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary hover:bg-primary/90 text-white rounded-full opacity-0 pointer-events-none transition-all duration-300 z-30 hover:scale-110 shadow-lg shadow-primary/25 group">
-      <i class="ri-arrow-up-line text-xl group-hover:animate-bounce"></i>
-    </button>
-  </footer>
-
-  <!-- Enhanced Contact Section -->
-  <section id="contact" data-aos="fade-up" class="py-20 bg-gradient-to-br from-dark/50 via-gray-900/30 to-gray-800/50 relative overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5"></div>
-    <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl opacity-50"></div>
-    <div class="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl opacity-40"></div>
-    
-    <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <!-- Section Header -->
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center">
-            <i class="ri-mail-line text-white text-2xl"></i>
-          </div>
-          <h2 class="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-          Get In Touch
-        </h2>
-        </div>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Let's discuss your project ideas or potential collaboration opportunities
-        </p>
-          </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Contact Information -->
-        <div class="space-y-8">
-          <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300">
-            <h3 class="text-2xl font-bold text-gray-200 mb-6">Let's Connect</h3>
-            
-            <div class="space-y-6">
-              <!-- Email -->
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group">
-                <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors duration-300">
-                  <i class="ri-mail-line text-cyan-400 text-xl"></i>
-          </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">Email</h4>
-                  <a href="mailto:umutcanalgan@hotmail.com" class="text-cyan-400 hover:text-cyan-300 transition-colors">
-                    umutcanalgan@hotmail.com
-                  </a>
-              </div>
-            </div>
-
-              <!-- Location -->
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
-                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                  <i class="ri-map-pin-line text-green-400 text-xl"></i>
-                </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">Location</h4>
-                  <p class="text-gray-400">Turkey (GMT+3)</p>
-              </div>
-            </div>
-
-              <!-- Response Time -->
-              <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-800/30 border border-gray-700/30">
-                <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
-                  <i class="ri-time-line text-yellow-400 text-xl"></i>
-                </div>
-                <div>
-                  <h4 class="text-gray-200 font-semibold">Response Time</h4>
-                  <p class="text-gray-400">Usually within 24 hours</p>
-              </div>
-            </div>
-          </div>
-
-            <!-- Social Links -->
-            <div class="mt-8 pt-6 border-t border-gray-700/50">
-              <h4 class="text-gray-200 font-semibold mb-4">Follow Me</h4>
-              <div class="flex gap-4">
-                <a href="https://github.com/ucanalgan" target="_blank" class="w-12 h-12 bg-gray-700/50 hover:bg-gray-600/50 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
-                  <i class="ri-github-line text-gray-400 hover:text-white text-xl transition-colors"></i>
-                </a>
-                <a href="https://linkedin.com/in/umutcan-algan/" target="_blank" class="w-12 h-12 bg-blue-500/20 hover:bg-blue-500/30 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110">
-                  <i class="ri-linkedin-line text-blue-400 text-xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:border-gray-600/50 transition-all duration-300">
-          <h3 class="text-2xl font-bold text-gray-200 mb-6">Send a Message</h3>
-          
-          <form class="space-y-6" action="#" method="POST">
-            <!-- Name -->
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                name="name" 
-                  required 
-                class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
-                  placeholder="Your full name"
-              >
-            </div>
-
-            <!-- Email -->
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                name="email" 
-                  required 
-                class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
-                  placeholder="your.email@example.com"
-              >
-            </div>
-
-            <!-- Subject -->
-            <div>
-              <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
-                <input 
-                  type="text" 
-                  id="subject" 
-                name="subject" 
-                required
-                class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
-                placeholder="Project discussion, collaboration, etc."
-              >
-            </div>
-
-            <!-- Message -->
-            <div>
-              <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
-                <textarea 
-                  id="message" 
-                name="message" 
-                  rows="5" 
-                required
-                class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 resize-none"
-                placeholder="Tell me about your project or idea..."
-                ></textarea>
-          </div>
-
-            <!-- Submit Button -->
-            <button 
-              type="submit" 
-              class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-500/25 flex items-center justify-center gap-3"
-            >
-              <i class="ri-send-plane-line text-xl"></i>
-                <span>Send Message</span>
-            </button>
-        </form>
-        </div>
-      </div>
-
-      <!-- Quick Contact Options -->
-      <div class="mt-16 text-center">
-        <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-3xl p-8">
-          <h3 class="text-2xl font-bold text-gray-200 mb-4">Prefer Quick Contact?</h3>
-          <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
-            Choose your preferred way to get in touch for immediate response
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="mailto:umutcanalgan@hotmail.com"
-              class="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/25"
-            >
-              <i class="ri-mail-line text-xl"></i>
-              <span>Send Email</span>
-            </a>
-            
-            <a 
-              href="https://linkedin.com/in/umutcan-algan/"
-              target="_blank"
-              class="inline-flex items-center gap-3 bg-gray-800/50 hover:bg-gray-700/50 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 text-gray-300 hover:text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105"
-            >
-              <i class="ri-linkedin-line text-xl"></i>
-              <span>LinkedIn Message</span>
-            </a>
-                </div>
-                </div>
-            </div>
-          </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gradient-to-br from-dark/80 via-gray-900/70 to-gray-800/80 relative overflow-hidden">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-blue-500/5"></div>
-    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30"></div>
-
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top-button" aria-label="Scroll to top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary hover:bg-primary/90 text-white rounded-full opacity-0 pointer-events-none transition-all duration-300 z-30 hover:scale-110 shadow-lg shadow-primary/25 group">
-      <i class="ri-arrow-up-line text-xl group-hover:animate-bounce"></i>
-    </button>
-  </footer>
-
-  </main>
 </body>
 </html>
