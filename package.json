@@ -2,11 +2,12 @@
   "name": "personal-website",
   "version": "1.0.0",
   "description": "Kişisel Web Sitesi",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "vite --config config/vite.config.js",
+    "build": "vite build --config config/vite.config.js",
+    "preview": "vite preview --config config/vite.config.js",
     "deploy": "gh-pages -d dist"
   },
   "keywords": [
@@ -24,9 +25,12 @@
     "tailwindcss": "^3.4.17",
     "vite": "^5.0.0"
   },
-  "dependencies": {
-    "framer-motion": "^10.16.4",
-    "gsap": "^3.12.2",
-    "three": "^0.159.0"
+  "dependencies": {},
+  "notes": {
+    "removedDependencies": {
+      "framer-motion": "Not used in the codebase - only CSS @media queries for reduced motion",
+      "three": "Only mentioned as a skill, not functionally used",
+      "gsap": "Loaded via CDN, not required as npm dependency"
+    }
   }
 }

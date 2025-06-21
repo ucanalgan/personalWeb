@@ -1,0 +1,497 @@
+/* File: styles/components/cards.css */
+/* Description: Kart bileşenleri stilleri - project card, activity card, stats card */
+/* Kullanım: Tüm kart yapılarında ortak stil tanımları */
+
+/* ===== BASE CARD STYLES ===== */
+.card-base {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+  box-shadow: 0 20px 25px rgba(100, 255, 218, 0.05);
+  transform: translateY(-0.25rem);
+}
+
+.card-interactive {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+  box-shadow: 0 20px 25px rgba(100, 255, 218, 0.05);
+  transform: translateY(-0.25rem);
+}
+
+/* ===== PROJECT CARD ===== */
+.project-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+}
+
+.project-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+  box-shadow: 0 20px 25px rgba(100, 255, 218, 0.05);
+  transform: translateY(-0.25rem);
+}
+
+.project-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.project-card-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .project-card-title {
+  color: var(--primary);
+}
+
+.project-card-language {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.project-card-description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-card-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card-topic {
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  color: var(--primary);
+  font-size: 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.project-card-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.project-card-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.project-card-updated {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ===== ACTIVITY CARD ===== */
+.activity-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1rem;
+}
+
+.activity-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.activity-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.activity-card-icon {
+  width: 2rem;
+  height: 2rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-card-type {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.activity-card-repo {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.activity-card-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.activity-card-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-left: 2.75rem;
+}
+
+/* ===== STATS CARD ===== */
+.stats-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stats-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.stats-card-icon {
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.stats-card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.stats-card-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ===== SKILL CARD ===== */
+.skill-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1rem;
+}
+
+.skill-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.skill-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-card-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.skill-card-category {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.skill-card-percentage {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.skill-card-progress {
+  width: 100%;
+  background-color: var(--bg-secondary);
+  border-radius: 9999px;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.skill-card-progress-bar {
+  height: 0.5rem;
+  background: linear-gradient(to right, var(--primary), rgba(100, 255, 218, 0.7));
+  border-radius: 9999px;
+  transition: all 1s ease-out;
+  width: 0%;
+}
+
+.skill-card-progress-bar.animate {
+  animation: skillBarFill 2s ease-out forwards;
+}
+
+/* ===== SOCIAL CARD ===== */
+.social-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  display: block;
+}
+
+.social-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+  background-color: rgba(100, 255, 218, 0.05);
+}
+
+.social-card-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.social-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.social-card:hover .social-card-icon {
+  background-color: rgba(100, 255, 218, 0.2);
+}
+
+.social-card-name {
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.social-card:hover .social-card-name {
+  color: var(--primary);
+}
+
+.social-card-username {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ===== CONTACT INFO CARD ===== */
+.contact-info-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.contact-info-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info-type {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.contact-info-value {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.contact-info-value:hover {
+  color: var(--primary);
+}
+
+/* ===== CARD ANIMATIONS ===== */
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skillBarFill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--skill-width, 100%);
+  }
+}
+
+.card-slide-in {
+  animation: cardSlideIn 0.6s ease-out forwards;
+}
+
+.card-fade-in {
+  animation: cardFadeIn 0.6s ease-in-out forwards;
+}
+
+/* ===== LOADING AND ERROR STATES ===== */
+.card-loading {
+  background-color: var(--bg-accent);
+  animation: pulse 2s infinite;
+}
+
+.card-loading::after {
+  content: "Loading...";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-accent);
+}
+
+.card-error {
+  border-color: rgba(239, 68, 68, 0.3);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.card-success {
+  border-color: rgba(34, 197, 94, 0.3);
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 640px) {
+  .project-card,
+  .stats-card {
+    padding: 1rem;
+  }
+
+  .project-card-icon,
+  .stats-card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .stats-card-value {
+    font-size: 1.25rem;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .card-hover:hover {
+    transform: none;
+  }
+
+  .card-slide-in,
+  .card-fade-in {
+    animation: none;
+  }
+
+  .skill-card-progress-bar {
+    transition: none;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .card-base {
+    border-width: 2px;
+  }
+
+  .project-card-topic {
+    border-width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .card-base {
+    background: white !important;
+    border: 1px solid black !important;
+  }
+
+  .card-hover:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+} 

@@ -1,304 +1,412 @@
-import { initAllAnimations } from './animations.js';
-import { initTheme } from './theme.js';
-import { initGitHub } from './github.js';
-
 /**
- * Modern Personal Website
- * @author Umutcan Algan
- * @version 4.0.0
+ * Main Application Entry Point - Updated for Modular Component System
+ * Orchestrates all components and handles loading, fallbacks, and integration
  */
 
-// Configuration
-const config = {
-  animation: {
-    duration: 300,
-    easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-  },
-  scroll: {
-    threshold: 100,
-    smooth: true,
-  },
-  mobile: {
-    breakpoint: 768,
+// Import all section components
+import HeroSection from './js/components/sections/HeroSection.js';
+import AboutSection from './js/components/sections/AboutSection.js';
+import SkillsSection from './js/components/sections/SkillsSection.js';
+import ProjectsSection from './js/components/sections/ProjectsSection.js';
+import ContactSection from './js/components/sections/ContactSection.js';
+import FooterSection from './js/components/sections/FooterSection.js';
+
+class ModularPortfolio {
+  constructor() {
+    this.components = new Map();
+    this.loadingStates = new Map();
+    this.retryAttempts = new Map();
+    this.maxRetries = 3;
+    this.initialized = false;
   }
-};
 
-// DOM Elements
-const elements = {
-  header: document.querySelector('header'),
-  mobileMenu: document.querySelector('.mobile-menu'),
-  mobileMenuBtn: document.querySelector('.mobile-menu-btn'),
-  mobileMenuCloseBtn: document.querySelector('.mobile-menu-close'),
-  scrollTopBtn: document.querySelector('#scroll-top'), // Ana scroll button
-  scrollTopButtons: document.querySelectorAll('#scroll-top, .scroll-top-button'), // Tüm scroll buttonlar
-  navLinks: document.querySelectorAll('.nav-link'),
-  sections: document.querySelectorAll('section[id]'),
-  skillCards: document.querySelectorAll('.skill-card'),
-  projectCards: document.querySelectorAll('.project-card')
-};
-
-// Helper Functions
-const utils = {
-  // DOM Helpers
-  select: (selector) => document.querySelector(selector),
-  selectAll: (selector) => document.querySelectorAll(selector),
-  
-  // Class Helpers
-  addClass: (element, className) => element?.classList.add(className),
-  removeClass: (element, className) => element?.classList.remove(className),
-  toggleClass: (element, className, force) => element?.classList.toggle(className, force),
-  hasClass: (element, className) => element?.classList.contains(className),
-  
-  // Scroll Helpers
-  scrollTo: (element, options = {}) => {
-    const defaults = {
-      behavior: config.scroll.smooth ? 'smooth' : 'auto',
-      block: 'start',
-    };
-    element?.scrollIntoView({ ...defaults, ...options });
-  },
-  
-  isInViewport: (element) => {
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-    
-    return (
-      rect.top <= windowHeight &&
-      rect.bottom >= 0 &&
-      rect.left <= windowWidth &&
-      rect.right >= 0
-    );
-  },
-  
-  // Throttle scroll events for performance
-  throttle: (callback, delay) => {
-    let lastCall = 0;
-    return function(...args) {
-      const now = new Date().getTime();
-      if (now - lastCall < delay) {
-        return;
-      }
-      lastCall = now;
-      return callback(...args);
-    };
-  }
-};
-
-// Event Handlers
-const handlers = {
-  scroll: utils.throttle(() => {
-    const scrolled = window.scrollY > config.scroll.threshold;
-    
-    // Scroll Top Button
-    if (elements.scrollTopBtn) {
-      elements.scrollTopBtn.classList.toggle('opacity-100', scrolled);
-      elements.scrollTopBtn.classList.toggle('pointer-events-auto', scrolled);
-    }
-    
-    // Header Shadow
-    if (elements.header) {
-      elements.header.classList.toggle('shadow-lg', scrolled);
-    }
-    
-    elements.sections.forEach(section => {
-      if (utils.isInViewport(section)) {
-        const id = section.getAttribute('id');
-        elements.navLinks.forEach(link => {
-          link.classList.toggle('text-primary', link.getAttribute('href') === `#${id}`);
-        });
-      }
-    });
-  }, 100), // Only trigger at most every 100ms
-  
-  toggleMobileMenu: (force) => {
-    const isOpen = force ?? !elements.mobileMenu.classList.contains('hidden');
-    elements.mobileMenu.classList.toggle('hidden', !isOpen);
-    document.body.classList.toggle('overflow-hidden', isOpen);
-  },
-  
-  scrollTop: () => {
-    window.scrollTo({
-      top: 0,
-      behavior: config.scroll.smooth ? 'smooth' : 'auto'
-    });
-  }
-};
-
-// Project Filter
-let currentFilter = null;
-
-// Filter projects
-function filterProjects(tech) {
-  const projectCards = document.querySelectorAll('.project-card');
-  
-  if (!tech) {
-    // Show all projects
-    projectCards.forEach(card => {
-      card.style.display = 'flex';
-      setTimeout(() => {
-        card.style.opacity = 1;
-        card.style.transform = 'translateY(0)';
-      }, 50);
-    });
-    currentFilter = null;
-    return;
-  }
-  
-  // Filter by specific technology
-  projectCards.forEach(card => {
-    const technologies = card.dataset.technologies ? card.dataset.technologies.split(',') : [];
-    const hasMatch = technologies.includes(tech);
-    
-    if (hasMatch) {
-      card.style.display = 'flex';
-      setTimeout(() => {
-        card.style.opacity = 1;
-        card.style.transform = 'translateY(0)';
-      }, 50);
-    } else {
-      card.style.opacity = 0;
-      card.style.transform = 'translateY(20px)';
-      setTimeout(() => {
-        card.style.display = 'none';
-      }, 300);
-    }
-  });
-  
-  currentFilter = tech;
-}
-
-// Intersection Observer for visibility animations
-function initIntersectionObserver() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  };
-  
-  // Observer for scroll-animate elements
-  const animationObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        entry.target.classList.remove('not-visible');
-      }
-    });
-  }, observerOptions);
-  
-  // Observe all .scroll-animate elements
-  document.querySelectorAll('.scroll-animate').forEach(element => {
-    element.classList.add('not-visible'); // Initially hidden
-    animationObserver.observe(element);
-  });
-  
-  // Observer for active section - with higher threshold for better accuracy
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        document.querySelectorAll('.nav-link').forEach(link => {
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('text-primary');
-          } else {
-            link.classList.remove('text-primary');
-          }
-        });
-      }
-    });
-  }, {
-    threshold: 0.4,
-    rootMargin: '-10% 0px -10% 0px'
-  });
-  
-  // Observe all sections
-  document.querySelectorAll('section[id]').forEach(section => {
-    sectionObserver.observe(section);
-  });
-}
-
-// Wrap all functions in a MainApp module for single global access
-const MainApp = (() => {
-  // Page Initialization with staggered loading for better performance
-  function initApp() {
-    // First load critical UI elements
-    // Initialize theme immediately
-    initTheme();
-    
-    // Delay loading animations slightly
-    setTimeout(() => {
-      // Initialize GSAP animations
-      initAllAnimations();
+  async init() {
+    try {
+      console.log('🚀 Initializing Modular Portfolio System...');
       
-      // Initialize GitHub integration with error handling
+      // Show loading indicator
+      this.showLoader();
+      
+      // Initialize components in priority order
+      await this.initializeComponents();
+      
+      // Initialize additional features
+      await this.initializeFeatures();
+      
+      // Hide loading screen
+      this.hideLoader();
+      
+      this.initialized = true;
+      console.log('✅ Modular Portfolio initialization complete!');
+      
+      // Trigger custom event for other scripts
+      window.dispatchEvent(new CustomEvent('portfolioLoaded', {
+        detail: { components: Array.from(this.components.keys()) }
+      }));
+      
+    } catch (error) {
+      console.error('❌ Portfolio initialization failed:', error);
+      this.handleInitializationError(error);
+    }
+  }
+
+  async initializeComponents() {
+    // Component definitions with priority and configuration
+    const componentConfigs = [
+      { 
+        name: 'hero', 
+        class: HeroSection, 
+        priority: 1, 
+        critical: true,
+        fallbackDelay: 2000 
+      },
+      { 
+        name: 'about', 
+        class: AboutSection, 
+        priority: 2, 
+        critical: false,
+        dependencies: ['github'] 
+      },
+      { 
+        name: 'skills', 
+        class: SkillsSection, 
+        priority: 3, 
+        critical: false 
+      },
+      { 
+        name: 'projects', 
+        class: ProjectsSection, 
+        priority: 2, 
+        critical: false,
+        dependencies: ['github'] 
+      },
+      { 
+        name: 'contact', 
+        class: ContactSection, 
+        priority: 4, 
+        critical: false 
+      },
+      { 
+        name: 'footer', 
+        class: FooterSection, 
+        priority: 5, 
+        critical: false 
+      }
+    ];
+
+    // Sort by priority (lower number = higher priority)
+    componentConfigs.sort((a, b) => a.priority - b.priority);
+
+    // Separate critical and non-critical components
+    const criticalComponents = componentConfigs.filter(config => config.critical);
+    const nonCriticalComponents = componentConfigs.filter(config => !config.critical);
+
+    console.log('📦 Loading critical components first...');
+    await this.loadComponentsBatch(criticalComponents, true);
+
+    console.log('📦 Loading non-critical components...');
+    await this.loadComponentsBatch(nonCriticalComponents, false);
+  }
+
+  async loadComponentsBatch(componentConfigs, isCritical = false) {
+    const promises = componentConfigs.map(async (config) => {
       try {
-        initGitHub();
+        const startTime = performance.now();
+        
+        // Create and store component instance
+        const component = new config.class();
+        this.components.set(config.name, component);
+        this.loadingStates.set(config.name, 'loading');
+
+        // Set timeout for fallback if specified
+        let fallbackTimeout;
+        if (config.fallbackDelay) {
+          fallbackTimeout = setTimeout(() => {
+            if (this.loadingStates.get(config.name) === 'loading') {
+              console.warn(`⚠️ ${config.name} component taking too long, using fallback`);
+              component.renderFallback();
+              this.loadingStates.set(config.name, 'fallback');
+            }
+          }, config.fallbackDelay);
+        }
+
+        // Render component
+        await component.render();
+        
+        // Clear fallback timeout if component loaded successfully
+        if (fallbackTimeout) {
+          clearTimeout(fallbackTimeout);
+        }
+
+        const loadTime = performance.now() - startTime;
+        this.loadingStates.set(config.name, 'loaded');
+        
+        console.log(`✓ ${config.name} component loaded successfully (${Math.round(loadTime)}ms)`);
+        
       } catch (error) {
-        console.error('GitHub yüklenirken hata oluştu:', error);
-        const projContainer = document.getElementById('github-projects');
-        if (projContainer) {
-          projContainer.innerHTML = '<p class="text-center text-red-400 py-10">GitHub verisi alınırken bir hata oluştu. Lütfen tekrar deneyin.</p>';
+        console.error(`❌ Failed to load ${config.name} component:`, error);
+        await this.handleComponentError(config, error);
+      }
+    });
+
+    // Handle promise resolution based on criticality
+    if (isCritical) {
+      // Wait for all critical components before continuing
+      await Promise.all(promises);
+    } else {
+      // Allow non-critical components to load independently
+      Promise.allSettled(promises);
+    }
+  }
+
+  async handleComponentError(config, error) {
+    const attempts = this.retryAttempts.get(config.name) || 0;
+    
+    if (attempts < this.maxRetries) {
+      console.log(`🔄 Retrying ${config.name} component (attempt ${attempts + 1}/${this.maxRetries})`);
+      this.retryAttempts.set(config.name, attempts + 1);
+      
+      // Exponential backoff delay
+      const delay = Math.pow(2, attempts) * 1000;
+      await new Promise(resolve => setTimeout(resolve, delay));
+      
+      try {
+        const component = new config.class();
+        this.components.set(config.name, component);
+        await component.render();
+        this.loadingStates.set(config.name, 'loaded');
+        console.log(`✓ ${config.name} component loaded successfully on retry`);
+      } catch (retryError) {
+        await this.handleComponentError(config, retryError);
+      }
+    } else {
+      console.error(`❌ ${config.name} component failed after ${this.maxRetries} attempts, using fallback`);
+      
+      // Use fallback rendering
+      try {
+        const component = new config.class();
+        this.components.set(config.name, component);
+        component.renderFallback();
+        this.loadingStates.set(config.name, 'fallback');
+        console.log(`⚠️ ${config.name} component using fallback content`);
+      } catch (fallbackError) {
+        console.error(`❌ ${config.name} fallback also failed:`, fallbackError);
+        this.loadingStates.set(config.name, 'error');
+      }
+    }
+  }
+
+  async initializeFeatures() {
+    try {
+      // Initialize GitHub integration if available
+      if (window.GitHub) {
+        await this.initializeGitHubIntegration();
+      }
+
+      // Initialize theme system
+      this.initializeThemeSystem();
+
+      // Initialize smooth scrolling
+      this.initializeSmoothScrolling();
+
+      // Initialize performance monitoring
+      this.initializePerformanceMonitoring();
+
+      console.log('✓ Additional features initialized');
+    } catch (error) {
+      console.warn('⚠️ Some features failed to initialize:', error);
+    }
+  }
+
+  async initializeGitHubIntegration() {
+    try {
+      console.log('🔗 Initializing GitHub integration...');
+      
+      // Update components with GitHub data
+      const aboutComponent = this.components.get('about');
+      const projectsComponent = this.components.get('projects');
+      
+      if (aboutComponent && typeof aboutComponent.loadGitHubData === 'function') {
+        await aboutComponent.loadGitHubData();
+      }
+      
+      if (projectsComponent && typeof projectsComponent.loadGitHubRepositories === 'function') {
+        await projectsComponent.loadGitHubRepositories();
+      }
+      
+      console.log('✓ GitHub integration initialized');
+    } catch (error) {
+      console.warn('⚠️ GitHub integration failed:', error);
+    }
+  }
+
+  initializeThemeSystem() {
+    // Initialize theme toggle functionality
+    const themeToggle = document.querySelector('#theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        this.toggleTheme();
+      });
+    }
+
+    // Apply saved theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+
+  toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Notify components of theme change
+    this.components.forEach(component => {
+      if (typeof component.onThemeChange === 'function') {
+        component.onThemeChange(newTheme);
+      }
+    });
+
+    console.log(`🎨 Theme changed to: ${newTheme}`);
+  }
+
+  initializeSmoothScrolling() {
+    // Handle smooth scrolling for anchor links
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
         }
       }
-
-      // Initialize Intersection Observer for scroll animations
-      initIntersectionObserver();
-    }, 100);
-    
-    // Delay loading 3D background to prioritize UI responsiveness
-    setTimeout(() => {
-      // Initialize 3D background only on desktop/larger screens
-      if (window.innerWidth > 768) {
-        // Background 3D removed
-      }
-    }, 300);
-    
-    // Add event listeners
-    // Use passive: true for touch events to improve scrolling performance
-    window.addEventListener('scroll', handlers.scroll, { passive: true });
-    
-    // Mobile menu buttons
-    if (elements.mobileMenuBtn) {
-      elements.mobileMenuBtn.addEventListener('click', () => handlers.toggleMobileMenu(true));
-    }
-    
-    if (elements.mobileMenuCloseBtn) {
-      elements.mobileMenuCloseBtn.addEventListener('click', () => handlers.toggleMobileMenu(false));
-    }
-    
-    // Mobile menu links
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => handlers.toggleMobileMenu(false));
-    });
-    
-    // Scroll to top button
-    if (elements.scrollTopBtn) {
-      elements.scrollTopBtn.addEventListener('click', handlers.scrollTop);
-    }
-    
-    // Filter buttons
-    document.querySelectorAll('[data-filter]').forEach(button => {
-      button.addEventListener('click', () => {
-        const tech = button.dataset.filter;
-        filterProjects(tech === currentFilter ? null : tech);
-        
-        // Update active filter button
-        document.querySelectorAll('[data-filter]').forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.filter === tech && tech === currentFilter);
-        });
-      });
     });
   }
 
-  // Expose public API
-  return {
-    initApp,
-    filterProjects,
-    handlers,
-    initIntersectionObserver
-  };
-})();
+  initializePerformanceMonitoring() {
+    // Monitor performance metrics
+    if ('performance' in window) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const perfData = performance.getEntriesByType('navigation')[0];
+          console.log('📊 Performance Metrics:', {
+            loadTime: Math.round(perfData.loadEventEnd - perfData.fetchStart) + 'ms',
+            domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.fetchStart) + 'ms',
+            componentStates: this.getComponentLoadTimes()
+          });
+        }, 0);
+      });
+    }
+  }
 
-// Attach MainApp to global window
-window.MainApp = MainApp;
-// Initialize application on DOMContentLoaded via MainApp
-window.addEventListener('DOMContentLoaded', MainApp.initApp); 
+  getComponentLoadTimes() {
+    const loadTimes = {};
+    this.components.forEach((component, name) => {
+      const state = this.loadingStates.get(name);
+      loadTimes[name] = {
+        state: state,
+        retries: this.retryAttempts.get(name) || 0
+      };
+    });
+    return loadTimes;
+  }
+
+  showLoader() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+      loader.style.display = 'flex';
+      loader.style.opacity = '1';
+    }
+  }
+
+  hideLoader() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+      loader.style.opacity = '0';
+      setTimeout(() => {
+        loader.style.display = 'none';
+        document.body.style.visibility = 'visible';
+      }, 500);
+    } else {
+      document.body.style.visibility = 'visible';
+    }
+  }
+
+  handleInitializationError(error) {
+    console.error('Portfolio initialization failed:', error);
+    
+    // Show error boundary
+    const errorBoundary = document.getElementById('error-boundary');
+    if (errorBoundary) {
+      errorBoundary.classList.remove('hidden');
+    }
+    
+    // Hide loader
+    this.hideLoader();
+    
+    // Track error if analytics available
+    if (window.gtag) {
+      window.gtag('event', 'exception', {
+        description: error.message,
+        fatal: true
+      });
+    }
+  }
+
+  // Public API methods for component management
+  getComponent(name) {
+    return this.components.get(name);
+  }
+
+  getComponentState(name) {
+    return this.loadingStates.get(name);
+  }
+
+  async reloadComponent(name) {
+    const component = this.components.get(name);
+    if (component) {
+      console.log(`🔄 Reloading ${name} component...`);
+      this.loadingStates.set(name, 'loading');
+      
+      try {
+        await component.render();
+        this.loadingStates.set(name, 'loaded');
+        console.log(`✓ ${name} component reloaded successfully`);
+      } catch (error) {
+        console.error(`❌ Failed to reload ${name}:`, error);
+        component.renderFallback();
+        this.loadingStates.set(name, 'fallback');
+      }
+    }
+  }
+
+  getSystemStatus() {
+    return {
+      initialized: this.initialized,
+      componentCount: this.components.size,
+      loadedComponents: Array.from(this.loadingStates.entries())
+        .filter(([name, state]) => state === 'loaded')
+        .map(([name]) => name),
+      failedComponents: Array.from(this.loadingStates.entries())
+        .filter(([name, state]) => state === 'error')
+        .map(([name]) => name)
+    };
+  }
+}
+
+// Initialize the modular portfolio system
+const portfolio = new ModularPortfolio();
+
+// Start initialization when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => portfolio.init());
+} else {
+  portfolio.init();
+}
+
+// Make portfolio instance globally accessible for debugging and external access
+window.Portfolio = portfolio;
+
+// Export for ES6 module usage
+export default portfolio; 

@@ -1,6 +1,10 @@
-/* File: style.css
- * Description: Ana stil dosyası - modüler CSS dosyalarını import eder ve genel stilleri yönetir
- */
+/* File: style.css */
+/* Description: Ana stil dosyası - modüler CSS dosyalarını import eder ve genel stilleri yönetir */
+
+/* Import Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* Import Modular CSS Files */
 @import './styles/base.css';
@@ -9,10 +13,10 @@
 @import './styles/themes.css';
 
 /* Fix for section visibility - Override for component system */
-section {
-  opacity: 1 !important;
-  transform: none !important;
-}
+  section {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 
 /* Enhanced focus styles for better accessibility */
 .focus-visible-enhanced {
@@ -22,7 +26,7 @@ section {
 .focus-visible-enhanced:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
-  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.5);
+  box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.5);
 }
 
 /* Legacy browser support for CSS custom properties */
@@ -90,9 +94,9 @@ section {
   right: 1.5rem;
   width: 3rem;
   height: 3rem;
-  background-color: rgba(var(--primary-rgb), 0.1);
+  background-color: rgba(100, 255, 218, 0.1);
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(var(--primary-rgb), 0.2);
+  border: 1px solid rgba(100, 255, 218, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -110,9 +114,9 @@ section {
 }
 
 #scroll-top:hover {
-  box-shadow: 0 8px 25px var(--shadow-primary);
-  background-color: rgba(var(--primary-rgb), 0.2);
+  background-color: rgba(100, 255, 218, 0.2);
   transform: scale(1.1);
+  box-shadow: 0 8px 25px var(--shadow-primary);
 }
 
 /* Loading screen */
@@ -152,19 +156,19 @@ section {
 }
 
 /* Mobile menu overlay specific styles */
-.mobile-menu-overlay {
+  .mobile-menu-overlay {
   position: fixed;
   inset: 0;
   z-index: 40;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(24px);
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   background: var(--backdrop-blur);
-}
+  }
 
-.mobile-menu-overlay.open {
-  transform: translateX(0);
-}
+  .mobile-menu-overlay.open {
+    transform: translateX(0);
+  }
 
 /* Progress bar for navigation */
 #nav-progress {
@@ -180,7 +184,7 @@ section {
 
 /* Form validation animations */
 .form-slide-in {
-  animation: slideInDown 0.5s ease forwards;
+  animation: slideInDown 0.6s ease-out forwards;
 }
 
 /* Footer before pseudo element */
@@ -197,38 +201,39 @@ footer::before {
 }
 
 /* Navbar scrolled state */
-#navbar.scrolled {
+  #navbar.scrolled {
   background-color: var(--backdrop-blur);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-}
+  backdrop-filter: blur(24px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
 
-#navbar.scrolled .nav-link-modern {
+  #navbar.scrolled .nav-link-modern {
   color: var(--text-primary);
 }
 
 /* Activity card specific styles */
-.github-project-card {
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  background-color: var(--bg-surface);
+  .github-project-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  background-color: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(4px);
   border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
   transition: all 0.3s ease;
-}
+  }
 
-.github-project-card h3 {
+  .github-project-card h3 {
   font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-weight: bold;
   color: var(--text-primary);
-}
+  transition: color 0.3s ease;
+  }
 
-.github-project-card p {
+  .github-project-card p {
   color: var(--text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.5;
+  margin-bottom: 1rem;
+  line-height: 1.625;
 }
 
 /* Mobile-specific improvements */
@@ -242,12 +247,12 @@ footer::before {
   }
   
   .mobile-menu a:last-child {
-    border-bottom: 0;
+    border-bottom: none;
   }
   
   .mobile-menu a:hover {
-    background-color: rgba(var(--bg-secondary-rgb), 0.3);
-    transform: translateX(8px);
+    background-color: rgba(30, 41, 59, 0.3);
+    transform: translateX(0.5rem);
   }
 }
 
@@ -260,33 +265,26 @@ footer::before {
 }
 
 .component-container:empty {
-  display: none;
-}
+    display: none;
+  }
 
 .component-container[data-loading="true"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  min-height: 12.5rem;
 }
 
-.component-container[data-loading="true"]::after {
-  content: "Loading...";
-  color: var(--text-accent);
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Lazy loading images */
+/* Image lazy loading */
 img[data-lazy] {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease-in-out;
 }
 
 img[data-lazy].loaded {
   opacity: 1;
 }
 
-/* Performance optimizations */
 .will-change-transform {
   will-change: transform;
 }
@@ -295,23 +293,25 @@ img[data-lazy].loaded {
   will-change: scroll-position;
 }
 
-/* Automatic theme determination */
+/* Theme based responsive adjustments */
 @media (prefers-color-scheme: dark) {
   [data-theme="auto"] {
-    --bg-primary: var(--dark-bg-primary);
-    --bg-secondary: var(--dark-bg-secondary);
-    --bg-surface: var(--dark-bg-surface);
-    --text-primary: var(--dark-text-primary);
-    --text-secondary: var(--dark-text-secondary);
+    --bg-primary: #0a192f;
+    --bg-secondary: #1e293b;
+    --bg-accent: #334155;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --text-accent: #64748b;
   }
 }
 
 @media (prefers-color-scheme: light) {
   [data-theme="auto"] {
-    --bg-primary: var(--light-bg-primary);
-    --bg-secondary: var(--light-bg-secondary);
-    --bg-surface: var(--light-bg-surface);
-    --text-primary: var(--light-text-primary);
-    --text-secondary: var(--light-text-secondary);
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-accent: #e2e8f0;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-accent: #64748b;
   }
 }

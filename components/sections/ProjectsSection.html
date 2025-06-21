@@ -1,0 +1,372 @@
+<!-- File: components/sections/ProjectsSection.html -->
+<!-- Description: Kullanıcının projelerini, GitHub repoları ve öne çıkan çalışmaları gösteren kapsamlı proje bölümü -->
+
+<section class="py-20 bg-bg-secondary projects-section">
+  <div class="container mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
+        <span class="text-[var(--primary)]">#</span>Projelerim
+      </h2>
+      <p class="text-[var(--text-secondary)] max-w-2xl mx-auto text-lg">
+        Modern web teknolojileri kullanarak geliştirdiğim projeler ve açık kaynak katkılarım
+      </p>
+    </div>
+
+    <!-- Project Categories Filter -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
+      <button class="project-filter-btn active" data-filter="all">
+        <i class="ri-grid-line mr-2"></i>Tümü
+      </button>
+      <button class="project-filter-btn" data-filter="web">
+        <i class="ri-window-line mr-2"></i>Web App
+      </button>
+      <button class="project-filter-btn" data-filter="mobile">
+        <i class="ri-smartphone-line mr-2"></i>Mobile
+      </button>
+      <button class="project-filter-btn" data-filter="backend">
+        <i class="ri-server-line mr-2"></i>Backend
+      </button>
+      <button class="project-filter-btn" data-filter="opensource">
+        <i class="ri-open-source-line mr-2"></i>Open Source
+      </button>
+    </div>
+
+    <!-- Featured Projects Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="projects-grid">
+      <!-- Featured Project 1 -->
+      <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-image-container">
+          <img 
+            src="https://via.placeholder.com/400x250/1a202c/64ffda?text=Portfolio+Website" 
+            alt="Portfolio Website Projesi"
+            class="project-image"
+            loading="lazy"
+            decoding="async"
+          >
+          <div class="project-overlay">
+            <div class="project-actions">
+              <a href="https://github.com/ucanalgan" target="_blank" rel="noopener noreferrer" 
+                 class="project-action-btn" aria-label="GitHub'da görüntüle">
+                <i class="ri-github-line"></i>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" 
+                 class="project-action-btn" aria-label="Canlı demo">
+                <i class="ri-external-link-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-title">Portfolio Website</h3>
+            <div class="project-status featured">Featured</div>
+          </div>
+          
+          <p class="project-description">
+            Modern, responsive ve performanslı kişisel portfolio websitesi. 
+            Component tabanlı mimari ve optimizasyon teknikleri kullanıldı.
+          </p>
+          
+          <div class="project-tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Tailwind</span>
+          </div>
+          
+          <div class="project-stats">
+            <div class="stat-item">
+              <i class="ri-star-line"></i>
+              <span>Featured</span>
+            </div>
+            <div class="stat-item">
+              <i class="ri-eye-line"></i>
+              <span>Live</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- More projects will be loaded dynamically -->
+    </div>
+
+    <!-- GitHub Activity Section -->
+    <div class="bg-[var(--bg-primary)] rounded-2xl p-8 border border-[var(--border-color)]" data-aos="fade-up">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-[var(--text-primary)] mb-4">
+          <i class="ri-github-line text-[var(--primary)] mr-2"></i>
+          GitHub Aktivitesi
+        </h3>
+        <p class="text-[var(--text-secondary)]">
+          Son projeler ve katkılar
+        </p>
+      </div>
+
+      <!-- GitHub Stats -->
+      <div class="grid md:grid-cols-4 gap-6 mb-8">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="ri-git-repository-line"></i>
+          </div>
+          <div class="stat-content">
+            <div class="stat-number" id="github-repos">--</div>
+            <div class="stat-label">Repositories</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="ri-star-line"></i>
+          </div>
+          <div class="stat-content">
+            <div class="stat-number" id="github-stars">--</div>
+            <div class="stat-label">Stars</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="ri-git-fork-line"></i>
+          </div>
+          <div class="stat-content">
+            <div class="stat-number" id="github-forks">--</div>
+            <div class="stat-label">Forks</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="ri-git-commit-line"></i>
+          </div>
+          <div class="stat-content">
+            <div class="stat-number" id="github-commits">--</div>
+            <div class="stat-label">Commits</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Repositories -->
+      <div id="github-repos-container" class="grid md:grid-cols-2 gap-6">
+        <!-- Repos will be loaded dynamically -->
+      </div>
+
+      <!-- GitHub Profile Link -->
+      <div class="text-center mt-8">
+        <a href="https://github.com/ucanalgan" target="_blank" rel="noopener noreferrer" 
+           class="btn-base btn-primary inline-flex items-center">
+          <i class="ri-github-line mr-2"></i>
+          GitHub Profilimi İncele
+          <i class="ri-external-link-line ml-2"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Load More Projects Button -->
+    <div class="text-center mt-12" data-aos="fade-up">
+      <button id="load-more-projects" class="btn-base btn-ghost">
+        <i class="ri-add-line mr-2"></i>
+        Daha Fazla Proje Yükle
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Project Modal Template -->
+<template id="project-modal-template">
+  <div class="project-modal-overlay" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <div class="project-modal">
+      <div class="project-modal-header">
+        <h3 id="modal-title" class="modal-title"></h3>
+        <button class="modal-close-btn" aria-label="Modalı kapat">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      
+      <div class="project-modal-content">
+        <div class="modal-image-container">
+          <img class="modal-image" alt="" loading="lazy" decoding="async">
+        </div>
+        
+        <div class="modal-details">
+          <div class="modal-description"></div>
+          <div class="modal-tech-stack"></div>
+          <div class="modal-features"></div>
+          <div class="modal-actions"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+/* Project Section Specific Styles */
+.project-filter-btn {
+  @apply px-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border-color)] 
+         rounded-lg text-[var(--text-secondary)] font-medium
+         hover:bg-[var(--primary)]/10 hover:border-[var(--primary)]/30 hover:text-[var(--primary)]
+         transition-all duration-300 flex items-center;
+}
+
+.project-filter-btn.active {
+  @apply bg-[var(--primary)]/10 border-[var(--primary)]/30 text-[var(--primary)];
+}
+
+.project-card {
+  @apply bg-[var(--bg-primary)] rounded-xl border border-[var(--border-color)]
+         hover:border-[var(--primary)]/30 transition-all duration-300 overflow-hidden
+         hover:shadow-lg hover:shadow-[var(--primary)]/5 hover:-translate-y-1;
+}
+
+.project-image-container {
+  @apply relative overflow-hidden aspect-video;
+}
+
+.project-image {
+  @apply w-full h-full object-cover transition-transform duration-300;
+}
+
+.project-card:hover .project-image {
+  @apply scale-105;
+}
+
+.project-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent
+         opacity-0 hover:opacity-100 transition-opacity duration-300
+         flex items-center justify-center;
+}
+
+.project-actions {
+  @apply flex gap-3;
+}
+
+.project-action-btn {
+  @apply w-12 h-12 bg-[var(--primary)]/20 backdrop-blur-sm border border-[var(--primary)]/30
+         rounded-lg flex items-center justify-center text-[var(--primary)]
+         hover:bg-[var(--primary)]/30 hover:scale-110 transition-all duration-300;
+}
+
+.project-content {
+  @apply p-6;
+}
+
+.project-header {
+  @apply flex items-start justify-between mb-3;
+}
+
+.project-title {
+  @apply text-xl font-bold text-[var(--text-primary)];
+}
+
+.project-status {
+  @apply px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.project-status.featured {
+  @apply bg-[var(--primary)]/10 text-[var(--primary)] border border-[var(--primary)]/20;
+}
+
+.project-description {
+  @apply text-[var(--text-secondary)] mb-4 line-clamp-3;
+}
+
+.project-tech-stack {
+  @apply flex flex-wrap gap-2 mb-4;
+}
+
+.tech-tag {
+  @apply px-2 py-1 bg-[var(--bg-secondary)] border border-[var(--border-color)]
+         rounded text-xs text-[var(--text-accent)] font-medium;
+}
+
+.project-stats {
+  @apply flex items-center gap-4 text-sm text-[var(--text-secondary)];
+}
+
+.stat-item {
+  @apply flex items-center gap-1;
+}
+
+.stat-card {
+  @apply bg-[var(--bg-secondary)] rounded-lg p-4 border border-[var(--border-color)]
+         hover:border-[var(--primary)]/30 transition-colors duration-300;
+}
+
+.stat-icon {
+  @apply text-2xl text-[var(--primary)] mb-2;
+}
+
+.stat-number {
+  @apply text-2xl font-bold text-[var(--text-primary)];
+}
+
+.stat-label {
+  @apply text-sm text-[var(--text-secondary)];
+}
+
+/* Project Modal Styles */
+.project-modal-overlay {
+  @apply fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4
+         opacity-0 invisible transition-all duration-300;
+}
+
+.project-modal-overlay.active {
+  @apply opacity-100 visible;
+}
+
+.project-modal {
+  @apply bg-[var(--bg-primary)] rounded-xl border border-[var(--border-color)]
+         max-w-4xl w-full max-h-[90vh] overflow-y-auto
+         transform scale-95 transition-transform duration-300;
+}
+
+.project-modal-overlay.active .project-modal {
+  @apply scale-100;
+}
+
+.project-modal-header {
+  @apply flex items-center justify-between p-6 border-b border-[var(--border-color)];
+}
+
+.modal-title {
+  @apply text-2xl font-bold text-[var(--text-primary)];
+}
+
+.modal-close-btn {
+  @apply w-10 h-10 flex items-center justify-center rounded-lg
+         hover:bg-[var(--bg-secondary)] transition-colors duration-300;
+}
+
+.project-modal-content {
+  @apply p-6;
+}
+
+.modal-image-container {
+  @apply mb-6 rounded-lg overflow-hidden;
+}
+
+.modal-image {
+  @apply w-full aspect-video object-cover;
+}
+
+.modal-details {
+  @apply space-y-6;
+}
+
+.modal-description {
+  @apply text-[var(--text-secondary)] leading-relaxed;
+}
+
+.modal-tech-stack {
+  @apply flex flex-wrap gap-2;
+}
+
+.modal-features {
+  @apply space-y-2;
+}
+
+.modal-actions {
+  @apply flex gap-4 pt-4 border-t border-[var(--border-color)];
+}
+</style> 
