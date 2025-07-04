@@ -1,6 +1,6 @@
 # 🚀 Personal Portfolio Website
 
-[![Deployment Status](https://img.shields.io/badge/deployment-live-brightgreen)](https://ucanalgan.github.io/Kişisel_web/)
+[![Deployment Status](https://img.shields.io/badge/deployment-live-brightgreen)](https://ucanalgan.github.io/personalWeb/)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
 [![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.0.0-646CFF?logo=vite)](https://vitejs.dev/)
@@ -9,7 +9,7 @@
 
 > **Modern, performant, and accessible personal portfolio website built with React, Vite, and advanced optimization techniques.**
 
-[🌐 **Live Demo**](https://ucanalgan.github.io/Kişisel_web/) | [📱 **Mobile Preview**](#responsive-design) | [⚡ **Performance Report**](#performance-metrics)
+[🌐 **Live Demo**](https://ucanalgan.github.io/personalWeb/) | [📱 **Mobile Preview**](#responsive-design) | [⚡ **Performance Report**](#performance-metrics)
 
 ## 🌟 Live Demo
 
@@ -320,7 +320,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE
 ## 👤 Author
 
 **Umutcan Algan**
-- 🌐 Website: [ucanalgan.dev](https://ucanalgan.github.io/Kişisel_web/)
+- 🌐 Website: [ucanalgan.dev](https://ucanalgan.github.io/personalWeb/)
 - 💼 LinkedIn: [linkedin.com/in/ucanalgan](https://linkedin.com/in/ucanalgan)
 - 🐙 GitHub: [github.com/ucanalgan](https://github.com/ucanalgan)
 - 📧 Email: contact@ucanalgan.dev
@@ -344,6 +344,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE
 
 **⭐ Star this repo if you find it helpful!**
 
-Made with ❤️ and lots of ☕ by [Umutcan Algan](https://github.com/ucanalgan)
+Made with lots of ☕ by [Umutcan Algan](https://github.com/ucanalgan)
 
 </div>
