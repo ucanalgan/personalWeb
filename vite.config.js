@@ -22,8 +22,8 @@ export default defineConfig(({ command, mode }) => {
       })
     ].filter(Boolean),
     
-    // Base path for GitHub Pages
-    base: '/Kişisel_web/',
+    // Base path for GitHub Pages (only in production)
+    base: isProduction ? '/Kişisel_web/' : '/',
     
     // Root directory
     root: '.',
@@ -42,36 +42,6 @@ export default defineConfig(({ command, mode }) => {
           main: resolve(__dirname, 'index.html')
         },
         output: {
-          // Advanced chunking strategy
-          manualChunks: {
-            // React vendor chunk
-            'react-vendor': ['react', 'react-dom'],
-            // Utility libraries
-            'utils': [
-              './src/utils/theme.js',
-              './src/utils/animations.js',
-              './src/utils/analytics.js',
-              './src/utils/utils.js',
-              './src/utils/debounce.js'
-            ],
-            // Components chunks by route/feature
-            'layout': [
-              './src/components/layout/Header.jsx',
-              './src/components/common/ThemeToggle.jsx',
-              './src/components/common/ScrollToTop.jsx'
-            ],
-            'sections': [
-              './src/components/sections/HeroSection.jsx',
-              './src/components/sections/AboutSection.jsx',
-              './src/components/sections/SkillsSection.jsx'
-            ],
-            'features': [
-              './src/components/sections/ProjectsSection.jsx',
-              './src/components/sections/GitHubSection.jsx',
-              './src/components/sections/ContactSection.jsx',
-              './src/components/sections/FooterSection.jsx'
-            ]
-          },
           // Optimized asset naming
           assetFileNames: (assetInfo) => {
             const info = assetInfo.name.split('.');

@@ -3,6 +3,9 @@
  * Contains helper functions used throughout the application
  */
 
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 /**
  * Check if an element is in viewport
  * @param {Element} element - DOM element to check
@@ -247,6 +250,66 @@ export function showNotification(message, type = 'info', duration = 3000) {
   }, duration);
 }
 
+/**
+ * Utility function to merge Tailwind CSS classes
+ * @param {...(string|object|Array)} inputs - Class names to merge
+ * @returns {string} Merged class names
+ */
+export function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
+
+/**
+ * Debounce function to limit the rate at which a function can be called
+ * @param {Function} func - Function to debounce
+ * @param {number} wait - Wait time in milliseconds
+ * @param {boolean} immediate - Whether to call function immediately
+ * @returns {Function} Debounced function
+ */
+export function debounce(func, wait, immediate = false) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      timeout = null;
+      if (!immediate) func.apply(this, args);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(this, args);
+  };
+}
+
+/**
+ * Smooth scroll to element
+ * @param {string|Element} target - Element or selector to scroll to
+ * @param {number} offset - Offset from element top
+ */
+export function scrollToElement(target, offset = 0) {
+  const element = typeof target === 'string' ? document.querySelector(target) : target;
+  if (element) {
+    const elementPosition = element.offsetTop - offset;
+    window.scrollTo({
+      top: elementPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+
+/**
+ * Format date to readable string
+ * @param {Date|string} date - Date to format
+ * @returns {string} Formatted date string
+ */
+export function formatDate(date) {
+  const d = new Date(date);
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
 export default {
   isInViewport,
   saveToStorage,
@@ -261,5 +324,9 @@ export default {
   getDeviceInfo,
   sleep,
   removeElementWithAnimation,
-  showNotification
+  showNotification,
+  cn,
+  debounce,
+  scrollToElement,
+  formatDate
 }; 

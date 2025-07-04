@@ -1,7 +1,7 @@
 // File: js/animations.js
 // Description: Animation utilities and scroll animations for the portfolio
 
-import { debounce } from './debounce.js';
+import { debounce } from './utils.js';
 import { isInViewport } from './utils.js';
 
 /**

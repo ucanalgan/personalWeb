@@ -40,7 +40,11 @@
 /* Project cards */
 .project-card {
   @apply card-interactive;
-  @apply group relative;
+  @apply relative;
+}
+
+.project-card.group {
+  /* Group styles applied separately */
 }
 
 .project-card-image {

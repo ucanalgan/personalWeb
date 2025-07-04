@@ -155,11 +155,13 @@
 
 /* Card Component Classes */
 .card {
-  @apply bg-card bg-opacity-80 backdrop-blur-sm border border-border-color rounded-xl p-6 transition-all duration-300;
+  @apply bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-xl p-6 transition-all duration-300;
+  @apply dark:bg-slate-800/80 dark:border-slate-700;
 }
 
 .card-hover {
-  @apply hover:border-primary/30 hover:shadow-card-hover hover:bg-opacity-90;
+  @apply hover:border-cyan-500/30 hover:shadow-lg hover:bg-white/90;
+  @apply dark:hover:bg-slate-800/90;
 }
 
 .card-glow {
@@ -168,21 +170,24 @@
 
 /* Input Component Classes */
 .input-field {
-  @apply w-full px-4 py-3 bg-input-bg border border-border-color rounded-xl text-text-primary placeholder-text-muted focus:border-primary/50 focus:outline-none transition-all duration-300;
+  @apply w-full px-4 py-3 bg-white/50 border border-neutral-200 rounded-xl text-slate-900 placeholder-slate-500;
+  @apply focus:border-cyan-500/50 focus:outline-none transition-all duration-300;
+  @apply dark:bg-slate-800/50 dark:border-slate-700 dark:text-slate-100 dark:placeholder-slate-400;
 }
 
 /* Navigation Classes */
 .nav-link {
-  @apply text-text-secondary hover:text-primary transition-colors duration-300 relative;
+  @apply text-slate-600 hover:text-cyan-500 transition-colors duration-300 relative;
+  @apply dark:text-slate-400 dark:hover:text-cyan-400;
 }
 
 .nav-link.active {
-  @apply text-primary;
+  @apply text-cyan-500 dark:text-cyan-400;
 }
 
 .nav-link.active::after {
   content: '';
-  @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary;
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-cyan-500 dark:bg-cyan-400;
 }
 
 /* Gradient Text */
@@ -234,7 +239,8 @@
 
 /* Focus States for Accessibility */
 .focus-visible-enhanced:focus-visible {
-  @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-bg-primary;
+  @apply outline-none ring-2 ring-cyan-500/50 ring-offset-2 ring-offset-white;
+  @apply dark:ring-offset-slate-900;
 }
 
 /* Reduced Motion Support */
