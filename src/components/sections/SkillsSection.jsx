@@ -13,12 +13,12 @@ const SkillsSection = () => {
       color: 'from-cyan-400 to-blue-500',
       description: 'Creating engaging user interfaces',
       skills: [
-        { name: 'React', level: 90, icon: 'ri-reactjs-line', description: 'Component-based UI development' },
-        { name: 'Vue.js', level: 85, icon: 'ri-vuejs-line', description: 'Progressive framework mastery' },
-        { name: 'TypeScript', level: 88, icon: 'ri-code-s-slash-line', description: 'Type-safe development' },
-        { name: 'Tailwind CSS', level: 92, icon: 'ri-css3-line', description: 'Utility-first styling' },
-        { name: 'Next.js', level: 85, icon: 'ri-layout-line', description: 'Full-stack React framework' },
-        { name: 'Vite', level: 80, icon: 'ri-flashlight-line', description: 'Modern build tooling' }
+        { name: 'React', icon: 'ri-reactjs-line', description: 'Component-based UI development' },
+        { name: 'Vue.js', icon: 'ri-vuejs-line', description: 'Progressive framework mastery' },
+        { name: 'TypeScript', icon: 'ri-code-s-slash-line', description: 'Type-safe development' },
+        { name: 'Tailwind CSS', icon: 'ri-css3-line', description: 'Utility-first styling' },
+        { name: 'Next.js', icon: 'ri-layout-line', description: 'Full-stack React framework' },
+        { name: 'Vite', icon: 'ri-flashlight-line', description: 'Modern build tooling' }
       ]
     },
     {
@@ -27,12 +27,12 @@ const SkillsSection = () => {
       color: 'from-green-400 to-emerald-600',
       description: 'Building robust server architectures',
       skills: [
-        { name: 'Node.js', level: 88, icon: 'ri-nodejs-line', description: 'Server-side JavaScript' },
-        { name: 'Express.js', level: 85, icon: 'ri-route-line', description: 'Web application framework' },
-        { name: 'Python', level: 82, icon: 'ri-file-code-line', description: 'Backend scripting & APIs' },
-        { name: 'Django', level: 78, icon: 'ri-global-line', description: 'High-level Python framework' },
-        { name: 'FastAPI', level: 80, icon: 'ri-rocket-line', description: 'Modern Python web framework' },
-        { name: 'REST APIs', level: 90, icon: 'ri-api-line', description: 'RESTful service design' }
+        { name: 'Node.js', icon: 'ri-nodejs-line', description: 'Server-side JavaScript' },
+        { name: 'Express.js', icon: 'ri-route-line', description: 'Web application framework' },
+        { name: 'Python', icon: 'ri-file-code-line', description: 'Backend scripting & APIs' },
+        { name: 'Django', icon: 'ri-global-line', description: 'High-level Python framework' },
+        { name: 'FastAPI', icon: 'ri-rocket-line', description: 'Modern Python web framework' },
+        { name: 'REST APIs', icon: 'ri-api-line', description: 'RESTful service design' }
       ]
     },
     {
@@ -41,12 +41,12 @@ const SkillsSection = () => {
       color: 'from-purple-400 to-indigo-600',
       description: 'Data management and optimization',
       skills: [
-        { name: 'PostgreSQL', level: 85, icon: 'ri-database-line', description: 'Relational database management' },
-        { name: 'MongoDB', level: 80, icon: 'ri-leaf-line', description: 'NoSQL document database' },
-        { name: 'Redis', level: 75, icon: 'ri-flashlight-fill', description: 'In-memory data structure' },
-        { name: 'MySQL', level: 82, icon: 'ri-database-2-line', description: 'Traditional SQL database' },
-        { name: 'Prisma', level: 88, icon: 'ri-settings-3-line', description: 'Modern database toolkit' },
-        { name: 'SQLAlchemy', level: 78, icon: 'ri-links-line', description: 'Python SQL toolkit' }
+        { name: 'PostgreSQL', icon: 'ri-database-line', description: 'Relational database management' },
+        { name: 'MongoDB', icon: 'ri-leaf-line', description: 'NoSQL document database' },
+        { name: 'Redis', icon: 'ri-flashlight-fill', description: 'In-memory data structure' },
+        { name: 'MySQL', icon: 'ri-database-2-line', description: 'Traditional SQL database' },
+        { name: 'Prisma', icon: 'ri-settings-3-line', description: 'Modern database toolkit' },
+        { name: 'SQLAlchemy', icon: 'ri-links-line', description: 'Python SQL toolkit' }
       ]
     },
     {
@@ -55,12 +55,12 @@ const SkillsSection = () => {
       color: 'from-orange-400 to-red-500',
       description: 'Deployment and development tools',
       skills: [
-        { name: 'Docker', level: 85, icon: 'ri-ship-line', description: 'Containerization platform' },
-        { name: 'AWS', level: 80, icon: 'ri-cloud-line', description: 'Cloud computing services' },
-        { name: 'Git', level: 92, icon: 'ri-git-branch-line', description: 'Version control system' },
-        { name: 'GitHub Actions', level: 78, icon: 'ri-github-line', description: 'CI/CD automation' },
-        { name: 'Linux', level: 83, icon: 'ri-terminal-line', description: 'Unix-based systems' },
-        { name: 'Nginx', level: 75, icon: 'ri-global-line', description: 'Web server & reverse proxy' }
+        { name: 'Docker', icon: 'ri-ship-line', description: 'Containerization platform' },
+        { name: 'AWS', icon: 'ri-cloud-line', description: 'Cloud computing services' },
+        { name: 'Git', icon: 'ri-git-branch-line', description: 'Version control system' },
+        { name: 'GitHub Actions', icon: 'ri-github-line', description: 'CI/CD automation' },
+        { name: 'Linux', icon: 'ri-terminal-line', description: 'Unix-based systems' },
+        { name: 'Nginx', icon: 'ri-global-line', description: 'Web server & reverse proxy' }
       ]
     }
   ];
@@ -76,13 +76,14 @@ const SkillsSection = () => {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const element = sectionRef.current;
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, []);
@@ -96,17 +97,7 @@ const SkillsSection = () => {
 
       return () => clearInterval(interval);
     }
-  }, [isVisible]);
-
-  const getSkillIcon = (category, index) => {
-    const icons = {
-      0: ['ri-reactjs-line', 'ri-vuejs-line', 'ri-code-s-slash-line', 'ri-css3-line', 'ri-layout-line', 'ri-flashlight-line'],
-      1: ['ri-nodejs-line', 'ri-route-line', 'ri-file-code-line', 'ri-global-line', 'ri-rocket-line', 'ri-api-line'],
-      2: ['ri-database-line', 'ri-leaf-line', 'ri-flashlight-fill', 'ri-database-2-line', 'ri-settings-3-line', 'ri-links-line'],
-      3: ['ri-ship-line', 'ri-cloud-line', 'ri-git-branch-line', 'ri-github-line', 'ri-terminal-line', 'ri-global-line']
-    };
-    return icons[category][index] || 'ri-code-line';
-  };
+  }, [isVisible, skillCategories.length]);
 
   return (
     <section id="skills" className="py-32 bg-gradient-to-b from-surface/5 via-background to-surface/5 relative overflow-hidden">
@@ -178,20 +169,18 @@ const SkillsSection = () => {
                       <p className="body-base opacity-90">{skillCategories[activeCategory].description}</p>
                     </div>
 
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between text-sm">
-                        <span>Proficiency Level</span>
-                        <span className="font-mono">
-                          {Math.round(skillCategories[activeCategory].skills.reduce((acc, skill) => acc + skill.level, 0) / skillCategories[activeCategory].skills.length)}%
-                        </span>
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-2 text-sm">
+                        <i className="ri-code-line" />
+                        <span>{skillCategories[activeCategory].skills.length} Technologies</span>
                       </div>
-                      <div className="w-full bg-white/20 rounded-full h-2 overflow-hidden">
-                        <div
-                          className="bg-white h-full rounded-full transition-all duration-1000 ease-out"
-                          style={{
-                            width: `${Math.round(skillCategories[activeCategory].skills.reduce((acc, skill) => acc + skill.level, 0) / skillCategories[activeCategory].skills.length)}%`
-                          }}
-                        />
+                      <div className="flex items-center space-x-2 text-sm">
+                        <i className="ri-time-line" />
+                        <span>Production Ready</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-sm">
+                        <i className="ri-star-line" />
+                        <span>Battle Tested</span>
                       </div>
                     </div>
                   </div>
@@ -210,33 +199,17 @@ const SkillsSection = () => {
                     >
                       <div className="bg-surface/40 border border-border rounded-2xl p-6 backdrop-blur-sm hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10 transform hover:-translate-y-2">
                         {/* Skill Header */}
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center space-x-3">
-                            <div className={`w-12 h-12 bg-gradient-to-br ${skillCategories[activeCategory].color} rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                              <i className={`${skill.icon} text-xl`} />
-                            </div>
-                            <div>
-                              <h4 className="font-bold text-text-primary group-hover:text-primary transition-colors duration-300">{skill.name}</h4>
-                              <p className="text-xs text-text-secondary">{skill.description}</p>
-                            </div>
+                        <div className="flex items-center space-x-4">
+                          <div className={`w-14 h-14 bg-gradient-to-br ${skillCategories[activeCategory].color} rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                            <i className={`${skill.icon} text-2xl`} />
                           </div>
-                          <div className="text-right">
-                            <div className="text-lg font-mono font-bold text-primary">{skill.level}%</div>
-                          </div>
-                        </div>
-
-                        {/* Skill Bar */}
-                        <div className="space-y-2">
-                          <div className="w-full bg-surface/50 rounded-full h-2 overflow-hidden shadow-inner">
-                            <div
-                              className={`bg-gradient-to-r ${skillCategories[activeCategory].color} h-full rounded-full transition-all duration-1000 ease-out shadow-sm relative overflow-hidden`}
-                              style={{
-                                width: `${skill.level}%`,
-                                transitionDelay: `${index * 100}ms`
-                              }}
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-shimmer" />
-                            </div>
+                          <div className="flex-1">
+                            <h4 className="font-bold text-lg text-text-primary group-hover:text-primary transition-colors duration-300 mb-1">
+                              {skill.name}
+                            </h4>
+                            <p className="text-sm text-text-secondary leading-relaxed">
+                              {skill.description}
+                            </p>
                           </div>
                         </div>
 
