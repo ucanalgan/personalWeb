@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/Kisisel_web/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/Ki%C5%9Fisel_web/' : '/',
   root: '../',
   build: {
     target: 'es2022',

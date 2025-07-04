@@ -1,665 +1,240 @@
 <!DOCTYPE html>
-<html lang="tr" class="theme-transition">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Umutcan Algan - Professional Full Stack Developer specializing in React, Node.js, Python. Building modern, accessible web applications with cutting-edge technologies.">
-  <meta name="keywords" content="Umutcan Algan, Full Stack Developer, React Developer, Node.js, Python, JavaScript, TypeScript, Web Development, Frontend, Backend, Portfolio, Software Engineer">
-  <meta name="author" content="Umutcan Algan">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="googlebot" content="index, follow">
-  <meta name="rating" content="general">
-  <meta name="revisit-after" content="7 days">
-  <meta name="language" content="TR, EN">
-  
-  <!-- Additional SEO Meta Tags -->
-  <meta name="generator" content="Vite + Custom Components">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Umutcan Algan">
   
   <!-- SEO Meta Tags -->
-  <link rel="canonical" href="https://umutcanalgan.dev">
-  <link rel="alternate" hreflang="tr" href="https://umutcanalgan.dev">
-  <link rel="alternate" hreflang="en" href="https://umutcanalgan.dev/en">
-  <link rel="alternate" hreflang="x-default" href="https://umutcanalgan.dev">
-  <meta name="theme-color" content="#64ffda" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#0a192f" media="(prefers-color-scheme: light)">
-  <meta name="msapplication-TileColor" content="#64ffda">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Umut Can Algan - Full-Stack Developer | Modern Web Solutions</title>
+  <meta name="description" content="Full-Stack Developer specialized in React, Node.js, Python, and modern web technologies. Creating innovative digital experiences and scalable applications.">
+  <meta name="keywords" content="full-stack developer, web developer, React developer, Node.js, Python, JavaScript, TypeScript, portfolio, umut can algan">
+  <meta name="author" content="Umut Can Algan">
+  <meta name="robots" content="index, follow">
   
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://umutcanalgan.dev">
-  <meta property="og:title" content="Umutcan Algan - Professional Full Stack Developer">
-  <meta property="og:description" content="Building modern, accessible web applications with React, Node.js, Python and cutting-edge technologies. View my portfolio and projects.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/ucanalgan">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Umutcan Algan - Full Stack Developer">
-  <meta property="og:site_name" content="Umutcan Algan Portfolio">
-  <meta property="og:locale" content="tr_TR">
-  <meta property="og:locale:alternate" content="en_US">
-
-  <!-- Twitter -->
+  <meta property="og:title" content="Umut Can Algan - Full-Stack Developer">
+  <meta property="og:description" content="Full-Stack Developer creating innovative digital experiences with modern web technologies. Specialized in React, Node.js, and Python.">
+  <meta property="og:image" content="/assets/images/og-image.jpg">
+  <meta property="og:image:alt" content="Umut Can Algan - Full-Stack Developer Portfolio">
+  <meta property="og:url" content="https://ucanalgan.github.io/Ki%C5%9Fisel_web/">
+  <meta property="og:site_name" content="Umut Can Algan Portfolio">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://umutcanalgan.dev">
-  <meta name="twitter:title" content="Umutcan Algan - Professional Full Stack Developer">
-  <meta name="twitter:description" content="Building modern, accessible web applications with React, Node.js, Python and cutting-edge technologies.">
-  <meta name="twitter:image" content="https://avatars.githubusercontent.com/ucanalgan">
-  <meta name="twitter:image:alt" content="Umutcan Algan - Full Stack Developer">
+  <meta name="twitter:title" content="Umut Can Algan - Full-Stack Developer">
+  <meta name="twitter:description" content="Full-Stack Developer creating innovative digital experiences with modern web technologies.">
+  <meta name="twitter:image" content="/assets/images/twitter-card.jpg">
+  <meta name="twitter:image:alt" content="Umut Can Algan Portfolio">
   <meta name="twitter:creator" content="@ucanalgan">
-  <meta name="twitter:site" content="@ucanalgan">
-
-  <title>Umutcan Algan - Professional Full Stack Developer | React, Node.js, Python Expert</title>
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="./public/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./public/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="./public/apple-touch-icon.png">
-  <link rel="manifest" href="./public/manifest.json">
+  <!-- Additional SEO -->
+  <link rel="canonical" href="https://ucanalgan.github.io/Ki%C5%9Fisel_web/">
+  <meta name="theme-color" content="#64ffda">
+  <meta name="msapplication-TileColor" content="#0a0e27">
   
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://api.github.com" crossorigin>
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="/fonts/Inter-VariableFont_slnt,wght.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style">
   
-  <!-- Fonts - Preload for performance -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
   
-  <!-- Icons - Preload for performance -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"></noscript>
-  
-  <!-- Critical CSS - Preload for performance -->
-  <link rel="preload" href="./styles/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="./styles/critical.css" rel="stylesheet"></noscript>
-  
-  <!-- Critical CSS for immediate rendering -->
+  <!-- Critical CSS (Inline for performance) -->
   <style>
-    /* Reset and base */
-    * { box-sizing: border-box; }
-    
-    /* CSS Variables - Dark theme default */
+    /* Critical above-the-fold styles */
     :root {
-      --bg-primary: #0a192f;
-      --bg-secondary: #112240;
-      --bg-tertiary: #1d2951;
-      --text-primary: #ccd6f6;
-      --text-secondary: #8892b0;
-      --text-accent: #64ffda;
       --primary: #64ffda;
-      --primary-dark: #4db6ac;
-      --border-color: rgba(100, 255, 218, 0.1);
-      --shadow-primary: rgba(100, 255, 218, 0.2);
+      --primary-dark: #4fd1c7;
+      --primary-rgb: rgba(100, 255, 218, 0.1);
+      --bg-primary: #0a0e27;
+      --bg-secondary: #1a1f3a;
+      --bg-tertiary: #262c4a;
+      --text-primary: #ffffff;
+      --text-secondary: #a8b2d1;
+      --border-color: #233554;
+      --shadow-primary: rgba(100, 255, 218, 0.1);
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
     }
     
-    /* Critical layout styles */
-    body {
+    * {
       margin: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.6;
+      overflow-x: hidden;
     }
     
-    /* Utility classes for hero */
-    .text-primary { color: var(--primary); }
-    .text-text-primary { color: var(--text-primary); }
-    .text-text-secondary { color: var(--text-secondary); }
-    .bg-bg-primary { background-color: var(--bg-primary); }
-    .bg-bg-secondary { background-color: var(--bg-secondary); }
-    .border-border-color { border-color: var(--border-color); }
-    .border-primary\/30 { border-color: rgba(100, 255, 218, 0.3); }
-    
-    /* Component placeholders */
-    .placeholder-content {
-      opacity: 1;
-      transition: opacity 0.3s ease-out;
-    }
-    .component-container[data-loading="true"] .placeholder-content {
-      opacity: 0.7;
-    }
-    .fade-in {
-      animation: fadeIn 0.5s ease-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    #loader {
+      position: fixed;
+      inset: 0;
+      background-color: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      transition: opacity 0.5s ease;
     }
     
-    /* Performance optimization */
-    .hero-content * {
-      will-change: auto;
+    .loader-spinner {
+      width: 3rem;
+      height: 3rem;
+      border: 4px solid var(--border-color);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
     
-    /* Critical Tailwind utilities */
-    .container { max-width: 1200px; margin: 0 auto; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-    .text-center { text-align: center; }
-    .grid { display: grid; }
-    .flex { display: flex; }
-    .items-center { align-items: center; }
-    .justify-center { justify-content: center; }
-    .space-y-6 > * + * { margin-top: 1.5rem; }
-    .gap-8 { gap: 2rem; }
-    .rounded-xl { border-radius: 0.75rem; }
-    .transition-all { transition: all 0.3s ease; }
-    
-    /* Responsive */
-    @media (min-width: 768px) {
-      .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-      .md\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-      .md\\:text-4xl { font-size: 2.25rem; }
-    }
-    @media (min-width: 1024px) {
-      .lg\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-      .lg\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-      .lg\\:text-7xl { font-size: 4.5rem; }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
   
-  <!-- Load CSS non-blocking for better performance -->
-  <link href="./style.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="./style.css" rel="stylesheet"></noscript>
+  <!-- External Stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
   
-  <!-- AOS Animation Library - Load on demand only -->
-  <!-- Will be loaded by JS when needed -->
-  
-  <!-- Remove heavy preloads for better LCP -->
-  
-  <!-- Structured Data -->
+  <!-- Schema.org JSON-LD for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Umutcan Algan",
-    "url": "https://umutcanalgan.dev",
-    "image": "https://avatars.githubusercontent.com/ucanalgan",
-    "jobTitle": "Junior Software Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Freelance Developer"
-    },
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "Piri Reis University",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "TR"
-      }
-    },
-    "email": "umutcanalgan@hotmail.com",
-    "telephone": "+90-XXX-XXX-XXXX",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "TR",
-      "addressLocality": "Istanbul"
-    },
-    "birthPlace": {
-      "@type": "Place",
-      "name": "Turkey"
-    },
+    "name": "Umut Can Algan",
+    "jobTitle": "Full-Stack Developer",
+    "description": "Full-Stack Developer specialized in React, Node.js, Python, and modern web technologies",
+    "url": "https://ucanalgan.github.io/Ki%C5%9Fisel_web/",
+    "image": "https://ucanalgan.github.io/Ki%C5%9Fisel_web/assets/images/profile.jpg",
+    "email": "umutcanalgan@gmail.com",
     "nationality": "Turkish",
-    "knowsLanguage": [
-      {
-        "@type": "Language",
-        "name": "Turkish",
-        "alternateName": "tr"
-      },
-      {
-        "@type": "Language",
-        "name": "English",
-        "alternateName": "en"
-      }
-    ],
+    "alumniOf": "Computer Engineering",
     "knowsAbout": [
-      "JavaScript",
-      "React",
-      "Node.js",
-      "Python",
-      "Full Stack Development",
-      "Web Development",
-      "Software Engineering",
-      "Frontend Development",
-      "Backend Development",
-      "Tailwind CSS",
-      "HTML5",
-      "CSS3"
+      "JavaScript", "TypeScript", "React", "Node.js", "Python", 
+      "PostgreSQL", "MongoDB", "AWS", "Docker", "Git"
     ],
-    "hasCredential": {
-      "@type": "EducationalOccupationalCredential",
-      "name": "Information Systems Engineering Student",
-      "educationalLevel": "University Level",
-      "credentialCategory": "degree"
-    },
     "sameAs": [
       "https://github.com/ucanalgan",
-      "https://linkedin.com/in/umutcan-algan/",
-      "https://twitter.com/umutcanalgan",
-      "https://instagram.com/umutcanalgan"
+      "https://linkedin.com/in/umutcanalgan",
+      "https://twitter.com/ucanalgan"
     ],
-    "description": "Full Stack Developer specializing in modern web technologies and user-centric solutions. Currently studying Information Systems Engineering while working as a freelance developer.",
-    "seeks": {
-      "@type": "Occupation",
-      "name": "Software Developer",
-      "occupationLocation": {
-        "@type": "Place",
-        "name": "Remote or Istanbul, Turkey"
+    "workExample": [
+      {
+        "@type": "CreativeWork",
+        "name": "E-Commerce Platform",
+        "description": "Modern e-commerce solution with React and Node.js",
+        "url": "https://github.com/ucanalgan/ecommerce-platform"
+      },
+      {
+        "@type": "CreativeWork", 
+        "name": "Task Management App",
+        "description": "Real-time collaborative task management application",
+        "url": "https://github.com/ucanalgan/task-manager"
       }
-    },
-    "memberOf": {
-      "@type": "Organization",
-      "name": "Developer Community",
-      "description": "Active member of software development communities"
-    }
+    ]
   }
   </script>
   
-  <!-- Website Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Umutcan Algan Portfolio",
-    "alternateName": "Umutcan Algan - Software Developer",
-    "url": "https://umutcanalgan.dev",
-    "description": "Personal portfolio website of Umutcan Algan, showcasing full stack development projects and skills",
-    "author": {
-      "@type": "Person",
-      "name": "Umutcan Algan"
-    },
-    "inLanguage": [
-      "tr-TR",
-      "en-US"
-    ],
-    "dateCreated": "2024-01-01",
-    "dateModified": "2024-12-28",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://umutcanalgan.dev/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    },
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Umutcan Algan"
-    }
-  }
+  <!-- Google Analytics (Replace with your tracking ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
   </script>
   
-  <!-- Portfolio/Creative Work Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "Umutcan Algan Portfolio Website",
-    "creator": {
-      "@type": "Person",
-      "name": "Umutcan Algan"
-    },
-    "url": "https://umutcanalgan.dev",
-    "description": "A modern, responsive portfolio website showcasing full stack development skills and projects",
-    "dateCreated": "2024-01-01",
-    "dateModified": "2024-12-28",
-    "genre": "Portfolio Website",
-    "inLanguage": "tr-TR",
-    "keywords": "portfolio, web development, full stack, React, Node.js, JavaScript",
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Employers, Clients, Developers"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Software Development",
-      "description": "Full stack web development services and portfolio"
-    }
-  }
-  </script>
-
-  <!-- CSRF Token Placeholder -->
-  <meta name="csrf-token" content="__CSRF_TOKEN__">
-
-  <!-- Critical resource preloads only -->
+  <!-- Prefetch DNS lookups for external resources -->
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//api.github.com">
+  <link rel="dns-prefetch" href="//formspree.io">
 </head>
 
-<body class="bg-bg-primary text-text-primary overflow-x-hidden theme-transition" data-theme="dark" role="document" aria-label="Umutcan Algan Portfolio Website" lang="tr">
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <!-- Skip Navigation Link for Accessibility -->
-  <a href="#main-content" class="skip-link focus-visible-enhanced">
-    Skip to main content
-  </a>
-  
-  <!-- Minimal Loading Screen -->
-  <div id="loader" class="fixed inset-0 bg-bg-primary z-50 flex items-center justify-center" style="opacity: 1; transition: opacity 0.5s ease-out;">
-    <div class="text-center">
-      <div class="w-12 h-12 border-3 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-3"></div>
-      <p class="text-text-accent text-sm">UA</p>
-    </div>
+  <!-- Page Loader -->
+  <div id="loader" aria-label="Loading">
+    <div class="loader-spinner"></div>
   </div>
 
-  <!-- Header Component Container -->
-  <div id="header-container" class="component-container" data-component="header">
-    <!-- Header component will be loaded here via JS -->
-    <!-- Fallback header -->
-    <noscript>
-      <header class="fixed top-0 left-0 right-0 z-50 bg-bg-primary border-b border-border-color">
-        <nav class="container mx-auto px-6 py-4">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-              <span class="text-xl font-bold text-text-primary">Umutcan Algan</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-              <a href="#about" class="text-text-secondary hover:text-primary">About</a>
-              <a href="#skills" class="text-text-secondary hover:text-primary">Skills</a>
-              <a href="#github" class="text-text-secondary hover:text-primary">Projects</a>
-              <a href="#contact" class="text-text-secondary hover:text-primary">Contact</a>
-            </div>
-          </div>
-        </nav>
-      </header>
-    </noscript>
-  </div>
+  <!-- Theme Toggle Button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme">
+    <i class="ri-sun-line" id="theme-icon"></i>
+  </button>
 
-  <!-- Main Content Container -->
-  <main role="main" id="main-content" tabindex="-1">
-    <!-- Hero Section Component Container -->
-    <div id="hero-container"></div>
-    
-    <!-- About Section Component Container -->
-    <div id="about-container"></div>
-    
-    <!-- Skills Section Component Container -->
-    <div id="skills-container"></div>
-    
-    <!-- Projects/GitHub Section Component Container -->
-    <div id="projects-container"></div>
-    
-    <!-- Contact Section Component Container -->
-    <div id="contact-container"></div>
+  <!-- Header Component -->
+  <div id="header-component"></div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <div id="hero-section"></div>
+
+    <!-- About Section -->
+    <div id="about-section"></div>
+
+    <!-- Skills Section -->
+    <div id="skills-section"></div>
+
+    <!-- Projects Section -->
+    <div id="projects-section"></div>
+
+    <!-- Contact Section -->
+    <div id="contact-section"></div>
   </main>
 
-  <!-- Footer Component Container -->
-  <div id="footer-container"></div>
+  <!-- Footer Component -->
+  <div id="footer-section"></div>
 
-  <!-- Error Boundary Container -->
-  <div id="error-boundary" class="hidden fixed inset-0 bg-bg-primary/95 backdrop-blur-sm z-50 flex items-center justify-center">
-    <div class="bg-bg-secondary border border-border-color rounded-xl p-8 max-w-md mx-4 text-center">
-      <i class="fas fa-exclamation-triangle text-yellow-500 text-4xl mb-4"></i>
-      <h3 class="text-xl font-bold text-text-primary mb-2">Something went wrong</h3>
-      <p class="text-text-secondary mb-6">We're experiencing technical difficulties. Please refresh the page or try again later.</p>
-      <div class="space-x-4">
-        <button onclick="window.location.reload()" class="btn-base btn-primary">
-          <i class="fas fa-refresh"></i>
-          Refresh Page
-        </button>
-        <button onclick="document.getElementById('error-boundary').classList.add('hidden')" class="btn-base btn-ghost">
-          Close
-        </button>
-      </div>
+  <!-- Error Boundary -->
+  <div id="error-boundary" class="hidden">
+    <div class="error-container">
+      <h2>Oops! Something went wrong</h2>
+      <p>We're sorry, but something unexpected happened. Please try refreshing the page.</p>
+      <button onclick="location.reload()" class="btn-base btn-primary">
+        <i class="ri-refresh-line mr-2"></i>
+        Refresh Page
+      </button>
     </div>
   </div>
 
-  <!-- Scripts - Modular Architecture with ES6 Modules -->
-  <!-- Core Libraries - Preloaded for performance -->
-  <!-- Load libraries on demand -->
+  <!-- Service Worker Registration -->
   <script>
-    // Load AOS only when needed
-    window.loadAOS = function() {
-      if (!window.AOS) {
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
-        script.onload = () => {
-          AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
-        };
-        document.head.appendChild(script);
-      }
-    };
-    
-    // Load FontAwesome icons on demand  
-    window.loadFontAwesome = function() {
-      if (!document.querySelector('script[src*="font-awesome"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
-        document.head.appendChild(script);
-      }
-    };
-  </script>
-  
-  <!-- Legacy Browser Support -->
-  <script nomodule src="https://polyfill.io/v3/polyfill.min.js?features=es6,IntersectionObserver"></script>
-  
-  <!-- Modern ES6 Module System -->
-  <script type="module">
-    // Import and initialize core modules
-    (async function() {
-      try {
-        await import('./app.js');
-      } catch (error) {
-        console.error('Failed to load main app module:', error);
-        // Fallback: hide loader and show basic content
-        setTimeout(() => {
-          const loader = document.getElementById('loader');
-          if (loader) {
-            loader.style.display = 'none';
-          }
-          document.body.style.visibility = 'visible';
-        }, 1000);
-      }
-    })();
-  </script>
-  
-  <!-- Fallback for older browsers -->
-  <script nomodule>
-    // Fallback loader for non-module browsers
-    (function() {
-      const scripts = [
-        'utils/utils.js',
-        'utils/theme.js',
-        'utils/animations.js',
-        'utils/github.js',
-        'utils/form-handler.js'
-      ];
-      
-      function loadScript(src, callback) {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = callback;
-        script.onerror = function() {
-          console.error('Failed to load script:', src);
-          if (callback) callback();
-        };
-        document.head.appendChild(script);
-      }
-      
-      function loadScriptsSequentially(scripts, index = 0) {
-        if (index >= scripts.length) {
-          // All scripts loaded, initialize app
-          if (window.initApp) {
-            window.initApp();
-          }
-          return;
-        }
-        
-        loadScript(scripts[index], function() {
-          loadScriptsSequentially(scripts, index + 1);
-        });
-      }
-      
-      loadScriptsSequentially(scripts);
-    })();
-  </script>
-
-  <!-- Lazy Loading Implementation -->
-  <script>
-    // Lazy loading for images and iframes
-    function initLazyLoading() {
-      if ('IntersectionObserver' in window) {
-        const lazyElements = document.querySelectorAll('[data-lazy]');
-        const lazyElementObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const lazyElement = entry.target;
-              
-              if (lazyElement.tagName === 'IMG') {
-                lazyElement.src = lazyElement.dataset.lazy;
-                lazyElement.classList.add('fade-in');
-              } else if (lazyElement.tagName === 'IFRAME') {
-                lazyElement.src = lazyElement.dataset.lazy;
-              }
-              
-              lazyElement.removeAttribute('data-lazy');
-              lazyElementObserver.unobserve(lazyElement);
-            }
+    // Register service worker for PWA capabilities
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
           });
-        }, {
-          rootMargin: '50px 0px',
-          threshold: 0.01
-        });
-        
-        lazyElements.forEach(element => {
-          lazyElementObserver.observe(element);
-        });
-      } else {
-        // Fallback for browsers without IntersectionObserver
-        const lazyElements = document.querySelectorAll('[data-lazy]');
-        lazyElements.forEach(element => {
-          if (element.tagName === 'IMG') {
-            element.src = element.dataset.lazy;
-          } else if (element.tagName === 'IFRAME') {
-            element.src = element.dataset.lazy;
-          }
-          element.removeAttribute('data-lazy');
-        });
-      }
-    }
-
-    // Performance optimization: Preload critical resources only when needed
-    function preloadCriticalResources() {
-      // Only preload images that are visible above the fold
-      // Avatar will be loaded when About section loads
-      return;
-    }
-
-    // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize lazy loading
-      initLazyLoading();
-      
-      // Enhanced lazy loading for components (import from utils)
-      import('./utils/utils.js').then(({ initLazyImages }) => {
-        if (initLazyImages) {
-        initLazyImages();
-        }
-      }).catch(error => {
-        console.warn('Utils.js not found, continuing without lazy images:', error);
       });
-      
-      // Preload critical resources
-      preloadCriticalResources();
-      
-      // Security initialization
-      if (window.csrfManager) {
-        window.csrfManager.initialize();
-      }
-      
-      // Fallback: Hide loader after 3 seconds if still visible
-      setTimeout(() => {
-        const loader = document.getElementById('loader');
-        if (loader && loader.style.display !== 'none') {
-          console.log('Force hiding loader after timeout');
-          loader.style.display = 'none';
-        }
-      }, 3000);
-    });
-
-    // Initialize after all deferred scripts are loaded
-    window.addEventListener('load', () => {
-      // Error boundary initialization
-      window.errorBoundary?.initialize();
-      
-      // Load AOS when page is ready for better performance
-      if (window.loadAOS) {
-        window.loadAOS();
-      }
-      
-      // Load FontAwesome when needed
-      if (window.loadFontAwesome) {
-        window.loadFontAwesome();
-      }
-
-      // Performance monitoring
-      console.log('🚀 Page loaded successfully');
-      console.log('📊 Performance:', {
-        loadTime: performance.now(),
-        components: window.componentLoader?.getLoadedComponents()?.length || 0,
-        memory: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1024 / 1024) + 'MB' : 'N/A'
-      });
-      
-      // Final fallback: Force hide loader after 5 seconds
-      setTimeout(() => {
-        const loader = document.getElementById('loader');
-        if (loader && loader.style.display !== 'none') {
-          console.log('Final fallback: Force hiding loader');
-          loader.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      }, 2000); // Reduced timeout for better UX
-    });
-
-    // Component loading status
-    document.addEventListener('componentsLoaded', () => {
-      console.log('✅ All components loaded and initialized');
-      
-      // Re-initialize lazy loading for dynamically loaded content
-      initLazyLoading();
-      
-      // Initialize theme after components are loaded
-      if (window.themeManager) {
-        window.themeManager.init();
-      }
-      
-      // Initialize GitHub API
-      if (window.githubAPI) {
-        window.githubAPI.init();
-      }
-    });
-
-    // Error handling for component loading
-    window.addEventListener('error', (e) => {
-      console.error('🚨 Global error:', e.error);
-      if (window.errorBoundary) {
-        window.errorBoundary.handleError(e.error);
-      }
-    });
-
-    // Performance monitoring for Core Web Vitals
-    if ('web-vital' in window || typeof webVitals !== 'undefined') {
-      function sendToAnalytics(metric) {
-        console.log('📈 Web Vital:', metric);
-        // Send to your analytics service here
-      }
-
-      // Monitor Core Web Vitals
-      try {
-        if (typeof webVitals !== 'undefined') {
-          webVitals.getCLS(sendToAnalytics);
-          webVitals.getFID(sendToAnalytics);
-          webVitals.getFCP(sendToAnalytics);
-          webVitals.getLCP(sendToAnalytics);
-          webVitals.getTTFB(sendToAnalytics);
-        }
-      } catch (e) {
-        console.log('Web Vitals not available');
-      }
     }
   </script>
 
+  <!-- Main Application Script -->
+  <script type="module" src="./main.js"></script>
+
+  <!-- Emergency Fallback -->
+  <noscript>
+    <div style="text-align: center; padding: 2rem; background: #1a1f3a; color: #ffffff;">
+      <h1>JavaScript Required</h1>
+      <p>This portfolio requires JavaScript to function properly. Please enable JavaScript in your browser.</p>
+    </div>
+  </noscript>
 </body>
 </html>

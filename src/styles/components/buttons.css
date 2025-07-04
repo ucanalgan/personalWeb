@@ -1,0 +1,249 @@
+/* Component: Buttons */
+/* Açıklama: Tüm buton stilleri ve varyantları - primary, secondary, icon, floating action */
+/* Kullanım: Button component'leri ile birlikte kullanılır */
+
+/**
+ * Production-optimized button components
+ * Minimal, accessible, and performant button styles
+ */
+
+/* Base button styles */
+.btn-base {
+  @apply inline-flex items-center justify-center;
+  @apply px-6 py-3 rounded-lg font-medium;
+  @apply transition-all duration-200 ease-in-out;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply text-sm leading-5;
+}
+
+/* Primary button */
+.btn-primary {
+  @apply btn-base;
+  @apply bg-primary text-white;
+  @apply hover:bg-primary/90;
+  @apply focus:ring-primary/50;
+  @apply shadow-sm hover:shadow;
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply btn-base;
+  @apply bg-surface border border-border text-text-primary;
+  @apply hover:bg-surface-hover hover:border-border-hover;
+  @apply focus:ring-primary/50;
+}
+
+/* Ghost button */
+.btn-ghost {
+  @apply btn-base;
+  @apply bg-transparent text-text-secondary;
+  @apply hover:bg-surface-hover hover:text-text-primary;
+  @apply focus:ring-primary/50;
+}
+
+/* Outline button */
+.btn-outline {
+  @apply btn-base;
+  @apply bg-transparent border-2 border-primary text-primary;
+  @apply hover:bg-primary hover:text-white;
+  @apply focus:ring-primary/50;
+}
+
+/* Danger button */
+.btn-danger {
+  @apply btn-base;
+  @apply bg-red-500 text-white;
+  @apply hover:bg-red-600;
+  @apply focus:ring-red-500/50;
+}
+
+/* Success button */
+.btn-success {
+  @apply btn-base;
+  @apply bg-green-500 text-white;
+  @apply hover:bg-green-600;
+  @apply focus:ring-green-500/50;
+}
+
+/* Button sizes */
+.btn-sm {
+  @apply px-4 py-2 text-xs;
+}
+
+.btn-lg {
+  @apply px-8 py-4 text-base;
+}
+
+.btn-xl {
+  @apply px-10 py-5 text-lg;
+}
+
+/* Icon buttons */
+.btn-icon {
+  @apply p-2 rounded-lg;
+  @apply transition-colors duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/50;
+}
+
+.btn-icon-primary {
+  @apply btn-icon;
+  @apply bg-primary text-white;
+  @apply hover:bg-primary/90;
+}
+
+.btn-icon-secondary {
+  @apply btn-icon;
+  @apply bg-surface text-text-secondary;
+  @apply hover:bg-surface-hover hover:text-text-primary;
+}
+
+/* Loading state */
+.btn-loading {
+  @apply relative text-transparent;
+}
+
+.btn-loading::after {
+  content: '';
+  @apply absolute inset-0 flex items-center justify-center;
+  @apply w-4 h-4 border-2 border-current border-t-transparent rounded-full;
+  @apply animate-spin;
+  opacity: 1;
+}
+
+/* Button groups */
+.btn-group {
+  @apply flex rounded-lg overflow-hidden;
+  @apply border border-border;
+}
+
+.btn-group .btn-base {
+  @apply rounded-none border-0;
+  @apply border-r border-border last:border-r-0;
+}
+
+/* Floating action button */
+.btn-fab {
+  @apply fixed bottom-6 right-6 z-50;
+  @apply w-14 h-14 rounded-full;
+  @apply bg-primary text-white shadow-lg;
+  @apply hover:shadow-xl hover:scale-105;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/50;
+  @apply transition-all duration-200;
+}
+
+/* Theme toggle button specific styles */
+.theme-toggle {
+  @apply btn-icon-secondary;
+  @apply relative overflow-hidden;
+}
+
+.theme-toggle .icon {
+  @apply transition-transform duration-300 ease-in-out;
+}
+
+.theme-toggle[data-theme="dark"] .icon-sun {
+  @apply rotate-180 scale-0;
+}
+
+.theme-toggle[data-theme="light"] .icon-moon {
+  @apply -rotate-180 scale-0;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  @apply btn-icon-secondary;
+  @apply relative w-10 h-10;
+}
+
+.hamburger-line {
+  @apply block w-6 h-0.5 bg-current;
+  @apply transition-all duration-300 ease-in-out;
+  @apply relative;
+}
+
+.hamburger-line:not(:last-child) {
+  @apply mb-1.5;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  @apply rotate-45 translate-y-2;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  @apply opacity-0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  @apply -rotate-45 -translate-y-2;
+}
+
+/* CTA buttons */
+.btn-cta {
+  @apply btn-primary btn-lg;
+  @apply bg-gradient-to-r from-primary to-primary-dark;
+  @apply hover:from-primary/90 hover:to-primary-dark/90;
+  @apply shadow-lg hover:shadow-xl;
+  @apply transform hover:scale-105;
+}
+
+/* Social media buttons */
+.btn-social {
+  @apply btn-icon;
+  @apply w-12 h-12 rounded-full;
+  @apply text-text-secondary hover:text-white;
+  @apply transition-all duration-200;
+}
+
+.btn-social.github {
+  @apply hover:bg-gray-800;
+}
+
+.btn-social.linkedin {
+  @apply hover:bg-blue-600;
+}
+
+.btn-social.twitter {
+  @apply hover:bg-blue-400;
+}
+
+.btn-social.email {
+  @apply hover:bg-red-500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .btn-base {
+    @apply px-4 py-2 text-xs;
+  }
+  
+  .btn-lg {
+    @apply px-6 py-3 text-sm;
+  }
+  
+  .btn-xl {
+    @apply px-8 py-4 text-base;
+  }
+  
+  .btn-fab {
+    @apply bottom-4 right-4 w-12 h-12;
+  }
+}
+
+/* Focus visible for better accessibility */
+@media (prefers-reduced-motion: no-preference) {
+  .btn-base:focus-visible {
+    @apply ring-2 ring-offset-2 ring-primary/50;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    @apply border-2 border-primary;
+  }
+  
+  .btn-secondary {
+    @apply border-2;
+  }
+} 

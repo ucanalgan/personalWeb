@@ -33,29 +33,40 @@ export function setupScrollAnimations() {
     scrollAnimationObserver.observe(element);
   });
 
-  console.log(`Scroll animations setup for ${animatedElements.length} elements`);
+      // Scroll animations initialized
 }
 
 /**
- * Initialize GSAP animations (if GSAP is loaded)
+ * Initialize GSAP animations if available
  */
-export function initGSAPAnimations() {
-  if (typeof gsap === 'undefined') {
-    console.warn('GSAP not loaded, skipping GSAP animations');
-    return;
+function initGSAP() {
+  if (typeof gsap !== 'undefined') {
+    // GSAP is available, enhance animations
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Enhanced scroll animations
+    gsap.utils.toArray('.animate-on-scroll').forEach(element => {
+      gsap.fromTo(element, 
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 85%',
+            end: 'bottom 15%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    });
+  } else {
+    // GSAP not available, silent fallback in production
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      console.warn('GSAP not loaded, skipping GSAP animations');
+    }
   }
-
-  // Hero section animations
-  initHeroAnimations();
-  
-  // Section reveal animations
-  initSectionRevealAnimations();
-  
-  // Button hover animations
-  initButtonAnimations();
-  
-  // Project card animations
-  initProjectCardAnimations();
 }
 
 /**
@@ -305,38 +316,6 @@ export function initFloatingAnimation() {
 }
 
 /**
- * Loading animation
- */
-export function initLoadingAnimation() {
-  const loader = document.getElementById('loader');
-  if (!loader) return;
-
-  if (typeof gsap !== 'undefined') {
-    // GSAP loading animation
-    const tl = gsap.timeline();
-    
-    tl.to('.loader-spinner', {
-      rotation: 360,
-      duration: 1,
-      ease: 'linear',
-      repeat: -1
-    })
-    .to('.loader-text', {
-      opacity: 0.5,
-      duration: 1,
-      yoyo: true,
-      repeat: -1
-    }, 0);
-  } else {
-    // CSS fallback animation
-    const spinner = loader.querySelector('.loader-spinner');
-    if (spinner) {
-      spinner.style.animation = 'spin 1s linear infinite';
-    }
-  }
-}
-
-/**
  * Page transition animations
  */
 export function initPageTransitions() {
@@ -358,18 +337,15 @@ export function initAllAnimations() {
   setupScrollAnimations();
   
   // Initialize GSAP animations if available
-  if (typeof gsap !== 'undefined') {
-    initGSAPAnimations();
-    initParallaxScrolling();
-    initTextRevealAnimation();
-    initFloatingAnimation();
-    initPageTransitions();
-  }
+  initGSAP();
+  initParallaxScrolling();
+  initTextRevealAnimation();
+  initFloatingAnimation();
+  initPageTransitions();
   
-  // Initialize loading animation
-  initLoadingAnimation();
+
   
-  console.log('All animations initialized');
+  // All animations initialized
 }
 
 /**
@@ -496,340 +472,304 @@ export function updateNavProgress(percentage) {
  * High-performance animations for portfolio
  */
 
-export class TypingAnimation {
-  constructor(element, phrases, options = {}) {
-    this.element = element;
-    this.phrases = Array.isArray(phrases) ? phrases : [phrases];
+/**
+ * Scroll reveal animations with Intersection Observer
+ */
+export class ScrollReveal {
+  constructor(options = {}) {
     this.options = {
-      typeSpeed: 80,
-      deleteSpeed: 50,
-      pauseTime: 2000,
-      loop: true,
-      showCursor: true,
-      cursorChar: '|',
-      natural: true, // Add natural typing variations
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+      reset: false,
       ...options
     };
     
-    this.currentPhraseIndex = 0;
+    this.observer = this.createObserver();
+    this.elements = new Set();
+  }
+
+  createObserver() {
+    return new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.revealElement(entry.target);
+          if (!this.options.reset) {
+            this.observer.unobserve(entry.target);
+          }
+        } else if (this.options.reset) {
+          this.hideElement(entry.target);
+        }
+      });
+    }, this.options);
+  }
+
+  observe(selector) {
+    const elements = typeof selector === 'string' 
+      ? document.querySelectorAll(selector)
+      : [selector];
+    
+    elements.forEach(element => {
+      if (element) {
+        this.elements.add(element);
+        this.observer.observe(element);
+        element.classList.add('reveal-pending');
+      }
+    });
+  }
+
+  observeAll(selector) {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach(element => this.observe(element));
+  }
+
+  revealElement(element) {
+    element.classList.remove('reveal-pending');
+    element.classList.add('revealed');
+  }
+
+  hideElement(element) {
+    element.classList.remove('revealed');
+    element.classList.add('reveal-pending');
+  }
+
+  destroy() {
+    this.observer.disconnect();
+    this.elements.clear();
+  }
+}
+
+/**
+ * Typing animation effect
+ */
+export class TypingAnimation {
+  constructor(element, options = {}) {
+    this.element = typeof element === 'string' ? document.querySelector(element) : element;
+    this.options = {
+      words: ['Developer', 'Designer', 'Creator'],
+      typeSpeed: 100,
+      deleteSpeed: 50,
+      delayBetweenWords: 2000,
+      loop: true,
+      cursor: true,
+      ...options
+    };
+    
+    this.currentWordIndex = 0;
     this.currentCharIndex = 0;
     this.isDeleting = false;
-    this.isRunning = false;
     this.timeoutId = null;
     
-    this.init();
-  }
-
-  init() {
-    if (this.options.showCursor) {
-      this.addCursor();
-    }
-    this.start();
-  }
-
-  addCursor() {
-    if (!this.element.querySelector('.typing-cursor')) {
-      const cursor = document.createElement('span');
-      cursor.className = 'typing-cursor';
-      cursor.textContent = this.options.cursorChar;
-      cursor.style.animation = 'blink 1s infinite';
-      this.element.appendChild(cursor);
-      
-      // Add cursor CSS
-      const style = document.createElement('style');
-      style.textContent = `
-        .typing-cursor {
-          opacity: 1;
-          font-weight: 100;
-          color: var(--primary);
-        }
-        @keyframes blink {
-          0%, 50% { opacity: 1; }
-          51%, 100% { opacity: 0; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }
-
-  getVariableSpeed() {
-    if (!this.options.natural) return this.options.typeSpeed;
-    
-    // Add natural typing variations
-    const baseSpeed = this.isDeleting ? this.options.deleteSpeed : this.options.typeSpeed;
-    const variation = Math.random() * 40 - 20; // ±20ms variation
-    return Math.max(baseSpeed + variation, 20);
-  }
-
-  getCurrentText() {
-    const textNode = Array.from(this.element.childNodes)
-      .find(node => node.nodeType === Node.TEXT_NODE);
-    return textNode ? textNode.textContent : '';
-  }
-
-  setCurrentText(text) {
-    const textNode = Array.from(this.element.childNodes)
-      .find(node => node.nodeType === Node.TEXT_NODE);
-    
-    if (textNode) {
-      textNode.textContent = text;
-    } else {
-      const newTextNode = document.createTextNode(text);
-      this.element.insertBefore(newTextNode, this.element.firstChild);
-    }
-  }
-
-  type() {
-    if (!this.isRunning) return;
-
-    const currentPhrase = this.phrases[this.currentPhraseIndex];
-    const currentText = this.getCurrentText();
-
-    if (!this.isDeleting) {
-      // Typing forward
-      if (this.currentCharIndex < currentPhrase.length) {
-        const nextChar = currentPhrase.charAt(this.currentCharIndex);
-        this.setCurrentText(currentText + nextChar);
-        this.currentCharIndex++;
-        
-        this.timeoutId = setTimeout(() => this.type(), this.getVariableSpeed());
-      } else {
-        // Finished typing current phrase
-        if (this.phrases.length > 1) {
-          // Pause before deleting
-          this.timeoutId = setTimeout(() => {
-            this.isDeleting = true;
-            this.type();
-          }, this.options.pauseTime);
-        } else if (this.options.loop) {
-          // Single phrase loop
-          this.timeoutId = setTimeout(() => {
-            this.isDeleting = true;
-            this.type();
-          }, this.options.pauseTime);
-        }
-      }
-    } else {
-      // Deleting
-      if (this.currentCharIndex > 0) {
-        this.setCurrentText(currentPhrase.substring(0, this.currentCharIndex - 1));
-        this.currentCharIndex--;
-        
-        this.timeoutId = setTimeout(() => this.type(), this.getVariableSpeed());
-      } else {
-        // Finished deleting
-        this.isDeleting = false;
-        this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
-        
-        // Short pause before typing next phrase
-        this.timeoutId = setTimeout(() => this.type(), 200);
-      }
+    if (this.element && this.options.cursor) {
+      this.element.style.borderRight = '2px solid var(--primary)';
     }
   }
 
   start() {
-    if (this.isRunning) return;
-    
-    this.isRunning = true;
+    if (!this.element) return;
     this.type();
   }
 
+  type() {
+    const currentWord = this.options.words[this.currentWordIndex];
+    const shouldDelete = this.isDeleting;
+    
+    if (shouldDelete) {
+      // Deleting characters
+      this.element.textContent = currentWord.substring(0, this.currentCharIndex - 1);
+      this.currentCharIndex--;
+    } else {
+      // Adding characters
+      this.element.textContent = currentWord.substring(0, this.currentCharIndex + 1);
+      this.currentCharIndex++;
+    }
+
+    let nextDelay = shouldDelete ? this.options.deleteSpeed : this.options.typeSpeed;
+
+    if (!shouldDelete && this.currentCharIndex === currentWord.length) {
+      // Word complete, start deleting after delay
+      nextDelay = this.options.delayBetweenWords;
+      this.isDeleting = true;
+    } else if (shouldDelete && this.currentCharIndex === 0) {
+      // Deletion complete, move to next word
+      this.isDeleting = false;
+      this.currentWordIndex = (this.currentWordIndex + 1) % this.options.words.length;
+      
+      if (this.currentWordIndex === 0 && !this.options.loop) {
+        return; // Stop animation if not looping
+      }
+    }
+
+    this.timeoutId = setTimeout(() => this.type(), nextDelay);
+  }
+
   stop() {
-    this.isRunning = false;
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
       this.timeoutId = null;
     }
   }
 
-  restart() {
-    this.stop();
-    this.currentPhraseIndex = 0;
-    this.currentCharIndex = 0;
-    this.isDeleting = false;
-    this.setCurrentText('');
-    this.start();
-  }
-
   destroy() {
     this.stop();
-    const cursor = this.element.querySelector('.typing-cursor');
-    if (cursor) {
-      cursor.remove();
+    if (this.element) {
+      this.element.style.borderRight = '';
     }
   }
 }
 
-// Scroll reveal animation
-export class ScrollReveal {
-  constructor(options = {}) {
+/**
+ * Page transition animations
+ */
+export class PageTransitions {
+  constructor() {
+    this.isTransitioning = false;
+  }
+
+  fadeIn(element, duration = 300) {
+    return new Promise(resolve => {
+      element.style.opacity = '0';
+      element.style.transition = `opacity ${duration}ms ease`;
+      
+      requestAnimationFrame(() => {
+        element.style.opacity = '1';
+        setTimeout(resolve, duration);
+      });
+    });
+  }
+
+  fadeOut(element, duration = 300) {
+    return new Promise(resolve => {
+      element.style.opacity = '1';
+      element.style.transition = `opacity ${duration}ms ease`;
+      
+      requestAnimationFrame(() => {
+        element.style.opacity = '0';
+        setTimeout(resolve, duration);
+      });
+    });
+  }
+
+  slideUp(element, duration = 400) {
+    return new Promise(resolve => {
+      element.style.transform = 'translateY(20px)';
+      element.style.opacity = '0';
+      element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
+      
+      requestAnimationFrame(() => {
+        element.style.transform = 'translateY(0)';
+        element.style.opacity = '1';
+        setTimeout(resolve, duration);
+      });
+    });
+  }
+
+  scaleIn(element, duration = 300) {
+    return new Promise(resolve => {
+      element.style.transform = 'scale(0.95)';
+      element.style.opacity = '0';
+      element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
+      
+      requestAnimationFrame(() => {
+        element.style.transform = 'scale(1)';
+        element.style.opacity = '1';
+        setTimeout(resolve, duration);
+      });
+    });
+  }
+}
+
+/**
+ * Parallax scroll effect
+ */
+export class ParallaxScroll {
+  constructor(elements, options = {}) {
+    this.elements = typeof elements === 'string' 
+      ? document.querySelectorAll(elements)
+      : elements;
     this.options = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
-      animationClass: 'fade-in-up',
+      speed: 0.5,
       ...options
     };
     
-    this.observer = null;
-    this.init();
+    this.ticking = false;
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   init() {
-    this.observer = new IntersectionObserver(
-      this.handleIntersection.bind(this),
-      {
-        threshold: this.options.threshold,
-        rootMargin: this.options.rootMargin
-      }
-    );
-
-    // Add CSS for animations
-    this.addAnimationStyles();
-  }
-
-  addAnimationStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      
-      .fade-in-up.revealed {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      
-      .fade-in-left {
-        opacity: 0;
-        transform: translateX(-30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      
-      .fade-in-left.revealed {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      
-      .fade-in-right {
-        opacity: 0;
-        transform: translateX(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      
-      .fade-in-right.revealed {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      
-      .scale-in {
-        opacity: 0;
-        transform: scale(0.9);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-      }
-      
-      .scale-in.revealed {
-        opacity: 1;
-        transform: scale(1);
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  handleIntersection(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        // Stop observing once revealed (optional)
-        if (!entry.target.dataset.repeat) {
-          this.observer.unobserve(entry.target);
-        }
-      } else if (entry.target.dataset.repeat) {
-        entry.target.classList.remove('revealed');
-      }
-    });
-  }
-
-  observe(element) {
-    if (element) {
-      this.observer.observe(element);
-    }
-  }
-
-  observeAll(selector) {
-    const elements = document.querySelectorAll(selector);
-    elements.forEach(element => {
-      this.observe(element);
-    });
-  }
-
-  destroy() {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-  }
-}
-
-// Parallax scroll effect
-export class ParallaxScroll {
-  constructor() {
-    this.elements = [];
-    this.isScrolling = false;
-    this.init();
-  }
-
-  init() {
-    this.bindEvents();
-  }
-
-  bindEvents() {
-    window.addEventListener('scroll', this.handleScroll.bind(this), { passive: true });
-    window.addEventListener('resize', this.handleResize.bind(this), { passive: true });
-  }
-
-  addElement(element, speed = 0.5) {
-    this.elements.push({ element, speed });
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
   }
 
   handleScroll() {
-    if (!this.isScrolling) {
-      this.isScrolling = true;
-      requestAnimationFrame(this.updateElements.bind(this));
+    if (!this.ticking) {
+      requestAnimationFrame(() => {
+        this.updateElements();
+        this.ticking = false;
+      });
+      this.ticking = true;
     }
   }
 
   updateElements() {
-    const scrollTop = window.pageYOffset;
+    const scrolled = window.pageYOffset;
     
-    this.elements.forEach(({ element, speed }) => {
-      const rect = element.getBoundingClientRect();
-      const elementTop = rect.top + scrollTop;
-      const elementHeight = element.offsetHeight;
-      const windowHeight = window.innerHeight;
-      
-      if (rect.bottom >= 0 && rect.top <= windowHeight) {
-        const yPos = -(scrollTop - elementTop) * speed;
-        element.style.transform = `translateY(${yPos}px)`;
-      }
+    this.elements.forEach(element => {
+      const rate = scrolled * this.options.speed;
+      element.style.transform = `translateY(${rate}px)`;
     });
-    
-    this.isScrolling = false;
-  }
-
-  handleResize() {
-    this.updateElements();
   }
 
   destroy() {
     window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleResize);
   }
 }
 
-// Export animation instances
-export const scrollReveal = new ScrollReveal();
-export const parallaxScroll = new ParallaxScroll();
+/**
+ * Initialize all animations
+ */
+export function initAnimations() {
+  // Initialize scroll reveal
+  const scrollReveal = new ScrollReveal({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
 
-// Export for main.js compatibility
-export { initAllAnimations as default }; 
+  // Observe common animated elements
+  scrollReveal.observeAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in');
+
+  // Initialize typing animation if element exists
+  const typingElement = document.querySelector('.typing-text');
+  if (typingElement) {
+    const typingAnimation = new TypingAnimation(typingElement, {
+      words: ['Full-Stack Developer', 'Problem Solver', 'Tech Enthusiast'],
+      typeSpeed: 80,
+      deleteSpeed: 60,
+      delayBetweenWords: 2000
+    });
+    typingAnimation.start();
+  }
+
+  // Initialize parallax if elements exist
+  const parallaxElements = document.querySelectorAll('.parallax');
+  if (parallaxElements.length > 0) {
+    const parallax = new ParallaxScroll(parallaxElements, { speed: 0.3 });
+    parallax.init();
+  }
+
+  return {
+    scrollReveal,
+    typingAnimation: window.typingAnimation,
+    parallax: window.parallax
+  };
+}
+
+// Create global scroll reveal instance
+export const scrollReveal = new ScrollReveal();
+
+export default {
+  ScrollReveal,
+  TypingAnimation,
+  PageTransitions,
+  ParallaxScroll,
+  initAnimations,
+  scrollReveal
+}; 

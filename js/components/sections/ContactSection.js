@@ -1,276 +1,389 @@
 /**
  * Contact Section Component
- * Modular component for the contact section with form handling
+ * Professional contact form with validation, animations, and multiple contact methods
  */
 
-class ContactSection {
-  constructor() {
-    this.container = document.getElementById('contact-container');
-    this.initialized = false;
-  }
-
-  async render() {
-    if (!this.container) {
-      console.error('Contact container not found');
-      return;
-    }
-
-    try {
-      // Load HTML content
-      const response = await fetch('./components/sections/ContactSection.html');
-      if (!response.ok) throw new Error('Failed to fetch contact content');
-      
-      const htmlContent = await response.text();
-      this.container.innerHTML = htmlContent;
-      
-      this.initializeInteractions();
-      this.initialized = true;
-      
-      console.log('✓ Contact section loaded successfully');
-    } catch (error) {
-      console.error('Failed to load contact section:', error);
-      this.renderFallback();
-    }
-  }
-
-  renderFallback() {
-    // Immediate fallback content
-    this.container.innerHTML = `
-      <section id="contact" class="py-20 bg-bg-secondary">
-        <div class="container mx-auto px-6">
-          <div class="max-w-4xl mx-auto text-center">
-            <span class="text-primary font-mono text-lg mb-2 block">What's next?</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">Get In Touch</h2>
-            <p class="text-text-secondary text-lg mb-12 max-w-2xl mx-auto">
-              I'm currently looking for new opportunities. Whether you have a question or just want to say hi, 
-              I'll try my best to get back to you!
+export default function contactSection() {
+  return `
+    <section id="contact" class="py-20 bg-bg-primary">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              <span class="text-primary">#</span>Get In Touch
+            </h2>
+            <p class="text-text-secondary max-w-2xl mx-auto text-lg">
+              I'm always open to discussing new opportunities, interesting projects, 
+              or just having a conversation about technology. Let's create something amazing together!
             </p>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-              <!-- Email -->
-              <div class="bg-bg-primary/50 border border-border-color rounded-xl p-6 hover:border-primary/30 transition-all duration-300">
-                <div class="text-3xl mb-4">📧</div>
-                <h3 class="text-lg font-semibold text-text-primary mb-2">Email</h3>
-                <a href="mailto:umutcanalgan@hotmail.com" class="text-primary hover:underline">
-                  umutcanalgan@hotmail.com
-                </a>
-              </div>
-              
-              <!-- Location -->
-              <div class="bg-bg-primary/50 border border-border-color rounded-xl p-6 hover:border-primary/30 transition-all duration-300">
-                <div class="text-3xl mb-4">📍</div>
-                <h3 class="text-lg font-semibold text-text-primary mb-2">Location</h3>
-                <p class="text-text-secondary">Istanbul, Turkey</p>
-              </div>
-              
-              <!-- LinkedIn -->
-              <div class="bg-bg-primary/50 border border-border-color rounded-xl p-6 hover:border-primary/30 transition-all duration-300">
-                <div class="text-3xl mb-4">💼</div>
-                <h3 class="text-lg font-semibold text-text-primary mb-2">LinkedIn</h3>
-                <a href="https://linkedin.com/in/umutcan-algan/" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="text-primary hover:underline">
-                  Connect with me
-                </a>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Contact Information -->
+            <div class="space-y-8">
+              <div class="fade-in-left">
+                <h3 class="text-2xl font-bold text-text-primary mb-6">
+                  Let's Start a Conversation
+                </h3>
+                <p class="text-text-secondary mb-8 leading-relaxed">
+                  Whether you have a project in mind, need technical consultation, 
+                  or want to discuss potential collaborations, I'd love to hear from you.
+                </p>
+
+                <!-- Contact Methods -->
+                <div class="space-y-6">
+                  <div class="contact-method">
+                    <div class="flex items-center group">
+                      <div class="contact-icon">
+                        <i class="ri-mail-line"></i>
+                      </div>
+                      <div class="ml-4">
+                        <h4 class="font-semibold text-text-primary group-hover:text-primary transition-colors">
+                          Email
+                        </h4>
+                        <a href="mailto:umutcanalgan@gmail.com" class="text-text-secondary hover:text-primary transition-colors">
+                          umutcanalgan@gmail.com
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="contact-method">
+                    <div class="flex items-center group">
+                      <div class="contact-icon">
+                        <i class="ri-linkedin-line"></i>
+                      </div>
+                      <div class="ml-4">
+                        <h4 class="font-semibold text-text-primary group-hover:text-primary transition-colors">
+                          LinkedIn
+                        </h4>
+                        <a href="https://linkedin.com/in/umutcanalgan" target="_blank" rel="noopener" class="text-text-secondary hover:text-primary transition-colors">
+                          /in/umutcanalgan
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="contact-method">
+                    <div class="flex items-center group">
+                      <div class="contact-icon">
+                        <i class="ri-github-line"></i>
+                      </div>
+                      <div class="ml-4">
+                        <h4 class="font-semibold text-text-primary group-hover:text-primary transition-colors">
+                          GitHub
+                        </h4>
+                        <a href="https://github.com/ucanalgan" target="_blank" rel="noopener" class="text-text-secondary hover:text-primary transition-colors">
+                          @ucanalgan
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="contact-method">
+                    <div class="flex items-center group">
+                      <div class="contact-icon">
+                        <i class="ri-map-pin-line"></i>
+                      </div>
+                      <div class="ml-4">
+                        <h4 class="font-semibold text-text-primary group-hover:text-primary transition-colors">
+                          Location
+                        </h4>
+                        <span class="text-text-secondary">
+                          Turkey (Remote Available)
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Response Time -->
+                <div class="mt-8 p-4 bg-bg-secondary/50 border border-border-color rounded-xl">
+                  <div class="flex items-center">
+                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse mr-3"></div>
+                    <span class="text-text-secondary">
+                      Typically responds within <strong class="text-primary">24 hours</strong>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
             <!-- Contact Form -->
-            <div class="max-w-2xl mx-auto mb-12">
-              <form id="contact-form" class="bg-bg-primary/50 border border-border-color rounded-xl p-8">
-                <div class="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label for="name" class="block text-text-primary font-medium mb-2">Name</label>
-                    <input type="text" 
-                           id="name" 
-                           name="name" 
-                           required
-                           class="w-full px-4 py-3 bg-bg-secondary border border-border-color rounded-lg text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none transition-colors"
-                           placeholder="Your Name">
+            <div class="fade-in-right">
+              <div class="contact-form-container bg-bg-secondary/30 backdrop-blur-sm border border-border-color rounded-2xl p-8">
+                <form id="contact-form" name="contact" method="POST" class="space-y-6" novalidate>
+                  <!-- Hidden field for Netlify -->
+                  <input type="hidden" name="form-name" value="contact" />
+                  
+                  <!-- Name Field -->
+                  <div class="field-group">
+                    <label for="name" class="field-label">
+                      Full Name <span class="text-red-500">*</span>
+                    </label>
+                    <div class="field-wrapper">
+                      <div class="field-icon">
+                        <i class="ri-user-line"></i>
+                      </div>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        class="form-input"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                      />
+                    </div>
                   </div>
-                  <div>
-                    <label for="email" class="block text-text-primary font-medium mb-2">Email</label>
-                    <input type="email" 
-                           id="email" 
-                           name="email" 
-                           required
-                           class="w-full px-4 py-3 bg-bg-secondary border border-border-color rounded-lg text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none transition-colors"
-                           placeholder="your@email.com">
+
+                  <!-- Email Field -->
+                  <div class="field-group">
+                    <label for="email" class="field-label">
+                      Email Address <span class="text-red-500">*</span>
+                    </label>
+                    <div class="field-wrapper">
+                      <div class="field-icon">
+                        <i class="ri-mail-line"></i>
+                      </div>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        class="form-input"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                      />
+                    </div>
                   </div>
-                </div>
-                
-                <div class="mb-6">
-                  <label for="subject" class="block text-text-primary font-medium mb-2">Subject</label>
-                  <input type="text" 
-                         id="subject" 
-                         name="subject" 
-                         required
-                         class="w-full px-4 py-3 bg-bg-secondary border border-border-color rounded-lg text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none transition-colors"
-                         placeholder="What's this about?">
-                </div>
-                
-                <div class="mb-6">
-                  <label for="message" class="block text-text-primary font-medium mb-2">Message</label>
-                  <textarea id="message" 
-                            name="message" 
-                            rows="5" 
-                            required
-                            class="w-full px-4 py-3 bg-bg-secondary border border-border-color rounded-lg text-text-primary placeholder-text-secondary focus:border-primary focus:outline-none transition-colors resize-none"
-                            placeholder="Tell me about your project or just say hello!"></textarea>
-                </div>
-                
-                <button type="submit" 
-                        class="w-full bg-primary hover:bg-primary/90 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg-primary">
-                  <span class="button-text">Send Message</span>
-                  <span class="loading-text hidden">
-                    <i class="ri-loader-line animate-spin mr-2"></i>
-                    Sending...
-                  </span>
-                </button>
-              </form>
-              
-              <!-- Form Status Messages -->
-              <div id="form-status" class="mt-4 hidden">
-                <div class="success-message hidden bg-green-500/10 border border-green-500/30 text-green-400 p-4 rounded-lg">
-                  <i class="ri-check-line mr-2"></i>
-                  Thank you! Your message has been sent successfully. I'll get back to you soon.
-                </div>
-                <div class="error-message hidden bg-red-500/10 border border-red-500/30 text-red-400 p-4 rounded-lg">
-                  <i class="ri-error-warning-line mr-2"></i>
-                  Sorry, there was an error sending your message. Please try again or contact me directly.
+
+                  <!-- Subject Field -->
+                  <div class="field-group">
+                    <label for="subject" class="field-label">
+                      Subject <span class="text-red-500">*</span>
+                    </label>
+                    <div class="field-wrapper">
+                      <div class="field-icon">
+                        <i class="ri-chat-3-line"></i>
+                      </div>
+                      <select
+                        id="subject"
+                        name="subject"
+                        required
+                        class="form-input"
+                      >
+                        <option value="">Select a subject</option>
+                        <option value="Project Collaboration">Project Collaboration</option>
+                        <option value="Job Opportunity">Job Opportunity</option>
+                        <option value="Technical Consultation">Technical Consultation</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Message Field -->
+                  <div class="field-group">
+                    <label for="message" class="field-label">
+                      Message <span class="text-red-500">*</span>
+                    </label>
+                    <div class="field-wrapper">
+                      <div class="field-icon field-icon-top">
+                        <i class="ri-message-3-line"></i>
+                      </div>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows="5"
+                        class="form-input form-textarea"
+                        placeholder="Tell me about your project, ideas, or how I can help you..."
+                        style="resize: vertical;"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Budget Field (Optional) -->
+                  <div class="field-group">
+                    <label for="budget" class="field-label">
+                      Project Budget (Optional)
+                    </label>
+                    <div class="field-wrapper">
+                      <div class="field-icon">
+                        <i class="ri-money-dollar-circle-line"></i>
+                      </div>
+                      <select
+                        id="budget"
+                        name="budget"
+                        class="form-input"
+                      >
+                        <option value="">Select budget range</option>
+                        <option value="< $1,000">Less than $1,000</option>
+                        <option value="$1,000 - $5,000">$1,000 - $5,000</option>
+                        <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                        <option value="$10,000+">$10,000+</option>
+                        <option value="Discuss">Let's discuss</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Privacy Notice -->
+                  <div class="field-group">
+                    <label class="flex items-start space-x-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="privacy"
+                        required
+                        class="form-checkbox mt-1"
+                      />
+                      <span class="text-sm text-text-secondary">
+                        I agree to the processing of my personal data and consent to being contacted about my inquiry. 
+                        <a href="#privacy" class="text-primary hover:underline">Privacy Policy</a>
+                      </span>
+                    </label>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <button
+                    type="submit"
+                    class="btn-base btn-primary w-full py-4 text-lg font-semibold"
+                  >
+                    <i class="ri-send-plane-line mr-2"></i>
+                    Send Message
+                  </button>
+
+                  <!-- Form Status Message -->
+                  <div class="form-message hidden"></div>
+                </form>
+
+                <!-- Alternative Contact -->
+                <div class="mt-8 pt-6 border-t border-border-color text-center">
+                  <p class="text-sm text-text-secondary mb-4">
+                    Prefer to reach out directly?
+                  </p>
+                  <div class="flex justify-center space-x-4">
+                    <a 
+                      href="mailto:umutcanalgan@gmail.com" 
+                      class="btn-base btn-ghost btn-sm"
+                      aria-label="Send email"
+                    >
+                      <i class="ri-mail-line mr-2"></i>
+                      Email
+                    </a>
+                    <a 
+                      href="https://linkedin.com/in/umutcanalgan" 
+                      target="_blank" 
+                      rel="noopener"
+                      class="btn-base btn-ghost btn-sm"
+                      aria-label="Connect on LinkedIn"
+                    >
+                      <i class="ri-linkedin-line mr-2"></i>
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-            
-            <div class="text-center">
-              <a href="mailto:umutcanalgan@hotmail.com" 
-                 class="inline-flex items-center px-8 py-4 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary rounded-xl font-medium transition-all duration-300 hover:scale-105">
-                <i class="ri-mail-line mr-2"></i>
-                Say Hello
-              </a>
-            </div>
           </div>
         </div>
-      </section>
-    `;
-    
-    this.initializeInteractions();
-  }
+      </div>
+    </section>
+  `;
+}
 
-  initializeInteractions() {
-    // Form handling
-    const form = this.container.querySelector('#contact-form');
-    if (form) {
-      form.addEventListener('submit', this.handleFormSubmit.bind(this));
+// Initialize contact section functionality
+export function initContactSection() {
+  // Import and initialize form handler
+  import('../../../utils/form-handler.js').then(({ initContactForm }) => {
+    if (initContactForm) {
+      initContactForm();
     }
+  }).catch(error => {
+    console.warn('Form handler not available:', error);
+  });
 
-    // Add focus effects to form inputs
-    const inputs = this.container.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-      input.addEventListener('focus', () => {
-        input.parentElement.classList.add('focused');
-      });
-      
-      input.addEventListener('blur', () => {
-        input.parentElement.classList.remove('focused');
-      });
+  // Add contact method interactions
+  initContactMethods();
+  
+  // Add form field enhancements
+  initFormEnhancements();
+}
+
+function initContactMethods() {
+  const contactMethods = document.querySelectorAll('.contact-method');
+  
+  contactMethods.forEach(method => {
+    method.addEventListener('mouseenter', () => {
+      method.style.transform = 'translateX(8px)';
     });
-
-    // Add scroll animations if AOS is available
-    if (window.AOS) {
-      window.AOS.refresh();
-    }
-  }
-
-  async handleFormSubmit(event) {
-    event.preventDefault();
     
-    const form = event.target;
-    const formData = new FormData(form);
-    const submitButton = form.querySelector('button[type="submit"]');
-    const buttonText = submitButton.querySelector('.button-text');
-    const loadingText = submitButton.querySelector('.loading-text');
-    const statusContainer = this.container.querySelector('#form-status');
-    const successMessage = statusContainer.querySelector('.success-message');
-    const errorMessage = statusContainer.querySelector('.error-message');
+    method.addEventListener('mouseleave', () => {
+      method.style.transform = 'translateX(0)';
+    });
+  });
+}
 
-    // Show loading state
-    submitButton.disabled = true;
-    buttonText.classList.add('hidden');
-    loadingText.classList.remove('hidden');
-    
-    // Hide previous status messages
-    statusContainer.classList.add('hidden');
-    successMessage.classList.add('hidden');
-    errorMessage.classList.add('hidden');
-
-    try {
-      // Simulate form submission (replace with actual endpoint)
-      await this.submitForm({
-        name: formData.get('name'),
-        email: formData.get('email'),
-        subject: formData.get('subject'),
-        message: formData.get('message')
-      });
-
-      // Show success message
-      statusContainer.classList.remove('hidden');
-      successMessage.classList.remove('hidden');
-      
-      // Reset form
-      form.reset();
-      
-      // Track successful submission
-      if (window.gtag) {
-        window.gtag('event', 'form_submit', {
-          event_category: 'contact',
-          event_label: 'success'
-        });
+function initFormEnhancements() {
+  // Add focus animations to form fields
+  const formInputs = document.querySelectorAll('.form-input');
+  
+  formInputs.forEach(input => {
+    input.addEventListener('focus', (e) => {
+      const wrapper = e.target.closest('.field-wrapper');
+      if (wrapper) {
+        wrapper.classList.add('focused');
       }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      
-      // Show error message
-      statusContainer.classList.remove('hidden');
-      errorMessage.classList.remove('hidden');
-      
-      // Track failed submission
-      if (window.gtag) {
-        window.gtag('event', 'form_submit', {
-          event_category: 'contact',
-          event_label: 'error'
-        });
+    });
+    
+    input.addEventListener('blur', (e) => {
+      const wrapper = e.target.closest('.field-wrapper');
+      if (wrapper) {
+        wrapper.classList.remove('focused');
       }
-    } finally {
-      // Reset button state
-      submitButton.disabled = false;
-      buttonText.classList.remove('hidden');
-      loadingText.classList.add('hidden');
-    }
-  }
+    });
+    
+    // Add typing animation effect
+    input.addEventListener('input', (e) => {
+      const wrapper = e.target.closest('.field-wrapper');
+      if (wrapper) {
+        wrapper.classList.toggle('has-content', e.target.value.length > 0);
+      }
+    });
+  });
 
-  async submitForm(data) {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Here you would typically send the form data to your backend
-    // For now, we'll just simulate a successful submission
-    console.log('Form data submitted:', data);
-    
-    // You can implement actual form submission here:
-    // const response = await fetch('/api/contact', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // });
-    
-    // if (!response.ok) {
-    //   throw new Error('Form submission failed');
-    // }
-    
-    return { success: true };
+  // Character counter for message field
+  const messageField = document.getElementById('message');
+  if (messageField) {
+    addCharacterCounter(messageField);
   }
 }
 
-export default ContactSection; 
+function addCharacterCounter(textarea) {
+  const maxLength = 1000;
+  const counter = document.createElement('div');
+  counter.className = 'character-counter text-sm text-text-secondary mt-2';
+  
+  const updateCounter = () => {
+    const remaining = maxLength - textarea.value.length;
+    counter.textContent = `${textarea.value.length}/${maxLength}`;
+    
+    if (remaining < 50) {
+      counter.classList.add('text-yellow-500');
+    } else {
+      counter.classList.remove('text-yellow-500');
+    }
+    
+    if (remaining < 0) {
+      counter.classList.add('text-red-500');
+      counter.classList.remove('text-yellow-500');
+    } else {
+      counter.classList.remove('text-red-500');
+    }
+  };
+  
+  textarea.addEventListener('input', updateCounter);
+  textarea.parentElement.parentElement.appendChild(counter);
+  updateCounter();
+}

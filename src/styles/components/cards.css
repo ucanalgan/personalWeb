@@ -1,0 +1,887 @@
+/* File: styles/components/cards.css */
+/* Description: Kart bileşenleri stilleri - project card, activity card, stats card */
+/* Kullanım: Tüm kart yapılarında ortak stil tanımları */
+
+/**
+ * Production-optimized card components
+ * Responsive, accessible card layouts
+ */
+
+/* Base card styles */
+.card {
+  @apply bg-surface border border-border rounded-lg;
+  @apply shadow-sm hover:shadow-md;
+  @apply transition-all duration-200 ease-in-out;
+  @apply overflow-hidden;
+}
+
+.card-body {
+  @apply p-6;
+}
+
+.card-header {
+  @apply px-6 py-4 border-b border-border;
+  @apply bg-surface-secondary;
+}
+
+.card-footer {
+  @apply px-6 py-4 border-t border-border;
+  @apply bg-surface-secondary;
+}
+
+/* Interactive cards */
+.card-interactive {
+  @apply card cursor-pointer;
+  @apply hover:border-primary/50 hover:shadow-lg;
+  @apply transform hover:scale-[1.02];
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/50;
+}
+
+/* Project cards */
+.project-card {
+  @apply card-interactive;
+  @apply group relative;
+}
+
+.project-card-image {
+  @apply aspect-video bg-surface-secondary;
+  @apply flex items-center justify-center;
+  @apply text-text-secondary;
+  @apply overflow-hidden;
+}
+
+.project-card-content {
+  @apply p-6;
+}
+
+.project-card-title {
+  @apply text-xl font-semibold text-text-primary mb-2;
+  @apply group-hover:text-primary transition-colors;
+}
+
+.project-card-description {
+  @apply text-text-secondary mb-4;
+  @apply line-clamp-3;
+}
+
+.project-card-tags {
+  @apply flex flex-wrap gap-2 mb-4;
+}
+
+.project-card-tag {
+  @apply px-2 py-1 bg-primary/10 text-primary text-xs rounded-full;
+  @apply border border-primary/20;
+}
+
+.project-card-stats {
+  @apply flex items-center justify-between text-sm text-text-secondary mb-4;
+}
+
+.project-card-actions {
+  @apply flex gap-3;
+}
+
+/* Skill cards */
+.skill-card {
+  @apply card;
+  @apply text-center p-6;
+}
+
+.skill-card-icon {
+  @apply w-12 h-12 mx-auto mb-4;
+  @apply flex items-center justify-center;
+  @apply bg-primary/10 text-primary rounded-lg;
+  @apply text-2xl;
+}
+
+.skill-card-title {
+  @apply text-lg font-semibold text-text-primary mb-2;
+}
+
+.skill-card-description {
+  @apply text-text-secondary text-sm;
+}
+
+/* Experience cards */
+.experience-card {
+  @apply card;
+  @apply relative border-l-4 border-l-primary;
+}
+
+.experience-card-header {
+  @apply flex items-start justify-between mb-3;
+}
+
+.experience-card-title {
+  @apply text-lg font-semibold text-text-primary;
+}
+
+.experience-card-company {
+  @apply text-primary font-medium;
+}
+
+.experience-card-period {
+  @apply text-sm text-text-secondary;
+  @apply bg-surface-secondary px-2 py-1 rounded;
+}
+
+.experience-card-description {
+  @apply text-text-secondary;
+}
+
+/* Testimonial cards */
+.testimonial-card {
+  @apply card;
+  @apply relative p-6;
+}
+
+.testimonial-card-quote {
+  @apply text-text-primary italic mb-4;
+  @apply relative;
+}
+
+.testimonial-card-quote::before {
+  content: '"';
+  @apply absolute -top-2 -left-2 text-4xl text-primary/30;
+}
+
+.testimonial-card-author {
+  @apply flex items-center gap-3;
+}
+
+.testimonial-card-avatar {
+  @apply w-10 h-10 rounded-full bg-surface-secondary;
+  @apply flex items-center justify-center text-text-secondary;
+}
+
+.testimonial-card-info {
+  @apply flex-1;
+}
+
+.testimonial-card-name {
+  @apply font-semibold text-text-primary text-sm;
+}
+
+.testimonial-card-role {
+  @apply text-text-secondary text-xs;
+}
+
+/* Blog cards */
+.blog-card {
+  @apply card-interactive;
+  @apply flex flex-col h-full;
+}
+
+.blog-card-image {
+  @apply aspect-video bg-surface-secondary;
+  @apply flex items-center justify-center;
+}
+
+.blog-card-content {
+  @apply p-6 flex-1 flex flex-col;
+}
+
+.blog-card-title {
+  @apply text-lg font-semibold text-text-primary mb-2;
+  @apply line-clamp-2;
+}
+
+.blog-card-excerpt {
+  @apply text-text-secondary mb-4 flex-1;
+  @apply line-clamp-3;
+}
+
+.blog-card-meta {
+  @apply flex items-center justify-between text-sm text-text-secondary;
+}
+
+/* Service cards */
+.service-card {
+  @apply card;
+  @apply text-center p-6;
+  @apply border-2 border-transparent;
+  @apply hover:border-primary/50;
+}
+
+.service-card-icon {
+  @apply w-16 h-16 mx-auto mb-4;
+  @apply bg-gradient-to-br from-primary to-primary-dark;
+  @apply text-white rounded-lg text-2xl;
+  @apply flex items-center justify-center;
+}
+
+.service-card-title {
+  @apply text-xl font-semibold text-text-primary mb-3;
+}
+
+.service-card-description {
+  @apply text-text-secondary mb-6;
+}
+
+.service-card-features {
+  @apply space-y-2 text-sm text-text-secondary;
+}
+
+/* Stat cards */
+.stat-card {
+  @apply card text-center p-6;
+  @apply bg-gradient-to-br from-surface to-surface-secondary;
+}
+
+.stat-card-value {
+  @apply text-3xl font-bold text-primary mb-2;
+}
+
+.stat-card-label {
+  @apply text-text-secondary text-sm uppercase tracking-wide;
+}
+
+/* Contact cards */
+.contact-card {
+  @apply card p-6;
+  @apply flex items-center gap-4;
+}
+
+.contact-card-icon {
+  @apply w-12 h-12 bg-primary/10 text-primary rounded-lg;
+  @apply flex items-center justify-center text-xl;
+}
+
+.contact-card-content {
+  @apply flex-1;
+}
+
+.contact-card-title {
+  @apply font-semibold text-text-primary;
+}
+
+.contact-card-value {
+  @apply text-text-secondary;
+}
+
+/* Card layouts */
+.card-grid {
+  @apply grid gap-6;
+  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.card-grid-2 {
+  @apply grid gap-6;
+  @apply grid-cols-1 md:grid-cols-2;
+}
+
+.card-grid-4 {
+  @apply grid gap-6;
+  @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
+}
+
+/* Loading cards */
+.card-loading {
+  @apply card;
+  @apply animate-pulse;
+}
+
+.card-loading-content {
+  @apply p-6 space-y-4;
+}
+
+.card-loading-line {
+  @apply h-4 bg-surface-secondary rounded;
+}
+
+.card-loading-line.short {
+  @apply w-3/4;
+}
+
+.card-loading-line.medium {
+  @apply w-1/2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .card-body {
+    @apply p-4;
+  }
+  
+  .card-header,
+  .card-footer {
+    @apply px-4 py-3;
+  }
+  
+  .project-card-content {
+    @apply p-4;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .card {
+    @apply shadow-md hover:shadow-lg;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card-interactive {
+    @apply transition-none transform-none;
+  }
+}
+
+/* Glass Card Effect */
+.card-glass {
+  background: rgba(26, 31, 58, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card Header */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.card-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0.25rem 0 0 0;
+}
+
+/* Card Variants */
+.card-compact {
+  padding: 1rem;
+}
+
+.card-expanded {
+  padding: 2rem;
+}
+
+.card-borderless {
+  border: none;
+  background: transparent;
+}
+
+/* Project Card Specific */
+.project-card .card-header {
+  flex-shrink: 0;
+}
+
+.project-card .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card .card-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/* Skill Card */
+.skill-card {
+  text-align: center;
+  padding: 1.25rem;
+}
+
+.skill-card .skill-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  border-radius: 0.75rem;
+  color: var(--bg-primary);
+  font-size: 1.5rem;
+}
+
+/* Contact Card */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.contact-card .contact-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  border-radius: 0.5rem;
+  color: var(--bg-primary);
+  flex-shrink: 0;
+}
+
+/* Card Grid */
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.cards-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.cards-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+  
+  .card-expanded {
+    padding: 1.25rem;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+}
+
+/* ===== PROJECT CARD ===== */
+.project-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+}
+
+.project-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+  box-shadow: 0 20px 25px rgba(100, 255, 218, 0.05);
+  transform: translateY(-0.25rem);
+}
+
+.project-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.project-card-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card-language {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.project-card-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card-topic {
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  color: var(--primary);
+  font-size: 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.project-card-updated {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ===== ACTIVITY CARD ===== */
+.activity-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1rem;
+}
+
+.activity-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.activity-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.activity-card-icon {
+  width: 2rem;
+  height: 2rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-card-type {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.activity-card-repo {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.activity-card-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.activity-card-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-left: 2.75rem;
+}
+
+/* ===== STATS CARD ===== */
+.stats-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stats-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.stats-card-icon {
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.stats-card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.stats-card-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ===== SKILL CARD ===== */
+.skill-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1rem;
+}
+
+.skill-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.skill-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-card-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.skill-card-category {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.skill-card-percentage {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.skill-card-progress {
+  width: 100%;
+  background-color: var(--bg-secondary);
+  border-radius: 9999px;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.skill-card-progress-bar {
+  height: 0.5rem;
+  background: linear-gradient(to right, var(--primary), rgba(100, 255, 218, 0.7));
+  border-radius: 9999px;
+  transition: all 1s ease-out;
+  width: 0%;
+}
+
+.skill-card-progress-bar.animate {
+  animation: skillBarFill 2s ease-out forwards;
+}
+
+/* ===== SOCIAL CARD ===== */
+.social-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  display: block;
+}
+
+.social-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+  background-color: rgba(100, 255, 218, 0.05);
+}
+
+.social-card-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.social-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.social-card:hover .social-card-icon {
+  background-color: rgba(100, 255, 218, 0.2);
+}
+
+.social-card-name {
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.social-card:hover .social-card-name {
+  color: var(--primary);
+}
+
+.social-card-username {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ===== CONTACT INFO CARD ===== */
+.contact-info-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.contact-info-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info-type {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.contact-info-value {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.contact-info-value:hover {
+  color: var(--primary);
+}
+
+/* ===== CARD ANIMATIONS ===== */
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skillBarFill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--skill-width, 100%);
+  }
+}
+
+.card-slide-in {
+  animation: cardSlideIn 0.6s ease-out forwards;
+}
+
+.card-fade-in {
+  animation: cardFadeIn 0.6s ease-in-out forwards;
+}
+
+/* ===== LOADING AND ERROR STATES ===== */
+.card-loading {
+  background-color: var(--bg-accent);
+  animation: pulse 2s infinite;
+}
+
+.card-loading::after {
+  content: "Loading...";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-accent);
+}
+
+.card-error {
+  border-color: rgba(239, 68, 68, 0.3);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.card-success {
+  border-color: rgba(34, 197, 94, 0.3);
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 640px) {
+  .project-card,
+  .stats-card {
+    padding: 1rem;
+  }
+
+  .project-card-icon,
+  .stats-card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .stats-card-value {
+    font-size: 1.25rem;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .card-hover:hover {
+    transform: none;
+  }
+
+  .card-slide-in,
+  .card-fade-in {
+    animation: none;
+  }
+
+  .skill-card-progress-bar {
+    transition: none;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .card-base {
+    border-width: 2px;
+  }
+
+  .project-card-topic {
+    border-width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .card-base {
+    background: white !important;
+    border: 1px solid black !important;
+  }
+
+  .card-hover:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+} 

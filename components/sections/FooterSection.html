@@ -1,152 +1,311 @@
-<!-- Footer Section Component -->
-<footer class="bg-bg-tertiary border-t border-border-color relative">
-  <div class="container mx-auto px-6 py-12">
+<!-- Footer Section -->
+<footer class="bg-bg-secondary border-t border-border-color">
+  <!-- Main Footer Content -->
+  <div class="container mx-auto px-6 py-16">
     <div class="max-w-6xl mx-auto">
-      <!-- Main Footer Content -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-        <!-- Brand Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        
+        <!-- Brand Column -->
         <div class="lg:col-span-2">
-          <div class="flex items-center space-x-3 mb-6">
-            <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-              <span class="text-primary font-bold text-xl">UA</span>
-            </div>
-            <span class="text-xl font-bold text-text-primary">Umutcan Algan</span>
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold text-text-primary mb-3">
+              Umut Can Algan
+            </h3>
+            <p class="text-text-secondary leading-relaxed max-w-md">
+              Full-Stack Developer passionate about creating innovative digital experiences. 
+              Specialized in modern web technologies and always excited to tackle new challenges.
+            </p>
           </div>
           
-          <p class="text-text-secondary mb-6 max-w-md">
-            Full-stack developer passionate about creating modern, accessible, and user-friendly web applications. 
-            Always learning and exploring new technologies.
-          </p>
-          
           <!-- Social Links -->
-          <div class="flex space-x-4">
-            <a href="https://github.com/ucanalgan" target="_blank" aria-label="Visit my GitHub profile" class="w-10 h-10 bg-bg-primary border border-border-color rounded-lg flex items-center justify-center hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group">
-              <i class="ri-github-line text-text-secondary group-hover:text-primary"></i>
+          <div class="flex space-x-4 mb-6">
+            <a 
+              href="https://github.com/ucanalgan" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="social-icon"
+              aria-label="GitHub Profile"
+            >
+              <i class="ri-github-line text-xl"></i>
             </a>
-            <a href="https://linkedin.com/in/umutcan-algan/" target="_blank" aria-label="Connect with me on LinkedIn" class="w-10 h-10 bg-bg-primary border border-border-color rounded-lg flex items-center justify-center hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group">
-              <i class="ri-linkedin-line text-text-secondary group-hover:text-primary"></i>
+            <a 
+              href="https://linkedin.com/in/umutcanalgan" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="social-icon"
+              aria-label="LinkedIn Profile"
+            >
+              <i class="ri-linkedin-line text-xl"></i>
             </a>
-            <a href="https://twitter.com/umutcanalgan" target="_blank" aria-label="Follow me on Twitter" class="w-10 h-10 bg-bg-primary border border-border-color rounded-lg flex items-center justify-center hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group">
-              <i class="ri-twitter-line text-text-secondary group-hover:text-primary"></i>
+            <a 
+              href="mailto:umutcanalgan@gmail.com"
+              class="social-icon"
+              aria-label="Send Email"
+            >
+              <i class="ri-mail-line text-xl"></i>
             </a>
-            <a href="https://instagram.com/umutcanalgan" target="_blank" aria-label="Follow me on Instagram" class="w-10 h-10 bg-bg-primary border border-border-color rounded-lg flex items-center justify-center hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 group">
-              <i class="ri-instagram-line text-text-secondary group-hover:text-primary"></i>
+            <a 
+              href="https://twitter.com/ucanalgan" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="social-icon"
+              aria-label="Twitter Profile"
+            >
+              <i class="ri-twitter-line text-xl"></i>
             </a>
+            <a 
+              href="https://instagram.com/ucanalgan" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="social-icon"
+              aria-label="Instagram Profile"
+            >
+              <i class="ri-instagram-line text-xl"></i>
+            </a>
+          </div>
+
+          <!-- Tech Stack -->
+          <div class="mb-6">
+            <h4 class="font-semibold text-text-primary mb-3">Currently Working With</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">PostgreSQL</span>
+              <span class="tech-badge">AWS</span>
+            </div>
           </div>
         </div>
 
         <!-- Quick Links -->
         <div>
-          <h3 class="text-lg font-semibold text-text-primary mb-4">Quick Links</h3>
-          <ul class="space-y-3">
-            <li>
-              <a href="#hero" class="footer-link text-text-secondary hover:text-primary transition-colors duration-300">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#about" class="footer-link text-text-secondary hover:text-primary transition-colors duration-300">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#skills" class="footer-link text-text-secondary hover:text-primary transition-colors duration-300">
-                Skills
-              </a>
-            </li>
-            <li>
-              <a href="#github" class="footer-link text-text-secondary hover:text-primary transition-colors duration-300">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="#contact" class="footer-link text-text-secondary hover:text-primary transition-colors duration-300">
-                Contact
-              </a>
-            </li>
-          </ul>
+          <h4 class="font-semibold text-text-primary mb-6">Quick Links</h4>
+          <nav class="space-y-3">
+            <a href="#home" class="footer-link">
+              <i class="ri-home-line mr-2"></i>
+              Home
+            </a>
+            <a href="#about" class="footer-link">
+              <i class="ri-user-line mr-2"></i>
+              About
+            </a>
+            <a href="#skills" class="footer-link">
+              <i class="ri-code-s-slash-line mr-2"></i>
+              Skills
+            </a>
+            <a href="#projects" class="footer-link">
+              <i class="ri-folder-line mr-2"></i>
+              Projects
+            </a>
+            <a href="#contact" class="footer-link">
+              <i class="ri-mail-line mr-2"></i>
+              Contact
+            </a>
+          </nav>
         </div>
 
-        <!-- Contact Info -->
+        <!-- Services -->
         <div>
-          <h3 class="text-lg font-semibold text-text-primary mb-4">Contact</h3>
+          <h4 class="font-semibold text-text-primary mb-6">Services</h4>
           <ul class="space-y-3">
-            <li class="flex items-center text-text-secondary">
-              <i class="ri-mail-line text-primary mr-3"></i>
-              <a href="mailto:umutcanalgan@hotmail.com" class="hover:text-primary transition-colors duration-300">
-                umutcanalgan@hotmail.com
-              </a>
+            <li class="footer-service">
+              <i class="ri-code-box-line mr-2 text-primary"></i>
+              Web Development
             </li>
-            <li class="flex items-center text-text-secondary">
-              <i class="ri-map-pin-line text-primary mr-3"></i>
-              <span>Istanbul, Turkey</span>
+            <li class="footer-service">
+              <i class="ri-smartphone-line mr-2 text-primary"></i>
+              Mobile Apps
             </li>
-            <li class="flex items-center text-text-secondary">
-              <i class="ri-time-line text-primary mr-3"></i>
-              <span>Available for projects</span>
+            <li class="footer-service">
+              <i class="ri-database-2-line mr-2 text-primary"></i>
+              Backend APIs
+            </li>
+            <li class="footer-service">
+              <i class="ri-paint-brush-line mr-2 text-primary"></i>
+              UI/UX Design
+            </li>
+            <li class="footer-service">
+              <i class="ri-consultation-line mr-2 text-primary"></i>
+              Tech Consultation
             </li>
           </ul>
         </div>
       </div>
 
-      <!-- Newsletter Section -->
-      <div class="bg-bg-primary border border-border-color rounded-xl p-8 mb-12">
-        <div class="text-center max-w-2xl mx-auto">
-          <h3 class="text-xl font-semibold text-text-primary mb-4">Stay Updated</h3>
+      <!-- Newsletter Signup (Optional) -->
+      <div class="mt-12 pt-8 border-t border-border-color">
+        <div class="max-w-2xl mx-auto text-center">
+          <h4 class="font-semibold text-text-primary mb-3">Stay Updated</h4>
           <p class="text-text-secondary mb-6">
-            Get notified about my latest projects, blog posts, and tech insights.
+            Get notified about new projects, blog posts, and tech insights.
           </p>
-          
-          <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              class="flex-1 bg-bg-secondary border border-border-color rounded-lg px-4 py-3 text-text-primary placeholder-text-secondary focus:outline-none focus:border-primary/50 transition-colors duration-300"
+          <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" id="newsletter-form">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="flex-1 px-4 py-3 bg-bg-primary border border-border-color rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+              required
+            />
+            <button
+              type="submit"
+              class="btn-base btn-primary px-6 py-3 whitespace-nowrap"
             >
-            <button 
-              type="submit" 
-              class="px-6 py-3 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary rounded-lg font-medium transition-all duration-300 whitespace-nowrap"
-            >
+              <i class="ri-mail-send-line mr-2"></i>
               Subscribe
             </button>
           </form>
         </div>
       </div>
+    </div>
+  </div>
 
-      <!-- Bottom Section -->
-      <div class="border-t border-border-color pt-8">
+  <!-- Bottom Bar -->
+  <div class="bg-bg-primary border-t border-border-color">
+    <div class="container mx-auto px-6 py-6">
+      <div class="max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          
           <!-- Copyright -->
-          <div class="text-text-secondary text-sm">
-            <p>&copy; 2024 Umutcan Algan. All rights reserved.</p>
+          <div class="text-center md:text-left">
+            <p class="text-text-secondary text-sm">
+              © <span id="current-year">2024</span> Umut Can Algan. All rights reserved.
+            </p>
           </div>
 
-          <!-- Links -->
-          <div class="flex items-center space-x-6 text-sm">
-            <a href="#" class="text-text-secondary hover:text-primary transition-colors duration-300">
+          <!-- Status & Version -->
+          <div class="flex items-center space-x-4 text-sm">
+            <div class="flex items-center text-text-secondary">
+              <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
+              Available for work
+            </div>
+            <div class="text-text-secondary">
+              v2.0.1
+            </div>
+          </div>
+
+          <!-- Legal Links -->
+          <div class="flex items-center space-x-4 text-sm">
+            <a href="#privacy" class="text-text-secondary hover:text-primary transition-colors">
               Privacy Policy
             </a>
-            <a href="#" class="text-text-secondary hover:text-primary transition-colors duration-300">
+            <span class="text-border-color">•</span>
+            <a href="#terms" class="text-text-secondary hover:text-primary transition-colors">
               Terms of Service
             </a>
-            <span class="text-text-secondary">
-              Made with <i class="ri-heart-fill text-red-400 mx-1"></i> in Istanbul
-            </span>
+            <span class="text-border-color">•</span>
+            <button 
+              id="scroll-to-top" 
+              class="text-text-secondary hover:text-primary transition-colors flex items-center"
+              aria-label="Scroll to top"
+            >
+              <i class="ri-arrow-up-line mr-1"></i>
+              Top
+            </button>
           </div>
+        </div>
 
-          <!-- Scroll to Top -->
-          <button 
-            id="scroll-top" 
-            class="scroll-top-button w-10 h-10 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 rounded-lg flex items-center justify-center text-primary transition-all duration-300 hover:scale-110"
-            aria-label="Scroll to top"
-          >
-            <i class="ri-arrow-up-line"></i>
-          </button>
+        <!-- Build Info (Development) -->
+        <div class="mt-4 pt-4 border-t border-border-color/50">
+          <div class="text-center">
+            <p class="text-text-secondary text-xs">
+              Built with <span class="text-red-500">♥</span> using 
+              <span class="text-primary">Vanilla JS</span>, 
+              <span class="text-primary">Tailwind CSS</span>, and 
+              <span class="text-primary">Vite</span>
+              • Last updated: <span id="last-updated">Today</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</footer>
 
-  <!-- Background Decoration -->
-  <div class="absolute top-0 left-1/2 w-20 h-1 bg-gradient-to-r from-primary to-blue-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-</footer> 
+<!-- Back to Top Button (Floating) -->
+<button
+  id="back-to-top"
+  class="back-to-top-btn"
+  aria-label="Back to top"
+>
+  <i class="ri-arrow-up-line"></i>
+</button>
+
+<script>
+// Footer functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Update current year
+  const currentYear = new Date().getFullYear();
+  const yearElement = document.getElementById('current-year');
+  if (yearElement) {
+    yearElement.textContent = currentYear;
+  }
+
+  // Update last modified date
+  const lastUpdatedElement = document.getElementById('last-updated');
+  if (lastUpdatedElement) {
+    const lastModified = document.lastModified;
+    const date = new Date(lastModified);
+    lastUpdatedElement.textContent = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  }
+
+  // Scroll to top functionality
+  const scrollToTopBtn = document.getElementById('scroll-to-top');
+  const backToTopBtn = document.getElementById('back-to-top');
+  
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', scrollToTop);
+  }
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', scrollToTop);
+    
+    // Show/hide back to top button based on scroll position
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+  }
+
+  // Newsletter form (if implemented)
+  const newsletterForm = document.getElementById('newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Add newsletter signup logic here
+      alert('Newsletter signup coming soon!');
+    });
+  }
+
+  // Smooth scroll for footer navigation
+  const footerLinks = document.querySelectorAll('.footer-link');
+  footerLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+});
+</script> 

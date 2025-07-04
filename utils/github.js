@@ -2,673 +2,405 @@
 // Description: GitHub API işlemleri - repository verileri, kullanıcı bilgileri ve projeleri getirme
 
 /**
- * GitHub API Manager
- * GitHub kullanıcı ve repository verilerini yönetir
+ * Advanced GitHub API Integration
+ * Fetches real repository data, stars, commits, and project information
  */
+
 export class GitHubAPI {
-  constructor() {
-    this.username = 'ucanalgan';
-    this.apiUrl = 'https://api.github.com';
+  constructor(username = 'ucanalgan') {
+    this.username = username;
+    this.baseURL = 'https://api.github.com';
     this.cache = new Map();
-    this.cacheTimeout = 15 * 60 * 1000; // 15 dakika - longer cache
-    this.rateLimit = {
-      remaining: 60,
-      reset: Date.now() + 3600000
-    };
-    
-    // Placeholder data for immediate UI updates
-    this.placeholderData = {
-      userData: {
-        name: 'Umutcan Algan',
-        login: 'ucanalgan',
-        bio: 'Full Stack Developer | Information Systems Engineering Student | Passionate about modern web technologies',
-        public_repos: 25,
-        followers: 45,
-        following: 30,
-        public_gists: 5,
-        avatar_url: 'https://avatars.githubusercontent.com/u/ucanalgan?v=4',
-        location: 'Istanbul, Turkey',
-        company: 'Freelance Developer'
-      },
-      repositories: [
-        {
-          name: 'portfolio-website',
-          description: 'Modern portfolio website built with vanilla JavaScript and Tailwind CSS',
-          html_url: 'https://github.com/ucanalgan/portfolio-website',
-          language: 'JavaScript',
-          stargazers_count: 5,
-          forks_count: 2,
-          updated_at: '2024-12-20T10:00:00Z'
-        },
-        {
-          name: 'e-commerce-app',
-          description: 'Full-stack e-commerce application with React and Node.js',
-          html_url: 'https://github.com/ucanalgan/e-commerce-app',
-          language: 'TypeScript',
-          stargazers_count: 12,
-          forks_count: 4,
-          updated_at: '2024-12-15T14:30:00Z'
-        },
-        {
-          name: 'weather-dashboard',
-          description: 'Real-time weather dashboard with API integration',
-          html_url: 'https://github.com/ucanalgan/weather-dashboard',
-          language: 'React',
-          stargazers_count: 8,
-          forks_count: 3,
-          updated_at: '2024-12-10T09:15:00Z'
-        }
-      ]
-    };
-    
-    this.init();
+    this.cacheTimeout = 5 * 60 * 1000; // 5 minutes
   }
 
-  /**
-   * Initialize GitHub API
-   */
-  init() {
-    console.log('🔧 GitHub API initialized');
-    
-    // Immediate UI update with placeholder data
-    this.updateUserStats(this.placeholderData.userData);
-    this.updateRepositoryList(this.placeholderData.repositories);
-    
-    // Then load real data in background
-    setTimeout(() => {
-      this.loadUserData();
-      this.loadRepositories();
-    }, 100);
-  }
-
-  /**
-   * Generic API request handler with caching and error handling
-   */
-  async apiRequest(endpoint, options = {}) {
-    const cacheKey = `${endpoint}_${JSON.stringify(options)}`;
-    
-    // Check cache first
-    const cached = this.cache.get(cacheKey);
-    if (cached && Date.now() - cached.timestamp < this.cacheTimeout) {
-      console.log(`📦 Using cached data for: ${endpoint}`);
-      return cached.data;
-    }
+  // Fetch user profile information
+  async fetchUserProfile() {
+    const cacheKey = 'user-profile';
+    const cached = this.getFromCache(cacheKey);
+    if (cached) return cached;
 
     try {
-      // Check rate limit
-      if (this.rateLimit.remaining <= 1 && Date.now() < this.rateLimit.reset) {
-        throw new Error('GitHub API rate limit exceeded');
-      }
-
-      const url = `${this.apiUrl}${endpoint}`;
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'Portfolio-Website-v1.0',
-          ...options.headers
-        },
-        ...options
-      });
-
-      // Update rate limit info
-      this.rateLimit.remaining = parseInt(response.headers.get('X-RateLimit-Remaining')) || 0;
-      this.rateLimit.reset = new Date(response.headers.get('X-RateLimit-Reset') * 1000).getTime();
-
-      if (!response.ok) {
-        throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
-      }
-
+      const response = await fetch(`${this.baseURL}/users/${this.username}`);
+      if (!response.ok) throw new Error('Failed to fetch user profile');
+      
       const data = await response.json();
-      
-      // Cache the result
-      this.cache.set(cacheKey, {
-        data,
-        timestamp: Date.now()
-      });
+      const profile = {
+        name: data.name,
+        bio: data.bio,
+        avatar: data.avatar_url,
+        followers: data.followers,
+        following: data.following,
+        publicRepos: data.public_repos,
+        company: data.company,
+        location: data.location,
+        blog: data.blog,
+        createdAt: new Date(data.created_at),
+        updatedAt: new Date(data.updated_at)
+      };
 
-      console.log(`✅ GitHub API request successful: ${endpoint}`);
-      return data;
-
+      this.setCache(cacheKey, profile);
+      return profile;
     } catch (error) {
-      console.error(`❌ GitHub API request failed: ${endpoint}`, error);
-      
-      // Return cached data if available, even if expired
-      const fallbackCached = this.cache.get(cacheKey);
-      if (fallbackCached) {
-        console.log(`📦 Using expired cached data as fallback: ${endpoint}`);
-        return fallbackCached.data;
-      }
-      
-      throw error;
+      console.error('Error fetching user profile:', error);
+      return this.getFallbackProfile();
     }
   }
 
-  /**
-   * Load user profile data
-   */
-  async loadUserData() {
+  // Fetch repositories with enhanced data
+  async fetchRepositories(options = {}) {
+    const {
+      sort = 'updated',
+      direction = 'desc',
+      per_page = 100,
+      type = 'owner'
+    } = options;
+
+    const cacheKey = `repos-${sort}-${direction}-${per_page}`;
+    const cached = this.getFromCache(cacheKey);
+    if (cached) return cached;
+
     try {
-      const userData = await this.apiRequest(`/users/${this.username}`);
-      this.updateUserStats(userData);
-      return userData;
-    } catch (error) {
-      console.error('Failed to load user data:', error);
-      this.showErrorMessage('Kullanıcı bilgileri yüklenemedi');
-      return null;
-    }
-  }
-
-  /**
-   * Load user repositories
-   */
-  async loadRepositories(options = {}) {
-    try {
-      const {
-        sort = 'updated',
-        per_page = 12, // Reduced for faster loading
-        type = 'public'
-      } = options;
-
-      // Show loading indicator
-      this.showRepositoryLoading();
-
-      const repos = await this.apiRequest(
-        `/users/${this.username}/repos?sort=${sort}&per_page=${per_page}&type=${type}`
+      const response = await fetch(
+        `${this.baseURL}/users/${this.username}/repos?sort=${sort}&direction=${direction}&per_page=${per_page}&type=${type}`
       );
-
-      this.updateRepositoryList(repos);
-      this.hideRepositoryLoading();
-      return repos;
+      
+      if (!response.ok) throw new Error('Failed to fetch repositories');
+      
+      const repos = await response.json();
+      const enhancedRepos = await this.enhanceRepositories(repos);
+      
+      this.setCache(cacheKey, enhancedRepos);
+      return enhancedRepos;
     } catch (error) {
-      console.error('Failed to load repositories:', error);
-      this.hideRepositoryLoading();
-      // Keep placeholder data instead of showing error
-      console.log('Using placeholder repository data');
+      console.error('Error fetching repositories:', error);
+      return this.getFallbackRepositories();
+    }
+  }
+
+  // Enhance repositories with additional data
+  async enhanceRepositories(repos) {
+    const enhancements = await Promise.allSettled(
+      repos.map(async (repo) => {
+        try {
+          // Fetch additional repo stats
+          const [languages, commits] = await Promise.all([
+            this.fetchRepoLanguages(repo.name),
+            this.fetchRepoCommits(repo.name, 1) // Just get the latest commit
+          ]);
+
+          return {
+            id: repo.id,
+            name: repo.name,
+            fullName: repo.full_name,
+            description: repo.description,
+            htmlUrl: repo.html_url,
+            homepage: repo.homepage,
+            stars: repo.stargazers_count,
+            forks: repo.forks_count,
+            watchers: repo.watchers_count,
+            size: repo.size,
+            language: repo.language,
+            languages,
+            topics: repo.topics || [],
+            createdAt: new Date(repo.created_at),
+            updatedAt: new Date(repo.updated_at),
+            pushedAt: new Date(repo.pushed_at),
+            isPrivate: repo.private,
+            isFork: repo.fork,
+            hasPages: repo.has_pages,
+            defaultBranch: repo.default_branch,
+            openIssues: repo.open_issues_count,
+            license: repo.license?.name,
+            lastCommit: commits[0] || null,
+            // Calculate activity score
+            activityScore: this.calculateActivityScore(repo),
+            // Determine project category
+            category: this.categorizeProject(repo.topics, repo.language, repo.description)
+          };
+        } catch (error) {
+          console.warn(`Failed to enhance repo ${repo.name}:`, error);
+          return this.createBasicRepoData(repo);
+        }
+      })
+    );
+
+    return enhancements
+      .filter(result => result.status === 'fulfilled')
+      .map(result => result.value)
+      .sort((a, b) => b.activityScore - a.activityScore);
+  }
+
+  // Fetch repository languages
+  async fetchRepoLanguages(repoName) {
+    try {
+      const response = await fetch(`${this.baseURL}/repos/${this.username}/${repoName}/languages`);
+      if (!response.ok) return {};
+      return await response.json();
+    } catch (error) {
+      console.warn(`Failed to fetch languages for ${repoName}:`, error);
+      return {};
+    }
+  }
+
+  // Fetch recent commits
+  async fetchRepoCommits(repoName, per_page = 10) {
+    try {
+      const response = await fetch(
+        `${this.baseURL}/repos/${this.username}/${repoName}/commits?per_page=${per_page}`
+      );
+      if (!response.ok) return [];
+      
+      const commits = await response.json();
+      return commits.map(commit => ({
+        sha: commit.sha,
+        message: commit.commit.message,
+        author: commit.commit.author.name,
+        date: new Date(commit.commit.author.date),
+        url: commit.html_url
+      }));
+    } catch (error) {
+      console.warn(`Failed to fetch commits for ${repoName}:`, error);
       return [];
     }
   }
 
-  /**
-   * Get repository details
-   */
-  async getRepository(repoName) {
-    try {
-      const repo = await this.apiRequest(`/repos/${this.username}/${repoName}`);
-      return repo;
-    } catch (error) {
-      console.error(`Failed to load repository ${repoName}:`, error);
+  // Calculate activity score for sorting
+  calculateActivityScore(repo) {
+    const now = Date.now();
+    const daysSinceUpdate = (now - new Date(repo.updated_at)) / (1000 * 60 * 60 * 24);
+    const daysSinceCreation = (now - new Date(repo.created_at)) / (1000 * 60 * 60 * 24);
+    
+    // Weighted scoring
+    const starsWeight = repo.stargazers_count * 10;
+    const forksWeight = repo.forks_count * 5;
+    const recentActivityWeight = Math.max(0, 100 - daysSinceUpdate);
+    const projectMaturityWeight = Math.min(365, daysSinceCreation) / 365 * 20;
+    
+    return starsWeight + forksWeight + recentActivityWeight + projectMaturityWeight;
+  }
+
+  // Categorize projects based on various factors
+  categorizeProject(topics, language, description) {
+    const topicsStr = topics.join(' ').toLowerCase();
+    const descStr = (description || '').toLowerCase();
+    const langStr = (language || '').toLowerCase();
+    
+    // AI/ML projects
+    if (topicsStr.includes('ai') || topicsStr.includes('ml') || topicsStr.includes('machine-learning') ||
+        descStr.includes('ai') || descStr.includes('machine learning') || descStr.includes('neural')) {
+      return 'ai';
+    }
+    
+    // Mobile projects
+    if (topicsStr.includes('mobile') || topicsStr.includes('android') || topicsStr.includes('ios') ||
+        langStr.includes('swift') || langStr.includes('kotlin') || topicsStr.includes('react-native')) {
+      return 'mobile';
+    }
+    
+    // Backend projects
+    if (topicsStr.includes('api') || topicsStr.includes('backend') || topicsStr.includes('server') ||
+        langStr.includes('python') || langStr.includes('node') || langStr.includes('go')) {
+      return 'backend';
+    }
+    
+    // Full-stack projects
+    if (topicsStr.includes('fullstack') || topicsStr.includes('full-stack') ||
+        (topicsStr.includes('react') && topicsStr.includes('node')) ||
+        (topicsStr.includes('vue') && topicsStr.includes('express'))) {
+      return 'fullstack';
+    }
+    
+    // Default to frontend
+    return 'frontend';
+  }
+
+  // Cache management
+  setCache(key, data) {
+    this.cache.set(key, {
+      data,
+      timestamp: Date.now()
+    });
+  }
+
+  getFromCache(key) {
+    const cached = this.cache.get(key);
+    if (!cached) return null;
+    
+    if (Date.now() - cached.timestamp > this.cacheTimeout) {
+      this.cache.delete(key);
       return null;
     }
-  }
-
-  /**
-   * Get repository languages
-   */
-  async getRepositoryLanguages(repoName) {
-    try {
-      const languages = await this.apiRequest(`/repos/${this.username}/${repoName}/languages`);
-      return this.processLanguages(languages);
-    } catch (error) {
-      console.error(`Failed to load languages for ${repoName}:`, error);
-      return [];
-    }
-  }
-
-  /**
-   * Get user events (activity)
-   */
-  async getUserEvents() {
-    try {
-      const events = await this.apiRequest(`/users/${this.username}/events/public?per_page=10`);
-      return this.processEvents(events);
-    } catch (error) {
-      console.error('Failed to load user events:', error);
-      return [];
-    }
-  }
-
-  /**
-   * Get repository contributors
-   */
-  async getRepositoryContributors(repoName) {
-    try {
-      const contributors = await this.apiRequest(`/repos/${this.username}/${repoName}/contributors`);
-      return contributors;
-    } catch (error) {
-      console.error(`Failed to load contributors for ${repoName}:`, error);
-      return [];
-    }
-  }
-
-  /**
-   * Update user statistics in the UI
-   */
-  updateUserStats(userData) {
-    const stats = {
-      repos: userData.public_repos,
-      followers: userData.followers,
-      following: userData.following,
-      gists: userData.public_gists
-    };
-
-    // Update GitHub stats
-    this.updateElement('#github-repos', stats.repos);
-    this.updateElement('#github-followers', stats.followers);
-    this.updateElement('#github-following', stats.following);
-    this.updateElement('#github-gists', stats.gists);
-
-    // Update profile info
-    this.updateElement('#github-bio', userData.bio);
-    this.updateElement('#github-location', userData.location);
-    this.updateElement('#github-company', userData.company);
-
-    // Update stats in other sections (e.g., GitHub section total stats)
-    this.updateElement('#total-repos', stats.repos);
-    this.updateElement('#total-stars', this.calculateTotalStars());
-    this.updateElement('#total-forks', this.calculateTotalForks());
-
-    // Optimized avatar loading
-    this.updateAvatars(userData);
-
-    console.log('📊 User stats updated:', stats);
-  }
-
-  /**
-   * Calculate total stars across all repositories
-   */
-  calculateTotalStars() {
-    // This will be calculated when repositories are loaded
-    return this.totalStars || 45; // Fallback value
-  }
-
-  /**
-   * Calculate total forks across all repositories
-   */
-  calculateTotalForks() {
-    // This will be calculated when repositories are loaded
-    return this.totalForks || 12; // Fallback value
-  }
-
-  /**
-   * Optimized avatar update with preloading and fallback
-   */
-  updateAvatars(userData) {
-    const avatarElements = document.querySelectorAll('.github-avatar');
-    if (avatarElements.length === 0) return;
-
-    // Preload the image for faster loading
-    const img = new Image();
-    img.onload = () => {
-      // Once loaded, update all avatar elements
-      avatarElements.forEach(avatarEl => {
-        if (avatarEl.tagName === 'IMG') {
-          avatarEl.src = userData.avatar_url;
-          avatarEl.alt = `${userData.name || userData.login} avatar`;
-          avatarEl.loading = 'eager'; // Load immediately since it's critical
-          avatarEl.decoding = 'async';
-          avatarEl.classList.add('fade-in');
-        } else {
-          // For div backgrounds
-          avatarEl.style.backgroundImage = `url(${userData.avatar_url})`;
-          avatarEl.classList.add('fade-in');
-        }
-      });
-    };
     
-    img.onerror = () => {
-      console.warn('Failed to load GitHub avatar, using fallback');
-      // Use a fallback avatar or placeholder
-      avatarElements.forEach(avatarEl => {
-        if (avatarEl.tagName === 'IMG') {
-          avatarEl.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2364ffda" opacity="0.2"/><text x="50" y="55" text-anchor="middle" fill="%2364ffda" font-size="36" font-family="Arial">UA</text></svg>';
-          avatarEl.alt = 'User avatar';
-        }
-      });
-    };
-    
-    img.src = userData.avatar_url;
+    return cached.data;
   }
 
-  /**
-   * Update repository list in the UI
-   */
-  updateRepositoryList(repos) {
-    const container = document.getElementById('github-repos-container');
-    if (!container) return;
-
-    // Add loading overlay if not exists
-    if (!container.querySelector('.loading-overlay')) {
-      const loadingOverlay = document.createElement('div');
-      loadingOverlay.className = 'loading-overlay absolute inset-0 bg-bg-primary/80 flex items-center justify-center rounded-lg transition-opacity duration-300';
-      loadingOverlay.innerHTML = '<div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full"></div>';
-      container.style.position = 'relative';
-      container.appendChild(loadingOverlay);
-    }
-
-    // Calculate totals from repositories
-    this.totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-    this.totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
-
-    // Update total stats if elements exist
-    this.updateElement('#total-stars', this.totalStars);
-    this.updateElement('#total-forks', this.totalForks);
-
-    // Filter and sort repositories
-    const featuredRepos = repos
-      .filter(repo => !repo.fork && !repo.archived)
-      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
-      .slice(0, 6);
-
-    // Create fragment for better performance
-    const fragment = document.createDocumentFragment();
-    featuredRepos.forEach(repo => {
-      const repoCard = this.createRepositoryCard(repo);
-      fragment.appendChild(repoCard);
-    });
-
-    // Clear and append all at once
-    const existingCards = container.querySelectorAll('.github-repo-card');
-    existingCards.forEach(card => card.remove());
-    container.appendChild(fragment);
-
-    console.log(`📚 Repository list updated: ${featuredRepos.length} repos displayed`);
-  }
-
-  /**
-   * Create repository card element
-   */
-  createRepositoryCard(repo) {
-    const card = document.createElement('div');
-    card.className = 'github-repo-card bg-bg-secondary/50 border border-border-color rounded-xl p-6 hover:border-primary/30 transition-all duration-300 transform hover:scale-105';
-    
-    // Optimize innerHTML for better performance
-    const languageColor = repo.language ? this.getLanguageColor(repo.language) : '#64ffda';
-    const updatedDate = this.formatDate(repo.updated_at);
-    
-    card.innerHTML = `
-      <div class="flex items-start justify-between mb-3">
-        <h3 class="text-lg font-semibold text-text-primary truncate flex-1">
-          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" 
-             class="hover:text-primary transition-colors duration-300">
-            ${repo.name}
-          </a>
-        </h3>
-        <div class="flex items-center gap-2 text-sm text-text-secondary ml-2">
-          ${repo.stargazers_count > 0 ? `
-            <span class="flex items-center gap-1">
-              <i class="ri-star-line"></i>
-              ${repo.stargazers_count}
-            </span>
-          ` : ''}
-        </div>
-      </div>
-      
-      <p class="text-text-secondary text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
-        ${repo.description || 'Modern web development project with latest technologies'}
-      </p>
-      
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          ${repo.language ? `
-            <span class="flex items-center gap-1 text-xs">
-              <span class="w-3 h-3 rounded-full" style="background-color: ${languageColor}"></span>
-              ${repo.language}
-            </span>
-          ` : ''}
-          <span class="text-xs text-text-secondary">
-            ${updatedDate}
-          </span>
-        </div>
-        
-        <div class="flex items-center gap-2">
-          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" 
-             class="text-text-secondary hover:text-primary transition-colors duration-300 p-1"
-             aria-label="GitHub'da görüntüle">
-            <i class="ri-github-line text-lg"></i>
-          </a>
-          ${repo.homepage ? `
-            <a href="${repo.homepage}" target="_blank" rel="noopener noreferrer" 
-               class="text-text-secondary hover:text-primary transition-colors duration-300 p-1"
-               aria-label="Canlı demo">
-              <i class="ri-external-link-line text-lg"></i>
-            </a>
-          ` : ''}
-        </div>
-      </div>
-    `;
-
-    // Lazy load analytics
-    card.addEventListener('click', (e) => {
-      if (!e.target.closest('a')) {
-        setTimeout(() => this.trackRepoInteraction(repo.name, 'card_click'), 0);
-      }
-    }, { passive: true });
-
-    return card;
-  }
-
-  /**
-   * Process repository languages data
-   */
-  processLanguages(languages) {
-    const total = Object.values(languages).reduce((sum, bytes) => sum + bytes, 0);
-    
-    return Object.entries(languages)
-      .map(([name, bytes]) => ({
-        name,
-        bytes,
-        percentage: ((bytes / total) * 100).toFixed(1)
-      }))
-      .sort((a, b) => b.bytes - a.bytes);
-  }
-
-  /**
-   * Process user events data
-   */
-  processEvents(events) {
-    return events
-      .filter(event => ['PushEvent', 'CreateEvent', 'PullRequestEvent'].includes(event.type))
-      .map(event => ({
-        type: event.type,
-        repo: event.repo.name,
-        created_at: event.created_at,
-        description: this.getEventDescription(event)
-      }))
-      .slice(0, 5);
-  }
-
-  /**
-   * Get event description
-   */
-  getEventDescription(event) {
-    switch (event.type) {
-      case 'PushEvent':
-        const commitCount = event.payload.commits?.length || 1;
-        return `${commitCount} commit${commitCount > 1 ? 's' : ''} pushed`;
-      case 'CreateEvent':
-        return `Created ${event.payload.ref_type}`;
-      case 'PullRequestEvent':
-        return `${event.payload.action} pull request`;
-      default:
-        return event.type;
-    }
-  }
-
-  /**
-   * Get language color
-   */
-  getLanguageColor(language) {
-    const colors = {
-      'JavaScript': '#f1e05a',
-      'TypeScript': '#2b7489',
-      'Python': '#3572A5',
-      'HTML': '#e34c26',
-      'CSS': '#1572B6',
-      'Java': '#b07219',
-      'C++': '#f34b7d',
-      'C#': '#239120',
-      'PHP': '#777BB4',
-      'Ruby': '#701516',
-      'Go': '#00ADD8',
-      'Rust': '#dea584',
-      'Swift': '#ffac45',
-      'Kotlin': '#F18E33',
-      'Dart': '#00B4AB',
-      'Shell': '#89e051',
-      'Vue': '#4FC08D',
-      'React': '#61dafb'
-    };
-    
-    return colors[language] || '#8b949e';
-  }
-
-  /**
-   * Format date for display
-   */
-  formatDate(dateString) {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffInSeconds = Math.floor((now - date) / 1000);
-
-    if (diffInSeconds < 60) return 'az önce';
-    if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)} dk önce`;
-    if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)} sa önce`;
-    if (diffInSeconds < 2592000) return `${Math.floor(diffInSeconds / 86400)} gün önce`;
-    
-    return date.toLocaleDateString('tr-TR', { 
-      year: 'numeric', 
-      month: 'short',
-      day: 'numeric'
-    });
-  }
-
-  /**
-   * Update DOM element content
-   */
-  updateElement(selector, content) {
-    const element = document.querySelector(selector);
-    if (element) {
-      element.textContent = content;
-    }
-  }
-
-  /**
-   * Show error message
-   */
-  showErrorMessage(message) {
-    const errorContainer = document.getElementById('github-error');
-    if (errorContainer) {
-      errorContainer.innerHTML = `
-        <div class="bg-red-500/10 border border-red-500/20 rounded-lg p-4 text-center">
-          <i class="ri-error-warning-line text-red-400 text-2xl mb-2 block"></i>
-          <p class="text-red-400">${message}</p>
-          <button onclick="this.closest('.github-error').style.display='none'" 
-                  class="mt-2 text-sm text-red-300 hover:text-red-200">
-            Kapat
-          </button>
-        </div>
-      `;
-      errorContainer.style.display = 'block';
-    }
-  }
-
-  /**
-   * Track repository interactions for analytics
-   */
-  trackRepoInteraction(repoName, action) {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', action, {
-        event_category: 'GitHub Repository',
-        event_label: repoName,
-        value: 1
-      });
-    }
-    
-    console.log(`📊 GitHub interaction tracked: ${action} on ${repoName}`);
-  }
-
-  /**
-   * Clear cache
-   */
   clearCache() {
     this.cache.clear();
-    console.log('🧹 GitHub API cache cleared');
   }
 
-  /**
-   * Get cache info
-   */
-  getCacheInfo() {
+  // Fallback data for when API is unavailable
+  getFallbackProfile() {
     return {
-      size: this.cache.size,
-      entries: Array.from(this.cache.keys())
+      name: 'Umutcan Algan',
+      bio: 'Full Stack Developer',
+      followers: 50,
+      following: 30,
+      publicRepos: 15,
+      location: 'Turkey'
     };
   }
 
-  /**
-   * Force refresh data
-   */
-  async refreshData() {
-    this.clearCache();
-    await Promise.all([
-      this.loadUserData(),
-      this.loadRepositories()
-    ]);
-    console.log('🔄 GitHub data refreshed');
+  getFallbackRepositories() {
+    return [
+      {
+        id: 1,
+        name: 'portfolio-website',
+        description: 'Modern portfolio website built with vanilla JavaScript and Vite',
+        stars: 25,
+        forks: 5,
+        language: 'JavaScript',
+        category: 'frontend',
+        activityScore: 95
+      },
+      {
+        id: 2,
+        name: 'task-manager-app',
+        description: 'Full-stack task management application with real-time updates',
+        stars: 18,
+        forks: 8,
+        language: 'TypeScript',
+        category: 'fullstack',
+        activityScore: 88
+      }
+    ];
   }
 
-  /**
-   * Get rate limit status
-   */
-  getRateLimitStatus() {
+  createBasicRepoData(repo) {
     return {
-      remaining: this.rateLimit.remaining,
-      reset: new Date(this.rateLimit.reset),
-      resetIn: Math.max(0, this.rateLimit.reset - Date.now())
+      id: repo.id,
+      name: repo.name,
+      description: repo.description,
+      stars: repo.stargazers_count,
+      forks: repo.forks_count,
+      language: repo.language,
+      category: 'frontend',
+      activityScore: 50
     };
   }
 
-  /**
-   * Show repository loading state
-   */
-  showRepositoryLoading() {
-    const container = document.getElementById('github-repos-container');
-    if (container) {
-      const loadingOverlay = container.querySelector('.loading-overlay');
-      if (loadingOverlay) {
-        loadingOverlay.style.opacity = '1';
-      }
+  // Public API methods
+  async getPortfolioStats() {
+    try {
+      const [profile, repos] = await Promise.all([
+        this.fetchUserProfile(),
+        this.fetchRepositories()
+      ]);
+
+      const totalStars = repos.reduce((sum, repo) => sum + repo.stars, 0);
+      const totalForks = repos.reduce((sum, repo) => sum + repo.forks, 0);
+      const languages = this.getTopLanguages(repos);
+      const topProjects = repos.slice(0, 6);
+
+      return {
+        profile,
+        stats: {
+          totalRepos: profile.publicRepos,
+          totalStars,
+          totalForks,
+          followers: profile.followers
+        },
+        languages,
+        topProjects,
+        lastUpdate: new Date()
+      };
+    } catch (error) {
+      console.error('Error fetching portfolio stats:', error);
+      return this.getFallbackStats();
     }
   }
 
-  /**
-   * Hide repository loading state
-   */
-  hideRepositoryLoading() {
-    const container = document.getElementById('github-repos-container');
-    if (container) {
-      const loadingOverlay = container.querySelector('.loading-overlay');
-      if (loadingOverlay) {
-        loadingOverlay.style.opacity = '0';
-        setTimeout(() => loadingOverlay.remove(), 300);
+  getTopLanguages(repos) {
+    const languageStats = {};
+    
+    repos.forEach(repo => {
+      if (repo.language) {
+        languageStats[repo.language] = (languageStats[repo.language] || 0) + 1;
       }
-    }
+    });
+
+    return Object.entries(languageStats)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 5)
+      .map(([language, count]) => ({
+        name: language,
+        count,
+        percentage: Math.round((count / repos.length) * 100)
+      }));
+  }
+
+  getFallbackStats() {
+    return {
+      profile: this.getFallbackProfile(),
+      stats: {
+        totalRepos: 15,
+        totalStars: 50,
+        totalForks: 20,
+        followers: 50
+      },
+      languages: [
+        { name: 'JavaScript', count: 8, percentage: 40 },
+        { name: 'TypeScript', count: 4, percentage: 20 },
+        { name: 'Python', count: 3, percentage: 15 }
+      ],
+      topProjects: this.getFallbackRepositories(),
+      lastUpdate: new Date()
+    };
   }
 }
 
 // Initialize GitHub API
-let githubAPI;
+export const githubAPI = new GitHubAPI();
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    githubAPI = new GitHubAPI();
-    window.githubAPI = githubAPI;
-  });
-} else {
-  githubAPI = new GitHubAPI();
-  window.githubAPI = githubAPI;
+// Utility functions for components
+export async function updateHeroStats() {
+  try {
+    const stats = await githubAPI.getPortfolioStats();
+    
+    // Update hero section stats
+    const elements = {
+      projects: document.getElementById('projects-count'),
+      followers: document.getElementById('followers-count'),
+      commits: document.getElementById('commits-count')
+    };
+
+    if (elements.projects) {
+      elements.projects.textContent = `${stats.stats.totalRepos}+`;
+    }
+    
+    if (elements.followers) {
+      elements.followers.textContent = `${stats.stats.followers}+`;
+    }
+    
+    if (elements.commits) {
+      // Estimate commits based on repos and activity
+      const estimatedCommits = stats.stats.totalRepos * 15;
+      elements.commits.textContent = `${estimatedCommits}+`;
+    }
+
+    return stats;
+  } catch (error) {
+    console.warn('Failed to update hero stats:', error);
+    return null;
+  }
 }
 
-// Export for module usage
-export default GitHubAPI; 
+export async function getProjectsData() {
+  try {
+    const stats = await githubAPI.getPortfolioStats();
+    return stats.topProjects;
+  } catch (error) {
+    console.warn('Failed to fetch projects data:', error);
+    return [];
+  }
+} 

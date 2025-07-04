@@ -1,412 +1,316 @@
 /**
- * Main Application Entry Point - Updated for Modular Component System
- * Orchestrates all components and handles loading, fallbacks, and integration
+ * Modern Portfolio Application
+ * Clean, fast, and feature-rich portfolio with advanced UX
  */
 
-// Import all section components
-import HeroSection from './js/components/sections/HeroSection.js';
-import AboutSection from './js/components/sections/AboutSection.js';
-import SkillsSection from './js/components/sections/SkillsSection.js';
-import ProjectsSection from './js/components/sections/ProjectsSection.js';
-import ContactSection from './js/components/sections/ContactSection.js';
-import FooterSection from './js/components/sections/FooterSection.js';
+// Import modern utilities
+import { themeManager } from './utils/theme.js';
+import { TypingAnimation, scrollReveal } from './utils/animations.js';
+import { scrollSpy } from './utils/scrollSpy.js';
+import { ComponentLoader } from './js/components/ComponentLoader.js';
+import { initAnalytics } from './utils/analytics.js';
 
-class ModularPortfolio {
+class ModernPortfolio {
   constructor() {
-    this.components = new Map();
-    this.loadingStates = new Map();
-    this.retryAttempts = new Map();
-    this.maxRetries = 3;
-    this.initialized = false;
+    this.componentLoader = null;
+    this.typingAnimation = null;
+    this.isInitialized = false;
+    this.animationObserver = null;
+    this.analytics = null;
+    
+    this.init();
   }
 
   async init() {
     try {
-      console.log('🚀 Initializing Modular Portfolio System...');
+      console.log('🚀 Initializing Modern Portfolio...');
       
-      // Show loading indicator
-      this.showLoader();
+      // Initialize core systems
+      await this.initComponents();
+      this.initAnalytics();
+      this.initAnimations();
+      this.initNavigation();
+      this.initScrollEffects();
+      this.initPerformanceOptimizations();
       
-      // Initialize components in priority order
-      await this.initializeComponents();
-      
-      // Initialize additional features
-      await this.initializeFeatures();
-      
-      // Hide loading screen
+      // Mark as ready
+      this.isInitialized = true;
       this.hideLoader();
       
-      this.initialized = true;
-      console.log('✅ Modular Portfolio initialization complete!');
-      
-      // Trigger custom event for other scripts
-      window.dispatchEvent(new CustomEvent('portfolioLoaded', {
-        detail: { components: Array.from(this.components.keys()) }
-      }));
+      console.log('✅ Portfolio initialized successfully!');
       
     } catch (error) {
       console.error('❌ Portfolio initialization failed:', error);
-      this.handleInitializationError(error);
+      this.showError();
     }
   }
 
-  async initializeComponents() {
-    // Component definitions with priority and configuration
-    const componentConfigs = [
-      { 
-        name: 'hero', 
-        class: HeroSection, 
-        priority: 1, 
-        critical: true,
-        fallbackDelay: 2000 
-      },
-      { 
-        name: 'about', 
-        class: AboutSection, 
-        priority: 2, 
-        critical: false,
-        dependencies: ['github'] 
-      },
-      { 
-        name: 'skills', 
-        class: SkillsSection, 
-        priority: 3, 
-        critical: false 
-      },
-      { 
-        name: 'projects', 
-        class: ProjectsSection, 
-        priority: 2, 
-        critical: false,
-        dependencies: ['github'] 
-      },
-      { 
-        name: 'contact', 
-        class: ContactSection, 
-        priority: 4, 
-        critical: false 
-      },
-      { 
-        name: 'footer', 
-        class: FooterSection, 
-        priority: 5, 
-        critical: false 
-      }
-    ];
-
-    // Sort by priority (lower number = higher priority)
-    componentConfigs.sort((a, b) => a.priority - b.priority);
-
-    // Separate critical and non-critical components
-    const criticalComponents = componentConfigs.filter(config => config.critical);
-    const nonCriticalComponents = componentConfigs.filter(config => !config.critical);
-
-    console.log('📦 Loading critical components first...');
-    await this.loadComponentsBatch(criticalComponents, true);
-
-    console.log('📦 Loading non-critical components...');
-    await this.loadComponentsBatch(nonCriticalComponents, false);
+  async initComponents() {
+    this.componentLoader = new ComponentLoader();
+    await this.componentLoader.init();
+    
+    // Initialize projects section after components load
+    setTimeout(() => {
+      this.initProjectsInteractivity();
+    }, 1500);
   }
 
-  async loadComponentsBatch(componentConfigs, isCritical = false) {
-    const promises = componentConfigs.map(async (config) => {
-      try {
-        const startTime = performance.now();
-        
-        // Create and store component instance
-        const component = new config.class();
-        this.components.set(config.name, component);
-        this.loadingStates.set(config.name, 'loading');
+  initAnalytics() {
+    try {
+      this.analytics = initAnalytics();
+      console.log('📊 Analytics initialized successfully');
+    } catch (error) {
+      console.warn('⚠️ Analytics initialization failed:', error);
+    }
+  }
 
-        // Set timeout for fallback if specified
-        let fallbackTimeout;
-        if (config.fallbackDelay) {
-          fallbackTimeout = setTimeout(() => {
-            if (this.loadingStates.get(config.name) === 'loading') {
-              console.warn(`⚠️ ${config.name} component taking too long, using fallback`);
-              component.renderFallback();
-              this.loadingStates.set(config.name, 'fallback');
-            }
-          }, config.fallbackDelay);
-        }
-
-        // Render component
-        await component.render();
-        
-        // Clear fallback timeout if component loaded successfully
-        if (fallbackTimeout) {
-          clearTimeout(fallbackTimeout);
-        }
-
-        const loadTime = performance.now() - startTime;
-        this.loadingStates.set(config.name, 'loaded');
-        
-        console.log(`✓ ${config.name} component loaded successfully (${Math.round(loadTime)}ms)`);
-        
-      } catch (error) {
-        console.error(`❌ Failed to load ${config.name} component:`, error);
-        await this.handleComponentError(config, error);
+  initProjectsInteractivity() {
+    // Import and initialize projects section
+    import('./js/components/sections/ProjectsSection.js').then(({ initProjectsSection }) => {
+      if (initProjectsSection) {
+        initProjectsSection();
       }
+    }).catch(error => {
+      console.warn('Projects section functionality not available:', error);
     });
 
-    // Handle promise resolution based on criticality
-    if (isCritical) {
-      // Wait for all critical components before continuing
-      await Promise.all(promises);
-    } else {
-      // Allow non-critical components to load independently
-      Promise.allSettled(promises);
-    }
+    // Import and initialize contact section
+    import('./js/components/sections/ContactSection.js').then(({ initContactSection }) => {
+      if (initContactSection) {
+        initContactSection();
+      }
+    }).catch(error => {
+      console.warn('Contact section functionality not available:', error);
+    });
   }
 
-  async handleComponentError(config, error) {
-    const attempts = this.retryAttempts.get(config.name) || 0;
-    
-    if (attempts < this.maxRetries) {
-      console.log(`🔄 Retrying ${config.name} component (attempt ${attempts + 1}/${this.maxRetries})`);
-      this.retryAttempts.set(config.name, attempts + 1);
-      
-      // Exponential backoff delay
-      const delay = Math.pow(2, attempts) * 1000;
-      await new Promise(resolve => setTimeout(resolve, delay));
-      
-      try {
-        const component = new config.class();
-        this.components.set(config.name, component);
-        await component.render();
-        this.loadingStates.set(config.name, 'loaded');
-        console.log(`✓ ${config.name} component loaded successfully on retry`);
-      } catch (retryError) {
-        await this.handleComponentError(config, retryError);
+  initAnimations() {
+    // Initialize typing animation in hero section
+    setTimeout(() => {
+      const typingElement = document.getElementById('typing-text');
+      if (typingElement) {
+        this.typingAnimation = new TypingAnimation(typingElement, [
+          'Full Stack Applications',
+          'Modern Web Experiences', 
+          'Scalable Solutions',
+          'Beautiful UI/UX',
+          'Clean Architecture'
+        ], {
+          typeSpeed: 80,
+          deleteSpeed: 50,
+          pauseTime: 2500,
+          loop: true,
+          natural: true
+        });
       }
-    } else {
-      console.error(`❌ ${config.name} component failed after ${this.maxRetries} attempts, using fallback`);
-      
-      // Use fallback rendering
-      try {
-        const component = new config.class();
-        this.components.set(config.name, component);
-        component.renderFallback();
-        this.loadingStates.set(config.name, 'fallback');
-        console.log(`⚠️ ${config.name} component using fallback content`);
-      } catch (fallbackError) {
-        console.error(`❌ ${config.name} fallback also failed:`, fallbackError);
-        this.loadingStates.set(config.name, 'error');
-      }
-    }
+    }, 500);
+
+    // Initialize scroll reveal animations
+    this.initScrollReveal();
   }
 
-  async initializeFeatures() {
-    try {
-      // Initialize GitHub integration if available
-      if (window.GitHub) {
-        await this.initializeGitHubIntegration();
-      }
-
-      // Initialize theme system
-      this.initializeThemeSystem();
-
-      // Initialize smooth scrolling
-      this.initializeSmoothScrolling();
-
-      // Initialize performance monitoring
-      this.initializePerformanceMonitoring();
-
-      console.log('✓ Additional features initialized');
-    } catch (error) {
-      console.warn('⚠️ Some features failed to initialize:', error);
-    }
-  }
-
-  async initializeGitHubIntegration() {
-    try {
-      console.log('🔗 Initializing GitHub integration...');
-      
-      // Update components with GitHub data
-      const aboutComponent = this.components.get('about');
-      const projectsComponent = this.components.get('projects');
-      
-      if (aboutComponent && typeof aboutComponent.loadGitHubData === 'function') {
-        await aboutComponent.loadGitHubData();
-      }
-      
-      if (projectsComponent && typeof projectsComponent.loadGitHubRepositories === 'function') {
-        await projectsComponent.loadGitHubRepositories();
-      }
-      
-      console.log('✓ GitHub integration initialized');
-    } catch (error) {
-      console.warn('⚠️ GitHub integration failed:', error);
-    }
-  }
-
-  initializeThemeSystem() {
-    // Initialize theme toggle functionality
-    const themeToggle = document.querySelector('#theme-toggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        this.toggleTheme();
+  initScrollReveal() {
+    setTimeout(() => {
+      // Add animation classes to elements
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section, index) => {
+        if (index % 2 === 0) {
+          section.classList.add('fade-in-up');
+        } else {
+          section.classList.add('fade-in-left');
+        }
       });
-    }
 
-    // Apply saved theme
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+      // Cards and project items
+      document.querySelectorAll('.card, .project-card').forEach(card => {
+        card.classList.add('scale-in');
+      });
+
+      // Skills items
+      document.querySelectorAll('.skill-item').forEach(skill => {
+        skill.classList.add('fade-in-right');
+      });
+
+      // Start observing
+      scrollReveal.observeAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in');
+    }, 1000);
   }
 
-  toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  initNavigation() {
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
     
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Notify components of theme change
-    this.components.forEach(component => {
-      if (typeof component.onThemeChange === 'function') {
-        component.onThemeChange(newTheme);
-      }
-    });
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.toggleMobileMenu(mobileMenuBtn, mobileMenu);
+      });
 
-    console.log(`🎨 Theme changed to: ${newTheme}`);
-  }
+      // Close menu when clicking nav links
+      mobileMenu.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          this.closeMobileMenu(mobileMenuBtn, mobileMenu);
+        });
+      });
 
-  initializeSmoothScrolling() {
-    // Handle smooth scrolling for anchor links
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('a[href^="#"]')) {
-        e.preventDefault();
-        const target = document.querySelector(e.target.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+          this.closeMobileMenu(mobileMenuBtn, mobileMenu);
         }
-      }
-    });
-  }
+      });
 
-  initializePerformanceMonitoring() {
-    // Monitor performance metrics
-    if ('performance' in window) {
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          const perfData = performance.getEntriesByType('navigation')[0];
-          console.log('📊 Performance Metrics:', {
-            loadTime: Math.round(perfData.loadEventEnd - perfData.fetchStart) + 'ms',
-            domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.fetchStart) + 'ms',
-            componentStates: this.getComponentLoadTimes()
-          });
-        }, 0);
+      // Close menu on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.closeMobileMenu(mobileMenuBtn, mobileMenu);
+        }
       });
     }
   }
 
-  getComponentLoadTimes() {
-    const loadTimes = {};
-    this.components.forEach((component, name) => {
-      const state = this.loadingStates.get(name);
-      loadTimes[name] = {
-        state: state,
-        retries: this.retryAttempts.get(name) || 0
-      };
-    });
-    return loadTimes;
+  toggleMobileMenu(btn, menu) {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isOpen);
+    menu.classList.toggle('open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
   }
 
-  showLoader() {
-    const loader = document.getElementById('loader');
-    if (loader) {
-      loader.style.display = 'flex';
-      loader.style.opacity = '1';
+  closeMobileMenu(btn, menu) {
+    btn.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  initScrollEffects() {
+    // Smooth header background on scroll
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const header = document.querySelector('.header');
+      
+      if (header) {
+        if (currentScrollY > 100) {
+          header.style.backgroundColor = 'rgba(10, 25, 47, 0.98)';
+          header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+          header.style.backgroundColor = 'rgba(10, 25, 47, 0.95)';
+          header.style.boxShadow = 'none';
+        }
+        
+        // Hide/show header on scroll direction
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+      }
+      
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  }
+
+  initPerformanceOptimizations() {
+    // Lazy load images
+    const images = document.querySelectorAll('img[data-src]');
+    if (images.length > 0) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      images.forEach(img => imageObserver.observe(img));
     }
+
+    // Performance monitoring
+    window.addEventListener('load', () => {
+      const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+      console.log(`📊 Page loaded in ${loadTime}ms`);
+    });
   }
 
   hideLoader() {
     const loader = document.getElementById('loader');
     if (loader) {
-      loader.style.opacity = '0';
+      loader.classList.add('fade-out');
       setTimeout(() => {
-        loader.style.display = 'none';
-        document.body.style.visibility = 'visible';
+        loader.remove();
+        document.body.classList.remove('loading');
       }, 500);
-    } else {
-      document.body.style.visibility = 'visible';
     }
   }
 
-  handleInitializationError(error) {
-    console.error('Portfolio initialization failed:', error);
-    
-    // Show error boundary
-    const errorBoundary = document.getElementById('error-boundary');
-    if (errorBoundary) {
-      errorBoundary.classList.remove('hidden');
-    }
-    
-    // Hide loader
-    this.hideLoader();
-    
-    // Track error if analytics available
-    if (window.gtag) {
-      window.gtag('event', 'exception', {
-        description: error.message,
-        fatal: true
-      });
-    }
+  showError() {
+    const errorEl = document.createElement('div');
+    errorEl.className = 'error-overlay fixed inset-0 bg-bg-primary/95 backdrop-blur-sm z-50 flex items-center justify-center';
+    errorEl.innerHTML = `
+      <div class="text-center p-8 max-w-md mx-auto">
+        <div class="text-6xl mb-4">⚠️</div>
+        <h2 class="text-2xl font-bold text-text-primary mb-4">Oops! Something went wrong</h2>
+        <p class="text-text-secondary mb-6">
+          The portfolio couldn't load properly. Please check your connection and try again.
+        </p>
+        <button onclick="window.location.reload()" class="btn-base btn-primary">
+          <i class="ri-refresh-line mr-2"></i>
+          Try Again
+        </button>
+      </div>
+    `;
+    document.body.appendChild(errorEl);
   }
 
-  // Public API methods for component management
+  // Public API methods
+  getCurrentTheme() {
+    return themeManager.getCurrentTheme();
+  }
+
   getComponent(name) {
-    return this.components.get(name);
+    return this.componentLoader?.getComponent(name);
   }
 
-  getComponentState(name) {
-    return this.loadingStates.get(name);
+  isReady() {
+    return this.isInitialized;
   }
 
-  async reloadComponent(name) {
-    const component = this.components.get(name);
-    if (component) {
-      console.log(`🔄 Reloading ${name} component...`);
-      this.loadingStates.set(name, 'loading');
-      
-      try {
-        await component.render();
-        this.loadingStates.set(name, 'loaded');
-        console.log(`✓ ${name} component reloaded successfully`);
-      } catch (error) {
-        console.error(`❌ Failed to reload ${name}:`, error);
-        component.renderFallback();
-        this.loadingStates.set(name, 'fallback');
-      }
+  destroy() {
+    if (this.typingAnimation) {
+      this.typingAnimation.destroy();
+    }
+    
+    if (scrollReveal) {
+      scrollReveal.destroy();
+    }
+    
+    if (scrollSpy) {
+      scrollSpy.destroy();
     }
   }
-
-  getSystemStatus() {
-    return {
-      initialized: this.initialized,
-      componentCount: this.components.size,
-      loadedComponents: Array.from(this.loadingStates.entries())
-        .filter(([name, state]) => state === 'loaded')
-        .map(([name]) => name),
-      failedComponents: Array.from(this.loadingStates.entries())
-        .filter(([name, state]) => state === 'error')
-        .map(([name]) => name)
-    };
-  }
 }
 
-// Initialize the modular portfolio system
-const portfolio = new ModularPortfolio();
-
-// Start initialization when DOM is ready
+// Initialize when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => portfolio.init());
+  document.addEventListener('DOMContentLoaded', () => {
+    window.portfolio = new ModernPortfolio();
+  });
 } else {
-  portfolio.init();
+  window.portfolio = new ModernPortfolio();
 }
 
-// Make portfolio instance globally accessible for debugging and external access
-window.Portfolio = portfolio;
+// Register service worker for PWA capabilities
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('✅ Service Worker registered'))
+      .catch(() => console.log('❌ Service Worker registration failed'));
+  });
+}
 
-// Export for ES6 module usage
-export default portfolio; 
+export default ModernPortfolio; 
