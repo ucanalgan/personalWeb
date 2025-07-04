@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useGitHub } from '../../contexts/GitHubContext';
 import Button from '../common/Button';
 
@@ -138,8 +138,8 @@ const ProjectsSection = () => {
         {/* Project Status Badge */}
         <div className="absolute top-4 left-4 z-10">
           <span className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
-            project.status === 'active' 
-              ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+            project.status === 'active'
+              ? 'bg-green-500/20 text-green-400 border border-green-500/30'
               : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
           }`}>
             {project.status === 'active' ? 'Active' : 'Completed'}
@@ -148,13 +148,13 @@ const ProjectsSection = () => {
 
         {/* Project Image/Thumbnail */}
         <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className={`w-20 h-20 bg-gradient-to-br ${getLanguageColor(project.language)} rounded-2xl flex items-center justify-center text-white shadow-xl transform group-hover:scale-110 transition-transform duration-300`}>
-              <i className={`${getLanguageIcon(project.language)} text-3xl`}></i>
+              <i className={`${getLanguageIcon(project.language)} text-3xl`} />
             </div>
           </div>
-          
+
           {/* Hover overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="absolute bottom-4 left-4 right-4">
@@ -185,16 +185,16 @@ const ProjectsSection = () => {
             <div className="flex items-center space-x-4 text-sm text-text-secondary">
               {project.language && (
                 <div className="flex items-center space-x-1">
-                  <span className={`w-3 h-3 bg-gradient-to-r ${getLanguageColor(project.language)} rounded-full`}></span>
+                  <span className={`w-3 h-3 bg-gradient-to-r ${getLanguageColor(project.language)} rounded-full`} />
                   <span>{project.language}</span>
                 </div>
               )}
               <div className="flex items-center space-x-1">
-                <i className="ri-star-line text-yellow-400"></i>
+                <i className="ri-star-line text-yellow-400" />
                 <span>{project.stars || 0}</span>
               </div>
               <div className="flex items-center space-x-1">
-                <i className="ri-git-branch-line text-primary"></i>
+                <i className="ri-git-branch-line text-primary" />
                 <span>{project.forks || 0}</span>
               </div>
             </div>
@@ -228,7 +228,7 @@ const ProjectsSection = () => {
 
         {/* Hover glow effect */}
         {hoveredProject === project.id && (
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl pointer-events-none transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl pointer-events-none transition-opacity duration-300" />
         )}
       </div>
     </div>
@@ -238,13 +238,13 @@ const ProjectsSection = () => {
     <section id="projects" className="py-32 bg-gradient-to-br from-background via-surface/5 to-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 right-10 w-80 h-80 bg-gradient-to-l from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        
+        <div className="absolute top-20 right-10 w-80 h-80 bg-gradient-to-l from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse delay-1000" />
+
         {/* Floating elements */}
-        <div className="absolute top-32 left-20 w-2 h-2 bg-primary rounded-full animate-ping"></div>
-        <div className="absolute top-64 right-32 w-1 h-1 bg-accent rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-40 left-32 w-1.5 h-1.5 bg-primary rounded-full animate-ping delay-500"></div>
+        <div className="absolute top-32 left-20 w-2 h-2 bg-primary rounded-full animate-ping" />
+        <div className="absolute top-64 right-32 w-1 h-1 bg-accent rounded-full animate-pulse delay-1000" />
+        <div className="absolute bottom-40 left-32 w-1.5 h-1.5 bg-primary rounded-full animate-ping delay-500" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={sectionRef}>
@@ -259,7 +259,7 @@ const ProjectsSection = () => {
                 My <span className="gradient-text">Projects</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                A curated collection of my best work, showcasing innovative solutions, 
+                A curated collection of my best work, showcasing innovative solutions,
                 clean architecture, and cutting-edge technologies.
               </p>
             </div>
@@ -280,7 +280,7 @@ const ProjectsSection = () => {
                         : 'bg-surface/30 border-border text-text-secondary hover:border-primary/30 hover:text-primary'
                     }`}
                   >
-                    <i className={`${filterOption.icon} text-lg`}></i>
+                    <i className={`${filterOption.icon} text-lg`} />
                     <span>{filterOption.label}</span>
                     <span className={`px-2 py-0.5 rounded-full text-xs ${
                       filter === filterOption.id
@@ -303,7 +303,7 @@ const ProjectsSection = () => {
                       : 'text-text-secondary hover:text-primary'
                   }`}
                 >
-                  <i className="ri-grid-line"></i>
+                  <i className="ri-grid-line" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
@@ -313,7 +313,7 @@ const ProjectsSection = () => {
                       : 'text-text-secondary hover:text-primary'
                   }`}
                 >
-                  <i className="ri-list-check"></i>
+                  <i className="ri-list-check" />
                 </button>
               </div>
             </div>
@@ -324,16 +324,16 @@ const ProjectsSection = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[...Array(6)].map((_, index) => (
                 <div key={index} className="bg-surface/30 border border-border rounded-3xl overflow-hidden animate-pulse">
-                  <div className="h-48 bg-surface/50"></div>
+                  <div className="h-48 bg-surface/50" />
                   <div className="p-6 space-y-4">
-                    <div className="h-6 bg-surface/50 rounded-xl w-3/4"></div>
+                    <div className="h-6 bg-surface/50 rounded-xl w-3/4" />
                     <div className="space-y-2">
-                      <div className="h-4 bg-surface/30 rounded-lg"></div>
-                      <div className="h-4 bg-surface/30 rounded-lg w-5/6"></div>
+                      <div className="h-4 bg-surface/30 rounded-lg" />
+                      <div className="h-4 bg-surface/30 rounded-lg w-5/6" />
                     </div>
                     <div className="flex space-x-2">
-                      <div className="h-8 bg-surface/50 rounded-xl flex-1"></div>
-                      <div className="h-8 bg-surface/50 rounded-xl flex-1"></div>
+                      <div className="h-8 bg-surface/50 rounded-xl flex-1" />
+                      <div className="h-8 bg-surface/50 rounded-xl flex-1" />
                     </div>
                   </div>
                 </div>
@@ -341,8 +341,8 @@ const ProjectsSection = () => {
             </div>
           ) : (
             <div className={`grid gap-8 ${
-              viewMode === 'grid' 
-                ? 'md:grid-cols-2 lg:grid-cols-3' 
+              viewMode === 'grid'
+                ? 'md:grid-cols-2 lg:grid-cols-3'
                 : 'grid-cols-1 max-w-4xl mx-auto'
             }`}>
               {projects?.map((project, index) => (
@@ -354,7 +354,7 @@ const ProjectsSection = () => {
           {!isLoading && (!projects || projects.length === 0) && (
             <div className={`text-center py-20 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <div className="w-24 h-24 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <i className="ri-folder-open-line text-4xl text-text-secondary"></i>
+                <i className="ri-folder-open-line text-4xl text-text-secondary" />
               </div>
               <h3 className="heading-2 mb-4">No Projects Found</h3>
               <p className="body-base text-text-secondary">No projects match the selected filter. Try selecting a different category.</p>
@@ -368,7 +368,7 @@ const ProjectsSection = () => {
                 Like What You See?
               </h3>
               <p className="body-lg text-text-secondary mb-8 max-w-2xl mx-auto">
-                These projects represent just a glimpse of what's possible. Let's collaborate 
+                These projects represent just a glimpse of what's possible. Let's collaborate
                 to bring your vision to life with the same attention to detail and innovation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -401,4 +401,4 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection; 
+export default ProjectsSection;

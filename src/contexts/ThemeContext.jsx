@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext();
 
@@ -32,16 +32,16 @@ export const ThemeProvider = ({ children }) => {
       // Apply theme to document
       document.documentElement.classList.remove('light', 'dark');
       document.documentElement.classList.add(theme);
-      
+
       // Save to localStorage
       localStorage.setItem('portfolio-theme', theme);
-      
+
       // Update meta theme-color
       const metaThemeColor = document.querySelector('meta[name="theme-color"]');
       if (metaThemeColor) {
         metaThemeColor.content = theme === 'dark' ? '#0a0e27' : '#ffffff';
       }
-      
+
       // Dispatch theme change event
       window.dispatchEvent(new CustomEvent('themeChange', { detail: { theme } }));
     }
@@ -64,4 +64,4 @@ export const ThemeProvider = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
-}; 
+};

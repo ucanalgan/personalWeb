@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useGitHub } from '../../contexts/GitHubContext';
 import Button from '../common/Button';
 
@@ -16,7 +16,7 @@ const HeroSection = () => {
       if (rect) {
         setMousePosition({
           x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height,
+          y: (e.clientY - rect.top) / rect.height
         });
       }
     };
@@ -71,36 +71,36 @@ const HeroSection = () => {
   );
 
   return (
-    <section 
+    <section
       ref={heroRef}
-      id="hero" 
+      id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-tertiary"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Gradient orbs with mouse parallax */}
-        <div 
+        <div
           className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-30 animate-pulse"
           style={{
             background: 'linear-gradient(135deg, var(--brand-primary-400), var(--accent-purple-400))',
             transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`,
             left: '10%',
-            top: '20%',
+            top: '20%'
           }}
         />
-        <div 
+        <div
           className="absolute w-[400px] h-[400px] rounded-full blur-3xl opacity-20 animate-pulse"
           style={{
             background: 'linear-gradient(135deg, var(--accent-pink-400), var(--accent-orange-400))',
             transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
             right: '10%',
             bottom: '20%',
-            animationDelay: '1s',
+            animationDelay: '1s'
           }}
         />
-        
+
         {/* Grid pattern overlay */}
-        <div 
+        <div
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage: `
@@ -108,7 +108,7 @@ const HeroSection = () => {
               linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
-            transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`,
+            transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`
           }}
         />
       </div>
@@ -121,24 +121,24 @@ const HeroSection = () => {
             <div className="relative">
               {/* Profile Image */}
               <div className="mb-8 flex justify-center lg:justify-start">
-                <div 
+                <div
                   ref={profileRef}
                   className="relative group cursor-pointer"
                   style={{
                     transform: `rotateY(${mousePosition.x * 10}deg) rotateX(${mousePosition.y * -10}deg)`,
-                    transformStyle: 'preserve-3d',
+                    transformStyle: 'preserve-3d'
                   }}
                 >
                   {/* Glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-brand-primary-400 to-accent-purple-400 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 scale-110" />
-                  
+
                   {/* Profile container */}
                   <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
                     {/* Rotating border */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-r from-brand-primary-400 via-accent-purple-400 to-accent-pink-400 animate-spin-slow p-1">
                       <div className="w-full h-full rounded-full bg-bg-primary p-1">
-                        <img 
-                          src={profileImage} 
+                        <img
+                          src={profileImage}
                           alt="Umut Can Algan - Full Stack Developer"
                           className="w-full h-full object-cover rounded-full transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
                           loading="eager"
@@ -146,7 +146,7 @@ const HeroSection = () => {
                         />
                       </div>
                     </div>
-                    
+
                     {/* Online status */}
                     <div className="absolute -bottom-2 -right-2 w-6 h-6 md:w-8 md:h-8 bg-success-500 rounded-full border-4 border-bg-primary flex items-center justify-center shadow-lg">
                       <div className="w-2 h-2 md:w-3 md:h-3 bg-success-400 rounded-full animate-pulse" />
@@ -166,7 +166,7 @@ const HeroSection = () => {
                     <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary-400 to-accent-purple-400 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-200" />
                   </span>
                 </h1>
-                
+
                 <div className="text-lead">
                   <span className="text-text-secondary">Full-Stack Developer &</span>{' '}
                   <span className="text-gradient-primary font-semibold">Modern Web Enthusiast</span>
@@ -176,7 +176,7 @@ const HeroSection = () => {
               {/* Description */}
               <div className="text-body-lg max-w-2xl mx-auto lg:mx-0">
                 <p className="leading-relaxed">
-                  {userData?.bio || 
+                  {userData?.bio ||
                     'Passionate about creating innovative digital experiences with cutting-edge technologies. I specialize in building scalable, performant web applications that delight users and drive business growth.'
                   }
                 </p>
@@ -191,7 +191,7 @@ const HeroSection = () => {
                 { label: 'Followers', value: stats?.followers || 0, icon: '👥', color: 'success' },
                 { label: 'Total Forks', value: stats?.forks || 0, icon: '🚀', color: 'accent-purple' }
               ].map((stat, index) => (
-                <div 
+                <div
                   key={stat.label}
                   className="glass relative group p-4 rounded-2xl hover:shadow-xl hover:shadow-brand-primary-500/10 transition-all duration-300 hover:-translate-y-1"
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -207,7 +207,7 @@ const HeroSection = () => {
                     </div>
                     <div className="text-caption text-text-tertiary">{stat.label}</div>
                   </div>
-                  
+
                   {/* Hover glow */}
                   <div className={`absolute inset-0 rounded-2xl bg-${stat.color}-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                 </div>
@@ -226,7 +226,7 @@ const HeroSection = () => {
                 <span className="relative z-10">Explore My Work</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-primary-400 to-accent-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Button>
-              
+
               <Button
                 href="#contact"
                 variant="glass"
@@ -241,7 +241,7 @@ const HeroSection = () => {
 
             {/* Additional Actions */}
             <div className="flex items-center gap-4 justify-center lg:justify-start text-sm animate-slide-up" style={{ animationDelay: '0.6s' }}>
-              <button 
+              <button
                 onClick={refreshData}
                 disabled={isLoading}
                 className="glass inline-flex items-center gap-2 px-4 py-2 rounded-lg text-text-secondary hover:text-brand-primary-500 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:pointer-events-none group"
@@ -249,7 +249,7 @@ const HeroSection = () => {
                 <RefreshIcon className={`transition-transform duration-300 ${isLoading ? 'animate-spin' : 'group-hover:rotate-180'}`} />
                 <span>Refresh Data</span>
               </button>
-              
+
               <div className="text-text-tertiary">
                 Last updated: {formatLastUpdate(lastUpdate)}
               </div>
@@ -271,29 +271,29 @@ const HeroSection = () => {
           <div className="hidden lg:flex items-center justify-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
             <div className="relative w-full max-w-lg">
               {/* 3D Card Effect */}
-              <div 
+              <div
                 className="relative group perspective-1000"
                 style={{
                   transform: `rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
-                  transformStyle: 'preserve-3d',
+                  transformStyle: 'preserve-3d'
                 }}
               >
                 {/* Background blur layers */}
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-primary-500/20 to-accent-purple-500/20 rounded-3xl rotate-6 scale-105 blur-xl" />
                 <div className="absolute inset-0 bg-gradient-to-tl from-accent-pink-500/20 to-brand-primary-500/20 rounded-3xl -rotate-6 scale-95 blur-xl" />
-                
+
                 {/* Main card */}
                 <div className="relative glass-strong rounded-3xl p-8 shadow-2xl border border-white/20 hover:shadow-brand-primary-500/20 transition-all duration-500">
                   {/* Terminal header */}
                   <div className="flex items-center gap-3 mb-6">
                     <div className="flex gap-2">
-                      <div className="w-3 h-3 bg-error-400 rounded-full"></div>
-                      <div className="w-3 h-3 bg-warning-400 rounded-full"></div>
-                      <div className="w-3 h-3 bg-success-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-error-400 rounded-full" />
+                      <div className="w-3 h-3 bg-warning-400 rounded-full" />
+                      <div className="w-3 h-3 bg-success-400 rounded-full" />
                     </div>
                     <div className="text-sm text-text-tertiary font-mono">portfolio.dev</div>
                   </div>
-                  
+
                   {/* Code content with syntax highlighting */}
                   <div className="font-mono text-sm space-y-3 leading-relaxed">
                     <div className="text-accent-purple-400">
@@ -325,7 +325,7 @@ const HeroSection = () => {
                       </div>
                     </div>
                     <div className="text-accent-purple-400">{'};'}</div>
-                    
+
                     <div className="mt-6 pt-4 border-t border-white/10">
                       <div className="text-brand-primary-400">
                         developer.<span className="text-warning-400">createAwesome</span>
@@ -336,7 +336,7 @@ const HeroSection = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Floating elements */}
                   <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-brand-primary-400 to-accent-purple-400 rounded-full animate-bounce opacity-70" />
                   <div className="absolute -bottom-3 -left-3 w-6 h-6 bg-gradient-to-r from-accent-pink-400 to-accent-orange-400 rounded-full animate-pulse opacity-60" />
@@ -357,4 +357,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection; 
+export default HeroSection;

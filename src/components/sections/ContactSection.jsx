@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from '../common/Button';
 
 const ContactSection = () => {
@@ -25,7 +25,7 @@ const ContactSection = () => {
     try {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
@@ -87,7 +87,7 @@ const ContactSection = () => {
               Get In <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Touch</span>
             </h2>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-              I'm always open to discussing new opportunities, interesting projects, 
+              I'm always open to discussing new opportunities, interesting projects,
               or just having a conversation about technology and development.
             </p>
           </div>
@@ -96,7 +96,7 @@ const ContactSection = () => {
             {/* Contact Form */}
             <div className="bg-surface/30 border border-border rounded-2xl p-8 backdrop-blur-sm">
               <h3 className="text-2xl font-bold text-text-primary mb-6">Send me a message</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
@@ -158,14 +158,14 @@ const ContactSection = () => {
 
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-400">
-                    <i className="ri-check-line mr-2"></i>
+                    <i className="ri-check-line mr-2" />
                     Message sent successfully! I'll get back to you soon.
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400">
-                    <i className="ri-error-warning-line mr-2"></i>
+                    <i className="ri-error-warning-line mr-2" />
                     Failed to send message. Please try again or contact me directly.
                   </div>
                 )}
@@ -180,7 +180,7 @@ const ContactSection = () => {
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-center group">
                       <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors duration-300">
-                        <i className={`${info.icon} text-primary text-xl`}></i>
+                        <i className={`${info.icon} text-primary text-xl`} />
                       </div>
                       <div>
                         <div className="text-sm text-text-secondary">{info.label}</div>
@@ -212,7 +212,7 @@ const ContactSection = () => {
                       className={`w-12 h-12 bg-surface/30 border border-border rounded-lg flex items-center justify-center text-text-secondary transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 ${social.color}`}
                       aria-label={social.label}
                     >
-                      <i className={`${social.icon} text-xl`}></i>
+                      <i className={`${social.icon} text-xl`} />
                     </a>
                   ))}
                 </div>
@@ -221,8 +221,8 @@ const ContactSection = () => {
               <div className="p-6 bg-primary/5 border border-primary/20 rounded-xl">
                 <h4 className="font-semibold text-text-primary mb-2">Let's work together!</h4>
                 <p className="text-text-secondary text-sm">
-                  I'm always excited to take on new challenges and collaborate on interesting projects. 
-                  Whether you have a specific project in mind or just want to explore possibilities, 
+                  I'm always excited to take on new challenges and collaborate on interesting projects.
+                  Whether you have a specific project in mind or just want to explore possibilities,
                   I'd love to hear from you.
                 </p>
               </div>
@@ -234,4 +234,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection; 
+export default ContactSection;

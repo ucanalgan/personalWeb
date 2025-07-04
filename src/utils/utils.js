@@ -14,11 +14,11 @@ import { twMerge } from 'tailwind-merge';
  */
 export function isInViewport(element, threshold = 0.1) {
   if (!element) return false;
-  
+
   const rect = element.getBoundingClientRect();
   const viewHeight = window.innerHeight || document.documentElement.clientHeight;
   const viewWidth = window.innerWidth || document.documentElement.clientWidth;
-  
+
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&
@@ -80,10 +80,10 @@ export function getPreferredColorScheme() {
 export function throttle(func, delay = 100) {
   let timeoutId;
   let lastExecTime = 0;
-  
+
   return function (...args) {
     const currentTime = Date.now();
-    
+
     if (currentTime - lastExecTime > delay) {
       func.apply(this, args);
       lastExecTime = currentTime;
@@ -104,13 +104,13 @@ export function throttle(func, delay = 100) {
  */
 export function formatNumber(num) {
   if (num >= 1000000000) {
-    return (num / 1000000000).toFixed(1) + 'B';
+    return `${(num / 1000000000).toFixed(1)}B`;
   }
   if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + 'M';
+    return `${(num / 1000000).toFixed(1)}M`;
   }
   if (num >= 1000) {
-    return (num / 1000).toFixed(1) + 'K';
+    return `${(num / 1000).toFixed(1)}K`;
   }
   return num.toString();
 }
@@ -183,7 +183,7 @@ export function getDeviceInfo() {
   const isMobile = /mobile|android|iphone|ipad|tablet/.test(userAgent);
   const isTablet = /tablet|ipad/.test(userAgent);
   const isDesktop = !isMobile && !isTablet;
-  
+
   return {
     isMobile,
     isTablet,
@@ -209,9 +209,9 @@ export function sleep(ms) {
  */
 export function removeElementWithAnimation(element, animation = 'fade-out', duration = 300) {
   if (!element) return;
-  
+
   element.classList.add(animation);
-  
+
   setTimeout(() => {
     if (element.parentNode) {
       element.parentNode.removeChild(element);
@@ -229,19 +229,19 @@ export function showNotification(message, type = 'info', duration = 3000) {
   const notification = document.createElement('div');
   notification.className = `notification notification-${type}`;
   notification.textContent = message;
-  
+
   document.body.appendChild(notification);
-  
+
   // Trigger animation
   requestAnimationFrame(() => {
     notification.classList.add('notification-show');
   });
-  
+
   // Auto remove
   setTimeout(() => {
     notification.classList.remove('notification-show');
     notification.classList.add('notification-hide');
-    
+
     setTimeout(() => {
       if (notification.parentNode) {
         notification.parentNode.removeChild(notification);
@@ -329,4 +329,4 @@ export default {
   debounce,
   scrollToElement,
   formatDate
-}; 
+};

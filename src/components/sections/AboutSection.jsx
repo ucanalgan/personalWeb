@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Button from '../common/Button';
 
 const AboutSection = () => {
@@ -58,7 +58,7 @@ const AboutSection = () => {
         currentValue = targetValue;
         clearInterval(timer);
       }
-      
+
       if (label === 'Years Experience') {
         setAnimatedStats(prev => ({ ...prev, experience: Math.floor(currentValue) }));
       } else if (label === 'Projects Completed') {
@@ -80,9 +80,9 @@ const AboutSection = () => {
     <section id="about" className="py-32 bg-gradient-to-br from-background via-surface/10 to-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-l from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-px h-64 bg-gradient-to-b from-transparent via-primary/20 to-transparent"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-l from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-px h-64 bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={sectionRef}>
@@ -98,7 +98,7 @@ const AboutSection = () => {
                 <br />& <span className="gradient-text">Problem Solver</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                Transforming ideas into exceptional digital experiences through clean code, 
+                Transforming ideas into exceptional digital experiences through clean code,
                 innovative solutions, and a relentless pursuit of excellence in every project.
               </p>
             </div>
@@ -118,8 +118,8 @@ const AboutSection = () => {
                       <div>
                         <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">The Journey Begins</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                          My development journey started with curiosity about how websites work. What began as 
-                          tinkering with HTML quickly evolved into a deep passion for creating meaningful digital 
+                          My development journey started with curiosity about how websites work. What began as
+                          tinkering with HTML quickly evolved into a deep passion for creating meaningful digital
                           experiences that solve real-world problems.
                         </p>
                       </div>
@@ -134,8 +134,8 @@ const AboutSection = () => {
                       <div>
                         <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">Crafting Excellence</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                          With 3+ years of hands-on experience, I specialize in building scalable applications 
-                          using modern technologies. Every line of code is written with performance, 
+                          With 3+ years of hands-on experience, I specialize in building scalable applications
+                          using modern technologies. Every line of code is written with performance,
                           maintainability, and user experience in mind.
                         </p>
                       </div>
@@ -150,8 +150,8 @@ const AboutSection = () => {
                       <div>
                         <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">Beyond Code</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                          When not coding, I'm exploring emerging technologies, contributing to open-source 
-                          projects, and sharing knowledge with the developer community. Continuous learning 
+                          When not coding, I'm exploring emerging technologies, contributing to open-source
+                          projects, and sharing knowledge with the developer community. Continuous learning
                           is not just a hobby—it's a way of life.
                         </p>
                       </div>
@@ -195,7 +195,7 @@ const AboutSection = () => {
                         <div className="flex items-center justify-between mb-3">
                           <div className="flex items-center space-x-3">
                             <div className={`w-10 h-10 bg-gradient-to-br ${skill.color} rounded-lg flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                              <i className={`${skill.icon} text-lg`}></i>
+                              <i className={`${skill.icon} text-lg`} />
                             </div>
                             <span className="font-semibold text-text-primary group-hover:text-primary transition-colors duration-300">{skill.name}</span>
                           </div>
@@ -204,14 +204,14 @@ const AboutSection = () => {
                           </span>
                         </div>
                         <div className="w-full bg-surface/30 rounded-full h-3 overflow-hidden shadow-inner">
-                          <div 
+                          <div
                             className={`bg-gradient-to-r ${skill.color} h-full rounded-full transition-all duration-1500 ease-out shadow-lg relative overflow-hidden ${isVisible ? 'animate-pulse' : ''}`}
-                            style={{ 
+                            style={{
                               width: isVisible ? `${skill.level}%` : '0%',
                               transitionDelay: `${index * 100}ms`
                             }}
                           >
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-shimmer"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-shimmer" />
                           </div>
                         </div>
                       </div>
@@ -230,17 +230,17 @@ const AboutSection = () => {
               </h3>
               <p className="body-lg text-text-secondary">Numbers that tell my story</p>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="group">
                   <div className="relative p-8 bg-gradient-to-br from-surface/40 to-surface/20 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 transform hover:-translate-y-2">
                     {/* Background glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                     <div className="relative z-10 text-center">
                       <div className={`w-16 h-16 ${stat.color} bg-gradient-to-br from-current/20 to-current/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                        <i className={`${stat.icon} text-2xl`}></i>
+                        <i className={`${stat.icon} text-2xl`} />
                       </div>
                       <div className="mb-4">
                         <span className="display-lg font-mono gradient-text">
@@ -260,4 +260,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection; 
+export default AboutSection;

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { cn } from '../../utils/utils';
 
@@ -6,9 +6,9 @@ import { cn } from '../../utils/utils';
  * Modern Button Component with multiple variants and micro-interactions
  * Supports glassmorphism, gradients, and accessibility features
  */
-const Button = forwardRef(({ 
-  variant = 'primary', 
-  size = 'md', 
+const Button = forwardRef(({
+  variant = 'primary',
+  size = 'md',
   className = '',
   children,
   disabled = false,
@@ -21,7 +21,7 @@ const Button = forwardRef(({
   target,
   rel,
   type = 'button',
-  ...props 
+  ...props
 }, ref) => {
   // Base button styles
   const baseStyles = `
@@ -39,7 +39,7 @@ const Button = forwardRef(({
     sm: 'px-3 py-2 text-sm rounded-md min-h-[32px]',
     md: 'px-4 py-2.5 text-sm rounded-lg min-h-[40px]',
     lg: 'px-6 py-3 text-base rounded-lg min-h-[44px]',
-    xl: 'px-8 py-4 text-lg rounded-xl min-h-[52px]',
+    xl: 'px-8 py-4 text-lg rounded-xl min-h-[52px]'
   };
 
   // Button variants with modern design
@@ -55,7 +55,7 @@ const Button = forwardRef(({
       before:opacity-0 before:transition-opacity before:duration-200
       hover:before:opacity-100
     `,
-    
+
     // Secondary - Glass effect
     secondary: `
       bg-white/5 backdrop-blur-lg border border-white/10
@@ -66,7 +66,7 @@ const Button = forwardRef(({
       [data-theme="light"] &:bg-white/80 [data-theme="light"] &:hover:bg-white/90
       [data-theme="light"] &:border-gray-200 [data-theme="light"] &:hover:border-gray-300
     `,
-    
+
     // Outline - Modern outline with gradient border
     outline: `
       bg-transparent border-2 border-brand-primary-500/30
@@ -79,7 +79,7 @@ const Button = forwardRef(({
       before:opacity-0 before:transition-opacity before:duration-200
       hover:before:opacity-100
     `,
-    
+
     // Ghost - Minimal hover effects
     ghost: `
       bg-transparent border-0 text-text-secondary
@@ -87,7 +87,7 @@ const Button = forwardRef(({
       focus:ring-brand-primary-400
       [data-theme="dark"] &:hover:bg-brand-primary-900/20
     `,
-    
+
     // Destructive - Red gradient
     destructive: `
       bg-gradient-to-r from-error-500 to-error-600
@@ -99,7 +99,7 @@ const Button = forwardRef(({
       before:opacity-0 before:transition-opacity before:duration-200
       hover:before:opacity-100
     `,
-    
+
     // Success - Green gradient
     success: `
       bg-gradient-to-r from-success-500 to-success-600
@@ -111,7 +111,7 @@ const Button = forwardRef(({
       before:opacity-0 before:transition-opacity before:duration-200
       hover:before:opacity-100
     `,
-    
+
     // Glass - Full glassmorphism effect
     glass: `
       bg-white/10 backdrop-blur-xl border border-white/20
@@ -123,7 +123,7 @@ const Button = forwardRef(({
       before:from-white/10 before:to-transparent before:opacity-0
       hover:before:opacity-100 before:transition-opacity before:duration-300
     `,
-    
+
     // Neon - Glowing effect
     neon: `
       bg-transparent border-2 border-brand-primary-400
@@ -133,7 +133,7 @@ const Button = forwardRef(({
       focus:ring-brand-primary-400
       relative overflow-hidden
       animate-pulse
-    `,
+    `
   };
 
   // Icon spacing
@@ -142,7 +142,7 @@ const Button = forwardRef(({
     sm: 'space-x-1.5',
     md: 'space-x-2',
     lg: 'space-x-2.5',
-    xl: 'space-x-3',
+    xl: 'space-x-3'
   };
 
   // Loading spinner component
@@ -160,12 +160,12 @@ const Button = forwardRef(({
         r="10"
         stroke="currentColor"
         strokeWidth="4"
-      ></circle>
+      />
       <path
         className="opacity-75"
         fill="currentColor"
         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-      ></path>
+      />
     </svg>
   );
 
@@ -241,13 +241,13 @@ Button.displayName = 'Button';
 Button.propTypes = {
   variant: PropTypes.oneOf([
     'primary',
-    'secondary', 
+    'secondary',
     'outline',
     'ghost',
     'destructive',
     'success',
     'glass',
-    'neon',
+    'neon'
   ]),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   className: PropTypes.string,
@@ -261,7 +261,7 @@ Button.propTypes = {
   href: PropTypes.string,
   target: PropTypes.string,
   rel: PropTypes.string,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  type: PropTypes.oneOf(['button', 'submit', 'reset'])
 };
 
-export default Button; 
+export default Button;

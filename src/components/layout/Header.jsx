@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,13 +10,13 @@ const Header = () => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 50;
       setIsScrolled(scrolled);
-      
+
       // Calculate scroll progress
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = (winScroll / height) * 100;
       setScrollProgress(progress);
-      
+
       // Update active section based on scroll position with offset
       const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
       const current = sections.find(section => {
@@ -28,7 +28,7 @@ const Header = () => {
         }
         return false;
       });
-      
+
       if (current && current !== activeSection) {
         setActiveSection(current);
       }
@@ -47,10 +47,10 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', throttledHandleScroll, { passive: true });
-    
+
     // Set initial active section
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', throttledHandleScroll);
   }, [activeSection]);
 
@@ -82,12 +82,12 @@ const Header = () => {
     if (element) {
       const headerHeight = 80; // Account for fixed header
       const elementPosition = element.offsetTop - headerHeight;
-      
+
       window.scrollTo({
         top: elementPosition,
         behavior: 'smooth'
       });
-      
+
       setIsMobileMenuOpen(false);
       setActiveSection(sectionId);
     }
@@ -105,15 +105,15 @@ const Header = () => {
     <>
       {/* Enhanced Scroll Progress Bar */}
       <div className="scroll-progress fixed top-0 left-0 right-0 h-1 z-50">
-        <div 
+        <div
           className="h-full bg-gradient-to-r from-primary via-accent to-primary transition-all duration-300 ease-out shadow-lg shadow-primary/20"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
-      
+
       <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-out ${
-        isScrolled 
-          ? 'bg-background/85 backdrop-blur-xl border-b border-border/50 shadow-xl shadow-black/5' 
+        isScrolled
+          ? 'bg-background/85 backdrop-blur-xl border-b border-border/50 shadow-xl shadow-black/5'
           : 'bg-transparent'
       }`}>
         <nav className="container mx-auto px-6 py-4">
@@ -126,7 +126,7 @@ const Header = () => {
               <span className="relative z-10 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 UA
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 blur-lg"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 blur-lg" />
             </button>
 
             {/* Desktop Navigation */}
@@ -136,23 +136,23 @@ const Header = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`group relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 hover:scale-105 ${
-                    activeSection === item.id 
-                      ? 'text-primary bg-primary/10 border border-primary/20' 
+                    activeSection === item.id
+                      ? 'text-primary bg-primary/10 border border-primary/20'
                       : 'text-text-secondary hover:text-primary hover:bg-surface/30'
                   }`}
                 >
                   <div className="flex items-center space-x-2">
-                    <i className={`${item.icon} text-base`}></i>
+                    <i className={`${item.icon} text-base`} />
                     <span>{item.label}</span>
                   </div>
-                  
+
                   {/* Active indicator */}
                   {activeSection === item.id && (
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full"></div>
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
                   )}
-                  
+
                   {/* Hover effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 -z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 -z-10" />
                 </button>
               ))}
             </div>
@@ -186,8 +186,8 @@ const Header = () => {
 
           {/* Enhanced Mobile Navigation */}
           <div className={`mobile-menu md:hidden overflow-hidden transition-all duration-500 ease-out ${
-            isMobileMenuOpen 
-              ? 'max-h-80 opacity-100 mt-4' 
+            isMobileMenuOpen
+              ? 'max-h-80 opacity-100 mt-4'
               : 'max-h-0 opacity-0'
           }`}>
             <div className="bg-surface/40 backdrop-blur-xl border border-border/50 rounded-2xl p-4 shadow-xl">
@@ -197,22 +197,22 @@ const Header = () => {
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
                     className={`group w-full flex items-center px-4 py-3 text-left transition-all duration-300 rounded-xl transform ${
-                      activeSection === item.id 
-                        ? 'text-primary bg-primary/10 border border-primary/20 scale-105' 
+                      activeSection === item.id
+                        ? 'text-primary bg-primary/10 border border-primary/20 scale-105'
                         : 'text-text-secondary hover:text-primary hover:bg-surface/30 hover:scale-105'
                     }`}
-                    style={{ 
+                    style={{
                       animationDelay: `${index * 50}ms`,
                       animation: isMobileMenuOpen ? 'slideInFromRight 0.3s ease-out' : 'none'
                     }}
                   >
                     <div className="flex items-center space-x-3">
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                        activeSection === item.id 
-                          ? 'bg-primary/20 text-primary' 
+                        activeSection === item.id
+                          ? 'bg-primary/20 text-primary'
                           : 'bg-surface/50 group-hover:bg-primary/10 group-hover:text-primary'
                       }`}>
-                        <i className={`${item.icon} text-lg`}></i>
+                        <i className={`${item.icon} text-lg`} />
                       </div>
                       <div className="flex-1">
                         <div className="font-medium">{item.label}</div>
@@ -225,13 +225,13 @@ const Header = () => {
                         </div>
                       </div>
                       {activeSection === item.id && (
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                       )}
                     </div>
                   </button>
                 ))}
               </div>
-              
+
               {/* Mobile Menu Footer */}
               <div className="mt-4 pt-4 border-t border-border/30">
                 <div className="flex items-center justify-center space-x-4">
@@ -241,7 +241,7 @@ const Header = () => {
                     rel="noopener noreferrer"
                     className="p-2 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
                   >
-                    <i className="ri-github-line text-lg"></i>
+                    <i className="ri-github-line text-lg" />
                   </a>
                   <a
                     href="https://linkedin.com/in/ucanalgan"
@@ -249,13 +249,13 @@ const Header = () => {
                     rel="noopener noreferrer"
                     className="p-2 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
                   >
-                    <i className="ri-linkedin-line text-lg"></i>
+                    <i className="ri-linkedin-line text-lg" />
                   </a>
                   <a
                     href="mailto:contact@ucanalgan.dev"
                     className="p-2 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
                   >
-                    <i className="ri-mail-line text-lg"></i>
+                    <i className="ri-mail-line text-lg" />
                   </a>
                 </div>
               </div>
@@ -266,7 +266,7 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
@@ -289,4 +289,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;

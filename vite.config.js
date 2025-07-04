@@ -1,11 +1,11 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ _command, mode }) => {
   const isProduction = mode === 'production';
-  
+
   return {
     // React plugin with optimized config
     plugins: [
@@ -21,13 +21,13 @@ export default defineConfig(({ command, mode }) => {
         brotliSize: true
       })
     ].filter(Boolean),
-    
+
     // Base path for GitHub Pages (only in production)
     base: isProduction ? '/Kişisel_web/' : '/',
-    
+
     // Root directory
     root: '.',
-    
+
     // Build configuration with aggressive optimization
     build: {
       outDir: 'dist',
@@ -145,7 +145,7 @@ export default defineConfig(({ command, mode }) => {
     // Dependency optimization
     optimizeDeps: {
       include: [
-        'react', 
+        'react',
         'react-dom',
         'react/jsx-runtime'
       ],
@@ -178,4 +178,4 @@ export default defineConfig(({ command, mode }) => {
       format: 'es'
     }
   };
-}); 
+});

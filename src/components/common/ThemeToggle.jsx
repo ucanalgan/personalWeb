@@ -1,4 +1,4 @@
-import React from 'react';
+// React 17+ JSX Transform - no React import needed
 import { useTheme } from '../../contexts/ThemeContext';
 
 const ThemeToggle = () => {
@@ -7,7 +7,7 @@ const ThemeToggle = () => {
   if (isLoading) {
     return (
       <div className="theme-toggle">
-        <i className="ri-loader-4-line animate-spin"></i>
+        <i className="ri-loader-4-line animate-spin" />
       </div>
     );
   }
@@ -19,9 +19,9 @@ const ThemeToggle = () => {
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
-      <i className={theme === 'dark' ? 'ri-sun-line' : 'ri-moon-line'}></i>
+      <i className={theme === 'dark' ? 'ri-sun-line' : 'ri-moon-line'} />
     </button>
   );
 };
 
-export default ThemeToggle; 
+export default ThemeToggle;

@@ -1,4 +1,4 @@
-import React from 'react';
+// React 17+ JSX Transform - no React import needed
 
 const FooterSection = () => {
   const currentYear = new Date().getFullYear();
@@ -108,7 +108,7 @@ const FooterSection = () => {
                   className={`w-10 h-10 bg-surface/30 border border-border rounded-lg flex items-center justify-center text-text-secondary transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 ${social.color}`}
                   aria-label={social.label}
                 >
-                  <i className={`${social.icon} text-lg`}></i>
+                  <i className={`${social.icon} text-lg`} />
                 </a>
               ))}
             </div>
@@ -121,16 +121,16 @@ const FooterSection = () => {
             <p className="text-text-secondary text-sm mb-4 md:mb-0">
               © {currentYear} Umut Can Algan. All rights reserved.
             </p>
-            
+
             <div className="flex items-center space-x-4 text-sm text-text-secondary">
               <span>Built with</span>
               <div className="flex items-center space-x-2">
-                <i className="ri-reactjs-line text-cyan-400"></i>
+                <i className="ri-reactjs-line text-cyan-400" />
                 <span>React</span>
               </div>
               <span>&</span>
               <div className="flex items-center space-x-2">
-                <i className="ri-tailwind-css-line text-cyan-500"></i>
+                <i className="ri-tailwind-css-line text-cyan-500" />
                 <span>Tailwind</span>
               </div>
             </div>
@@ -141,4 +141,4 @@ const FooterSection = () => {
   );
 };
 
-export default FooterSection; 
+export default FooterSection;

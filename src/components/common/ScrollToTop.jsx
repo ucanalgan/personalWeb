@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,9 +26,9 @@ const ScrollToTop = () => {
       aria-label="Scroll to top"
       title="Scroll to top"
     >
-      <i className="ri-arrow-up-line"></i>
+      <i className="ri-arrow-up-line" />
     </button>
   );
 };
 
-export default ScrollToTop; 
+export default ScrollToTop;

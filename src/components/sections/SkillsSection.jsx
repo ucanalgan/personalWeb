@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -113,13 +113,13 @@ const SkillsSection = () => {
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-ping"></div>
-          <div className="absolute top-40 right-32 w-1 h-1 bg-accent rounded-full animate-pulse delay-1000"></div>
-          <div className="absolute bottom-32 left-16 w-1.5 h-1.5 bg-primary rounded-full animate-ping delay-500"></div>
-          <div className="absolute bottom-20 right-20 w-2 h-2 bg-accent rounded-full animate-pulse delay-2000"></div>
+          <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-ping" />
+          <div className="absolute top-40 right-32 w-1 h-1 bg-accent rounded-full animate-pulse delay-1000" />
+          <div className="absolute bottom-32 left-16 w-1.5 h-1.5 bg-primary rounded-full animate-ping delay-500" />
+          <div className="absolute bottom-20 right-20 w-2 h-2 bg-accent rounded-full animate-pulse delay-2000" />
         </div>
-        <div className="absolute top-32 right-10 w-64 h-64 bg-gradient-to-l from-primary/5 to-accent/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-32 left-10 w-80 h-80 bg-gradient-to-r from-accent/5 to-primary/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-32 right-10 w-64 h-64 bg-gradient-to-l from-primary/5 to-accent/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-32 left-10 w-80 h-80 bg-gradient-to-r from-accent/5 to-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={sectionRef}>
@@ -134,7 +134,7 @@ const SkillsSection = () => {
                 My <span className="gradient-text">Tech Stack</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                A comprehensive toolkit spanning the full development spectrum, from frontend magic 
+                A comprehensive toolkit spanning the full development spectrum, from frontend magic
                 to backend architecture and everything in between.
               </p>
             </div>
@@ -153,11 +153,11 @@ const SkillsSection = () => {
                 }`}
               >
                 <div className="flex items-center space-x-2">
-                  <i className={`${category.icon} text-lg`}></i>
+                  <i className={`${category.icon} text-lg`} />
                   <span>{category.title}</span>
                 </div>
                 {activeCategory === index && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl animate-pulse" />
                 )}
               </button>
             ))}
@@ -172,12 +172,12 @@ const SkillsSection = () => {
                   <div className={`bg-gradient-to-br ${skillCategories[activeCategory].color} p-8 rounded-3xl text-white shadow-2xl transform transition-all duration-700`}>
                     <div className="mb-6">
                       <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 backdrop-blur-sm">
-                        <i className={`${skillCategories[activeCategory].icon} text-3xl`}></i>
+                        <i className={`${skillCategories[activeCategory].icon} text-3xl`} />
                       </div>
                       <h3 className="heading-2 mb-3">{skillCategories[activeCategory].title}</h3>
                       <p className="body-base opacity-90">{skillCategories[activeCategory].description}</p>
                     </div>
-                    
+
                     <div className="space-y-3">
                       <div className="flex items-center justify-between text-sm">
                         <span>Proficiency Level</span>
@@ -186,12 +186,12 @@ const SkillsSection = () => {
                         </span>
                       </div>
                       <div className="w-full bg-white/20 rounded-full h-2 overflow-hidden">
-                        <div 
+                        <div
                           className="bg-white h-full rounded-full transition-all duration-1000 ease-out"
-                          style={{ 
+                          style={{
                             width: `${Math.round(skillCategories[activeCategory].skills.reduce((acc, skill) => acc + skill.level, 0) / skillCategories[activeCategory].skills.length)}%`
                           }}
-                        ></div>
+                        />
                       </div>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ const SkillsSection = () => {
                         <div className="flex items-center justify-between mb-4">
                           <div className="flex items-center space-x-3">
                             <div className={`w-12 h-12 bg-gradient-to-br ${skillCategories[activeCategory].color} rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                              <i className={`${skill.icon} text-xl`}></i>
+                              <i className={`${skill.icon} text-xl`} />
                             </div>
                             <div>
                               <h4 className="font-bold text-text-primary group-hover:text-primary transition-colors duration-300">{skill.name}</h4>
@@ -228,21 +228,21 @@ const SkillsSection = () => {
                         {/* Skill Bar */}
                         <div className="space-y-2">
                           <div className="w-full bg-surface/50 rounded-full h-2 overflow-hidden shadow-inner">
-                            <div 
+                            <div
                               className={`bg-gradient-to-r ${skillCategories[activeCategory].color} h-full rounded-full transition-all duration-1000 ease-out shadow-sm relative overflow-hidden`}
-                              style={{ 
+                              style={{
                                 width: `${skill.level}%`,
                                 transitionDelay: `${index * 100}ms`
                               }}
                             >
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-shimmer"></div>
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-shimmer" />
                             </div>
                           </div>
                         </div>
 
                         {/* Hover Effect */}
                         {hoveredSkill === `${activeCategory}-${index}` && (
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl pointer-events-none transition-opacity duration-300"></div>
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl pointer-events-none transition-opacity duration-300" />
                         )}
                       </div>
                     </div>
@@ -277,19 +277,19 @@ const SkillsSection = () => {
                 Let's bring your vision to life with modern technologies and best practices.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button 
+                <button
                   onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                   className="btn-primary group"
                 >
                   <span className="group-hover:scale-105 transition-transform duration-200">View My Projects</span>
-                  <i className="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-200"></i>
+                  <i className="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
-                <button 
+                <button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   className="btn-secondary group"
                 >
                   <span className="group-hover:scale-105 transition-transform duration-200">Let's Talk</span>
-                  <i className="ri-message-line ml-2 group-hover:scale-110 transition-transform duration-200"></i>
+                  <i className="ri-message-line ml-2 group-hover:scale-110 transition-transform duration-200" />
                 </button>
               </div>
             </div>
@@ -300,4 +300,4 @@ const SkillsSection = () => {
   );
 };
 
-export default SkillsSection; 
+export default SkillsSection;

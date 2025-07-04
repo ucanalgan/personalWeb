@@ -1,8 +1,7 @@
 // File: js/animations.js
 // Description: Animation utilities and scroll animations for the portfolio
 
-import { debounce } from './utils.js';
-import { isInViewport } from './utils.js';
+import { debounce , isInViewport } from './utils.js';
 
 /**
  * Setup scroll animations with intersection observer
@@ -33,7 +32,7 @@ export function setupScrollAnimations() {
     scrollAnimationObserver.observe(element);
   });
 
-      // Scroll animations initialized
+  // Scroll animations initialized
 }
 
 /**
@@ -43,10 +42,10 @@ function initGSAP() {
   if (typeof gsap !== 'undefined') {
     // GSAP is available, enhance animations
     gsap.registerPlugin(ScrollTrigger);
-    
+
     // Enhanced scroll animations
     gsap.utils.toArray('.animate-on-scroll').forEach(element => {
-      gsap.fromTo(element, 
+      gsap.fromTo(element,
         { opacity: 0, y: 50 },
         {
           opacity: 1,
@@ -76,7 +75,7 @@ function initHeroAnimations() {
   if (typeof gsap === 'undefined') return;
 
   const heroTimeline = gsap.timeline();
-  
+
   heroTimeline
     .from('.hero-title', {
       duration: 1,
@@ -121,7 +120,7 @@ function initSectionRevealAnimations() {
 
   // Animate sections on scroll
   gsap.utils.toArray('section').forEach((section, index) => {
-    gsap.fromTo(section, 
+    gsap.fromTo(section,
       { opacity: 0, y: 50 },
       {
         opacity: 1,
@@ -141,7 +140,7 @@ function initSectionRevealAnimations() {
   // Animate skill bars
   gsap.utils.toArray('.skill-progress').forEach(bar => {
     const percentage = bar.dataset.percentage || 0;
-    
+
     gsap.fromTo(bar,
       { width: '0%' },
       {
@@ -217,7 +216,7 @@ function initProjectCardAnimations() {
         duration: 0.3,
         ease: 'power2.out'
       });
-      
+
       gsap.to(card.querySelector('.project-image'), {
         scale: 1.1,
         duration: 0.3,
@@ -232,7 +231,7 @@ function initProjectCardAnimations() {
         duration: 0.3,
         ease: 'power2.out'
       });
-      
+
       gsap.to(card.querySelector('.project-image'), {
         scale: 1,
         duration: 0.3,
@@ -276,7 +275,7 @@ export function initTextRevealAnimation() {
   // Split text into lines and animate
   gsap.utils.toArray('.text-reveal').forEach(element => {
     const lines = element.textContent.split('\n');
-    element.innerHTML = lines.map(line => 
+    element.innerHTML = lines.map(line =>
       `<span class="line">${line}</span>`
     ).join('');
 
@@ -335,16 +334,15 @@ export function initPageTransitions() {
 export function initAllAnimations() {
   // Setup scroll animations
   setupScrollAnimations();
-  
+
   // Initialize GSAP animations if available
   initGSAP();
   initParallaxScrolling();
   initTextRevealAnimation();
   initFloatingAnimation();
   initPageTransitions();
-  
 
-  
+
   // All animations initialized
 }
 
@@ -354,7 +352,7 @@ export function initAllAnimations() {
 export const handleScrollAnimations = debounce(() => {
   // Handle scroll-based animations without GSAP
   const elements = document.querySelectorAll('.animate-on-scroll:not(.animated)');
-  
+
   elements.forEach(element => {
     if (isInViewport(element, 0.1)) {
       element.classList.add('animated', 'fadeInUp');
@@ -367,19 +365,19 @@ export const handleScrollAnimations = debounce(() => {
  */
 export function initSkillProgressAnimations() {
   const skillBars = document.querySelectorAll('.skill-progress-bar');
-  
+
   if ('IntersectionObserver' in window) {
     const skillObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const bar = entry.target;
           const percentage = bar.getAttribute('data-percentage');
-          
+
           // Use CSS custom property to animate to target width
           setTimeout(() => {
             bar.classList.add('animate');
           }, 200); // Small delay for better UX
-          
+
           skillObserver.unobserve(bar);
         }
       });
@@ -387,7 +385,7 @@ export function initSkillProgressAnimations() {
       threshold: 0.5,
       rootMargin: '0px 0px -50px 0px'
     });
-    
+
     skillBars.forEach(bar => skillObserver.observe(bar));
   } else {
     // Fallback for older browsers
@@ -406,7 +404,7 @@ export const VisibilityUtils = {
    */
   show(element, displayType = 'block') {
     if (!element) return;
-    
+
     element.classList.remove('js-hidden');
     if (displayType === 'flex') {
       element.classList.add('js-flex');
@@ -414,30 +412,30 @@ export const VisibilityUtils = {
       element.classList.add('js-visible');
     }
   },
-  
+
   /**
    * Hide element
    */
   hide(element) {
     if (!element) return;
-    
+
     element.classList.remove('js-visible', 'js-flex');
     element.classList.add('js-hidden');
   },
-  
+
   /**
    * Toggle element visibility
    */
   toggle(element, displayType = 'block') {
     if (!element) return;
-    
+
     if (element.classList.contains('js-hidden')) {
       this.show(element, displayType);
     } else {
       this.hide(element);
     }
   },
-  
+
   /**
    * Show multiple elements
    */
@@ -445,7 +443,7 @@ export const VisibilityUtils = {
     const elements = document.querySelectorAll(selector);
     elements.forEach(el => this.show(el, displayType));
   },
-  
+
   /**
    * Hide multiple elements
    */
@@ -483,7 +481,7 @@ export class ScrollReveal {
       reset: false,
       ...options
     };
-    
+
     this.observer = this.createObserver();
     this.elements = new Set();
   }
@@ -504,10 +502,10 @@ export class ScrollReveal {
   }
 
   observe(selector) {
-    const elements = typeof selector === 'string' 
+    const elements = typeof selector === 'string'
       ? document.querySelectorAll(selector)
       : [selector];
-    
+
     elements.forEach(element => {
       if (element) {
         this.elements.add(element);
@@ -553,12 +551,12 @@ export class TypingAnimation {
       cursor: true,
       ...options
     };
-    
+
     this.currentWordIndex = 0;
     this.currentCharIndex = 0;
     this.isDeleting = false;
     this.timeoutId = null;
-    
+
     if (this.element && this.options.cursor) {
       this.element.style.borderRight = '2px solid var(--primary)';
     }
@@ -572,7 +570,7 @@ export class TypingAnimation {
   type() {
     const currentWord = this.options.words[this.currentWordIndex];
     const shouldDelete = this.isDeleting;
-    
+
     if (shouldDelete) {
       // Deleting characters
       this.element.textContent = currentWord.substring(0, this.currentCharIndex - 1);
@@ -593,7 +591,7 @@ export class TypingAnimation {
       // Deletion complete, move to next word
       this.isDeleting = false;
       this.currentWordIndex = (this.currentWordIndex + 1) % this.options.words.length;
-      
+
       if (this.currentWordIndex === 0 && !this.options.loop) {
         return; // Stop animation if not looping
       }
@@ -629,7 +627,7 @@ export class PageTransitions {
     return new Promise(resolve => {
       element.style.opacity = '0';
       element.style.transition = `opacity ${duration}ms ease`;
-      
+
       requestAnimationFrame(() => {
         element.style.opacity = '1';
         setTimeout(resolve, duration);
@@ -641,7 +639,7 @@ export class PageTransitions {
     return new Promise(resolve => {
       element.style.opacity = '1';
       element.style.transition = `opacity ${duration}ms ease`;
-      
+
       requestAnimationFrame(() => {
         element.style.opacity = '0';
         setTimeout(resolve, duration);
@@ -654,7 +652,7 @@ export class PageTransitions {
       element.style.transform = 'translateY(20px)';
       element.style.opacity = '0';
       element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
-      
+
       requestAnimationFrame(() => {
         element.style.transform = 'translateY(0)';
         element.style.opacity = '1';
@@ -668,7 +666,7 @@ export class PageTransitions {
       element.style.transform = 'scale(0.95)';
       element.style.opacity = '0';
       element.style.transition = `transform ${duration}ms ease, opacity ${duration}ms ease`;
-      
+
       requestAnimationFrame(() => {
         element.style.transform = 'scale(1)';
         element.style.opacity = '1';
@@ -683,14 +681,14 @@ export class PageTransitions {
  */
 export class ParallaxScroll {
   constructor(elements, options = {}) {
-    this.elements = typeof elements === 'string' 
+    this.elements = typeof elements === 'string'
       ? document.querySelectorAll(elements)
       : elements;
     this.options = {
       speed: 0.5,
       ...options
     };
-    
+
     this.ticking = false;
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -711,7 +709,7 @@ export class ParallaxScroll {
 
   updateElements() {
     const scrolled = window.pageYOffset;
-    
+
     this.elements.forEach(element => {
       const rate = scrolled * this.options.speed;
       element.style.transform = `translateY(${rate}px)`;
@@ -772,4 +770,4 @@ export default {
   ParallaxScroll,
   initAnimations,
   scrollReveal
-}; 
+};

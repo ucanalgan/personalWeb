@@ -28,7 +28,7 @@ export const GitHubProvider = ({ children }) => {
       // Check cache
       const cachedData = localStorage.getItem('github-data');
       const cachedTimestamp = localStorage.getItem('github-data-timestamp');
-      
+
       if (!forceRefresh && cachedData && cachedTimestamp) {
         const timeDiff = Date.now() - parseInt(cachedTimestamp);
         if (timeDiff < CACHE_DURATION) {
@@ -91,7 +91,7 @@ export const GitHubProvider = ({ children }) => {
     } catch (err) {
       console.error('GitHub data fetch error:', err);
       setError(err.message);
-      
+
       // Try to load cached data as fallback
       const cachedData = localStorage.getItem('github-data');
       if (cachedData) {
@@ -131,7 +131,7 @@ export const GitHubProvider = ({ children }) => {
   // Get featured repositories (most starred, recently updated, etc.)
   const featuredRepositories = React.useMemo(() => {
     if (!repositories.length) return [];
-    
+
     return repositories
       .filter(repo => !repo.archived && !repo.disabled)
       .sort((a, b) => {
@@ -162,4 +162,4 @@ export const GitHubProvider = ({ children }) => {
       {children}
     </GitHubContext.Provider>
   );
-}; 
+};

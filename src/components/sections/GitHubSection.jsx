@@ -1,4 +1,4 @@
-import React from 'react';
+// React 17+ JSX Transform - no React import needed
 import { useGitHub } from '../../contexts/GitHubContext';
 import Button from '../common/Button';
 
@@ -7,7 +7,7 @@ const GitHubSection = () => {
 
   const getLanguageStats = () => {
     if (!repositories?.length) return [];
-    
+
     const langCount = repositories.reduce((acc, repo) => {
       if (repo.language) {
         acc[repo.language] = (acc[repo.language] || 0) + 1;
@@ -48,7 +48,7 @@ const GitHubSection = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-8">
-              <i className="ri-error-warning-line text-4xl text-red-400 mb-4"></i>
+              <i className="ri-error-warning-line text-4xl text-red-400 mb-4" />
               <h3 className="text-xl font-bold text-text-primary mb-2">Failed to Load GitHub Data</h3>
               <p className="text-text-secondary">{error}</p>
             </div>
@@ -77,7 +77,7 @@ const GitHubSection = () => {
             <div className="bg-surface/30 border border-border rounded-2xl p-6 backdrop-blur-sm">
               <div className="text-center mb-6">
                 {isLoading ? (
-                  <div className="w-20 h-20 bg-surface/50 rounded-full mx-auto mb-4 animate-pulse"></div>
+                  <div className="w-20 h-20 bg-surface/50 rounded-full mx-auto mb-4 animate-pulse" />
                 ) : (
                   <img
                     src={userData?.avatar_url || '/src/assets/images/profile-placeholder.webp'}
@@ -130,16 +130,16 @@ const GitHubSection = () => {
             {/* Language Statistics */}
             <div className="bg-surface/30 border border-border rounded-2xl p-6 backdrop-blur-sm">
               <h3 className="text-xl font-bold text-text-primary mb-6">Languages</h3>
-              
+
               {isLoading ? (
                 <div className="space-y-4">
                   {[...Array(5)].map((_, index) => (
                     <div key={index} className="animate-pulse">
                       <div className="flex justify-between mb-2">
-                        <div className="h-4 bg-surface/50 rounded w-20"></div>
-                        <div className="h-4 bg-surface/50 rounded w-10"></div>
+                        <div className="h-4 bg-surface/50 rounded w-20" />
+                        <div className="h-4 bg-surface/50 rounded w-10" />
                       </div>
-                      <div className="h-2 bg-surface/50 rounded"></div>
+                      <div className="h-2 bg-surface/50 rounded" />
                     </div>
                   ))}
                 </div>
@@ -152,7 +152,7 @@ const GitHubSection = () => {
                           <span
                             className="w-3 h-3 rounded-full mr-3"
                             style={{ backgroundColor: getLanguageColor(lang.language) }}
-                          ></span>
+                          />
                           <span className="text-text-primary">{lang.language}</span>
                         </div>
                         <span className="text-text-secondary text-sm">{lang.percentage}%</span>
@@ -164,7 +164,7 @@ const GitHubSection = () => {
                             backgroundColor: getLanguageColor(lang.language),
                             width: `${lang.percentage}%`
                           }}
-                        ></div>
+                        />
                       </div>
                     </div>
                   ))}
@@ -175,13 +175,13 @@ const GitHubSection = () => {
             {/* Recent Activity */}
             <div className="bg-surface/30 border border-border rounded-2xl p-6 backdrop-blur-sm">
               <h3 className="text-xl font-bold text-text-primary mb-6">Recent Repos</h3>
-              
+
               {isLoading ? (
                 <div className="space-y-4">
                   {[...Array(3)].map((_, index) => (
                     <div key={index} className="animate-pulse">
-                      <div className="h-4 bg-surface/50 rounded mb-2"></div>
-                      <div className="h-3 bg-surface/30 rounded"></div>
+                      <div className="h-4 bg-surface/50 rounded mb-2" />
+                      <div className="h-3 bg-surface/30 rounded" />
                     </div>
                   ))}
                 </div>
@@ -207,7 +207,7 @@ const GitHubSection = () => {
                               <span
                                 className="w-2 h-2 rounded-full mr-1"
                                 style={{ backgroundColor: getLanguageColor(repo.language) }}
-                              ></span>
+                              />
                               {repo.language}
                             </span>
                           )}
@@ -226,4 +226,4 @@ const GitHubSection = () => {
   );
 };
 
-export default GitHubSection; 
+export default GitHubSection;
