@@ -15,9 +15,9 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Umut Can Algan - Full-Stack Developer">
   <meta property="og:description" content="Full-Stack Developer creating innovative digital experiences with modern web technologies. Specialized in React, Node.js, and Python.">
-  <meta property="og:image" content="/assets/images/og-image.jpg">
+  <meta property="og:image" content="/assets/images/og-image.webp">
   <meta property="og:image:alt" content="Umut Can Algan - Full-Stack Developer Portfolio">
-  <meta property="og:url" content="https://ucanalgan.github.io/Ki%C5%9Fisel_web/">
+  <meta property="og:url" content="https://ucanalgan.github.io/Kişisel_web/">
   <meta property="og:site_name" content="Umut Can Algan Portfolio">
   <meta property="og:locale" content="en_US">
   
@@ -25,18 +25,29 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Umut Can Algan - Full-Stack Developer">
   <meta name="twitter:description" content="Full-Stack Developer creating innovative digital experiences with modern web technologies.">
-  <meta name="twitter:image" content="/assets/images/twitter-card.jpg">
+  <meta name="twitter:image" content="/assets/images/twitter-card.webp">
   <meta name="twitter:image:alt" content="Umut Can Algan Portfolio">
   <meta name="twitter:creator" content="@ucanalgan">
   
   <!-- Additional SEO -->
-  <link rel="canonical" href="https://ucanalgan.github.io/Ki%C5%9Fisel_web/">
+  <link rel="canonical" href="https://ucanalgan.github.io/Kişisel_web/">
   <meta name="theme-color" content="#64ffda">
   <meta name="msapplication-TileColor" content="#0a0e27">
   
+  <!-- Performance Hints -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//api.github.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <!-- Preload Critical Resources -->
-  <link rel="preload" href="/fonts/Inter-VariableFont_slnt,wght.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+  
+  <!-- Preload App Bundle (will be replaced by Vite) -->
+  <link rel="modulepreload" href="/src/main.jsx">
+  <link rel="modulepreload" href="/src/App.jsx">
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -45,9 +56,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
   
-  <!-- Critical CSS (Inline for performance) -->
+  <!-- Critical Above-the-Fold CSS (Inline for Performance) -->
   <style>
-    /* Critical above-the-fold styles */
+    /* Critical Styles - Inline for instant rendering */
     :root {
       --primary: #64ffda;
       --primary-dark: #4fd1c7;
@@ -63,48 +74,154 @@
       --transition-slow: 0.5s ease;
     }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;font-feature-settings:'kern' 1,'liga' 1,'calt' 1}
+    
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      background-color:var(--bg-primary);
+      color:var(--text-primary);
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale
     }
     
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      overflow-x: hidden;
+    /* App container optimization */
+    #root{min-height:100vh;display:flex;flex-direction:column}
+    
+    /* Loading states */
+    .section-loader{
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
+      background-size:200% 100%;
+      animation:loading 1.5s infinite
     }
     
-    #loader {
-      position: fixed;
-      inset: 0;
-      background-color: var(--bg-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      transition: opacity 0.5s ease;
+    @keyframes loading{
+      0%{background-position:-200% 0}
+      100%{background-position:200% 0}
     }
     
-    .loader-spinner {
-      width: 3rem;
-      height: 3rem;
-      border: 4px solid var(--border-color);
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
+    /* Scroll Progress Bar - Critical */
+    .scroll-progress{
+      position:fixed;
+      top:0;
+      left:0;
+      width:0%;
+      height:3px;
+      background:linear-gradient(90deg,var(--primary),var(--primary-dark));
+      z-index:1000;
+      transition:width 0.1s ease-out
     }
     
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    /* Theme Toggle - Critical */
+    .theme-toggle{
+      position:fixed;
+      top:20px;
+      right:20px;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      background:var(--bg-secondary);
+      border:2px solid var(--border-color);
+      color:var(--text-primary);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.2rem;
+      z-index:999;
+      transition:all var(--transition-normal);
+      backdrop-filter:blur(10px)
+    }
+    
+    .theme-toggle:hover{
+      background:var(--primary);
+      color:var(--bg-primary);
+      transform:scale(1.1);
+      box-shadow:0 8px 25px var(--shadow-primary)
+    }
+    
+    /* Header critical styles */
+    .header{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:998;
+      backdrop-filter:blur(20px);
+      background:rgba(10,14,39,0.9);
+      border-bottom:1px solid var(--border-color)
+    }
+    
+    /* Hero section critical */
+    .hero-section{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--bg-primary)
+    }
+    
+    /* Dark theme by default */
+    .dark{
+      --primary:#64ffda;
+      --accent:#ff6b6b;
+      --background:#0a0e27;
+      --surface:#1a1f3a;
+      --text-primary:#ffffff;
+      --text-secondary:#a8b2d1;
+      --border:#233554
+    }
+    
+    /* Light theme */
+    .light{
+      --primary:#2563eb;
+      --accent:#dc2626;
+      --background:#ffffff;
+      --surface:#f8fafc;
+      --text-primary:#1e293b;
+      --text-secondary:#64748b;
+      --border:#e2e8f0
+    }
+    
+    /* Font loading optimization */
+    .font-loading{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif
+    }
+    
+    /* Error boundary styles */
+    .error-fallback{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:200px;
+      padding:20px;
+      color:var(--text-secondary)
+    }
+    
+    /* Hide elements until JS loads */
+    .js-only{opacity:0;transition:opacity 0.3s ease}
+    .js-loaded .js-only{opacity:1}
+    
+    /* Reduced motion preference */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{
+        animation-duration:0.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:0.01ms!important;
+        scroll-behavior:auto!important
+      }
+      .scroll-progress{transition:none}
+    }
+    
+    /* Optimize for print */
+    @media print{
+      .theme-toggle,.scroll-progress,.back-to-top{display:none!important}
+      body{background:white!important;color:black!important}
     }
   </style>
-  
-  <!-- External Stylesheets -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
   
   <!-- Schema.org JSON-LD for SEO -->
   <script type="application/ld+json">
@@ -114,127 +231,106 @@
     "name": "Umut Can Algan",
     "jobTitle": "Full-Stack Developer",
     "description": "Full-Stack Developer specialized in React, Node.js, Python, and modern web technologies",
-    "url": "https://ucanalgan.github.io/Ki%C5%9Fisel_web/",
-    "image": "https://ucanalgan.github.io/Ki%C5%9Fisel_web/assets/images/profile.jpg",
-    "email": "umutcanalgan@gmail.com",
-    "nationality": "Turkish",
-    "alumniOf": "Computer Engineering",
-    "knowsAbout": [
-      "JavaScript", "TypeScript", "React", "Node.js", "Python", 
-      "PostgreSQL", "MongoDB", "AWS", "Docker", "Git"
-    ],
+    "url": "https://ucanalgan.github.io/Kişisel_web/",
     "sameAs": [
       "https://github.com/ucanalgan",
-      "https://linkedin.com/in/umutcanalgan",
-      "https://twitter.com/ucanalgan"
+      "https://linkedin.com/in/ucanalgan"
     ],
-    "workExample": [
-      {
-        "@type": "CreativeWork",
-        "name": "E-Commerce Platform",
-        "description": "Modern e-commerce solution with React and Node.js",
-        "url": "https://github.com/ucanalgan/ecommerce-platform"
-      },
-      {
-        "@type": "CreativeWork", 
-        "name": "Task Management App",
-        "description": "Real-time collaborative task management application",
-        "url": "https://github.com/ucanalgan/task-manager"
-      }
-    ]
+    "knowsAbout": [
+      "JavaScript",
+      "TypeScript", 
+      "React",
+      "Node.js",
+      "Python",
+      "Full-Stack Development",
+      "Web Development"
+    ],
+    "alumniOf": {
+      "@type": "Organization",
+      "name": "University Name"
+    }
   }
   </script>
   
-  <!-- Google Analytics (Replace with your tracking ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <!-- Performance monitoring -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID');
-  </script>
-  
-  <!-- Prefetch DNS lookups for external resources -->
-  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-  <link rel="dns-prefetch" href="//api.github.com">
-  <link rel="dns-prefetch" href="//formspree.io">
-</head>
-
-<body>
-  <!-- Accessibility Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  
-  <!-- Page Loader -->
-  <div id="loader" aria-label="Loading">
-    <div class="loader-spinner"></div>
-  </div>
-
-  <!-- Theme Toggle Button -->
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme">
-    <i class="ri-sun-line" id="theme-icon"></i>
-  </button>
-
-  <!-- Header Component -->
-  <div id="header-component"></div>
-
-  <!-- Main Content -->
-  <main id="main-content">
-    <!-- Hero Section -->
-    <div id="hero-section"></div>
-
-    <!-- About Section -->
-    <div id="about-section"></div>
-
-    <!-- Skills Section -->
-    <div id="skills-section"></div>
-
-    <!-- Projects Section -->
-    <div id="projects-section"></div>
-
-    <!-- Contact Section -->
-    <div id="contact-section"></div>
-  </main>
-
-  <!-- Footer Component -->
-  <div id="footer-section"></div>
-
-  <!-- Error Boundary -->
-  <div id="error-boundary" class="hidden">
-    <div class="error-container">
-      <h2>Oops! Something went wrong</h2>
-      <p>We're sorry, but something unexpected happened. Please try refreshing the page.</p>
-      <button onclick="location.reload()" class="btn-base btn-primary">
-        <i class="ri-refresh-line mr-2"></i>
-        Refresh Page
-      </button>
-    </div>
-  </div>
-
-  <!-- Service Worker Registration -->
-  <script>
-    // Register service worker for PWA capabilities
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
+    // Web Vitals monitoring
+    window.addEventListener('load', () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          import('/src/utils/analytics.js').then(module => {
+            module.initWebVitals?.();
+          }).catch(() => {
+            // Silently fail
           });
-      });
-    }
+        });
+      }
+    });
+    
+    // Mark body as JS loaded for CSS transitions
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('js-loaded');
+    });
+    
+    // Critical error handling
+    window.addEventListener('error', (e) => {
+      // Log critical errors
+      if (window.gtag) {
+        gtag('event', 'exception', {
+          description: e.message,
+          fatal: false
+        });
+      }
+    });
   </script>
-
-  <!-- Main Application Script -->
-  <script type="module" src="./main.js"></script>
-
-  <!-- Emergency Fallback -->
-  <noscript>
-    <div style="text-align: center; padding: 2rem; background: #1a1f3a; color: #ffffff;">
-      <h1>JavaScript Required</h1>
-      <p>This portfolio requires JavaScript to function properly. Please enable JavaScript in your browser.</p>
+</head>
+<body class="font-loading dark">
+  <!-- App Root -->
+  <div id="root">
+    <!-- Fallback content for non-JS users -->
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h1>Umut Can Algan - Full-Stack Developer</h1>
+        <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser.</p>
+        <p>For the best experience, visit: <a href="https://github.com/ucanalgan">GitHub Profile</a></p>
+      </div>
+    </noscript>
+    
+    <!-- Loading indicator while JS loads -->
+    <div id="app-loading" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 9999;">
+      <div style="width: 40px; height: 40px; border: 3px solid #233554; border-top: 3px solid #64ffda; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px;"></div>
+      <p style="color: #a8b2d1; font-size: 14px;">Loading...</p>
     </div>
-  </noscript>
+  </div>
+  
+  <!-- Load non-critical CSS asynchronously -->
+  <script>
+    // Load full CSS after critical rendering
+    const loadCSS = (href) => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    };
+    
+    // Load Remix Icons asynchronously
+    requestAnimationFrame(() => {
+      loadCSS('https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css');
+    });
+  </script>
+  
+  <!-- Main App Script -->
+  <script type="module" src="/src/main.jsx"></script>
+  
+  <!-- Remove loading indicator after app loads -->
+  <script>
+    window.addEventListener('load', () => {
+      const loading = document.getElementById('app-loading');
+      if (loading) {
+        loading.style.opacity = '0';
+        setTimeout(() => loading.remove(), 300);
+      }
+    });
+  </script>
 </body>
 </html>

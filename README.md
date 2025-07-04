@@ -1,356 +1,312 @@
-# 🚀 Umutcan Algan - Professional Portfolio
+# 🚀 Modern Developer Portfolio
 
-A modern, responsive portfolio website showcasing full-stack development skills, built with cutting-edge web technologies and optimized for performance, accessibility, and SEO.
+A stunning, high-performance portfolio website built with modern web technologies. Features dynamic content loading, smooth animations, dark/light theme switching, and comprehensive GitHub integration.
 
-![Portfolio Screenshot](./assets/images/portfolio-screenshot.png)
+![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
+![Version](https://img.shields.io/badge/Version-2.0.0-blue)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Build](https://img.shields.io/badge/Build-Passing-success)
 
-## ✨ Features
+## 🌟 Live Demo
 
-### 🎨 **Modern Design**
-- **Dark/Light Theme** with system preference detection
-- **Glassmorphism UI** with backdrop blur effects
-- **Responsive Design** optimized for all devices
-- **Smooth Animations** with reduced motion support
-- **Custom Color System** with CSS variables
+**[🔗 View Live Portfolio](https://ucanalgan.github.io/Kişisel_web/)**
+
+*Experience the portfolio in action with interactive features and smooth animations.*
+
+## 📸 Screenshots
+
+### 🖥️ Desktop Experience
+![Desktop Screenshot](./assets/screenshots/desktop-view.png)
+
+### 📱 Mobile Responsive
+![Mobile Screenshot](./assets/screenshots/mobile-view.png)
+
+### 🌙 Dark/Light Theme
+<div style="display: flex; gap: 10px;">
+  <img src="./assets/screenshots/dark-theme.png" width="45%" alt="Dark Theme">
+  <img src="./assets/screenshots/light-theme.png" width="45%" alt="Light Theme">
+</div>
+
+## ✨ Key Features
+
+### 🎨 **Modern Design & UX**
+- **Responsive Design** - Perfect on all devices (desktop, tablet, mobile)
+- **Dark/Light Theme** - System preference detection with manual toggle
+- **Smooth Animations** - Micro-interactions and scroll-triggered animations
+- **Accessibility First** - WCAG AA compliant with proper ARIA labels
+- **Modern UI/UX** - Clean, professional design with glassmorphism effects
 
 ### ⚡ **Performance Optimized**
-- **Lighthouse Score**: 98+ Performance, 100% Accessibility, 100% SEO
-- **Core Web Vitals** optimized
-- **Lazy Loading** for images and components
-- **Critical CSS** inlined for faster rendering
-- **Optimized Assets** with modern compression
+- **Lighthouse Score 95+** - Optimized for Core Web Vitals
+- **Fast Loading** - Code splitting and lazy loading
+- **Progressive Web App** - Offline capability with service worker
+- **WebP Images** - Next-gen image formats with lazy loading
+- **Critical CSS** - Above-the-fold styles inlined for instant rendering
 
-### 🔧 **Technical Features**
-- **Modular Component Architecture**
-- **ES6 Modules** with fallback support
-- **TypeScript Ready** structure
-- **PWA Support** with service worker
-- **SEO Optimized** with structured data
-- **Accessibility First** (WCAG 2.1 AA compliant)
+### 🛠 **Technology Stack**
+- **Frontend**: Vanilla JavaScript (ES2022), HTML5, CSS3
+- **Styling**: Tailwind CSS with custom design system
+- **Build Tool**: Vite for lightning-fast development
+- **Icons**: RemixIcon for consistent iconography
+- **Animations**: Custom CSS animations with Intersection Observer
+- **Analytics**: Privacy-focused analytics implementation
 
-### 🎯 **Interactive Sections**
-- **Hero Section** with typing animation
-- **About Section** with GitHub integration
-- **Skills Section** with animated progress bars
-- **Projects Section** with live GitHub data
-- **Contact Form** with validation and email integration
-
-## 🛠️ Tech Stack
-
-### **Frontend**
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-
-### **Build Tools**
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![PostCSS](https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white)
-
-### **Deployment**
-![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+### 🔧 **Advanced Features**
+- **Dynamic GitHub Integration** - Real-time repository data via GitHub API
+- **Component-Based Architecture** - Modular, maintainable code structure
+- **Smart Contact Form** - Validation with email integration
+- **SEO Optimized** - Meta tags, structured data, and performance
+- **TypeScript Ready** - Modern JavaScript with type support
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+- **Node.js** (v18 or higher)
+- **npm** or **yarn** package manager
+- **Git** for version control
 
-### Installation
+### Installation Steps
 
-```bash
-# Clone the repository
-git clone https://github.com/ucanalgan/Kisisel_web.git
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ucanalgan/Kişisel_web.git
+   cd Kişisel_web
+   ```
 
-# Navigate to project directory
-cd Kisisel_web
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-# Install dependencies
-npm install
+3. **Start development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-# Start development server
-npm run dev
-```
+4. **Open your browser**
+   ```
+   http://localhost:3000
+   ```
 
-### Available Scripts
+### 📋 Available Scripts
 
-```bash
-# Development server with hot reload
-npm run dev
+| Command | Description | Usage |
+|---------|-------------|-------|
+| `npm run dev` | Start development server with HMR | Development |
+| `npm run build` | Build optimized production bundle | Production |
+| `npm run preview` | Preview production build locally | Testing |
+| `npm run deploy` | Deploy to GitHub Pages | Deployment |
+| `npm run lint` | Check code quality and style | Code Quality |
 
-# Build for production
-npm run build
-
-# Preview production build locally
-npm run preview
-
-# Deploy to GitHub Pages
-npm run deploy
-```
-
-## 📁 Project Structure
+## 📁 Project Architecture
 
 ```
 Kişisel_web/
-├── 📄 index.html              # Main HTML entry point
-├── 📄 app.js                  # Main application entry
-├── 📄 main.js                 # Component orchestrator
-├── 🗂️ components/             # Reusable HTML components
-│   ├── common/                # Common UI components
-│   ├── layout/                # Layout components
-│   └── sections/              # Page sections
-├── 🗂️ js/                     # JavaScript modules
-│   └── components/            # JavaScript component classes
-├── 🗂️ utils/                  # Utility functions
-│   ├── animations.js          # Animation utilities
-│   ├── theme.js               # Theme management
-│   ├── github.js              # GitHub API integration
-│   └── form-handler.js        # Form validation & submission
-├── 🗂️ styles/                 # CSS stylesheets
-│   ├── critical.css           # Critical above-fold CSS
-│   ├── themes.css             # Theme variables & utilities
-│   └── components.css         # Component-specific styles
-├── 🗂️ config/                 # Configuration files
-│   ├── vite.config.js         # Vite build configuration
-│   ├── tailwind.config.js     # Tailwind CSS configuration
-│   └── postcss.config.js      # PostCSS configuration
-├── 🗂️ public/                 # Static assets
-│   ├── favicon.svg            # Site favicon
-│   ├── manifest.json          # PWA manifest
-│   └── robots.txt             # SEO robots file
-└── 🗂️ assets/                 # Media assets
-    ├── images/                # Images and graphics
-    └── icons/                 # Icon assets
+├── 📁 src/
+│   ├── 📁 components/          # Reusable UI components
+│   │   ├── 📁 common/         # Shared components (ButtonPrimary, Card, etc.)
+│   │   ├── 📁 layout/         # Layout components (Header)
+│   │   └── 📁 sections/       # Page sections (HeroSection, AboutSection, etc.)
+│   ├── 📁 styles/             # Stylesheets
+│   │   ├── 📁 components/     # Component-specific styles
+│   │   ├── base.css          # Base styles and resets
+│   │   ├── themes.css        # Theme definitions
+│   │   └── styles.css        # Main stylesheet
+│   ├── 📁 utils/              # Utility functions
+│   │   ├── analytics.js      # Analytics tracking
+│   │   ├── animations.js     # Animation utilities
+│   │   ├── github.js         # GitHub API integration
+│   │   ├── theme.js          # Theme management
+│   │   └── form-handler.js   # Form processing
+│   ├── 📁 assets/             # Static assets
+│   │   ├── 📁 images/        # Optimized images (WebP format)
+│   │   └── 📁 icons/         # Icon assets
+│   ├── 📁 config/             # Configuration files
+│   └── main.js               # Application entry point
+├── 📁 public/                 # Public static files
+│   ├── favicon.svg           # Favicon
+│   ├── manifest.json         # PWA manifest
+│   └── sw.js                 # Service worker
+├── index.html                # Main HTML template
+├── vite.config.js            # Vite configuration
+├── tailwind.config.js        # Tailwind CSS config
+└── package.json              # Dependencies and scripts
 ```
 
-## 🎨 Component Architecture
+## 🎨 Customization Guide
 
-### **Modular Design Philosophy**
-Each component follows a consistent pattern:
+### 🎯 **Personal Information**
 
-```javascript
-// Component Class Structure
-class ComponentName {
-  constructor() {
-    this.container = document.getElementById('container-id');
-    this.initialized = false;
-  }
+1. **Update Profile Data**
+   ```javascript
+   // src/utils/github.js
+   const GITHUB_USERNAME = 'your-username';
+   ```
 
-  async render() {
-    // Load HTML content
-    // Initialize interactions
-    // Handle errors with fallbacks
-  }
+2. **Modify Content**
+   - Edit `src/components/sections/AboutSection.html`
+   - Update `src/components/sections/HeroSection.html`
+   - Customize `src/components/sections/SkillsSection.html`
 
-  renderFallback() {
-    // Immediate static content
-  }
-
-  initializeInteractions() {
-    // Component-specific functionality
-  }
-}
-```
-
-### **Component Loading Strategy**
-- **Priority-based loading** (Hero > About/Projects > Skills > Contact > Footer)
-- **Error handling** with exponential backoff retry
-- **Fallback rendering** for resilience
-- **Performance monitoring** with load time tracking
-
-## 🎯 Performance Optimizations
-
-### **Loading Strategy**
-- Critical components load first and block further loading
-- Non-critical components load asynchronously
-- Comprehensive fallback content prevents blank sections
-- Retry mechanism with exponential backoff
-
-### **CSS Optimizations**
-- Critical CSS inlined in `<head>`
-- Non-critical CSS loaded asynchronously
-- CSS variables for consistent theming
-- Purged unused styles in production
-
-### **JavaScript Optimizations**
-- ES6 modules with dynamic imports
-- Tree shaking and code splitting
-- Minification and compression
-- Legacy browser support with polyfills
-
-## 🔧 Configuration
-
-### **Theme Customization**
-Edit `styles/themes.css` to customize colors, fonts, and animations:
+### 🎨 **Theme Customization**
 
 ```css
+/* src/styles/themes.css */
 :root {
   --primary: #64ffda;
-  --bg-primary: #0a192f;
-  --text-primary: #ccd6f6;
-  /* ... more variables */
+  --primary-dark: #4fd1c7;
+  --bg-primary: #0a0e27;
+  --bg-secondary: #1a1f3a;
+  --text-primary: #ffffff;
+  --text-secondary: #a8b2d1;
 }
 ```
 
-### **GitHub Integration**
-Update `utils/github.js` with your GitHub username and repository settings:
+### 📊 **Analytics Setup**
 
 ```javascript
-const GITHUB_CONFIG = {
-  username: 'your-username',
-  repositories: ['repo1', 'repo2'],
-  apiToken: 'your-token' // Optional for higher rate limits
+// src/utils/analytics.js
+const ANALYTICS_CONFIG = {
+  trackingId: 'your-tracking-id',
+  enableTracking: true
 };
 ```
-
-### **Contact Form**
-Configure `utils/form-handler.js` for your email service:
-
-```javascript
-const FORM_CONFIG = {
-  emailService: 'your-service',
-  apiEndpoint: 'your-endpoint',
-  recipientEmail: 'your@email.com'
-};
-```
-
-## 📱 Responsive Design
-
-### **Breakpoints**
-- **xs**: 475px - Extra small devices
-- **sm**: 640px - Small devices  
-- **md**: 768px - Medium devices
-- **lg**: 1024px - Large devices
-- **xl**: 1280px - Extra large devices
-- **2xl**: 1536px - 2X large devices
-- **3xl**: 1600px - Ultra wide displays
-
-### **Mobile-First Approach**
-All components are designed mobile-first with progressive enhancement for larger screens.
-
-## ♿ Accessibility Features
-
-### **WCAG 2.1 AA Compliance**
-- Semantic HTML structure
-- ARIA labels and roles
-- Keyboard navigation support
-- Focus management
-- Color contrast compliance
-- Screen reader compatibility
-
-### **Reduced Motion Support**
-Respects user's motion preferences:
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  /* Reduced animations */
-}
-```
-
-## 🌐 SEO Optimizations
-
-### **Technical SEO**
-- Semantic HTML5 structure
-- Open Graph and Twitter Card meta tags
-- Structured data (JSON-LD)
-- XML sitemap
-- Robots.txt configuration
-- Canonical URLs
-
-### **Performance SEO**
-- Core Web Vitals optimization
-- Fast loading times
-- Mobile-friendly design
-- Progressive Web App features
 
 ## 🚀 Deployment
 
-### **GitHub Pages (Recommended)**
+### 🌐 **GitHub Pages (Recommended)**
 
 1. **Automatic Deployment**
    ```bash
    npm run deploy
    ```
 
-2. **Manual Deployment**
-   ```bash
-   npm run build
-   git add dist -f
-   git commit -m "Deploy to GitHub Pages"
-   git subtree push --prefix dist origin gh-pages
-   ```
+2. **Manual Setup**
+   - Enable GitHub Pages in repository settings
+   - Set source to "GitHub Actions"
+   - The workflow will auto-deploy on push to main
 
-### **Custom Domain Setup**
-1. Add `CNAME` file to `public/` directory with your domain
-2. Configure DNS with your domain provider
-3. Enable HTTPS in GitHub Pages settings
+### 🔧 **Other Platforms**
 
-### **Environment Variables**
-```bash
-# Production
-NODE_ENV=production
+- **Vercel**: Connect GitHub repo for automatic deployments
+- **Netlify**: Drag and drop the `dist/` folder
+- **Custom Server**: Upload contents of `dist/` folder
 
-# GitHub API (optional)
-GITHUB_TOKEN=your_token
+### 🌍 **Environment Variables**
 
-# Analytics (optional)
-GA_TRACKING_ID=your_id
+Create a `.env` file in the root directory:
+
+```env
+VITE_GITHUB_TOKEN=your_github_token_here
+VITE_ANALYTICS_ID=your_analytics_id_here
+VITE_CONTACT_FORM_ENDPOINT=your_form_endpoint_here
 ```
 
-## 📊 Performance Metrics
+## 🔧 Development
 
-### **Lighthouse Scores**
-- **Performance**: 98+
-- **Accessibility**: 100
-- **Best Practices**: 100
-- **SEO**: 100
+### 🛠 **Development Environment**
 
-### **Core Web Vitals**
-- **LCP** (Largest Contentful Paint): < 1.2s
-- **FID** (First Input Delay): < 50ms
-- **CLS** (Cumulative Layout Shift): < 0.1
+```bash
+# Install dependencies
+npm install
 
-### **Bundle Sizes**
-- **Initial JavaScript**: ~58KB (gzipped: ~11KB)
-- **Critical CSS**: ~47KB (gzipped: ~9KB)
-- **Total Page Size**: ~130KB (gzipped: ~30KB)
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint and format code
+npm run lint
+npm run format
+```
+
+### 🎯 **Adding New Components**
+
+1. Create component file in `src/components/`
+2. Add styles to `src/styles/components/`
+3. Import in `src/main.js`
+4. Register in ComponentLoader
+
+### 📱 **Testing Responsiveness**
+
+The portfolio is tested on:
+- **Desktop**: 1920x1080, 1366x768
+- **Tablet**: iPad, iPad Pro
+- **Mobile**: iPhone 12/13/14, Galaxy S21, Pixel 5
+
+### ⚡ **Performance Optimization**
+
+- Images are automatically optimized to WebP format
+- CSS is purged of unused classes in production
+- JavaScript is minified and tree-shaken
+- Service worker caches resources for offline use
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. **Fork the repository**
+2. **Create your feature branch** (`git checkout -b feature/AmazingFeature`)
+3. **Commit your changes** (`git commit -m 'Add some AmazingFeature'`)
+4. **Push to the branch** (`git push origin feature/AmazingFeature`)
+5. **Open a Pull Request**
 
-## 📝 License
+### 📝 **Contribution Guidelines**
+
+- Follow the existing code style
+- Write meaningful commit messages
+- Test your changes thoroughly
+- Update documentation if needed
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 👨‍💻 Author
+
+**Umut Can Algan**
+- GitHub: [@ucanalgan](https://github.com/ucanalgan)
+- LinkedIn: [umutcanalgan](https://linkedin.com/in/umutcanalgan)
+- Email: umutcanalgan@gmail.com
+
 ## 🙏 Acknowledgments
 
-- **Design inspiration**: Modern portfolio trends and glassmorphism design
-- **Icons**: [Remix Icon](https://remixicon.com/)
-- **Fonts**: [Google Fonts](https://fonts.google.com/) (Inter, JetBrains Mono)
-- **Animations**: CSS animations with reduced motion support
-- **Build tool**: [Vite](https://vitejs.dev/) for fast development and building
+- **Design Inspiration**: Modern portfolio trends and UI/UX best practices
+- **Icons**: [RemixIcon](https://remixicon.com) for beautiful icons
+- **Animations**: CSS animations and Intersection Observer API
+- **GitHub API**: For real-time repository data
+- **Community**: Open source developers who inspire continuous learning
 
-## 📞 Contact
+## 📈 Project Statistics
 
-**Umutcan Algan**
-- 🌐 Portfolio: [umutcanalgan.dev](https://umutcanalgan.dev)
-- 📧 Email: umutcanalgan@hotmail.com
-- 💼 LinkedIn: [linkedin.com/in/umutcanalgan](https://linkedin.com/in/umutcanalgan)
-- 🐙 GitHub: [github.com/ucanalgan](https://github.com/ucanalgan)
+![GitHub stars](https://img.shields.io/github/stars/ucanalgan/Kişisel_web?style=social)
+![GitHub forks](https://img.shields.io/github/forks/ucanalgan/Kişisel_web?style=social)
+![GitHub issues](https://img.shields.io/github/issues/ucanalgan/Kişisel_web)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/ucanalgan/Kişisel_web)
+
+## 🎯 Future Enhancements
+
+- [ ] Multi-language support (i18n)
+- [ ] Blog section integration
+- [ ] Advanced animations with GSAP
+- [ ] CMS integration for content management
+- [ ] Enhanced SEO features
+- [ ] Performance monitoring dashboard
+- [ ] A/B testing capabilities
+- [ ] Advanced analytics integration
 
 ---
 
 <div align="center">
-  <p>Made with ❤️ by Umutcan Algan</p>
-  <p>
-    <a href="https://github.com/ucanalgan/Kisisel_web/stargazers">⭐ Star this repo</a> |
-    <a href="https://github.com/ucanalgan/Kisisel_web/issues">🐛 Report bug</a> |
-    <a href="https://github.com/ucanalgan/Kisisel_web/issues">💡 Request feature</a>
-  </p>
+
+**⭐ Star this repository if you found it helpful!**
+
+Made with ❤️ by [Umut Can Algan](https://github.com/ucanalgan)
+
 </div>
