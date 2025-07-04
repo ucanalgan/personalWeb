@@ -1,633 +1,339 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Umutcan Algan - Junior Software Developer, Full Stack Developer. Modern web teknolojileri ile kullanıcı odaklı çözümler geliştiriyorum.">
-  <meta name="keywords" content="Umutcan Algan, Software Developer, Full Stack, Frontend, Backend, JavaScript, React, Node.js, Python, Web Development">
-  <meta name="author" content="Umutcan Algan">
-  <meta name="robots" content="index, follow">
   
   <!-- SEO Meta Tags -->
-  <link rel="canonical" href="https://umutcanalgan.dev">
-  <link rel="alternate" hreflang="tr" href="https://umutcanalgan.dev">
-  <link rel="alternate" hreflang="x-default" href="https://umutcanalgan.dev">
-  <meta name="theme-color" content="#64ffda">
-  <meta name="msapplication-TileColor" content="#64ffda">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Umut Can Algan - Full-Stack Developer | Modern Web Solutions</title>
+  <meta name="description" content="Full-Stack Developer specialized in React, Node.js, Python, and modern web technologies. Creating innovative digital experiences and scalable applications.">
+  <meta name="keywords" content="full-stack developer, web developer, React developer, Node.js, Python, JavaScript, TypeScript, portfolio, umut can algan">
+  <meta name="author" content="Umut Can Algan">
+  <meta name="robots" content="index, follow">
   
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://umutcanalgan.dev">
-  <meta property="og:title" content="Umutcan Algan - Junior Software Developer">
-  <meta property="og:description" content="Modern web teknolojileri ile kullanıcı odaklı çözümler geliştiren software developer.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/ucanalgan">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://umutcanalgan.dev">
-  <meta property="twitter:title" content="Umutcan Algan - Junior Software Developer">
-  <meta property="twitter:description" content="Modern web teknolojileri ile kullanıcı odaklı çözümler geliştiren software developer.">
-  <meta property="twitter:image" content="https://avatars.githubusercontent.com/ucanalgan">
-
-  <title>Umutcan Algan - Junior Software Developer | Full Stack Developer</title>
+  <meta property="og:title" content="Umut Can Algan - Full-Stack Developer">
+  <meta property="og:description" content="Full-Stack Developer creating innovative digital experiences with modern web technologies. Specialized in React, Node.js, and Python.">
+  <meta property="og:image" content="/assets/images/og-image.webp">
+  <meta property="og:image:alt" content="Umut Can Algan - Full-Stack Developer Portfolio">
+  <meta property="og:url" content="https://ucanalgan.github.io/Kişisel_web/">
+  <meta property="og:site_name" content="Umut Can Algan Portfolio">
+  <meta property="og:locale" content="en_US">
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/Kişisel_web/favicon.svg">
-  <link rel="manifest" href="/Kişisel_web/manifest.json">
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Umut Can Algan - Full-Stack Developer">
+  <meta name="twitter:description" content="Full-Stack Developer creating innovative digital experiences with modern web technologies.">
+  <meta name="twitter:image" content="/assets/images/twitter-card.webp">
+  <meta name="twitter:image:alt" content="Umut Can Algan Portfolio">
+  <meta name="twitter:creator" content="@ucanalgan">
   
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Additional SEO -->
+  <link rel="canonical" href="https://ucanalgan.github.io/Kişisel_web/">
+  <meta name="theme-color" content="#64ffda">
+  <meta name="msapplication-TileColor" content="#0a0e27">
+  
+  <!-- Performance Hints -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//api.github.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preconnect" href="https://api.github.com" crossorigin>
-  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
   
-  <!-- Fonts - Preload for performance -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
   
-  <!-- Icons - Preload for performance -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"></noscript>
+  <!-- Preload App Bundle (will be replaced by Vite) -->
+  <link rel="modulepreload" href="data:text/jsx;base64,aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0Jw0KaW1wb3J0IFJlYWN0RE9NIGZyb20gJ3JlYWN0LWRvbS9jbGllbnQnDQppbXBvcnQgQXBwIGZyb20gJy4vQXBwLmpzeCcNCmltcG9ydCAnLi9zdHlsZXMvc3R5bGVzLmNzcycNCg0KLy8gSW5pdGlhbGl6ZSBSZWFjdCBhcHANClJlYWN0RE9NLmNyZWF0ZVJvb3QoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Jvb3QnKSkucmVuZGVyKA0KICA8UmVhY3QuU3RyaWN0TW9kZT4NCiAgICA8QXBwIC8+DQogIDwvUmVhY3QuU3RyaWN0TW9kZT4sDQopIA==">
+  <link rel="modulepreload" href="/Ki%C5%9Fisel_web/assets/misc/App-CM6SdzW8.jsx">
   
-  <!-- Critical CSS - Preload for performance -->
-  <noscript></noscript>
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
   
-  <!-- Critical CSS for immediate rendering -->
+  <!-- Critical Above-the-Fold CSS (Inline for Performance) -->
   <style>
-    /* Reset and base */
-    * { box-sizing: border-box; }
-    
-    /* CSS Variables - Dark theme default */
+    /* Critical Styles - Inline for instant rendering */
     :root {
-      --bg-primary: #0a192f;
-      --bg-secondary: #112240;
-      --bg-tertiary: #1d2951;
-      --text-primary: #ccd6f6;
-      --text-secondary: #8892b0;
-      --text-accent: #64ffda;
       --primary: #64ffda;
-      --primary-dark: #4db6ac;
-      --border-color: rgba(100, 255, 218, 0.1);
-      --shadow-primary: rgba(100, 255, 218, 0.2);
+      --primary-dark: #4fd1c7;
+      --primary-rgb: rgba(100, 255, 218, 0.1);
+      --bg-primary: #0a0e27;
+      --bg-secondary: #1a1f3a;
+      --bg-tertiary: #262c4a;
+      --text-primary: #ffffff;
+      --text-secondary: #a8b2d1;
+      --border-color: #233554;
+      --shadow-primary: rgba(100, 255, 218, 0.1);
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
     }
     
-    /* Critical layout styles */
-    body {
-      margin: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;font-feature-settings:'kern' 1,'liga' 1,'calt' 1}
+    
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      background-color:var(--bg-primary);
+      color:var(--text-primary);
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale
     }
     
-    /* Utility classes for hero */
-    .text-primary { color: var(--primary); }
-    .text-text-primary { color: var(--text-primary); }
-    .text-text-secondary { color: var(--text-secondary); }
-    .bg-bg-primary { background-color: var(--bg-primary); }
-    .bg-bg-secondary { background-color: var(--bg-secondary); }
-    .border-border-color { border-color: var(--border-color); }
-    .border-primary\/30 { border-color: rgba(100, 255, 218, 0.3); }
+    /* App container optimization */
+    #root{min-height:100vh;display:flex;flex-direction:column}
     
-    /* Component placeholders */
-    .placeholder-content {
-      opacity: 1;
-      transition: opacity 0.3s ease-out;
-    }
-    .component-container[data-loading="true"] .placeholder-content {
-      opacity: 0.7;
-    }
-    .fade-in {
-      animation: fadeIn 0.5s ease-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Loading states */
+    .section-loader{
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
+      background-size:200% 100%;
+      animation:loading 1.5s infinite
     }
     
-    /* Performance optimization */
-    .hero-content * {
-      will-change: auto;
+    @keyframes loading{
+      0%{background-position:-200% 0}
+      100%{background-position:200% 0}
     }
     
-    /* Critical Tailwind utilities */
-    .container { max-width: 1200px; margin: 0 auto; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-    .text-center { text-align: center; }
-    .grid { display: grid; }
-    .flex { display: flex; }
-    .items-center { align-items: center; }
-    .justify-center { justify-content: center; }
-    .space-y-6 > * + * { margin-top: 1.5rem; }
-    .gap-8 { gap: 2rem; }
-    .rounded-xl { border-radius: 0.75rem; }
-    .transition-all { transition: all 0.3s ease; }
-    
-    /* Responsive */
-    @media (min-width: 768px) {
-      .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-      .md\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-      .md\\:text-4xl { font-size: 2.25rem; }
+    /* Scroll Progress Bar - Critical */
+    .scroll-progress{
+      position:fixed;
+      top:0;
+      left:0;
+      width:0%;
+      height:3px;
+      background:linear-gradient(90deg,var(--primary),var(--primary-dark));
+      z-index:1000;
+      transition:width 0.1s ease-out
     }
-    @media (min-width: 1024px) {
-      .lg\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-      .lg\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-      .lg\\:text-7xl { font-size: 4.5rem; }
+    
+    /* Theme Toggle - Critical */
+    .theme-toggle{
+      position:fixed;
+      top:20px;
+      right:20px;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      background:var(--bg-secondary);
+      border:2px solid var(--border-color);
+      color:var(--text-primary);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.2rem;
+      z-index:999;
+      transition:all var(--transition-normal);
+      -webkit-backdrop-filter:blur(10px);
+              backdrop-filter:blur(10px)
+    }
+    
+    .theme-toggle:hover{
+      background:var(--primary);
+      color:var(--bg-primary);
+      transform:scale(1.1);
+      box-shadow:0 8px 25px var(--shadow-primary)
+    }
+    
+    /* Header critical styles */
+    .header{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:998;
+      -webkit-backdrop-filter:blur(20px);
+              backdrop-filter:blur(20px);
+      background:rgba(10,14,39,0.9);
+      border-bottom:1px solid var(--border-color)
+    }
+    
+    /* Hero section critical */
+    .hero-section{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--bg-primary)
+    }
+
+    /* Dark theme by default */
+    .dark{
+      --primary:#64ffda;
+      --accent:#ff6b6b;
+      --background:#0a0e27;
+      --surface:#1a1f3a;
+      --text-primary:#ffffff;
+      --text-secondary:#a8b2d1;
+      --border:#233554
+    }
+
+    /* Light theme */
+    .light{
+      --primary:#2563eb;
+      --accent:#dc2626;
+      --background:#ffffff;
+      --surface:#f8fafc;
+      --text-primary:#1e293b;
+      --text-secondary:#64748b;
+      --border:#e2e8f0
+    }
+    
+    /* Font loading optimization */
+    .font-loading{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif
+    }
+    
+    /* Error boundary styles */
+    .error-fallback{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:200px;
+      padding:20px;
+      color:var(--text-secondary)
+    }
+    
+    /* Hide elements until JS loads */
+    .js-only{opacity:0;transition:opacity 0.3s ease}
+    .js-loaded .js-only{opacity:1}
+    
+    /* Reduced motion preference */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{
+        animation-duration:0.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:0.01ms!important;
+        scroll-behavior:auto!important
+      }
+      .scroll-progress{transition:none}
+    }
+    
+    /* Optimize for print */
+    @media print{
+      .theme-toggle,.scroll-progress,.back-to-top{display:none!important}
+      body{background:white!important;color:black!important}
     }
   </style>
   
-  <!-- Load CSS non-blocking for better performance -->
-  <link href="/Ki%C5%9Fisel_web/assets/css/style-Kr1o5hUU.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript></noscript>
-  
-  <!-- AOS Animation Library - Load on demand only -->
-  <!-- Will be loaded by JS when needed -->
-  
-  <!-- Remove heavy preloads for better LCP -->
-  
-  <!-- Structured Data -->
+  <!-- Schema.org JSON-LD for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Umutcan Algan",
-    "url": "https://umutcanalgan.dev",
-    "image": "https://avatars.githubusercontent.com/ucanalgan",
-    "jobTitle": "Junior Software Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Freelance Developer"
-    },
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "Piri Reis University",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "TR"
-      }
-    },
-    "email": "umutcanalgan@hotmail.com",
-    "telephone": "+90-XXX-XXX-XXXX",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "TR",
-      "addressLocality": "Istanbul"
-    },
-    "birthPlace": {
-      "@type": "Place",
-      "name": "Turkey"
-    },
-    "nationality": "Turkish",
-    "knowsLanguage": [
-      {
-        "@type": "Language",
-        "name": "Turkish",
-        "alternateName": "tr"
-      },
-      {
-        "@type": "Language",
-        "name": "English",
-        "alternateName": "en"
-      }
+    "name": "Umut Can Algan",
+    "jobTitle": "Full-Stack Developer",
+    "description": "Full-Stack Developer specialized in React, Node.js, Python, and modern web technologies",
+    "url": "https://ucanalgan.github.io/Kişisel_web/",
+    "sameAs": [
+      "https://github.com/ucanalgan",
+      "https://linkedin.com/in/ucanalgan"
     ],
     "knowsAbout": [
       "JavaScript",
+      "TypeScript", 
       "React",
       "Node.js",
       "Python",
-      "Full Stack Development",
-      "Web Development",
-      "Software Engineering",
-      "Frontend Development",
-      "Backend Development",
-      "Tailwind CSS",
-      "HTML5",
-      "CSS3"
+      "Full-Stack Development",
+      "Web Development"
     ],
-    "hasCredential": {
-      "@type": "EducationalOccupationalCredential",
-      "name": "Information Systems Engineering Student",
-      "educationalLevel": "University Level",
-      "credentialCategory": "degree"
-    },
-    "sameAs": [
-      "https://github.com/ucanalgan",
-      "https://linkedin.com/in/umutcan-algan/",
-      "https://twitter.com/umutcanalgan",
-      "https://instagram.com/umutcanalgan"
-    ],
-    "description": "Full Stack Developer specializing in modern web technologies and user-centric solutions. Currently studying Information Systems Engineering while working as a freelance developer.",
-    "seeks": {
-      "@type": "Occupation",
-      "name": "Software Developer",
-      "occupationLocation": {
-        "@type": "Place",
-        "name": "Remote or Istanbul, Turkey"
-      }
-    },
-    "memberOf": {
+    "alumniOf": {
       "@type": "Organization",
-      "name": "Developer Community",
-      "description": "Active member of software development communities"
+      "name": "University Name"
     }
   }
   </script>
   
-  <!-- Website Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Umutcan Algan Portfolio",
-    "alternateName": "Umutcan Algan - Software Developer",
-    "url": "https://umutcanalgan.dev",
-    "description": "Personal portfolio website of Umutcan Algan, showcasing full stack development projects and skills",
-    "author": {
-      "@type": "Person",
-      "name": "Umutcan Algan"
-    },
-    "inLanguage": [
-      "tr-TR",
-      "en-US"
-    ],
-    "dateCreated": "2024-01-01",
-    "dateModified": "2024-12-28",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://umutcanalgan.dev/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    },
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Umutcan Algan"
-    }
-  }
-  </script>
-  
-  <!-- Portfolio/Creative Work Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "Umutcan Algan Portfolio Website",
-    "creator": {
-      "@type": "Person",
-      "name": "Umutcan Algan"
-    },
-    "url": "https://umutcanalgan.dev",
-    "description": "A modern, responsive portfolio website showcasing full stack development skills and projects",
-    "dateCreated": "2024-01-01",
-    "dateModified": "2024-12-28",
-    "genre": "Portfolio Website",
-    "inLanguage": "tr-TR",
-    "keywords": "portfolio, web development, full stack, React, Node.js, JavaScript",
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Employers, Clients, Developers"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Software Development",
-      "description": "Full stack web development services and portfolio"
-    }
-  }
-  </script>
-
-  <!-- CSRF Token Placeholder -->
-  <meta name="csrf-token" content="__CSRF_TOKEN__">
-
-  <!-- Critical resource preloads only -->
-  <link rel="preload" href="/Ki%C5%9Fisel_web/assets/js/app-9a8Vgw-j.js" as="script">
-  <script type="module" crossorigin src="/Kişisel_web/assets/js/main-Cbqd7WFs.js"></script>
-  <link rel="stylesheet" crossorigin href="/Kişisel_web/assets/css/main-DvmZLm_G.css">
-</head>
-
-<body class="bg-dark text-white overflow-x-hidden" data-theme="dark" aria-label="Umutcan Algan Portfolio Website">
-  
-  <!-- Skip Navigation Link for Accessibility -->
-  <a href="#main-content" class="skip-link focus-visible-enhanced">
-    Skip to main content
-  </a>
-  
-  <!-- Minimal Loading Screen -->
-  <div id="loader" class="fixed inset-0 bg-bg-primary z-50 flex items-center justify-center" style="opacity: 1; transition: opacity 0.5s ease-out;">
-    <div class="text-center">
-      <div class="w-12 h-12 border-3 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-3"></div>
-      <p class="text-text-accent text-sm">UA</p>
-    </div>
-  </div>
-
-  <!-- Header Component Container -->
-  <div id="header-container" class="component-container" data-component="header">
-    <!-- Header component will be loaded here via JS -->
-    <!-- Fallback header -->
-    <noscript>
-      <header class="fixed top-0 left-0 right-0 z-50 bg-bg-primary border-b border-border-color">
-        <nav class="container mx-auto px-6 py-4">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-              <span class="text-xl font-bold text-text-primary">Umutcan Algan</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-              <a href="#about" class="text-text-secondary hover:text-primary">About</a>
-              <a href="#skills" class="text-text-secondary hover:text-primary">Skills</a>
-              <a href="#github" class="text-text-secondary hover:text-primary">Projects</a>
-              <a href="#contact" class="text-text-secondary hover:text-primary">Contact</a>
-            </div>
-          </div>
-        </nav>
-      </header>
-    </noscript>
-  </div>
-
-  <!-- Main Content Container -->
-  <main role="main" id="main-content" tabindex="-1">
-    <!-- Hero Section Component Container -->
-    <div id="hero-container"></div>
-    
-    <!-- About Section Component Container -->
-    <div id="about-container"></div>
-    
-    <!-- Skills Section Component Container -->
-    <div id="skills-container"></div>
-    
-    <!-- Projects/GitHub Section Component Container -->
-    <div id="projects-container"></div>
-    
-    <!-- Contact Section Component Container -->
-    <div id="contact-container"></div>
-  </main>
-
-  <!-- Footer Component Container -->
-  <div id="footer-container"></div>
-
-  <!-- Error Boundary Container -->
-  <div id="error-boundary" class="hidden fixed inset-0 bg-bg-primary/95 backdrop-blur-sm z-50 flex items-center justify-center">
-    <div class="bg-bg-secondary border border-border-color rounded-xl p-8 max-w-md mx-4 text-center">
-      <i class="fas fa-exclamation-triangle text-yellow-500 text-4xl mb-4"></i>
-      <h3 class="text-xl font-bold text-text-primary mb-2">Something went wrong</h3>
-      <p class="text-text-secondary mb-6">We're experiencing technical difficulties. Please refresh the page or try again later.</p>
-      <div class="space-x-4">
-        <button onclick="window.location.reload()" class="btn-base btn-primary">
-          <i class="fas fa-refresh"></i>
-          Refresh Page
-        </button>
-        <button onclick="document.getElementById('error-boundary').classList.add('hidden')" class="btn-base btn-ghost">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts - Modular Architecture with ES6 Modules -->
-  <!-- Core Libraries - Preloaded for performance -->
-  <!-- Load libraries on demand -->
+  <!-- Performance monitoring -->
   <script>
-    // Load AOS only when needed
-    window.loadAOS = function() {
-      if (!window.AOS) {
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
-        script.onload = () => {
-          AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
-        };
-        document.head.appendChild(script);
-      }
-    };
-    
-    // Load FontAwesome icons on demand  
-    window.loadFontAwesome = function() {
-      if (!document.querySelector('script[src*="font-awesome"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js';
-        document.head.appendChild(script);
-      }
-    };
-  </script>
-  
-  <!-- Legacy Browser Support -->
-  <script nomodule src="https://polyfill.io/v3/polyfill.min.js?features=es6,IntersectionObserver"></script>
-  
-  <!-- Modern ES6 Module System -->
-  
-  <!-- Fallback for older browsers -->
-  <script nomodule>
-    // Fallback loader for non-module browsers
-    (function() {
-      const scripts = [
-        'js/utils.js',
-        'js/theme.js',
-        'js/animations.js',
-        'js/github.js',
-        'js/form-handler.js'
-      ];
-      
-      function loadScript(src, callback) {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = callback;
-        script.onerror = function() {
-          console.error('Failed to load script:', src);
-          if (callback) callback();
-        };
-        document.head.appendChild(script);
-      }
-      
-      function loadScriptsSequentially(scripts, index = 0) {
-        if (index >= scripts.length) {
-          // All scripts loaded, initialize app
-          if (window.initApp) {
-            window.initApp();
-          }
-          return;
-        }
-        
-        loadScript(scripts[index], function() {
-          loadScriptsSequentially(scripts, index + 1);
-        });
-      }
-      
-      loadScriptsSequentially(scripts);
-    })();
-  </script>
-
-  <!-- Lazy Loading Implementation -->
-  <script>
-    // Lazy loading for images and iframes
-    function initLazyLoading() {
-      if ('IntersectionObserver' in window) {
-        const lazyElements = document.querySelectorAll('[data-lazy]');
-        const lazyElementObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const lazyElement = entry.target;
-              
-              if (lazyElement.tagName === 'IMG') {
-                lazyElement.src = lazyElement.dataset.lazy;
-                lazyElement.classList.add('fade-in');
-              } else if (lazyElement.tagName === 'IFRAME') {
-                lazyElement.src = lazyElement.dataset.lazy;
-              }
-              
-              lazyElement.removeAttribute('data-lazy');
-              lazyElementObserver.unobserve(lazyElement);
-            }
-          });
-        }, {
-          rootMargin: '50px 0px',
-          threshold: 0.01
-        });
-        
-        lazyElements.forEach(element => {
-          lazyElementObserver.observe(element);
-        });
-      } else {
-        // Fallback for browsers without IntersectionObserver
-        const lazyElements = document.querySelectorAll('[data-lazy]');
-        lazyElements.forEach(element => {
-          if (element.tagName === 'IMG') {
-            element.src = element.dataset.lazy;
-          } else if (element.tagName === 'IFRAME') {
-            element.src = element.dataset.lazy;
-          }
-          element.removeAttribute('data-lazy');
-        });
-      }
-    }
-
-    // Performance optimization: Preload critical resources
-    function preloadCriticalResources() {
-      const criticalImages = [
-        'https://avatars.githubusercontent.com/ucanalgan',
-        // Add other critical images here
-      ];
-      
-      criticalImages.forEach(src => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = src;
-        document.head.appendChild(link);
-      });
-    }
-
-    // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize lazy loading
-      initLazyLoading();
-      
-      // Enhanced lazy loading for components (import from utils)
-      import('/Ki%C5%9Fisel_web/assets/js/utils-Dc3AWRJf.js').then(({ initLazyImages }) => {
-        if (initLazyImages) {
-        initLazyImages();
-        }
-      }).catch(error => {
-        console.warn('Utils.js not found, continuing without lazy images:', error);
-      });
-      
-      // Preload critical resources
-      preloadCriticalResources();
-      
-      // Security initialization
-      if (window.csrfManager) {
-        window.csrfManager.initialize();
-      }
-      
-      // Fallback: Hide loader after 3 seconds if still visible
-      setTimeout(() => {
-        const loader = document.getElementById('loader');
-        if (loader && loader.style.display !== 'none') {
-          console.log('Force hiding loader after timeout');
-          loader.style.display = 'none';
-        }
-      }, 3000);
-    });
-
-    // Initialize after all deferred scripts are loaded
+    // Web Vitals monitoring
     window.addEventListener('load', () => {
-      // Error boundary initialization
-      window.errorBoundary?.initialize();
-      
-      // Load AOS when page is ready for better performance
-      if (window.loadAOS) {
-        window.loadAOS();
-      }
-      
-      // Load FontAwesome when needed
-      if (window.loadFontAwesome) {
-        window.loadFontAwesome();
-      }
-
-      // Performance monitoring
-      console.log('🚀 Page loaded successfully');
-      console.log('📊 Performance:', {
-        loadTime: performance.now(),
-        components: window.componentLoader?.getLoadedComponents()?.length || 0,
-        memory: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1024 / 1024) + 'MB' : 'N/A'
-      });
-      
-      // Final fallback: Force hide loader after 5 seconds
-      setTimeout(() => {
-        const loader = document.getElementById('loader');
-        if (loader && loader.style.display !== 'none') {
-          console.log('Final fallback: Force hiding loader');
-          loader.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      }, 2000); // Reduced timeout for better UX
-    });
-
-    // Component loading status
-    document.addEventListener('componentsLoaded', () => {
-      console.log('✅ All components loaded and initialized');
-      
-      // Re-initialize lazy loading for dynamically loaded content
-      initLazyLoading();
-      
-      // Initialize theme after components are loaded
-      if (window.themeManager) {
-        window.themeManager.init();
-      }
-      
-      // Initialize GitHub API
-      if (window.githubAPI) {
-        window.githubAPI.init();
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          import('/Ki%C5%9Fisel_web/assets/js/analytics-yPvNtPlC.js').then(module => {
+            module.initWebVitals?.();
+          }).catch(() => {
+            // Silently fail
+          });
+        });
       }
     });
-
-    // Error handling for component loading
+    
+    // Mark body as JS loaded for CSS transitions
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('js-loaded');
+    });
+    
+    // Critical error handling
     window.addEventListener('error', (e) => {
-      console.error('🚨 Global error:', e.error);
-      if (window.errorBoundary) {
-        window.errorBoundary.handleError(e.error);
+      // Log critical errors
+      if (window.gtag) {
+        gtag('event', 'exception', {
+          description: e.message,
+          fatal: false
+        });
       }
     });
-
-    // Performance monitoring for Core Web Vitals
-    if ('web-vital' in window || typeof webVitals !== 'undefined') {
-      function sendToAnalytics(metric) {
-        console.log('📈 Web Vital:', metric);
-        // Send to your analytics service here
-      }
-
-      // Monitor Core Web Vitals
-      try {
-        if (typeof webVitals !== 'undefined') {
-          webVitals.getCLS(sendToAnalytics);
-          webVitals.getFID(sendToAnalytics);
-          webVitals.getFCP(sendToAnalytics);
-          webVitals.getLCP(sendToAnalytics);
-          webVitals.getTTFB(sendToAnalytics);
-        }
-      } catch (e) {
-        console.log('Web Vitals not available');
-      }
-    }
   </script>
-
+  <script type="module" crossorigin src="/Kişisel_web/assets/js/main-BF5uD6ga.js"></script>
+  <link rel="stylesheet" crossorigin href="/Kişisel_web/assets/css/main-DdCtQYux.css">
+</head>
+<body class="font-loading dark">
+  <!-- App Root -->
+  <div id="root">
+    <!-- Fallback content for non-JS users -->
+    <noscript>
+      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h1>Umut Can Algan - Full-Stack Developer</h1>
+        <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser.</p>
+        <p>For the best experience, visit: <a href="https://github.com/ucanalgan">GitHub Profile</a></p>
+      </div>
+    </noscript>
+    
+    <!-- Loading indicator while JS loads -->
+    <div id="app-loading" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 9999;">
+      <div style="width: 40px; height: 40px; border: 3px solid #233554; border-top: 3px solid #64ffda; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px;"></div>
+      <p style="color: #a8b2d1; font-size: 14px;">Loading...</p>
+    </div>
+  </div>
+  
+  <!-- Load non-critical CSS asynchronously -->
+  <script>
+    // Load full CSS after critical rendering
+    const loadCSS = (href) => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    };
+    
+    // Load Remix Icons asynchronously
+    requestAnimationFrame(() => {
+      loadCSS('https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css');
+    });
+  </script>
+  
+  <!-- Main App Script -->
+  
+  <!-- Remove loading indicator after app loads -->
+  <script>
+    window.addEventListener('load', () => {
+      const loading = document.getElementById('app-loading');
+      if (loading) {
+        loading.style.opacity = '0';
+        setTimeout(() => loading.remove(), 300);
+      }
+    });
+  </script>
 </body>
 </html>
