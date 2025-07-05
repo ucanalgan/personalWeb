@@ -15,7 +15,7 @@ export class AdvancedAnalytics {
       debug: false,
       ...options
     };
-    
+
     this.sessionData = {
       sessionId: this.generateSessionId(),
       startTime: Date.now(),
@@ -27,7 +27,7 @@ export class AdvancedAnalytics {
       viewport: { width: window.innerWidth, height: window.innerHeight },
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
     };
-    
+
     this.init();
   }
 
@@ -39,14 +39,14 @@ export class AdvancedAnalytics {
     this.initFormTracking();
     this.initVisibilityTracking();
     this.initCustomEvents();
-    
+
     if (this.options.enableGoogleAnalytics) {
       this.initGoogleAnalytics();
     }
-    
+
     // Send initial page view
     this.trackPageView();
-    
+
     // Setup session end tracking
     this.setupSessionEndTracking();
   }
@@ -57,13 +57,13 @@ export class AdvancedAnalytics {
   initPerformanceMonitoring() {
     // Core Web Vitals tracking
     this.trackWebVitals();
-    
+
     // Resource timing
     this.trackResourceTiming();
-    
+
     // Navigation timing
     this.trackNavigationTiming();
-    
+
     // Custom performance marks
     this.trackCustomMarks();
   }
@@ -73,7 +73,7 @@ export class AdvancedAnalytics {
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
       const lastEntry = entries[entries.length - 1];
-      
+
       this.trackEvent('web_vitals', 'lcp', {
         value: lastEntry.startTime,
         rating: this.getWebVitalRating('lcp', lastEntry.startTime)
@@ -83,7 +83,7 @@ export class AdvancedAnalytics {
     // First Input Delay (FID)
     new PerformanceObserver((entryList) => {
       const firstInput = entryList.getEntries()[0];
-      
+
       this.trackEvent('web_vitals', 'fid', {
         value: firstInput.processingStart - firstInput.startTime,
         rating: this.getWebVitalRating('fid', firstInput.processingStart - firstInput.startTime)
@@ -98,7 +98,7 @@ export class AdvancedAnalytics {
           clsScore += entry.value;
         }
       }
-      
+
       this.trackEvent('web_vitals', 'cls', {
         value: clsScore,
         rating: this.getWebVitalRating('cls', clsScore)
@@ -115,7 +115,7 @@ export class AdvancedAnalytics {
         largestResource: Math.max(...resources.map(r => r.transferSize || 0)),
         totalTransferSize: resources.reduce((sum, r) => sum + (r.transferSize || 0), 0)
       };
-      
+
       this.trackEvent('performance', 'resource_timing', resourceData);
     });
   }
@@ -123,7 +123,7 @@ export class AdvancedAnalytics {
   trackNavigationTiming() {
     window.addEventListener('load', () => {
       const nav = performance.getEntriesByType('navigation')[0];
-      
+
       const timingData = {
         dns: nav.domainLookupEnd - nav.domainLookupStart,
         tcp: nav.connectEnd - nav.connectStart,
@@ -132,7 +132,7 @@ export class AdvancedAnalytics {
         dom: nav.domContentLoadedEventEnd - nav.navigationStart,
         load: nav.loadEventEnd - nav.navigationStart
       };
-      
+
       this.trackEvent('performance', 'navigation_timing', timingData);
     });
   }
@@ -142,7 +142,7 @@ export class AdvancedAnalytics {
     window.addEventListener('load', () => {
       const marks = performance.getEntriesByType('mark');
       const measures = performance.getEntriesByType('measure');
-      
+
       if (marks.length > 0 || measures.length > 0) {
         this.trackEvent('performance', 'custom_marks', {
           marks: marks.map(mark => ({
@@ -174,7 +174,7 @@ export class AdvancedAnalytics {
         position: { x: e.clientX, y: e.clientY },
         timestamp: Date.now()
       };
-      
+
       this.trackInteraction('click', trackingData);
     });
 
@@ -210,9 +210,9 @@ export class AdvancedAnalytics {
       const scrollPercent = Math.round(
         (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
       );
-      
+
       maxScroll = Math.max(maxScroll, scrollPercent);
-      
+
       scrollMilestones.forEach(milestone => {
         if (scrollPercent >= milestone && !trackedMilestones.has(milestone)) {
           trackedMilestones.add(milestone);
@@ -222,7 +222,7 @@ export class AdvancedAnalytics {
     };
 
     window.addEventListener('scroll', this.debounce(trackScrollDepth, 250));
-    
+
     // Track time spent on page
     window.addEventListener('beforeunload', () => {
       this.trackEvent('engagement', 'time_on_page', {
@@ -317,7 +317,7 @@ export class AdvancedAnalytics {
       timestamp: Date.now(),
       viewport: { width: window.innerWidth, height: window.innerHeight }
     };
-    
+
     this.sessionData.pageViews.push(pageData);
     this.trackEvent('navigation', 'page_view', pageData);
   }
@@ -331,11 +331,11 @@ export class AdvancedAnalytics {
       sessionId: this.sessionData.sessionId,
       page: window.location.pathname
     };
-    
+
     if (this.options.debug) {
       // Analytics event tracked
     }
-    
+
     // Send to your analytics endpoint
     this.sendEvent(category, event);
   }
@@ -359,7 +359,7 @@ export class AdvancedAnalytics {
       fid: { good: 100, poor: 300 },
       cls: { good: 0.1, poor: 0.25 }
     };
-    
+
     const threshold = thresholds[metric];
     if (value <= threshold.good) return 'good';
     if (value <= threshold.poor) return 'needs-improvement';
@@ -372,7 +372,7 @@ export class AdvancedAnalytics {
   }
 
   generateSessionId() {
-    return 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    return `sess_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
   debounce(func, wait) {
@@ -389,7 +389,7 @@ export class AdvancedAnalytics {
 
   async sendEvent(eventName, eventData) {
     if (!this.options.enableCustomTracking) return;
-    
+
     try {
       // Store locally for all environments
       const events = JSON.parse(localStorage.getItem('analytics_events') || '[]');
@@ -431,7 +431,7 @@ export class AdvancedAnalytics {
         interactions: this.sessionData.interactions.length,
         errors: this.sessionData.errors.length
       };
-      
+
       // Use sendBeacon for reliable delivery (only in production)
       if (navigator.sendBeacon && window.location.hostname !== 'localhost') {
         navigator.sendBeacon('/api/analytics/session-end', JSON.stringify(sessionSummary));
@@ -462,7 +462,7 @@ window.trackPageView = (page) => analytics.trackPageView(page);
 export function trackProjectMetrics() {
   const projectCards = document.querySelectorAll('.project-card');
   const projectViews = new Map();
-  
+
   // Track project card visibility
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -478,15 +478,15 @@ export function trackProjectMetrics() {
       }
     });
   }, { threshold: 0.5 });
-  
+
   projectCards.forEach(card => observer.observe(card));
-  
+
   // Track project interactions
   projectCards.forEach(card => {
     card.addEventListener('click', (e) => {
       const projectId = card.dataset.id;
       const action = e.target.closest('a') ? 'external_link' : 'details_view';
-      
+
       trackEvent('project_interaction', {
         project_id: projectId,
         action: action,
@@ -494,7 +494,7 @@ export function trackProjectMetrics() {
       });
     });
   });
-  
+
   return {
     getProjectViews: () => Array.from(projectViews.entries()),
     getTopViewedProjects: () => {
@@ -508,16 +508,16 @@ export function trackProjectMetrics() {
 // A/B test project layouts
 export function testProjectLayouts() {
   const layouts = ['grid', 'masonry', 'carousel'];
-  const currentLayout = localStorage.getItem('project_layout') || 
+  const currentLayout = localStorage.getItem('project_layout') ||
     layouts[Math.floor(Math.random() * layouts.length)];
-  
+
   localStorage.setItem('project_layout', currentLayout);
-  
+
   trackEvent('layout_test', {
     layout: currentLayout,
     timestamp: Date.now()
   });
-  
+
   return currentLayout;
 }
 
@@ -529,7 +529,7 @@ export function trackProjectSearch(query, results) {
     has_results: results.length > 0,
     timestamp: Date.now()
   });
-  
+
   // Track popular search terms
   const searches = JSON.parse(localStorage.getItem('project_searches') || '[]');
   searches.push({
@@ -537,12 +537,12 @@ export function trackProjectSearch(query, results) {
     timestamp: Date.now(),
     results: results.length
   });
-  
+
   // Keep only last 100 searches
   if (searches.length > 100) {
     searches.splice(0, searches.length - 100);
   }
-  
+
   localStorage.setItem('project_searches', JSON.stringify(searches));
 }
 
@@ -563,7 +563,7 @@ class AnalyticsManager {
       width: window.innerWidth,
       height: window.innerHeight
     };
-    
+
     if (this.isEnabled) {
       this.init();
     }
@@ -586,19 +586,19 @@ class AnalyticsManager {
   }
 
   generateSessionId() {
-    return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
   trackPageLoad() {
     if (!this.isEnabled) return;
-    
+
     this.trackEvent('page_load', {
       url: window.location.href,
       title: document.title,
       referrer: document.referrer,
       timestamp: Date.now()
     });
-    
+
     // Track performance metrics
     window.addEventListener('load', () => {
       if (performance.timing) {
@@ -609,7 +609,7 @@ class AnalyticsManager {
           firstPaint: this.getFirstPaint(),
           firstContentfulPaint: this.getFirstContentfulPaint()
         };
-        
+
         this.trackEvent('performance_metrics', this.performanceMetrics);
       }
     });
@@ -629,7 +629,7 @@ class AnalyticsManager {
 
   initInteractionTracking() {
     if (!this.isEnabled) return;
-    
+
     // Track button clicks
     document.addEventListener('click', (e) => {
       if (e.target.matches('button, .btn, [role="button"]')) {
@@ -656,16 +656,16 @@ class AnalyticsManager {
 
   initScrollTracking() {
     if (!this.isEnabled) return;
-    
+
     let maxScroll = 0;
     const trackScrollDepth = this.debounce(() => {
       const scrollPercent = Math.round(
         (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
       );
-      
+
       if (scrollPercent > maxScroll) {
         maxScroll = scrollPercent;
-        
+
         // Track milestone scroll depths
         const milestones = [25, 50, 75, 90];
         if (milestones.includes(scrollPercent)) {
@@ -682,7 +682,7 @@ class AnalyticsManager {
 
   initFormTracking() {
     if (!this.isEnabled) return;
-    
+
     document.addEventListener('submit', (e) => {
       if (e.target.matches('form')) {
         this.trackEvent('form_submit', {
@@ -706,7 +706,7 @@ class AnalyticsManager {
 
   initErrorTracking() {
     if (!this.isEnabled) return;
-    
+
     // Track JavaScript errors
     window.addEventListener('error', (e) => {
       this.trackEvent('javascript_error', {
@@ -728,7 +728,7 @@ class AnalyticsManager {
 
   initViewportTracking() {
     if (!this.isEnabled) return;
-    
+
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
@@ -737,7 +737,7 @@ class AnalyticsManager {
           width: window.innerWidth,
           height: window.innerHeight
         };
-        
+
         this.trackEvent('viewport_change', this.viewport);
       }, 500);
     });
@@ -745,7 +745,7 @@ class AnalyticsManager {
 
   startSessionMonitoring() {
     if (!this.isEnabled) return;
-    
+
     // Track session duration every 30 seconds
     setInterval(() => {
       const sessionDuration = Date.now() - this.startTime;
@@ -771,7 +771,7 @@ class AnalyticsManager {
         events_count: this.events.length,
         performance_metrics: this.performanceMetrics
       });
-      
+
       // Send remaining events
       this.sendEvents(true);
     });
@@ -779,7 +779,7 @@ class AnalyticsManager {
 
   trackEvent(eventName, eventData = {}) {
     if (!this.isEnabled) return;
-    
+
     const event = {
       id: this.generateEventId(),
       name: eventName,
@@ -801,7 +801,7 @@ class AnalyticsManager {
   }
 
   generateEventId() {
-    return 'event_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    return `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
   debounce(func, wait) {
@@ -816,9 +816,9 @@ class AnalyticsManager {
     };
   }
 
-  async sendEvents(force = false) {
+  async sendEvents(_force = false) {
     if (this.events.length === 0 || !this.isEnabled) return;
-    
+
     try {
       // In production, this would send to your analytics endpoint
       // For now, we'll just clear the events
@@ -870,4 +870,4 @@ export function getAnalytics() {
   return analyticsManager;
 }
 
-export default AnalyticsManager; 
+export default AnalyticsManager;
