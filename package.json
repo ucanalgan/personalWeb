@@ -47,12 +47,16 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "gh-pages": "^6.1.1",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.2",
+    "lint-staged": "^15.2.2",
     "postcss": "^8.5.3",
     "postcss-import": "^16.1.1",
     "tailwindcss": "^3.4.17",
+    "terser": "^5.29.2",
     "typescript": "^5.8.3",
     "vite": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "notes": {
     "removedDependencies": {
