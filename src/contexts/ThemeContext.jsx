@@ -65,3 +65,8 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
+
+// Prop validation
+ThemeProvider.propTypes = {
+  children: null // Accept any node type
+};

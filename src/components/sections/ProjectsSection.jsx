@@ -42,7 +42,7 @@ const ProjectsSection = () => {
   // Dynamic filters based on actual repository languages
   const getLanguageFilters = () => {
     if (!featuredRepositories) return [{ id: 'all', label: 'All Projects', icon: 'ri-apps-line', count: 0 }];
-    
+
     const languageCounts = {};
     featuredRepositories.forEach(repo => {
       if (repo.language) {
@@ -68,6 +68,7 @@ const ProjectsSection = () => {
 
   // Intersection Observer for animations
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -77,13 +78,13 @@ const ProjectsSection = () => {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -199,6 +200,12 @@ const ProjectsSection = () => {
       </div>
     </div>
   );
+
+  // Prop validation for ProjectCard
+  ProjectCard.propTypes = {
+    project: null, // Accept any object
+    index: null // Accept any number
+  };
 
   return (
     <section id="projects" className="py-32 bg-gradient-to-br from-background via-surface/5 to-background relative overflow-hidden">

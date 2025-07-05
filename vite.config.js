@@ -1,7 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig(({ _command, mode }) => {
   const isProduction = mode === 'production';
@@ -12,13 +11,6 @@ export default defineConfig(({ _command, mode }) => {
       react({
         // Enable React Fast Refresh
         fastRefresh: !isProduction
-      }),
-      // Bundle analyzer (only in build)
-      isProduction && visualizer({
-        filename: 'dist/stats.html',
-        open: false,
-        gzipSize: true,
-        brotliSize: true
       })
     ].filter(Boolean),
 
@@ -148,9 +140,6 @@ export default defineConfig(({ _command, mode }) => {
         'react',
         'react-dom',
         'react/jsx-runtime'
-      ],
-      exclude: [
-        // Exclude large libraries that should be loaded separately
       ],
       // Force optimization of certain packages
       force: true

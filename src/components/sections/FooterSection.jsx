@@ -122,7 +122,7 @@ const FooterSection = () => {
               © {currentYear} Umutcan Algan. All rights reserved.
             </p>
           </div>
-          </div>
+        </div>
       </div>
     </footer>
   );

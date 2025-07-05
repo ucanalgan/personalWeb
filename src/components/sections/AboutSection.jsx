@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Button from '../common/Button';
 
 const AboutSection = () => {
@@ -15,39 +15,37 @@ const AboutSection = () => {
     { name: 'AWS', level: 70, icon: 'ri-cloud-line', color: 'from-orange-400 to-red-500' }
   ];
 
-  const stats = [
+  const stats = useMemo(() => [
     { label: 'Years Experience', value: 2, suffix: '+', icon: 'ri-time-line', color: 'text-cyan-400' },
     { label: 'Projects Completed', value: 15, suffix: '+', icon: 'ri-trophy-line', color: 'text-purple-400' },
     { label: 'Technologies Mastered', value: 10, suffix: '+', icon: 'ri-code-s-slash-line', color: 'text-green-400' }
-  ];
+  ], []);
 
   // Intersection Observer for animations
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Animate stats
-          stats.forEach((stat, index) => {
-            setTimeout(() => {
-              animateCounter(stat.label, stat.value);
-            }, index * 200);
+          stats.forEach(stat => {
+            animateCounter(stat.label, stat.value);
           });
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, [stats]);
 
   const animateCounter = (label, targetValue) => {
     let currentValue = 0;
@@ -70,9 +68,9 @@ const AboutSection = () => {
   };
 
   const getStatValue = (label, originalValue) => {
-                if (label === 'Years Experience') return animatedStats.experience;
-            if (label === 'Projects Completed') return animatedStats.projects;
-            if (label === 'Technologies Mastered') return animatedStats.learning;
+    if (label === 'Years Experience') return animatedStats.experience;
+    if (label === 'Projects Completed') return animatedStats.projects;
+    if (label === 'Technologies Mastered') return animatedStats.learning;
     return originalValue;
   };
 
@@ -117,7 +115,7 @@ const AboutSection = () => {
                       <div>
                         <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">Academic Development</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                        Studying Information Systems Engineering, I’m building a strong foundation in both software development and network systems. Through hands-on labs and academic projects, I’ve developed skills in data structures, computer networks, and system design—bridging theory with real-world application.
+                        Studying Information Systems Engineering, I'm building a strong foundation in both software development and network systems. Through hands-on labs and academic projects, I've developed skills in data structures, computer networks, and system design—bridging theory with real-world application.
                         </p>
                       </div>
                     </div>
@@ -131,7 +129,7 @@ const AboutSection = () => {
                       <div>
                         <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300"> Freelance & Personal Projects</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                        Outside of school, I’ve worked on several personal and freelance projects to sharpen my skills. From creating dynamic websites and GitHub-integrated portfolios to building small web tools, I focus on practical solutions that are both scalable and user-friendly. These projects reflect my passion for clean architecture and real problem-solving.
+                        Outside of school, I've worked on several personal and freelance projects to sharpen my skills. From creating dynamic websites and GitHub-integrated portfolios to building small web tools, I focus on practical solutions that are both scalable and user-friendly. These projects reflect my passion for clean architecture and real problem-solving.
                         </p>
                       </div>
                     </div>

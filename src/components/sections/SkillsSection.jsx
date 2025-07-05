@@ -111,13 +111,14 @@ const SkillsSection = () => {
           <div className="text-center mb-20">
             <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <span className="inline-block px-6 py-2 bg-accent/10 text-accent border border-accent/20 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-              Technologies & Tools 
+              Technologies & Tools
               </span>
               <h2 className="display-2xl mb-8">
                 My <span className="gradient-text">Tech Stack</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-              A curated set of technologies and tools utilized across the software development lifecycle — from user interface design to backend architecture and system optimization.
+              A curated set of technologies and tools utilized across the software development lifecycle —
+              from user interface design to backend architecture and system optimization.
               </p>
             </div>
           </div>

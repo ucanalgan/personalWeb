@@ -71,7 +71,7 @@ function initGSAP() {
 /**
  * Hero section animations
  */
-function initHeroAnimations() {
+function _initHeroAnimations() {
   if (typeof gsap === 'undefined') return;
 
   const heroTimeline = gsap.timeline();
@@ -113,13 +113,13 @@ function initHeroAnimations() {
 /**
  * Section reveal animations
  */
-function initSectionRevealAnimations() {
+function _initSectionRevealAnimations() {
   if (typeof gsap === 'undefined') return;
 
   gsap.registerPlugin(ScrollTrigger);
 
   // Animate sections on scroll
-  gsap.utils.toArray('section').forEach((section, index) => {
+  gsap.utils.toArray('section').forEach((section, _index) => {
     gsap.fromTo(section,
       { opacity: 0, y: 50 },
       {
@@ -139,12 +139,12 @@ function initSectionRevealAnimations() {
 
   // Animate skill bars
   gsap.utils.toArray('.skill-progress').forEach(bar => {
-    const percentage = bar.dataset.percentage || 0;
+    const _percentage = bar.dataset.percentage || 0;
 
     gsap.fromTo(bar,
       { width: '0%' },
       {
-        width: `${percentage}%`,
+        width: `${_percentage}%`,
         duration: 1.5,
         ease: 'power3.out',
         scrollTrigger: {
@@ -160,7 +160,7 @@ function initSectionRevealAnimations() {
 /**
  * Button hover animations
  */
-function initButtonAnimations() {
+function _initButtonAnimations() {
   if (typeof gsap === 'undefined') return;
 
   // Primary buttons
@@ -205,7 +205,7 @@ function initButtonAnimations() {
 /**
  * Project card animations
  */
-function initProjectCardAnimations() {
+function _initProjectCardAnimations() {
   if (typeof gsap === 'undefined') return;
 
   document.querySelectorAll('.project-card, .github-project-card').forEach(card => {
@@ -371,7 +371,7 @@ export function initSkillProgressAnimations() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const bar = entry.target;
-          const percentage = bar.getAttribute('data-percentage');
+          const _percentage = bar.getAttribute('data-percentage');
 
           // Use CSS custom property to animate to target width
           setTimeout(() => {
