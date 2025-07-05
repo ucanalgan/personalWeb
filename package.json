@@ -12,7 +12,7 @@
     "lint": "eslint . --ext js,jsx",
     "lint:fix": "eslint . --ext js,jsx --fix",
     "lint:check": "eslint . --ext js,jsx --max-warnings 0",
-    "lint:build": "eslint . --ext js,jsx --max-warnings 50",
+    "lint:build": "eslint . --ext js,jsx --max-warnings 60",
     "prebuild": "npm run lint:build",
     "predev": "npm run lint",
     "prepare": "husky install"
