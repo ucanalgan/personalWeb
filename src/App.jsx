@@ -1,4 +1,5 @@
 import React, { useEffect, Suspense, lazy } from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { GitHubProvider } from './contexts/GitHubContext';
 // Static imports for critical components
@@ -31,7 +32,7 @@ const SectionLoader = ({ className = '' }) => (
 
 // Prop validation for SectionLoader
 SectionLoader.propTypes = {
-  className: React.PropTypes?.string || function() {}
+  className: PropTypes.string
 };
 
 // Error boundary for lazy loading
@@ -70,7 +71,7 @@ class LazyErrorBoundary extends React.Component {
 
 // Prop validation for LazyErrorBoundary
 LazyErrorBoundary.propTypes = {
-  children: React.PropTypes?.node || function() {}
+  children: PropTypes.node
 };
 
 function App() {
@@ -114,8 +115,9 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Service Worker registration with better error handling
-    if ('serviceWorker' in navigator && 'production' === process.env.NODE_ENV) {
-      navigator.serviceWorker.register('/public/sw.js')
+    if ('serviceWorker' in navigator && import.meta.env.PROD) {
+      const swUrl = new URL('/personalWeb/sw.js', window.location.origin);
+      navigator.serviceWorker.register(swUrl.toString())
         .then(_registration => {
           console.warn('SW registered successfully');
         })
@@ -132,9 +134,6 @@ function App() {
       link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
       link.as = 'style';
       document.head.appendChild(link);
-
-      // Preload critical images (if any)
-      // Add your critical images here
     };
 
     preloadCriticalResources();
