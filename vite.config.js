@@ -23,7 +23,7 @@ export default defineConfig(({ _command, mode }) => {
     ].filter(Boolean),
 
     // Base path for GitHub Pages (only in production)
-    base: isProduction ? '/Kişisel_web/' : '/',
+    base: isProduction ? '/personalWeb/' : '/',
 
     // Root directory
     root: '.',
