@@ -14,7 +14,6 @@ const SkillsSection = () => {
       description: 'Creating engaging user interfaces',
       skills: [
         { name: 'React', icon: 'ri-reactjs-line', description: 'Component-based UI development' },
-        { name: 'Vue.js', icon: 'ri-vuejs-line', description: 'Progressive framework mastery' },
         { name: 'TypeScript', icon: 'ri-code-s-slash-line', description: 'Type-safe development' },
         { name: 'Tailwind CSS', icon: 'ri-css3-line', description: 'Utility-first styling' },
         { name: 'Next.js', icon: 'ri-layout-line', description: 'Full-stack React framework' },
@@ -30,7 +29,6 @@ const SkillsSection = () => {
         { name: 'Node.js', icon: 'ri-nodejs-line', description: 'Server-side JavaScript' },
         { name: 'Express.js', icon: 'ri-route-line', description: 'Web application framework' },
         { name: 'Python', icon: 'ri-file-code-line', description: 'Backend scripting & APIs' },
-        { name: 'Django', icon: 'ri-global-line', description: 'High-level Python framework' },
         { name: 'FastAPI', icon: 'ri-rocket-line', description: 'Modern Python web framework' },
         { name: 'REST APIs', icon: 'ri-api-line', description: 'RESTful service design' }
       ]
@@ -41,12 +39,9 @@ const SkillsSection = () => {
       color: 'from-purple-400 to-indigo-600',
       description: 'Data management and optimization',
       skills: [
-        { name: 'PostgreSQL', icon: 'ri-database-line', description: 'Relational database management' },
-        { name: 'MongoDB', icon: 'ri-leaf-line', description: 'NoSQL document database' },
-        { name: 'Redis', icon: 'ri-flashlight-fill', description: 'In-memory data structure' },
-        { name: 'MySQL', icon: 'ri-database-2-line', description: 'Traditional SQL database' },
-        { name: 'Prisma', icon: 'ri-settings-3-line', description: 'Modern database toolkit' },
-        { name: 'SQLAlchemy', icon: 'ri-links-line', description: 'Python SQL toolkit' }
+        { name: 'MySQL', icon: 'ri-database-2-line', description: 'Relational SQL database' },
+        { name: 'MongoDB', icon: 'ri-leaf-line', description: 'NoSQL document storage' },
+        { name: 'SQL', icon: 'ri-table-line', description: 'Core SQL knowledge & queries' }
       ]
     },
     {
@@ -55,12 +50,9 @@ const SkillsSection = () => {
       color: 'from-orange-400 to-red-500',
       description: 'Deployment and development tools',
       skills: [
-        { name: 'Docker', icon: 'ri-ship-line', description: 'Containerization platform' },
-        { name: 'AWS', icon: 'ri-cloud-line', description: 'Cloud computing services' },
-        { name: 'Git', icon: 'ri-git-branch-line', description: 'Version control system' },
-        { name: 'GitHub Actions', icon: 'ri-github-line', description: 'CI/CD automation' },
-        { name: 'Linux', icon: 'ri-terminal-line', description: 'Unix-based systems' },
-        { name: 'Nginx', icon: 'ri-global-line', description: 'Web server & reverse proxy' }
+        { name: 'Git', icon: 'ri-git-branch-line', description: 'Version control for collaboration' },
+        { name: 'GitHub Actions', icon: 'ri-github-line', description: 'Basic CI/CD automation workflows' },
+        { name: 'Linux', icon: 'ri-terminal-line', description: 'Command-line and server basics' }
       ]
     }
   ];
@@ -119,14 +111,13 @@ const SkillsSection = () => {
           <div className="text-center mb-20">
             <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <span className="inline-block px-6 py-2 bg-accent/10 text-accent border border-accent/20 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-                Technical Arsenal
+              Technologies & Tools 
               </span>
               <h2 className="display-2xl mb-8">
                 My <span className="gradient-text">Tech Stack</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                A comprehensive toolkit spanning the full development spectrum, from frontend magic
-                to backend architecture and everything in between.
+              A curated set of technologies and tools utilized across the software development lifecycle — from user interface design to backend architecture and system optimization.
               </p>
             </div>
           </div>

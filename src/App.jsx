@@ -5,7 +5,6 @@ import { GitHubProvider } from './contexts/GitHubContext';
 // Static imports for critical components
 import Header from './components/layout/Header';
 import ScrollToTop from './components/common/ScrollToTop';
-import ThemeToggle from './components/common/ThemeToggle';
 import { initAnalytics } from './utils/analytics';
 import { initAnimations } from './utils/animations';
 
@@ -143,9 +142,6 @@ function App() {
         <div className="App min-h-screen">
           {/* Scroll Progress Bar */}
           <div className="scroll-progress fixed top-0 left-0 h-1 bg-gradient-to-r from-primary to-primary-dark z-50 transition-all duration-200" />
-
-          {/* Theme Toggle */}
-          <ThemeToggle />
 
           {/* Header - Critical component, loaded immediately */}
           <Header />
