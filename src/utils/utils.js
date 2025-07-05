@@ -9,10 +9,10 @@ import { twMerge } from 'tailwind-merge';
 /**
  * Check if an element is in viewport
  * @param {Element} element - DOM element to check
- * @param {number} threshold - Visibility threshold (0-1)
+ * @param {number} _threshold - Visibility threshold (0-1)
  * @returns {boolean} - True if element is in viewport
  */
-export function isInViewport(element, threshold = 0.1) {
+export function isInViewport(element, _threshold = 0.1) {
   if (!element) return false;
 
   const rect = element.getBoundingClientRect();

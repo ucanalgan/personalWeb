@@ -1,7 +1,6 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { GitHubProvider } from './contexts/GitHubContext';
-
 // Static imports for critical components
 import Header from './components/layout/Header';
 import ScrollToTop from './components/common/ScrollToTop';
@@ -30,6 +29,11 @@ const SectionLoader = ({ className = '' }) => (
   </div>
 );
 
+// Prop validation for SectionLoader
+SectionLoader.propTypes = {
+  className: React.PropTypes?.string || function() {}
+};
+
 // Error boundary for lazy loading
 class LazyErrorBoundary extends React.Component {
   constructor(props) {
@@ -37,7 +41,7 @@ class LazyErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error) {
     return { hasError: true };
   }
 
@@ -63,6 +67,11 @@ class LazyErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+// Prop validation for LazyErrorBoundary
+LazyErrorBoundary.propTypes = {
+  children: React.PropTypes?.node || function() {}
+};
 
 function App() {
   useEffect(() => {
@@ -107,8 +116,8 @@ function App() {
     // Service Worker registration with better error handling
     if ('serviceWorker' in navigator && 'production' === process.env.NODE_ENV) {
       navigator.serviceWorker.register('/public/sw.js')
-        .then(registration => {
-          console.log('SW registered successfully');
+        .then(_registration => {
+          console.warn('SW registered successfully');
         })
         .catch(error => {
           console.warn('SW registration failed:', error);

@@ -1,11 +1,8 @@
-import React from 'react'; // StrictMode needs React import
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './styles/styles.css';
 
 // Initialize React app
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <App />
 );

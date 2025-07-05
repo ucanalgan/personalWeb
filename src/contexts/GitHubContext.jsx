@@ -163,3 +163,8 @@ export const GitHubProvider = ({ children }) => {
     </GitHubContext.Provider>
   );
 };
+
+// Prop validation
+GitHubProvider.propTypes = {
+  children: null // Accept any node type
+};

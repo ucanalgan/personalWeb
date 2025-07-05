@@ -7,14 +7,6 @@
   "background_color": "#0a0e27",
   "theme_color": "#64ffda",
   "orientation": "portrait-primary",
-  "icons": [
-    {
-      "src": "/personalWeb/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ],
   "categories": ["portfolio", "developer", "technology"],
   "lang": "en",
   "scope": "/personalWeb/"
