@@ -816,14 +816,14 @@ class AnalyticsManager {
     };
   }
 
-  async sendEvents(_force = false) {
+  sendEvents(_force = false) {
     if (this.events.length === 0 || !this.isEnabled) return;
 
     try {
       // In production, this would send to your analytics endpoint
       // For now, we'll just clear the events
       this.events = [];
-    } catch (error) {
+    } catch {
       // Silent fail - don't break user experience
     }
   }
