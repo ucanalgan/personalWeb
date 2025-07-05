@@ -119,23 +119,10 @@ const FooterSection = () => {
         <div className="border-t border-border mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-text-secondary text-sm mb-4 md:mb-0">
-              © {currentYear} Umut Can Algan. All rights reserved.
+              © {currentYear} Umutcan Algan. All rights reserved.
             </p>
-
-            <div className="flex items-center space-x-4 text-sm text-text-secondary">
-              <span>Built with</span>
-              <div className="flex items-center space-x-2">
-                <i className="ri-reactjs-line text-cyan-400" />
-                <span>React</span>
-              </div>
-              <span>&</span>
-              <div className="flex items-center space-x-2">
-                <i className="ri-tailwind-css-line text-cyan-500" />
-                <span>Tailwind</span>
-              </div>
-            </div>
           </div>
-        </div>
+          </div>
       </div>
     </footer>
   );

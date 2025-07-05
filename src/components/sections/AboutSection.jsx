@@ -16,9 +16,9 @@ const AboutSection = () => {
   ];
 
   const stats = [
-    { label: 'Years Experience', value: 3, suffix: '+', icon: 'ri-time-line', color: 'text-cyan-400' },
-    { label: 'Projects Completed', value: 50, suffix: '+', icon: 'ri-trophy-line', color: 'text-purple-400' },
-    { label: 'Learning Hours', value: 24, suffix: '/7', icon: 'ri-book-open-line', color: 'text-green-400' }
+    { label: 'Years Experience', value: 2, suffix: '+', icon: 'ri-time-line', color: 'text-cyan-400' },
+    { label: 'Projects Completed', value: 15, suffix: '+', icon: 'ri-trophy-line', color: 'text-purple-400' },
+    { label: 'Technologies Mastered', value: 10, suffix: '+', icon: 'ri-code-s-slash-line', color: 'text-green-400' }
   ];
 
   // Intersection Observer for animations
@@ -63,16 +63,16 @@ const AboutSection = () => {
         setAnimatedStats(prev => ({ ...prev, experience: Math.floor(currentValue) }));
       } else if (label === 'Projects Completed') {
         setAnimatedStats(prev => ({ ...prev, projects: Math.floor(currentValue) }));
-      } else if (label === 'Learning Hours') {
+      } else if (label === 'Technologies Mastered') {
         setAnimatedStats(prev => ({ ...prev, learning: Math.floor(currentValue) }));
       }
     }, 30);
   };
 
   const getStatValue = (label, originalValue) => {
-    if (label === 'Years Experience') return animatedStats.experience;
-    if (label === 'Projects Completed') return animatedStats.projects;
-    if (label === 'Learning Hours') return animatedStats.learning;
+                if (label === 'Years Experience') return animatedStats.experience;
+            if (label === 'Projects Completed') return animatedStats.projects;
+            if (label === 'Technologies Mastered') return animatedStats.learning;
     return originalValue;
   };
 
@@ -94,12 +94,11 @@ const AboutSection = () => {
                 About Me
               </span>
               <h2 className="display-2xl mb-8">
-                Passionate <span className="gradient-text">Developer</span>
-                <br />& <span className="gradient-text">Problem Solver</span>
+                Web & <span className="gradient-text">Network</span>
+                <br />Engineer<span className="gradient-text"> Student </span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                Transforming ideas into exceptional digital experiences through clean code,
-                innovative solutions, and a relentless pursuit of excellence in every project.
+              Bridging web technologies and networking principles to build reliable, scalable systems while continuously learning and solving real-world problems.
               </p>
             </div>
           </div>
@@ -113,14 +112,12 @@ const AboutSection = () => {
                   <div className="group">
                     <div className="flex items-start space-x-4 p-6 bg-surface/30 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        01
+                      🎓
                       </div>
                       <div>
-                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">The Journey Begins</h3>
+                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">Academic Development</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                          My development journey started with curiosity about how websites work. What began as
-                          tinkering with HTML quickly evolved into a deep passion for creating meaningful digital
-                          experiences that solve real-world problems.
+                        Studying Information Systems Engineering, I’m building a strong foundation in both software development and network systems. Through hands-on labs and academic projects, I’ve developed skills in data structures, computer networks, and system design—bridging theory with real-world application.
                         </p>
                       </div>
                     </div>
@@ -128,15 +125,13 @@ const AboutSection = () => {
 
                   <div className="group">
                     <div className="flex items-start space-x-4 p-6 bg-surface/30 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        02
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        💻
                       </div>
                       <div>
-                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">Crafting Excellence</h3>
+                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300"> Freelance & Personal Projects</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                          With 3+ years of hands-on experience, I specialize in building scalable applications
-                          using modern technologies. Every line of code is written with performance,
-                          maintainability, and user experience in mind.
+                        Outside of school, I’ve worked on several personal and freelance projects to sharpen my skills. From creating dynamic websites and GitHub-integrated portfolios to building small web tools, I focus on practical solutions that are both scalable and user-friendly. These projects reflect my passion for clean architecture and real problem-solving.
                         </p>
                       </div>
                     </div>
@@ -145,14 +140,12 @@ const AboutSection = () => {
                   <div className="group">
                     <div className="flex items-start space-x-4 p-6 bg-surface/30 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        03
+                        🏢
                       </div>
                       <div>
-                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">Beyond Code</h3>
+                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300"> Professional & Work Experience</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                          When not coding, I'm exploring emerging technologies, contributing to open-source
-                          projects, and sharing knowledge with the developer community. Continuous learning
-                          is not just a hobby—it's a way of life.
+                        During my first university year, I worked as an IT Assistant at my school, helping manage hardware/software systems and supporting technical infrastructure. This real-world exposure taught me troubleshooting, teamwork, and the operational side of tech. I continue to explore opportunities that blend my academic focus with real industry experience.
                         </p>
                       </div>
                     </div>
@@ -189,30 +182,14 @@ const AboutSection = () => {
                   <h3 className="heading-2 mb-8 text-center">
                     Technical <span className="gradient-text">Expertise</span>
                   </h3>
-                  <div className="space-y-6">
+                  <div className="grid grid-cols-2 gap-4">
                     {skills.map((skill, index) => (
                       <div key={index} className="group">
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="flex items-center space-x-3">
-                            <div className={`w-10 h-10 bg-gradient-to-br ${skill.color} rounded-lg flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                              <i className={`${skill.icon} text-lg`} />
-                            </div>
-                            <span className="font-semibold text-text-primary group-hover:text-primary transition-colors duration-300">{skill.name}</span>
+                        <div className="flex items-center space-x-3 p-4 bg-surface/20 border border-border rounded-xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+                          <div className={`w-10 h-10 bg-gradient-to-br ${skill.color} rounded-lg flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                            <i className={`${skill.icon} text-lg`} />
                           </div>
-                          <span className="text-sm font-mono text-text-secondary bg-surface/50 px-2 py-1 rounded-md">
-                            {skill.level}%
-                          </span>
-                        </div>
-                        <div className="w-full bg-surface/30 rounded-full h-3 overflow-hidden shadow-inner">
-                          <div
-                            className={`bg-gradient-to-r ${skill.color} h-full rounded-full transition-all duration-1500 ease-out shadow-lg relative overflow-hidden ${isVisible ? 'animate-pulse' : ''}`}
-                            style={{
-                              width: isVisible ? `${skill.level}%` : '0%',
-                              transitionDelay: `${index * 100}ms`
-                            }}
-                          >
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-shimmer" />
-                          </div>
+                          <span className="font-semibold text-text-primary group-hover:text-primary transition-colors duration-300">{skill.name}</span>
                         </div>
                       </div>
                     ))}

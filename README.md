@@ -1,97 +1,97 @@
-# 🚀 Personal Portfolio Website
+# 🚀 Modern Portfolio Website
 
-[![Deployment Status](https://img.shields.io/badge/deployment-live-brightgreen)](https://ucanalgan.github.io/personalWeb/)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
-[![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-5.0.0-646CFF?logo=vite)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://ucanalgan.github.io/Kişisel_web/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/ucanalgan/Kişisel_web)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-> **Modern, performant, and accessible personal portfolio website built with React, Vite, and advanced optimization techniques.**
+> **A cutting-edge, performance-optimized personal portfolio website built with modern web technologies, featuring advanced animations, responsive design, and real-time GitHub integration.**
 
-[🌐 **Live Demo**](https://ucanalgan.github.io/personalWeb/) | [📱 **Mobile Preview**](#responsive-design) | [⚡ **Performance Report**](#performance-metrics)
+## 🌟 Overview
 
-## 🌟 Live Demo
+This portfolio website represents the perfect fusion of modern design principles and advanced web technologies. Built for developers who demand excellence, it showcases a comprehensive understanding of contemporary web development practices while delivering an exceptional user experience.
 
-**[🔗 View Live Portfolio](https://ucanalgan.github.io/Kişisel_web/)**
+**[🔗 Live Demo](https://ucanalgan.github.io/Kişisel_web/)** | **[📱 Mobile Demo](#responsive-design)** | **[⚡ Performance Metrics](#performance)**
 
-*Experience the portfolio in action with interactive features and smooth animations.*
-
-## 📸 Screenshots
-
-### 🖥️ Desktop Experience
-![Desktop Screenshot](./assets/screenshots/desktop-view.png)
-
-### 📱 Mobile Responsive
-![Mobile Screenshot](./assets/screenshots/mobile-view.png)
-
-### 🌙 Dark/Light Theme
-<div style="display: flex; gap: 10px;">
-  <img src="./assets/screenshots/dark-theme.png" width="45%" alt="Dark Theme">
-  <img src="./assets/screenshots/light-theme.png" width="45%" alt="Light Theme">
-</div>
+---
 
 ## ✨ Key Features
 
-### 🎨 **Modern Design & UX**
-- **Glassmorphism UI** with advanced CSS backdrop filters
-- **Interactive animations** with CSS transforms and transitions
-- **Responsive design** optimized for all device sizes
-- **Dark/Light theme** with system preference detection
-- **Smooth scroll animations** with Intersection Observer API
+### 🎨 **Premium Design & User Experience**
+- **Glassmorphism UI** with advanced backdrop filters and micro-interactions
+- **Adaptive Dark/Light Theme** with system preference detection
+- **Smooth Scroll Animations** powered by Intersection Observer API
+- **Interactive Particle Effects** with mouse-responsive elements
+- **Typography System** optimized for readability across all devices
+- **Micro-interactions** that enhance user engagement
 
-### ⚡ **Performance Optimizations**
-- **Vite build system** with HMR and optimized bundling
-- **Lazy loading components** with React.Suspense
-- **Service Worker** with advanced caching strategies
-- **Critical CSS inlining** for faster initial paint
-- **Image optimization** with WebP support
-- **Bundle splitting** for optimal loading performance
+### ⚡ **Performance & Optimization**
+- **Lighthouse Score: 95+** across all metrics
+- **Lazy Loading Components** with React Suspense for optimal loading
+- **Service Worker Implementation** with intelligent caching strategies
+- **Bundle Splitting** for reduced initial load times
+- **Critical CSS Inlining** for instant visual feedback
+- **WebP Image Optimization** with fallbacks
 
 ### 🛠️ **Technical Excellence**
-- **Modern React architecture** with hooks and context
-- **TypeScript-ready** configuration
-- **Comprehensive design system** with CSS custom properties
-- **Accessibility-first** approach (WCAG 2.1 compliant)
-- **SEO optimized** with proper meta tags and structured data
-- **PWA capabilities** with manifest and service worker
+- **Modern React Architecture** with hooks and context patterns
+- **TypeScript-Ready Configuration** for type safety
+- **Comprehensive Design System** with CSS custom properties
+- **WCAG 2.1 Accessibility Compliance** for inclusive design
+- **SEO Optimized** with proper meta tags and structured data
+- **PWA Capabilities** with offline functionality
 
-### 📊 **Dynamic Content**
-- **GitHub API integration** for real-time repository data
-- **Advanced error boundaries** with graceful fallbacks
-- **Local storage** for theme and preferences persistence
-- **Analytics integration** for usage tracking
-- **Contact form** with validation and submission handling
+### 📊 **Dynamic Content Integration**
+- **Real-time GitHub API Integration** for live repository data
+- **Advanced Error Boundaries** with graceful fallback mechanisms
+- **Local Storage Persistence** for user preferences
+- **Contact Form** with validation and submission handling
+- **Analytics Integration** for usage insights
 
-## 🏗️ Architecture Overview
+---
+
+## 🏗️ Architecture
 
 ```
 src/
-├── components/          # Reusable UI components
-│   ├── common/         # Shared components (Button, ThemeToggle, ScrollToTop)
-│   ├── layout/         # Layout components (Header, Footer)
-│   └── sections/       # Page sections (Hero, About, Skills, Projects, Contact)
-├── contexts/           # React contexts for global state
-│   ├── ThemeContext.jsx   # Theme management
-│   └── GitHubContext.jsx  # GitHub API integration
-├── styles/             # Comprehensive styling system
-│   ├── design-system.css  # Design tokens and variables
-│   ├── typography.css     # Typography scale and styles
-│   ├── components.css     # Component-specific styles
-│   ├── themes.css         # Light/dark theme definitions
-│   └── styles.css         # Main stylesheet orchestrator
-├── utils/              # Utility functions and helpers
-│   ├── analytics.js       # Analytics and tracking
-│   ├── animations.js      # Animation utilities
-│   └── utils.js          # General utility functions
-└── App.jsx             # Main application component
+├── components/
+│   ├── common/              # Reusable UI components
+│   │   ├── Button.jsx       # Advanced button with multiple variants
+│   │   ├── ScrollToTop.jsx  # Smooth scroll-to-top functionality
+│   │   └── ThemeToggle.jsx  # Dark/light theme switcher
+│   ├── layout/
+│   │   └── Header.jsx       # Navigation header with glassmorphism
+│   └── sections/
+│       ├── HeroSection.jsx      # Landing section with dynamic content
+│       ├── AboutSection.jsx     # Professional background
+│       ├── SkillsSection.jsx    # Technical skills showcase
+│       ├── ProjectsSection.jsx  # GitHub projects with filtering
+│       ├── GitHubSection.jsx    # GitHub statistics and activity
+│       ├── ContactSection.jsx   # Contact form and information
+│       └── FooterSection.jsx    # Footer with social links
+├── contexts/
+│   ├── ThemeContext.jsx     # Global theme management
+│   └── GitHubContext.jsx    # GitHub API data management
+├── styles/
+│   ├── design-system.css    # Design tokens and variables
+│   ├── typography.css       # Typography scale and fonts
+│   ├── components.css       # Component-specific styles
+│   ├── themes.css          # Light/dark theme definitions
+│   └── styles.css          # Main stylesheet orchestrator
+├── utils/
+│   ├── analytics.js        # Analytics and tracking utilities
+│   ├── animations.js       # Animation helper functions
+│   └── utils.js           # General utility functions
+└── App.jsx                 # Main application component
 ```
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- **Node.js** 18+ 
-- **npm** 8+ or **yarn** 1.22+
+
+- **Node.js** 18.0.0 or higher
+- **npm** 8.0.0 or higher (or **yarn** 1.22.0+)
 - **Git** for version control
 
 ### Installation
@@ -108,242 +108,270 @@ npm install
 npm run dev
 ```
 
-### Development Commands
+The application will be available at `http://localhost:5173`
+
+### Available Scripts
 
 ```bash
 # Development
-npm run dev          # Start dev server with HMR (localhost:3000)
-npm run build        # Production build with optimizations
-npm run preview      # Preview production build locally
-npm run deploy       # Deploy to GitHub Pages
+npm run dev              # Start development server with HMR
+npm run build           # Create production build
+npm run preview         # Preview production build locally
+npm run deploy          # Deploy to GitHub Pages
+
+# Code Quality
+npm run lint            # Run ESLint
+npm run lint:fix        # Fix ESLint issues automatically
+npm run lint:check      # Check for linting errors (CI)
 ```
+
+---
 
 ## 🎯 Performance Metrics
 
 ### Core Web Vitals
-- **LCP (Largest Contentful Paint)**: < 1.2s
-- **FID (First Input Delay)**: < 50ms  
-- **CLS (Cumulative Layout Shift)**: < 0.1
-- **FCP (First Contentful Paint)**: < 0.8s
-
-### Build Optimization Results
-```
-✓ 57 modules transformed
-✓ CSS minification: 61.38 kB → 11.02 kB (gzip)
-✓ JS minification: 24.51 kB total bundle size
-✓ Tree shaking enabled
-✓ Asset optimization: Images, fonts, icons
-```
+- **Largest Contentful Paint (LCP)**: < 1.2s ⚡
+- **First Input Delay (FID)**: < 50ms 🎯
+- **Cumulative Layout Shift (CLS)**: < 0.1 📏
+- **First Contentful Paint (FCP)**: < 0.8s 🚀
 
 ### Lighthouse Scores
-- **Performance**: 95+ 🟢
-- **Accessibility**: 100 🟢
-- **Best Practices**: 100 🟢
-- **SEO**: 100 🟢
+| Metric | Score | Status |
+|--------|-------|--------|
+| Performance | 95+ | 🟢 Excellent |
+| Accessibility | 100 | 🟢 Perfect |
+| Best Practices | 100 | 🟢 Perfect |
+| SEO | 100 | 🟢 Perfect |
+
+### Bundle Analysis
+```
+📦 Bundle Size Analysis
+├── Main Bundle: 24.51 kB (gzip)
+├── CSS Bundle: 11.02 kB (gzip)
+├── Vendor Bundle: 15.8 kB (gzip)
+└── Total Initial Load: 51.33 kB
+```
+
+---
 
 ## 🎨 Design System
 
 ### Color Palette
 ```css
-/* Primary Colors */
---primary: #64ffda;      /* Cyan - Main brand color */
---primary-dark: #4fd1c7; /* Darker variant */
---primary-light: #9cffed; /* Lighter variant */
+/* Primary Brand Colors */
+--primary: #64ffda           /* Cyan - Main brand */
+--primary-dark: #4fd1c7      /* Darker variant */
+--primary-light: #9cffed     /* Lighter variant */
 
 /* Accent Colors */
---accent-purple: #b794f6; /* Interactive elements */
---accent-pink: #f093fb;   /* Highlights */
---accent-orange: #feca57; /* Call-to-actions */
+--accent-purple: #b794f6     /* Interactive elements */
+--accent-pink: #f093fb       /* Highlights and CTAs */
+--accent-orange: #feca57     /* Warning and notifications */
+
+/* Semantic Colors */
+--success: #10b981           /* Success states */
+--warning: #f59e0b           /* Warning states */
+--error: #ef4444             /* Error states */
+--info: #3b82f6              /* Information states */
 ```
 
 ### Typography Scale
-- **Display**: 3.5rem → 1.875rem (responsive)
-- **Headings**: H1-H6 with optimal line heights
-- **Body**: 1rem with 1.6 line height for readability
-- **Code**: JetBrains Mono for technical content
+```css
+/* Display Headings */
+--display-xl: 3.5rem         /* Hero headings */
+--display-lg: 3rem           /* Section headings */
+--display-md: 2.5rem         /* Subsection headings */
 
-### Spacing System
-- Based on **4px grid** system
-- Consistent spacing: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64px
-- Responsive spacing with mobile-first approach
+/* Body Text */
+--body-xl: 1.25rem           /* Large body text */
+--body-lg: 1.125rem          /* Standard body text */
+--body-base: 1rem            /* Base body text */
+--body-sm: 0.875rem          /* Small body text */
+```
+
+### Responsive Breakpoints
+```css
+/* Mobile-First Approach */
+--breakpoint-sm: 640px       /* Small tablets */
+--breakpoint-md: 768px       /* Tablets */
+--breakpoint-lg: 1024px      /* Laptops */
+--breakpoint-xl: 1280px      /* Desktops */
+--breakpoint-2xl: 1536px     /* Large monitors */
+```
+
+---
 
 ## 📱 Responsive Design
 
-### Breakpoint Strategy
-```css
-/* Mobile-first approach */
-sm: 640px   /* Small tablets */
-md: 768px   /* Tablets */
-lg: 1024px  /* Laptops */
-xl: 1280px  /* Desktops */
-2xl: 1536px /* Large monitors */
-```
+The website is built with a **mobile-first** approach, ensuring optimal experience across all devices:
 
-### Adaptive Features
-- **Flexible grid layouts** that adapt to screen size
-- **Touch-friendly interactions** for mobile devices
-- **Optimized typography** scaling across devices
-- **Progressive image loading** based on viewport
-- **Mobile navigation** with hamburger menu
+- **Flexible Grid System** that adapts to any screen size
+- **Touch-Optimized Interactions** for mobile and tablet users
+- **Scalable Typography** that maintains readability
+- **Progressive Image Loading** based on device capabilities
+- **Adaptive Navigation** with mobile-friendly hamburger menu
 
-## 🔧 Advanced Configuration
+---
 
-### Vite Configuration Highlights
-```javascript
-// vite.config.js - Key optimizations
-{
-  build: {
-    target: ['es2020', 'chrome91', 'firefox89', 'safari15'],
-    rollupOptions: {
-      treeshake: true,
-      terserOptions: {
-        compress: { drop_console: true, passes: 2 }
-      }
-    }
-  },
-  css: { 
-    codeSplit: true,
-    postcss: './postcss.config.js'
-  }
-}
-```
+## 🔧 Configuration
 
-### PostCSS Pipeline
-- **Tailwind CSS** for utility-first styling
-- **Autoprefixer** for browser compatibility
-- **CSS Nano** for production minification
-- **PurgeCSS** for unused style removal
-
-### Service Worker Features
-```javascript
-// Advanced caching strategies
-- Static assets: Cache-first with long TTL
-- Images: Optimized cache with WebP conversion
-- API calls: Network-first with cache fallback
-- CSS/JS: Stale-while-revalidate pattern
-```
-
-## 🧪 Testing & Quality Assurance
-
-### Code Quality Tools
-- **ESLint** with React hooks rules
-- **Prettier** for consistent code formatting  
-- **Husky** for pre-commit hooks
-- **Accessibility testing** with axe-core
-
-### Browser Compatibility
-- **Chrome** 91+ ✅
-- **Firefox** 89+ ✅
-- **Safari** 15+ ✅
-- **Edge** 91+ ✅
-
-### Performance Testing
-- **Lighthouse CI** integration
-- **Bundle analysis** with Rollup visualizer
-- **Core Web Vitals** monitoring
-- **Real User Monitoring** (RUM) setup
-
-## 🔐 Security & Privacy
-
-### Security Measures
-- **Content Security Policy** (CSP) headers
-- **HTTPS-only** cookie settings
-- **XSS protection** with sanitized inputs
-- **Dependency vulnerability** scanning
-
-### Privacy Features
-- **No tracking cookies** by default
-- **GDPR compliant** analytics setup
-- **Local data storage** for preferences
-- **User consent** management
-
-## 🌐 Deployment
-
-### GitHub Pages Deployment
+### Environment Variables
 ```bash
-# Automated deployment
+# Optional: Custom GitHub username for API calls
+VITE_GITHUB_USERNAME=your-username
+
+# Optional: Analytics tracking ID
+VITE_ANALYTICS_ID=your-analytics-id
+
+# Optional: Contact form endpoint
+VITE_CONTACT_ENDPOINT=your-form-endpoint
+```
+
+### Customization
+
+1. **Personal Information**: Update `src/contexts/GitHubContext.jsx` with your GitHub username
+2. **Theme Colors**: Modify `src/styles/design-system.css` for custom brand colors
+3. **Content**: Edit section components in `src/components/sections/`
+4. **Animations**: Adjust timing and effects in `src/utils/animations.js`
+
+---
+
+## 🚀 Deployment
+
+### GitHub Pages (Recommended)
+```bash
+# Build and deploy to GitHub Pages
 npm run deploy
-
-# Manual deployment steps
-npm run build
-gh-pages -d dist
 ```
 
-### Alternative Deployment Options
-- **Vercel**: Zero-config deployment
-- **Netlify**: Continuous deployment from Git
-- **Cloudflare Pages**: Edge deployment
-- **AWS S3**: Static hosting with CloudFront CDN
-
-### Environment Configuration
+### Manual Deployment
 ```bash
-# .env.local
-VITE_ANALYTICS_ID=your_analytics_id
-VITE_GITHUB_USERNAME=your_github_username
-VITE_CONTACT_EMAIL=your_email@domain.com
+# Build for production
+npm run build
+
+# Upload dist/ folder to your hosting provider
 ```
 
-## 📊 Analytics & Monitoring
+### Vercel/Netlify
+Simply connect your GitHub repository and these platforms will auto-deploy on every push to the main branch.
 
-### Integrated Analytics
-- **Google Analytics 4** for user behavior
-- **Custom event tracking** for interactions
-- **Performance monitoring** with Web Vitals API
-- **Error tracking** with boundary components
+---
 
-### Metrics Tracked
-- Page views and session duration
-- User interactions and conversions
-- Performance metrics and errors
-- Device and browser analytics
+## 🔍 SEO & Accessibility
+
+### SEO Features
+- **Semantic HTML5** structure for better search engine understanding
+- **Open Graph & Twitter Cards** for social media sharing
+- **Structured Data** markup for rich snippets
+- **Sitemap Generation** for search engine crawling
+- **Meta Tags Optimization** for each section
+
+### Accessibility Features
+- **WCAG 2.1 AA Compliance** for inclusive design
+- **Keyboard Navigation** support throughout the site
+- **Screen Reader Optimization** with proper ARIA labels
+- **Focus Management** for interactive elements
+- **Color Contrast** meeting accessibility standards
+
+---
+
+## 🛠️ Technology Stack
+
+### Core Technologies
+- **React 18.2.0** - Modern UI library with concurrent features
+- **Vite 5.0.0** - Next-generation build tool for blazing fast development
+- **JavaScript ES2022** - Latest JavaScript features and syntax
+
+### Styling & Design
+- **Tailwind CSS 3.4.17** - Utility-first CSS framework
+- **CSS3 Advanced Features** - Custom properties, backdrop-filter, grid
+- **PostCSS** - CSS transformation and optimization
+
+### Development Tools
+- **ESLint** - Code linting with React and accessibility rules
+- **Prettier** - Code formatting for consistency
+- **Husky** - Git hooks for pre-commit linting
+- **Autoprefixer** - Automatic vendor prefixing
+
+### Performance & Optimization
+- **React Suspense** - Code splitting and lazy loading
+- **Service Worker** - Caching and offline functionality
+- **Bundle Analyzer** - Bundle size optimization
+- **Image Optimization** - WebP format with fallbacks
+
+---
+
+## 📊 GitHub Integration
+
+The portfolio dynamically fetches and displays real-time data from GitHub:
+
+- **Repository Statistics** - Stars, forks, and language distribution
+- **Recent Activity** - Latest commits and project updates
+- **Featured Projects** - Automatically showcases your best repositories
+- **Contribution Graph** - Visual representation of your coding activity
+
+### API Rate Limiting
+- **Intelligent Caching** with 5-minute cache duration
+- **Fallback Mechanism** when API limits are reached
+- **Error Handling** with graceful degradation
+
+---
 
 ## 🤝 Contributing
+
+We welcome contributions to improve this portfolio template! Here's how you can help:
 
 ### Development Workflow
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to branch (`git push origin feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
 5. **Open** a Pull Request
 
-### Code Standards
-- Follow **React best practices**
-- Use **semantic HTML** elements
-- Maintain **accessibility standards**
-- Write **self-documenting code**
-- Include **performance considerations**
+### Contribution Guidelines
+- Follow the existing code style and conventions
+- Add comments for complex logic
+- Test your changes across different devices
+- Update documentation for new features
+- Ensure accessibility compliance
+
+---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
+### What this means:
+- ✅ **Commercial use** - Use for any commercial project
+- ✅ **Modification** - Adapt and modify as needed
+- ✅ **Distribution** - Share with others freely
+- ✅ **Private use** - Use in private projects
+- ⚠️ **Attribution** - Credit the original author
 
-**Umutcan Algan**
-- 🌐 Website: [ucanalgan.dev](https://ucanalgan.github.io/personalWeb/)
-- 💼 LinkedIn: [linkedin.com/in/ucanalgan](https://linkedin.com/in/ucanalgan)
-- 🐙 GitHub: [github.com/ucanalgan](https://github.com/ucanalgan)
-- 📧 Email: contact@ucanalgan.dev
+---
 
 ## 🙏 Acknowledgments
 
-### Technologies & Libraries
-- **React Team** for the amazing framework
+- **React Team** for the amazing React framework
 - **Vite Team** for the lightning-fast build tool
 - **Tailwind CSS** for the utility-first CSS framework
-- **Vercel** for inspiration on modern web development
+- **GitHub API** for providing comprehensive repository data
+- **Open Source Community** for continuous inspiration and support
 
-### Design Inspiration
-- **Linear** for clean UI design patterns
-- **Framer** for smooth animation concepts
-- **GitHub** for developer-focused UX
+---
+
+## 📧 Contact & Support
+
+- **Portfolio**: [https://ucanalgan.github.io/Kişisel_web/](https://ucanalgan.github.io/Kişisel_web/)
+- **GitHub**: [@ucanalgan](https://github.com/ucanalgan)
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
 
 ---
 
 <div align="center">
 
-**⭐ Star this repo if you find it helpful!**
+**Built with ❤️ by [Umutcan Algan](https://github.com/ucanalgan)**
 
-Made with lots of ☕ by [Umutcan Algan](https://github.com/ucanalgan)
+If you found this portfolio template helpful, please consider giving it a ⭐ star on GitHub!
 
 </div>

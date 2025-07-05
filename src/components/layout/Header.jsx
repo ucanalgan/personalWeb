@@ -116,17 +116,22 @@ const Header = () => {
           ? 'bg-background/85 backdrop-blur-xl border-b border-border/50 shadow-xl shadow-black/5'
           : 'bg-transparent'
       }`}>
-        <nav className="container mx-auto px-6 py-4">
+        <nav className="container mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            {/* Enhanced Logo */}
+            {/* Modern Logo */}
             <button
               onClick={() => scrollToSection('hero')}
-              className="group relative text-2xl font-bold transition-all duration-300 hover:scale-105"
+              className="group relative text-3xl font-bold transition-all duration-300 hover:scale-105"
             >
-              <span className="relative z-10 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                UA
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300 blur-lg" />
+              <div className="relative flex items-center space-x-2">
+                <div className="relative">
+                  <span className="relative z-10 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent font-black tracking-wider">
+                    UA
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl scale-0 group-hover:scale-110 transition-transform duration-300 blur-lg" />
+                </div>
+                <div className="w-2 h-2 bg-gradient-to-r from-primary to-accent rounded-full animate-pulse" />
+              </div>
             </button>
 
             {/* Desktop Navigation */}

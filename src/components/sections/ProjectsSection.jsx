@@ -10,36 +10,7 @@ const ProjectsSection = () => {
   const [viewMode, setViewMode] = useState('grid'); // grid or list
   const sectionRef = useRef(null);
 
-  const filters = [
-    { id: 'all', label: 'All Projects', icon: 'ri-apps-line', count: featuredRepositories?.length || 0 },
-    { id: 'react', label: 'React', icon: 'ri-reactjs-line', count: 0 },
-    { id: 'node', label: 'Node.js', icon: 'ri-nodejs-line', count: 0 },
-    { id: 'python', label: 'Python', icon: 'ri-file-code-line', count: 0 },
-    { id: 'fullstack', label: 'Full Stack', icon: 'ri-stack-line', count: 0 }
-  ];
-
-  // Intersection Observer for animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
+  // Helper functions defined first
   const getLanguageColor = (language) => {
     const colors = {
       JavaScript: 'from-yellow-400 to-orange-500',
@@ -68,62 +39,61 @@ const ProjectsSection = () => {
     return icons[language] || 'ri-code-line';
   };
 
-  const filteredProjects = featuredRepositories?.filter(repo => {
-    if (filter === 'all') return true;
-    if (filter === 'react') return repo.language === 'JavaScript' || repo.language === 'TypeScript' || repo.name.toLowerCase().includes('react');
-    if (filter === 'node') return repo.name.toLowerCase().includes('node') || repo.name.toLowerCase().includes('api') || repo.name.toLowerCase().includes('server');
-    if (filter === 'python') return repo.language === 'Python';
-    if (filter === 'fullstack') return repo.name.toLowerCase().includes('full') || repo.name.toLowerCase().includes('stack') || repo.name.toLowerCase().includes('app');
-    return true;
-  });
-
-  const getFeaturedProjects = () => {
-    // Mock featured projects with enhanced data
-    const mockProjects = [
-      {
-        id: 1,
-        name: 'Modern Portfolio Website',
-        description: 'A responsive, modern portfolio website built with React and Vite. Features dark/light mode, smooth animations, and optimized performance.',
-        language: 'TypeScript',
-        stars: 24,
-        forks: 8,
-        url: 'https://github.com/ucanalgan/portfolio',
-        homepage: 'https://ucanalgan.dev',
-        tags: ['React', 'Vite', 'Tailwind', 'TypeScript'],
-        status: 'completed',
-        thumbnail: '/api/placeholder/400/250'
-      },
-      {
-        id: 2,
-        name: 'Task Management API',
-        description: 'RESTful API for task management with user authentication, real-time updates, and comprehensive testing suite.',
-        language: 'Node.js',
-        stars: 18,
-        forks: 5,
-        url: 'https://github.com/ucanalgan/task-api',
-        tags: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-        status: 'active',
-        thumbnail: '/api/placeholder/400/250'
-      },
-      {
-        id: 3,
-        name: 'AI Chat Assistant',
-        description: 'Intelligent chat assistant powered by machine learning, with natural language processing and context awareness.',
-        language: 'Python',
-        stars: 42,
-        forks: 12,
-        url: 'https://github.com/ucanalgan/ai-chat',
-        homepage: 'https://chat.ucanalgan.dev',
-        tags: ['Python', 'FastAPI', 'AI/ML', 'WebSocket'],
-        status: 'active',
-        thumbnail: '/api/placeholder/400/250'
+  // Dynamic filters based on actual repository languages
+  const getLanguageFilters = () => {
+    if (!featuredRepositories) return [{ id: 'all', label: 'All Projects', icon: 'ri-apps-line', count: 0 }];
+    
+    const languageCounts = {};
+    featuredRepositories.forEach(repo => {
+      if (repo.language) {
+        languageCounts[repo.language] = (languageCounts[repo.language] || 0) + 1;
       }
+    });
+
+    const baseFilters = [
+      { id: 'all', label: 'All Projects', icon: 'ri-apps-line', count: featuredRepositories.length }
     ];
 
-    return filteredProjects?.length > 0 ? filteredProjects : mockProjects;
+    const languageFilters = Object.entries(languageCounts).map(([language, count]) => ({
+      id: language.toLowerCase(),
+      label: language,
+      icon: getLanguageIcon(language),
+      count
+    }));
+
+    return [...baseFilters, ...languageFilters];
   };
 
-  const projects = getFeaturedProjects();
+  const filters = getLanguageFilters();
+
+  // Intersection Observer for animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const filteredProjects = featuredRepositories?.filter(repo => {
+    if (filter === 'all') return true;
+    return repo.language?.toLowerCase() === filter;
+  }) || [];
+
+  const projects = filteredProjects;
 
   const ProjectCard = ({ project, index }) => (
     <div
@@ -135,14 +105,10 @@ const ProjectsSection = () => {
       onMouseLeave={() => setHoveredProject(null)}
     >
       <div className="relative bg-surface/40 border border-border rounded-3xl overflow-hidden backdrop-blur-sm hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 transform hover:-translate-y-3 group">
-        {/* Project Status Badge */}
+        {/* Project Updated Badge */}
         <div className="absolute top-4 left-4 z-10">
-          <span className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
-            project.status === 'active'
-              ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-              : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-          }`}>
-            {project.status === 'active' ? 'Active' : 'Completed'}
+          <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            {new Date(project.updated_at).toLocaleDateString('tr')}
           </span>
         </div>
 
@@ -159,9 +125,9 @@ const ProjectsSection = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="absolute bottom-4 left-4 right-4">
               <div className="flex space-x-2">
-                {project.tags?.slice(0, 3).map((tag, i) => (
+                {project.topics?.slice(0, 3).map((topic, i) => (
                   <span key={i} className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-lg text-xs text-white">
-                    {tag}
+                    {topic}
                   </span>
                 ))}
               </div>
@@ -191,11 +157,11 @@ const ProjectsSection = () => {
               )}
               <div className="flex items-center space-x-1">
                 <i className="ri-star-line text-yellow-400" />
-                <span>{project.stars || 0}</span>
+                <span>{project.stargazers_count || 0}</span>
               </div>
               <div className="flex items-center space-x-1">
                 <i className="ri-git-branch-line text-primary" />
-                <span>{project.forks || 0}</span>
+                <span>{project.forks_count || 0}</span>
               </div>
             </div>
           </div>
@@ -203,7 +169,7 @@ const ProjectsSection = () => {
           {/* Action Buttons */}
           <div className="flex space-x-3">
             <Button
-              href={project.url}
+              href={project.url || project.html_url || `https://github.com/ucanalgan/${project.name}`}
               target="_blank"
               variant="secondary"
               size="sm"
@@ -259,8 +225,7 @@ const ProjectsSection = () => {
                 My <span className="gradient-text">Projects</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                A curated collection of my best work, showcasing innovative solutions,
-                clean architecture, and cutting-edge technologies.
+              A portfolio of well-structured projects built with reliable tools, production-ready practices, and a focus on maintainability.
               </p>
             </div>
           </div>
@@ -287,7 +252,7 @@ const ProjectsSection = () => {
                         ? 'bg-primary/20 text-primary'
                         : 'bg-surface/50 text-text-secondary group-hover:text-primary'
                     }`}>
-                      {filteredProjects?.length || 0}
+                      {filterOption.count}
                     </span>
                   </button>
                 ))}
