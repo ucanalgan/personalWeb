@@ -35,6 +35,7 @@ export default [
         fetch: 'readonly',
         URLSearchParams: 'readonly',
         FormData: 'readonly',
+        URL: 'readonly',
         IntersectionObserver: 'readonly',
         PerformanceObserver: 'readonly',
         MutationObserver: 'readonly',
