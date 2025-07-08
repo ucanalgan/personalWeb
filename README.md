@@ -190,14 +190,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-<div align="center">
-
-**🌟 If you found this project helpful, please give it a star!**
-
-**Built with ❤️ by [Umutcan Algan](https://github.com/ucanalgan)**
-
-[![GitHub followers](https://img.shields.io/github/followers/ucanalgan?style=social)](https://github.com/ucanalgan)
-[![GitHub stars](https://img.shields.io/github/stars/ucanalgan/personalWeb?style=social)](https://github.com/ucanalgan/personalWeb)
-
-</div>
