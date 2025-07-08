@@ -1,6 +1,6 @@
 # 🚀 Modern Portfolio Website
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://ucanalgan.github.io/Kişisel_web/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=vercel)](https://ucanalgan.github.io/personalWeb/)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/ucanalgan/Kişisel_web)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
@@ -10,7 +10,7 @@
 
 This portfolio website represents the perfect fusion of modern design principles and advanced web technologies. Built for developers who demand excellence, it showcases a comprehensive understanding of contemporary web development practices while delivering an exceptional user experience.
 
-**[🔗 Live Demo](https://ucanalgan.github.io/Kişisel_web/)** | **[📱 Mobile Demo](#responsive-design)** | **[⚡ Performance Metrics](#performance)**
+**[🔗 Live Demo](https://ucanalgan.github.io/personalWeb/)** | **[📱 Mobile Demo](#responsive-design)** | **[⚡ Performance Metrics](#performance)**
 
 ---
 
@@ -362,7 +362,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 📧 Contact & Support
 
-- **Portfolio**: [https://ucanalgan.github.io/Kişisel_web/](https://ucanalgan.github.io/Kişisel_web/)
+- **Portfolio**: [https://ucanalgan.github.io/personalWeb/](https://ucanalgan.github.io/personalWeb/)
 - **GitHub**: [@ucanalgan](https://github.com/ucanalgan)
 - **Email**: [your-email@example.com](mailto:your-email@example.com)
 
