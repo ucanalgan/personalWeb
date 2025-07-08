@@ -245,19 +245,6 @@
   
   <!-- Performance monitoring -->
   <script>
-    // Web Vitals monitoring
-    window.addEventListener('load', () => {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          import('/src/utils/analytics.js').then(module => {
-            module.initWebVitals?.();
-          }).catch(() => {
-            // Silently fail
-          });
-        });
-      }
-    });
-    
     // Mark body as JS loaded for CSS transitions
     document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('js-loaded');
@@ -265,13 +252,7 @@
     
     // Critical error handling
     window.addEventListener('error', (e) => {
-      // Log critical errors
-      if (window.gtag) {
-        gtag('event', 'exception', {
-          description: e.message,
-          fatal: false
-        });
-      }
+      console.warn('Application error:', e.message);
     });
   </script>
 </head>
