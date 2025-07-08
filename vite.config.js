@@ -20,76 +20,23 @@ export default defineConfig(({ _command, mode }) => {
     // Root directory
     root: '.',
 
-    // Build configuration with aggressive optimization
+    // Simplified build configuration for React compatibility
     build: {
       outDir: 'dist',
       assetsDir: 'assets',
       sourcemap: false,
-      minify: 'terser',
+      minify: 'esbuild', // Use esbuild instead of terser
       cssMinify: true,
-      // Target modern browsers for smaller bundles
-      target: ['es2020', 'chrome91', 'firefox89', 'safari15'],
+      // Standard target for better compatibility
+      target: 'es2020',
       rollupOptions: {
-        input: resolve(__dirname, 'index.html'),
         output: {
-          // Optimized asset naming
-          assetFileNames: (assetInfo) => {
-            const info = assetInfo.name.split('.');
-            const ext = info[info.length - 1];
-            if (/\.(css)$/.test(assetInfo.name)) {
-              return `assets/css/[name]-[hash].${ext}`;
-            }
-            if (/\.(js|mjs)$/.test(assetInfo.name)) {
-              return `assets/js/[name]-[hash].${ext}`;
-            }
-            if (/\.(png|jpe?g|gif|svg|webp|ico)$/.test(assetInfo.name)) {
-              return `assets/images/[name]-[hash].${ext}`;
-            }
-            if (/\.(woff2|woff|ttf|eot)$/.test(assetInfo.name)) {
-              return `assets/fonts/[name]-[hash].${ext}`;
-            }
-            return `assets/misc/[name]-[hash].${ext}`;
-          },
+          // Simple asset naming
+          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js'
-        },
-        // Tree shaking configuration
-        treeshake: {
-          moduleSideEffects: false,
-          propertyReadSideEffects: false,
-          unknownGlobalSideEffects: false
         }
-      },
-      // Terser options with safe React-compatible settings
-      terserOptions: {
-        compress: {
-          drop_console: true,
-          drop_debugger: true,
-          passes: 1,
-          pure_funcs: ['console.log', 'console.info'],
-          // Remove unsafe optimizations that break React
-          unsafe: false,
-          unsafe_arrows: false,
-          unsafe_comps: false,
-          unsafe_Function: false,
-          unsafe_math: false,
-          unsafe_symbols: false,
-          unsafe_methods: false,
-          unsafe_proto: false,
-          unsafe_regexp: false,
-          unsafe_undefined: false,
-          pure_getters: false
-        },
-        mangle: {
-          // Don't mangle properties to avoid breaking React
-          properties: false
-        },
-        format: {
-          comments: false
-        }
-      },
-      // Chunk size warning limit
-      chunkSizeWarningLimit: 600
+      }
     },
 
     // Development server configuration
