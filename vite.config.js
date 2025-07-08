@@ -30,9 +30,7 @@ export default defineConfig(({ _command, mode }) => {
       // Target modern browsers for smaller bundles
       target: ['es2020', 'chrome91', 'firefox89', 'safari15'],
       rollupOptions: {
-        input: {
-          main: resolve(__dirname, 'index.html')
-        },
+        input: resolve(__dirname, 'index.html'),
         output: {
           // Optimized asset naming
           assetFileNames: (assetInfo) => {
@@ -62,31 +60,29 @@ export default defineConfig(({ _command, mode }) => {
           unknownGlobalSideEffects: false
         }
       },
-      // Terser options for aggressive minification
+      // Terser options with safe React-compatible settings
       terserOptions: {
         compress: {
-          arguments: true,
-          booleans_as_integers: true,
           drop_console: true,
           drop_debugger: true,
-          passes: 2,
+          passes: 1,
           pure_funcs: ['console.log', 'console.info'],
-          pure_getters: true,
-          unsafe: true,
-          unsafe_arrows: true,
-          unsafe_comps: true,
-          unsafe_Function: true,
-          unsafe_math: true,
-          unsafe_symbols: true,
-          unsafe_methods: true,
-          unsafe_proto: true,
-          unsafe_regexp: true,
-          unsafe_undefined: true
+          // Remove unsafe optimizations that break React
+          unsafe: false,
+          unsafe_arrows: false,
+          unsafe_comps: false,
+          unsafe_Function: false,
+          unsafe_math: false,
+          unsafe_symbols: false,
+          unsafe_methods: false,
+          unsafe_proto: false,
+          unsafe_regexp: false,
+          unsafe_undefined: false,
+          pure_getters: false
         },
         mangle: {
-          properties: {
-            regex: /^_/
-          }
+          // Don't mangle properties to avoid breaking React
+          properties: false
         },
         format: {
           comments: false
