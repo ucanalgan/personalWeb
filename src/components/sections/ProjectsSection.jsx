@@ -232,7 +232,8 @@ const ProjectsSection = () => {
                 My <span className="gradient-text">Projects</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-              A portfolio of well-structured projects built with reliable tools, production-ready practices, and a focus on maintainability.
+                A portfolio of well-structured projects built with reliable tools, production-ready practices,
+                and a focus on maintainability.
               </p>
             </div>
           </div>

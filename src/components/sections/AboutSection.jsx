@@ -96,7 +96,8 @@ const AboutSection = () => {
                 <br />Engineer<span className="gradient-text"> Student </span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-              Bridging web technologies and networking principles to build reliable, scalable systems while continuously learning and solving real-world problems.
+                Bridging web technologies and networking principles to build reliable, scalable systems
+                while continuously learning and solving real-world problems.
               </p>
             </div>
           </div>
@@ -115,7 +116,10 @@ const AboutSection = () => {
                       <div>
                         <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">Academic Development</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                        Studying Information Systems Engineering, I'm building a strong foundation in both software development and network systems. Through hands-on labs and academic projects, I've developed skills in data structures, computer networks, and system design—bridging theory with real-world application.
+                          Studying Information Systems Engineering, I'm building a strong foundation in both
+                          software development and network systems. Through hands-on labs and academic projects,
+                          I've developed skills in data structures, computer networks, and system design—bridging
+                          theory with real-world application.
                         </p>
                       </div>
                     </div>
@@ -129,7 +133,10 @@ const AboutSection = () => {
                       <div>
                         <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300"> Freelance & Personal Projects</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                        Outside of school, I've worked on several personal and freelance projects to sharpen my skills. From creating dynamic websites and GitHub-integrated portfolios to building small web tools, I focus on practical solutions that are both scalable and user-friendly. These projects reflect my passion for clean architecture and real problem-solving.
+                          Outside of school, I've worked on several personal and freelance projects to sharpen
+                          my skills. From creating dynamic websites and GitHub-integrated portfolios to building
+                          small web tools, I focus on practical solutions that are both scalable and user-friendly.
+                          These projects reflect my passion for clean architecture and real problem-solving.
                         </p>
                       </div>
                     </div>
@@ -143,7 +150,10 @@ const AboutSection = () => {
                       <div>
                         <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300"> Professional & Work Experience</h3>
                         <p className="body-base text-text-secondary leading-relaxed">
-                        During my first university year, I worked as an IT Assistant at my school, helping manage hardware/software systems and supporting technical infrastructure. This real-world exposure taught me troubleshooting, teamwork, and the operational side of tech. I continue to explore opportunities that blend my academic focus with real industry experience.
+                          During my first university year, I worked as an IT Assistant at my school, helping
+                          manage hardware/software systems and supporting technical infrastructure. This real-world
+                          exposure taught me troubleshooting, teamwork, and the operational side of tech. I continue
+                          to explore opportunities that blend my academic focus with real industry experience.
                         </p>
                       </div>
                     </div>
