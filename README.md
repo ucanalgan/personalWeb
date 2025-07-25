@@ -9,7 +9,7 @@
 
 **🌟 A modern, performance-optimized personal portfolio showcasing full-stack development expertise**
 
-**[🔗 Live Demo](https://ucanalgan.github.io/personalWeb/)** • **[📧 Contact](mailto:your-email@example.com)** • **[💼 LinkedIn](https://linkedin.com/in/ucanalgan)**
+**[🔗 Live Demo](https://ucanalgan.github.io/personalWeb/)** • **[📧 Contact](mailto:umutcanalgan91@gmail.com)** • **[💼 LinkedIn](https://linkedin.com/in/ucanalgan)**
 
 </div>
 

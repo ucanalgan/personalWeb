@@ -25,15 +25,9 @@ const FooterSection = () => {
       color: 'hover:text-blue-400'
     },
     {
-      icon: 'ri-twitter-line',
-      label: 'Twitter',
-      url: 'https://twitter.com/ucanalgan',
-      color: 'hover:text-blue-500'
-    },
-    {
       icon: 'ri-mail-line',
       label: 'Email',
-      url: 'mailto:umutcanalgan@gmail.com',
+      url: 'mailto:umutcanalgan91@gmail.com',
       color: 'hover:text-green-400'
     }
   ];
@@ -85,10 +79,10 @@ const FooterSection = () => {
             <h4 className="text-lg font-semibold text-text-primary mb-4">Contact</h4>
             <div className="space-y-2 text-sm">
               <a
-                href="mailto:umutcanalgan@gmail.com"
+                href="mailto:umutcanalgan91@gmail.com"
                 className="block text-text-secondary hover:text-primary transition-colors duration-300"
               >
-                umutcanalgan@gmail.com
+                umutcanalgan91@gmail.com
               </a>
               <p className="text-text-secondary">Turkey</p>
               <p className="text-text-secondary">Available for opportunities</p>

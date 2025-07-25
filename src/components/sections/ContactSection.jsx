@@ -39,14 +39,14 @@ const ContactSection = () => {
     {
       icon: 'ri-mail-line',
       label: 'Email',
-      value: 'umutcanalgan@gmail.com',
-      link: 'mailto:umutcanalgan@gmail.com'
+      value: 'umutcanalgan91@gmail.com',
+      link: 'mailto:umutcanalgan91@gmail.com'
     },
     {
       icon: 'ri-phone-line',
       label: 'Phone',
-      value: '+90 (XXX) XXX XX XX',
-      link: 'tel:+90XXXXXXXXX'
+      value: '+90 506 905 28 27',
+      link: 'tel:+905069052827'
     },
     {
       icon: 'ri-map-pin-line',
@@ -68,12 +68,6 @@ const ContactSection = () => {
       label: 'LinkedIn',
       url: 'https://linkedin.com/in/umutcanalgan',
       color: 'hover:text-blue-400'
-    },
-    {
-      icon: 'ri-twitter-line',
-      label: 'Twitter',
-      url: 'https://twitter.com/ucanalgan',
-      color: 'hover:text-blue-500'
     }
   ];
 

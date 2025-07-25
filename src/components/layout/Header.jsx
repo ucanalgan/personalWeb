@@ -257,7 +257,7 @@ const Header = () => {
                     <i className="ri-linkedin-line text-lg" />
                   </a>
                   <a
-                    href="mailto:contact@ucanalgan.dev"
+                    href="mailto:umutcanalgan91@gmail.com"
                     className="p-2 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
                   >
                     <i className="ri-mail-line text-lg" />
