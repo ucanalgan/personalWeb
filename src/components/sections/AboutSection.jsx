@@ -75,7 +75,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="py-32 bg-gradient-to-br from-background via-surface/10 to-background relative overflow-hidden">
+    <section id="about" className="bg-gradient-to-br from-background via-surface/10 to-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse" />
@@ -144,7 +144,7 @@ const AboutSection = () => {
 
                   <div className="group">
                     <div className="flex items-start space-x-4 p-6 bg-surface/30 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
                         🏢
                       </div>
                       <div>

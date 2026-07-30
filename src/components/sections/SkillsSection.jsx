@@ -10,7 +10,7 @@ const SkillsSection = () => {
     {
       title: 'Frontend Development',
       icon: 'ri-palette-line',
-      color: 'from-cyan-400 to-blue-500',
+      color: 'from-[#8FB6FF] to-[#4C8DFF]',
       description: 'Creating engaging user interfaces',
       skills: [
         { name: 'React', icon: 'ri-reactjs-line', description: 'Component-based UI development' },
@@ -23,7 +23,7 @@ const SkillsSection = () => {
     {
       title: 'Backend Development',
       icon: 'ri-server-line',
-      color: 'from-green-400 to-emerald-600',
+      color: 'from-[#6FA3FF] to-[#2E6FE0]',
       description: 'Building robust server architectures',
       skills: [
         { name: 'Node.js', icon: 'ri-nodejs-line', description: 'Server-side JavaScript' },
@@ -36,7 +36,7 @@ const SkillsSection = () => {
     {
       title: 'Database & Storage',
       icon: 'ri-database-2-line',
-      color: 'from-purple-400 to-indigo-600',
+      color: 'from-[#4C8DFF] to-[#1F55B0]',
       description: 'Data management and optimization',
       skills: [
         { name: 'MySQL', icon: 'ri-database-2-line', description: 'Relational SQL database' },
@@ -47,7 +47,7 @@ const SkillsSection = () => {
     {
       title: 'DevOps & Tools',
       icon: 'ri-tools-line',
-      color: 'from-orange-400 to-red-500',
+      color: 'from-[#2E6FE0] to-[#143A78]',
       description: 'Deployment and development tools',
       skills: [
         { name: 'Git', icon: 'ri-git-branch-line', description: 'Version control for collaboration' },
@@ -92,7 +92,7 @@ const SkillsSection = () => {
   }, [isVisible, skillCategories.length]);
 
   return (
-    <section id="skills" className="py-32 bg-gradient-to-b from-surface/5 via-background to-surface/5 relative overflow-hidden">
+    <section id="skills" className="bg-gradient-to-b from-surface/5 via-background to-surface/5 relative overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full opacity-10">

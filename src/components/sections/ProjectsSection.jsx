@@ -218,7 +218,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-32 bg-gradient-to-br from-background via-surface/5 to-background relative overflow-hidden">
+    <section id="projects" className="bg-gradient-to-br from-background via-surface/5 to-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-10 w-80 h-80 bg-gradient-to-l from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse" />

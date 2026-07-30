@@ -8,6 +8,8 @@
 @import './typography.css';
 /* Palette layer — must come last so it wins over design-system defaults. */
 @import './cobalt.css';
+/* Type scale & vertical rhythm, layered on top of typography.css. */
+@import './type-scale.css';
 
 /* Base Reset & Body Styles */
 * {

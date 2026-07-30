@@ -47,7 +47,7 @@ const GitHubSection = () => {
 
   if (error) {
     return (
-      <section id="github" className="py-20 bg-surface/5">
+      <section id="github" className="bg-surface/5">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-8">
@@ -62,7 +62,7 @@ const GitHubSection = () => {
   }
 
   return (
-    <section id="github" className="py-20 bg-surface/5">
+    <section id="github" className="bg-surface/5">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}

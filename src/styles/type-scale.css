@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Type scale & vertical rhythm — the "Terminal & Topoloji" direction.
+
+   Loaded after typography.css and narrows an 17-class scale down to the
+   seven steps the components actually use. Display headings switch to the
+   mono face already loaded for code, which is what gives the page its
+   engineering character; body copy stays in Inter for readability.
+   ========================================================================== */
+
+:root {
+  --font-display: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Six steps, ~1.25 ratio, fluid between mobile and desktop. */
+  --step-display: clamp(2.25rem, 1.4rem + 4.2vw, 4rem);
+  --step-title: clamp(1.75rem, 1.25rem + 2.4vw, 2.75rem);
+  --step-section: clamp(1.35rem, 1.1rem + 1.1vw, 1.75rem);
+  --step-lead: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  --step-body: 1rem;
+  --step-small: 0.875rem;
+
+  /* One rhythm value for every section, instead of the 80/128 mix. */
+  --section-gap: clamp(4rem, 2rem + 6vw, 6rem);
+}
+
+/* Numerals should line up in stat rows and tables. Base typography sets
+   oldstyle-nums globally, which makes figures wander off the baseline. */
+* {
+  font-variant-numeric: normal;
+}
+
+/* --------------------------------------------------------------------------
+   Display headings — mono, tight, and no gradient by default. The gradient
+   is kept as an opt-in via .gradient-text so it stays an accent, not a
+   default coat of paint on every heading.
+   -------------------------------------------------------------------------- */
+.display-2xl,
+.display-xl,
+.display-lg {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  /* Undo the unconditional gradient clip inherited from typography.css. */
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--text-primary);
+}
+
+.display-2xl { font-size: var(--step-display); }
+.display-xl { font-size: var(--step-title); }
+.display-lg { font-size: var(--step-title); }
+
+/* Section headings */
+.heading-2 {
+  font-family: var(--font-display);
+  font-size: var(--step-section);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  color: var(--text-primary);
+}
+
+.heading-3 {
+  font-family: var(--font-body);
+  font-size: var(--step-lead);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+/* Body copy */
+.text-lead {
+  font-family: var(--font-body);
+  font-size: var(--step-lead);
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.text-body,
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.text-caption {
+  font-family: var(--font-display);
+  font-size: var(--step-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* Components also reference these names, which were never defined anywhere —
+   the copy using them was rendering unstyled. Map them onto the same scale. */
+.body-xl {
+  font-family: var(--font-body);
+  font-size: var(--step-lead);
+  line-height: 1.65;
+}
+
+.body-lg {
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.7;
+}
+
+.body-base {
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.7;
+}
+
+/* Keep running text at a comfortable measure. */
+.text-lead,
+.text-body,
+.text-body-lg,
+.body-xl,
+.body-lg,
+.body-base {
+  max-width: 68ch;
+}
+
+/* --------------------------------------------------------------------------
+   Vertical rhythm — every section shares one padding value.
+   -------------------------------------------------------------------------- */
+section[id] {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+
+/* The hero centres itself in the viewport and sets its own spacing. */
+#hero {
+  padding-top: 0;
+  padding-bottom: 0;
+}
