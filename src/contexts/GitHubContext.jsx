@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const GitHubContext = createContext();
 
@@ -166,5 +167,5 @@ export const GitHubProvider = ({ children }) => {
 
 // Prop validation
 GitHubProvider.propTypes = {
-  children: null // Accept any node type
+  children: PropTypes.node
 };

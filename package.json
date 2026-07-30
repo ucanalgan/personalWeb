@@ -12,10 +12,9 @@
     "lint": "eslint . --ext js,jsx",
     "lint:fix": "eslint . --ext js,jsx --fix",
     "lint:check": "eslint . --ext js,jsx --max-warnings 0",
-    "lint:build": "eslint . --ext js,jsx --max-warnings 60",
-    "prebuild": "npm run lint:build",
+    "prebuild": "npm run lint:check",
     "predev": "npm run lint",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "keywords": [
     "portfolio",
@@ -52,7 +51,6 @@
     "postcss": "^8.5.3",
     "postcss-import": "^16.1.1",
     "tailwindcss": "^3.4.17",
-    "terser": "^5.29.2",
     "typescript": "^5.8.3",
     "vite": "^5.0.0"
   },

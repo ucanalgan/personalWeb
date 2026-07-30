@@ -5,13 +5,8 @@ export default defineConfig(({ _command, mode }) => {
   const isProduction = mode === 'production';
 
   return {
-    // React plugin with optimized config
-    plugins: [
-      react({
-        // Enable React Fast Refresh
-        fastRefresh: !isProduction
-      })
-    ].filter(Boolean),
+    // React plugin (Fast Refresh is enabled automatically in development)
+    plugins: [react()],
 
     // Base path for GitHub Pages (only in production)
     base: isProduction ? '/personalWeb/' : '/',
