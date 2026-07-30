@@ -81,27 +81,6 @@ const HeroSection = () => {
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Gradient orbs with mouse parallax */}
-        <div
-          className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-30 animate-pulse"
-          style={{
-            background: 'linear-gradient(135deg, var(--brand-primary-400), var(--accent-purple-400))',
-            transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`,
-            left: '10%',
-            top: '20%'
-          }}
-        />
-        <div
-          className="absolute w-[400px] h-[400px] rounded-full blur-3xl opacity-20 animate-pulse"
-          style={{
-            background: 'linear-gradient(135deg, var(--accent-pink-400), var(--accent-orange-400))',
-            transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
-            right: '10%',
-            bottom: '20%',
-            animationDelay: '1s'
-          }}
-        />
-
         {/* Grid pattern overlay */}
         <div
           className="absolute inset-0 opacity-5"
@@ -156,7 +135,6 @@ const HeroSection = () => {
                 className="group relative overflow-hidden"
               >
                 <span className="relative z-10">Explore My Work</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-brand-primary-400 to-accent-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Button>
 
               <Button

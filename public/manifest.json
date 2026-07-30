@@ -5,7 +5,7 @@
   "start_url": "/personalWeb/",
   "display": "standalone",
   "background_color": "#0a0e27",
-  "theme_color": "#64ffda",
+  "theme_color": "#0c1119",
   "orientation": "portrait-primary",
   "categories": ["portfolio", "developer", "technology"],
   "lang": "en",

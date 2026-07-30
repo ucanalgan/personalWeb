@@ -42,7 +42,7 @@ const GitHubSection = () => {
       Java: '#ed8b00',
       'C++': '#00599c'
     };
-    return colors[language] || '#64ffda';
+    return colors[language] || '#4c8dff';
   };
 
   if (error) {

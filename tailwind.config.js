@@ -9,11 +9,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary color scheme
+        // Primary accent — driven by the Cobalt palette layer so light and
+        // dark themes can re-weight the same hue.
         primary: {
-          DEFAULT: '#64ffda',
-          dark: '#4fd1c7',
-          light: '#9cffed'
+          DEFAULT: 'var(--brand-primary-500)',
+          dark: 'var(--brand-primary-600)',
+          light: 'var(--brand-primary-400)'
         },
 
         // Surface colors using semantic naming
@@ -74,7 +75,7 @@ export default {
         },
         'blink-caret': {
           '0%, 50%': { borderColor: 'transparent' },
-          '51%, 100%': { borderColor: '#64ffda' }
+          '51%, 100%': { borderColor: 'var(--brand-primary-500)' }
         }
       },
 
@@ -83,8 +84,8 @@ export default {
       },
 
       boxShadow: {
-        'glow': '0 0 20px rgba(100, 255, 218, 0.3)',
-        'glow-lg': '0 0 40px rgba(100, 255, 218, 0.4)'
+        'glow': '0 0 20px rgba(76, 141, 255, 0.28)',
+        'glow-lg': '0 0 40px rgba(76, 141, 255, 0.36)'
       }
     }
   },

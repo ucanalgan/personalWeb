@@ -1,0 +1,169 @@
+/* ==========================================================================
+   Cobalt — palette layer for the "Terminal & Topoloji" direction.
+
+   Loaded after design-system.css and deliberately overrides only the
+   semantic colour tokens the components actually consume. One accent
+   (cobalt blue) carries emphasis; status colours stay independent of it
+   so "error" never reads as "brand".
+   ========================================================================== */
+
+:root {
+  /* --- Cobalt ramp ------------------------------------------------------ */
+  --cobalt-300: #8FB6FF;
+  --cobalt-400: #6FA3FF;
+  --cobalt-500: #4C8DFF;
+  --cobalt-600: #2E6FE0;
+  --cobalt-700: #1F55B0;
+
+  /* --- Ink neutrals (slightly blue-biased, to sit with the accent) ------ */
+  --ink-900: #0C1119;
+  --ink-800: #141C28;
+  --ink-700: #1B2533;
+  --ink-600: #243040;
+  --ink-500: #2B3A4E;
+  --slate-400: #8896AA;
+  --slate-300: #A9B6C6;
+  --slate-200: #C2CEDD;
+  --slate-100: #E9EFF7;
+
+  /* --- Status: independent of the accent -------------------------------- */
+  --status-ok: #3FB984;
+  --status-warn: #D9A441;
+  --status-error: #E5675E;
+
+  /* --- Legacy accent aliases -------------------------------------------
+     Components still reference the old purple/pink accent tokens. Rather
+     than rewrite every gradient, collapse them onto the cobalt ramp so the
+     page reads as one hue. Language chips and status colours are NOT
+     remapped — those encode data, not brand.
+     -------------------------------------------------------------------- */
+  --accent-purple-400: var(--cobalt-400);
+  --accent-purple-500: var(--cobalt-500);
+  --accent-purple-600: var(--cobalt-600);
+  --accent-pink-400: var(--cobalt-300);
+  --accent-pink-500: var(--cobalt-500);
+  --accent-orange-400: var(--cobalt-300);
+  --accent-orange-500: var(--cobalt-500);
+}
+
+/* --------------------------------------------------------------------------
+   Dark theme — the site's default ground.
+   -------------------------------------------------------------------------- */
+:root:not([data-theme='light']):not(.light),
+:root[data-theme='dark'],
+:root.dark {
+  --bg-primary: var(--ink-900);
+  --bg-secondary: var(--ink-800);
+  --bg-tertiary: var(--ink-700);
+  --bg-elevated: var(--ink-600);
+  --bg-card: var(--ink-700);
+  --bg-surface: rgba(20, 28, 40, 0.82);
+  --bg-surface-hover: rgba(27, 37, 51, 0.92);
+
+  --text-primary: var(--slate-100);
+  --text-secondary: var(--slate-300);
+  --text-tertiary: var(--slate-400);
+  --text-muted: var(--slate-400);
+  --text-inverse: var(--ink-900);
+
+  --border-color: var(--ink-500);
+  --border-light: var(--ink-600);
+
+  --brand-primary-400: var(--cobalt-400);
+  --brand-primary-500: var(--cobalt-500);
+  --brand-primary-600: var(--cobalt-600);
+
+  /* Single-hue gradients: no more blue-to-purple. */
+  --gradient-primary: linear-gradient(135deg, var(--cobalt-500) 0%, var(--cobalt-700) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--cobalt-400) 0%, var(--cobalt-600) 100%);
+  --gradient-ocean: linear-gradient(135deg, var(--cobalt-400) 0%, var(--cobalt-600) 100%);
+  --gradient-sunset: linear-gradient(135deg, var(--cobalt-300) 0%, var(--cobalt-600) 100%);
+  --gradient-text: linear-gradient(135deg, var(--cobalt-300) 0%, var(--cobalt-500) 100%);
+
+  --glass-bg: rgba(76, 141, 255, 0.06);
+  --glass-bg-strong: rgba(76, 141, 255, 0.1);
+  --glass-border: rgba(137, 165, 214, 0.16);
+  --glass-shadow: rgba(0, 0, 0, 0.45);
+
+}
+
+/* --------------------------------------------------------------------------
+   Light theme — same accent, re-weighted so contrast holds on a pale ground.
+   The 500 step is too light on white, so emphasis shifts to 600/700.
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: light) {
+  /* Only when the user has not explicitly chosen a theme. */
+  :root:not([data-theme='dark']):not(.dark):not([data-theme='light']):not(.light) {
+    --bg-primary: #FAFBFD;
+    --bg-secondary: #FFFFFF;
+    --bg-tertiary: #F1F4F8;
+    --bg-elevated: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-surface: rgba(255, 255, 255, 0.86);
+    --bg-surface-hover: rgba(241, 244, 248, 0.94);
+
+    --text-primary: #101722;
+    --text-secondary: #465363;
+    --text-tertiary: #61707F;
+    --text-muted: #61707F;
+    --text-inverse: #FFFFFF;
+
+    --border-color: #D9E1EA;
+    --border-light: #E7ECF2;
+
+    --brand-primary-400: var(--cobalt-600);
+    --brand-primary-500: var(--cobalt-600);
+    --brand-primary-600: var(--cobalt-700);
+
+    --gradient-primary: linear-gradient(135deg, var(--cobalt-600) 0%, var(--cobalt-700) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--cobalt-500) 0%, var(--cobalt-700) 100%);
+    --gradient-ocean: linear-gradient(135deg, var(--cobalt-500) 0%, var(--cobalt-700) 100%);
+    --gradient-sunset: linear-gradient(135deg, var(--cobalt-500) 0%, var(--cobalt-700) 100%);
+    --gradient-text: linear-gradient(135deg, var(--cobalt-600) 0%, var(--cobalt-700) 100%);
+
+    --glass-bg: rgba(76, 141, 255, 0.05);
+    --glass-bg-strong: rgba(76, 141, 255, 0.09);
+    --glass-border: rgba(31, 85, 176, 0.14);
+    --glass-shadow: rgba(16, 23, 34, 0.1);
+
+  }
+}
+
+/* Explicit light selection must win over the dark defaults above.
+   ThemeContext toggles a .light / .dark class on <html>; data-theme is
+   supported too so either mechanism works. */
+:root[data-theme='light'],
+:root.light {
+  --bg-primary: #FAFBFD;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F1F4F8;
+  --bg-elevated: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-surface: rgba(255, 255, 255, 0.86);
+  --bg-surface-hover: rgba(241, 244, 248, 0.94);
+
+  --text-primary: #101722;
+  --text-secondary: #465363;
+  --text-tertiary: #61707F;
+  --text-muted: #61707F;
+  --text-inverse: #FFFFFF;
+
+  --border-color: #D9E1EA;
+  --border-light: #E7ECF2;
+
+  --brand-primary-400: var(--cobalt-600);
+  --brand-primary-500: var(--cobalt-600);
+  --brand-primary-600: var(--cobalt-700);
+
+  --gradient-primary: linear-gradient(135deg, var(--cobalt-600) 0%, var(--cobalt-700) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--cobalt-500) 0%, var(--cobalt-700) 100%);
+  --gradient-ocean: linear-gradient(135deg, var(--cobalt-500) 0%, var(--cobalt-700) 100%);
+  --gradient-sunset: linear-gradient(135deg, var(--cobalt-500) 0%, var(--cobalt-700) 100%);
+  --gradient-text: linear-gradient(135deg, var(--cobalt-600) 0%, var(--cobalt-700) 100%);
+
+  --glass-bg: rgba(76, 141, 255, 0.05);
+  --glass-bg-strong: rgba(76, 141, 255, 0.09);
+  --glass-border: rgba(31, 85, 176, 0.14);
+  --glass-shadow: rgba(16, 23, 34, 0.1);
+
+}

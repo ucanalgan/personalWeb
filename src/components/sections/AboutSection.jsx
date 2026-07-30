@@ -16,9 +16,9 @@ const AboutSection = () => {
   ];
 
   const stats = useMemo(() => [
-    { label: 'Years Experience', value: 2, suffix: '+', icon: 'ri-time-line', color: 'text-cyan-400' },
-    { label: 'Projects Completed', value: 15, suffix: '+', icon: 'ri-trophy-line', color: 'text-purple-400' },
-    { label: 'Technologies Mastered', value: 10, suffix: '+', icon: 'ri-code-s-slash-line', color: 'text-green-400' }
+    { label: 'Years Experience', value: 2, suffix: '+', icon: 'ri-time-line', color: 'text-primary' },
+    { label: 'Projects Completed', value: 15, suffix: '+', icon: 'ri-trophy-line', color: 'text-primary' },
+    { label: 'Technologies Mastered', value: 10, suffix: '+', icon: 'ri-code-s-slash-line', color: 'text-primary' }
   ], []);
 
   // Intersection Observer for animations

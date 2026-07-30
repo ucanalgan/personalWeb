@@ -44,27 +44,20 @@ const Button = forwardRef(({
 
   // Button variants with modern design
   const variants = {
-    // Primary - Gradient background
+    // Primary - solid accent so it stays legible over the hero ambience
     primary: `
-      bg-gradient-to-r from-brand-primary-500 to-accent-purple-500
-      text-white border-0 shadow-lg shadow-brand-primary-500/25
-      hover:shadow-xl hover:shadow-brand-primary-500/30
+      bg-primary text-white border-0
+      shadow-lg shadow-brand-primary-500/25
+      hover:bg-primary-dark hover:shadow-xl hover:shadow-brand-primary-500/30
       focus:ring-brand-primary-500
-      before:absolute before:inset-0 before:rounded-[inherit] 
-      before:bg-gradient-to-r before:from-brand-primary-400 before:to-accent-purple-400
-      before:opacity-0 before:transition-opacity before:duration-200
-      hover:before:opacity-100
     `,
 
     // Secondary - Glass effect
     secondary: `
-      bg-white/5 backdrop-blur-lg border border-white/10
+      bg-surface border border-border
       text-text-primary hover:text-brand-primary-500
-      shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10
-      hover:bg-white/10 hover:border-white/20
+      hover:bg-surface-hover hover:border-border-hover
       focus:ring-brand-primary-400
-      [data-theme="light"] &:bg-white/80 [data-theme="light"] &:hover:bg-white/90
-      [data-theme="light"] &:border-gray-200 [data-theme="light"] &:hover:border-gray-300
     `,
 
     // Outline - Modern outline with gradient border
@@ -114,14 +107,10 @@ const Button = forwardRef(({
 
     // Glass - Full glassmorphism effect
     glass: `
-      bg-white/10 backdrop-blur-xl border border-white/20
-      text-text-primary shadow-2xl shadow-black/10
-      hover:bg-white/15 hover:border-white/30
+      bg-surface backdrop-blur-xl border border-border
+      text-text-primary
+      hover:bg-surface-hover hover:border-border-hover
       focus:ring-brand-primary-400
-      relative overflow-hidden
-      before:absolute before:inset-0 before:bg-gradient-to-br 
-      before:from-white/10 before:to-transparent before:opacity-0
-      hover:before:opacity-100 before:transition-opacity before:duration-300
     `,
 
     // Neon - Glowing effect
