@@ -47,7 +47,7 @@ const FooterSection = () => {
           <div className="md:col-span-1">
             <div className="mb-4">
               <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Umut Can Algan
+                Umutcan Algan
               </h3>
               <p className="text-text-secondary mt-2">
                 Full-Stack Developer

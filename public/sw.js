@@ -1,19 +1,24 @@
 // Enhanced Service Worker for Performance Optimization
 // Version: 2.0.0
 
-const CACHE_NAME = 'portfolio-v2';
-const RUNTIME_CACHE = 'runtime-v2';
-const IMAGE_CACHE = 'images-v2';
-const API_CACHE = 'api-v2';
+const CACHE_NAME = 'portfolio-v3';
+const RUNTIME_CACHE = 'runtime-v3';
+const IMAGE_CACHE = 'images-v3';
+const API_CACHE = 'api-v3';
+
+// The worker is served from the deployment root (e.g. "/personalWeb/" on
+// GitHub Pages, "/" locally), so derive the base path from its own URL
+// instead of hard-coding root-relative paths.
+const BASE_PATH = new URL('./', self.location).pathname;
 
 // Cache strategy configuration
 const CACHE_STRATEGIES = {
   // Static assets - Cache first with long TTL
   STATIC_ASSETS: [
-    '/',
-    '/index.html',
-    '/manifest.json',
-    '/favicon.svg'
+    BASE_PATH,
+    `${BASE_PATH}index.html`,
+    `${BASE_PATH}manifest.json`,
+    `${BASE_PATH}favicon.svg`
   ],
   
   // Cache for different resource types

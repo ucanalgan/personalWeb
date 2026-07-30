@@ -19,7 +19,7 @@ export default defineConfig(({ _command, mode }) => {
       outDir: 'dist',
       assetsDir: 'assets',
       sourcemap: false,
-      minify: 'esbuild', // Use esbuild instead of terser
+      minify: true, // Oxc, Vite 8's default minifier
       cssMinify: true,
       // Standard target for better compatibility
       target: 'es2020',
@@ -89,15 +89,6 @@ export default defineConfig(({ _command, mode }) => {
       __PROD__: isProduction
     },
 
-    // ESBuild configuration for faster builds
-    esbuild: {
-      // Drop console logs in production
-      drop: isProduction ? ['console', 'debugger'] : [],
-      // Enable tree shaking for unused imports
-      treeShaking: true,
-      // Target modern syntax
-      target: 'es2020'
-    },
 
     // Worker configuration
     worker: {

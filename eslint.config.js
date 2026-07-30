@@ -67,8 +67,11 @@ export default [
       react: {
         version: 'detect'
       },
+      // The typescript resolver understands package.json "exports" maps,
+      // which the legacy node resolver cannot handle for ESM-only packages
+      // such as vite and @vitejs/plugin-react.
       'import/resolver': {
-        node: {
+        typescript: {
           extensions: ['.js', '.jsx']
         }
       }

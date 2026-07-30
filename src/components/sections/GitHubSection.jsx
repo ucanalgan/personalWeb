@@ -2,6 +2,9 @@
 import { useGitHub } from '../../contexts/GitHubContext';
 import Button from '../common/Button';
 
+// Served from public/, so it must be prefixed with the configured base path.
+const PLACEHOLDER_IMAGE = `${import.meta.env.BASE_URL}profile-placeholder.svg`;
+
 const GitHubSection = () => {
   const { userData, stats, repositories, isLoading, error } = useGitHub();
 
@@ -80,7 +83,7 @@ const GitHubSection = () => {
                   <div className="w-20 h-20 bg-surface/50 rounded-full mx-auto mb-4 animate-pulse" />
                 ) : (
                   <img
-                    src={userData?.avatar_url || '/src/assets/images/profile-placeholder.webp'}
+                    src={userData?.avatar_url || PLACEHOLDER_IMAGE}
                     alt="GitHub Avatar"
                     className="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-primary/20"
                   />

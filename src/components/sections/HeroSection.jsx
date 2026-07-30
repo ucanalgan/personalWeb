@@ -2,9 +2,12 @@ import { useEffect, useState, useRef } from 'react';
 import { useGitHub } from '../../contexts/GitHubContext';
 import Button from '../common/Button';
 
+// Served from public/, so it must be prefixed with the configured base path.
+const PLACEHOLDER_IMAGE = `${import.meta.env.BASE_URL}profile-placeholder.svg`;
+
 const HeroSection = () => {
   const { userData, stats, isLoading, error, refreshData, lastUpdate } = useGitHub();
-  const [profileImage, setProfileImage] = useState('/src/assets/images/profile-placeholder.webp');
+  const [profileImage, setProfileImage] = useState(PLACEHOLDER_IMAGE);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
   const profileRef = useRef(null);
@@ -188,7 +191,9 @@ const HeroSection = () => {
                       alt="Umutcan Algan - Full Stack Developer"
                       className="w-full h-full object-cover rounded-full transition-all duration-500 group-hover:scale-105 group-hover:brightness-110 shadow-xl"
                       loading="eager"
-                      onError={() => setProfileImage('/src/assets/images/profile-placeholder.webp')}
+                      onError={() => setProfileImage(current =>
+                        current === PLACEHOLDER_IMAGE ? current : PLACEHOLDER_IMAGE
+                      )}
                     />
                   </div>
                 </div>
