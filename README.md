@@ -1,4 +1,4 @@
-# Umutcan Algan — Personal Portfolio
+# Umutcan Algan - Personal Portfolio
 
 A React portfolio site that pulls live repository data from the GitHub API.
 Built with Vite, styled with Tailwind, deployed to GitHub Pages via GitHub
