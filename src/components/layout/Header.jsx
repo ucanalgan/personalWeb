@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ThemeToggle from '../common/ThemeToggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -103,8 +104,10 @@ const Header = () => {
 
   return (
     <>
-      {/* Enhanced Scroll Progress Bar */}
-      <div className="scroll-progress fixed top-0 left-0 right-0 h-1 z-50">
+      {/* Scroll progress. Deliberately not `.scroll-progress` — that class is
+          styled globally and driven by App.jsx, and two elements sharing it
+          rendered a stray bar under the header. */}
+      <div className="fixed top-0 left-0 right-0 h-1 z-50">
         <div
           className="h-full bg-gradient-to-r from-primary via-accent to-primary transition-all duration-300 ease-out shadow-lg shadow-primary/20"
           style={{ width: `${scrollProgress}%` }}
@@ -162,31 +165,35 @@ const Header = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="mobile-menu-button md:hidden relative p-3 text-text-primary hover:text-primary transition-all duration-300 hover:bg-surface/30 rounded-xl group"
-              aria-label="Toggle mobile menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              <div className="relative w-6 h-6">
-                <span
-                  className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ${
-                    isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'
-                  }`}
-                />
-                <span
-                  className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ${
-                    isMobileMenuOpen ? 'opacity-0' : 'top-3'
-                  }`}
-                />
-                <span
-                  className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ${
-                    isMobileMenuOpen ? '-rotate-45 top-3' : 'top-5'
-                  }`}
-                />
-              </div>
-            </button>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="mobile-menu-button md:hidden relative p-3 text-text-primary hover:text-primary transition-all duration-300 hover:bg-surface/30 rounded-xl group"
+                aria-label="Toggle mobile menu"
+                aria-expanded={isMobileMenuOpen}
+              >
+                <div className="relative w-6 h-6">
+                  <span
+                    className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ${
+                      isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'
+                    }`}
+                  />
+                  <span
+                    className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ${
+                      isMobileMenuOpen ? 'opacity-0' : 'top-3'
+                    }`}
+                  />
+                  <span
+                    className={`absolute block h-0.5 w-6 bg-current transform transition-all duration-300 ${
+                      isMobileMenuOpen ? '-rotate-45 top-3' : 'top-5'
+                    }`}
+                  />
+                </div>
+              </button>
+            </div>
           </div>
 
           {/* Enhanced Mobile Navigation */}

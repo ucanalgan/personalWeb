@@ -9,32 +9,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary accent — driven by the Cobalt palette layer so light and
-        // dark themes can re-weight the same hue.
+        // Colours resolve through bare RGB channels (--rgb-*) defined in the
+        // Cobalt palette layer, so Tailwind's opacity modifiers work:
+        // `bg-background/85`, `border-border/50` and friends. Declaring them
+        // as plain var(--x) colours silently dropped those classes, which is
+        // how the header ended up with a default grey border.
         primary: {
-          DEFAULT: 'var(--brand-primary-500)',
-          dark: 'var(--brand-primary-600)',
-          light: 'var(--brand-primary-400)'
+          DEFAULT: 'rgb(var(--rgb-primary) / <alpha-value>)',
+          dark: 'rgb(var(--rgb-primary-dark) / <alpha-value>)',
+          light: 'rgb(var(--rgb-accent) / <alpha-value>)'
         },
 
-        // Surface colors using semantic naming
+        background: 'rgb(var(--rgb-bg-primary) / <alpha-value>)',
+        accent: 'rgb(var(--rgb-accent) / <alpha-value>)',
+
         surface: {
-          DEFAULT: 'var(--bg-secondary)',
-          secondary: 'var(--bg-tertiary)',
-          hover: 'var(--bg-card)'
+          DEFAULT: 'rgb(var(--rgb-bg-secondary) / <alpha-value>)',
+          secondary: 'rgb(var(--rgb-bg-tertiary) / <alpha-value>)',
+          hover: 'rgb(var(--rgb-bg-card) / <alpha-value>)'
         },
 
-        // Text colors
         text: {
-          primary: 'var(--text-primary)',
-          secondary: 'var(--text-secondary)',
-          muted: 'var(--text-muted)'
+          primary: 'rgb(var(--rgb-text-primary) / <alpha-value>)',
+          secondary: 'rgb(var(--rgb-text-secondary) / <alpha-value>)',
+          muted: 'rgb(var(--rgb-text-muted) / <alpha-value>)'
         },
 
-        // Border colors
         border: {
-          DEFAULT: 'var(--border-color)',
-          hover: 'var(--border-light)'
+          DEFAULT: 'rgb(var(--rgb-border) / <alpha-value>)',
+          hover: 'rgb(var(--rgb-border-light) / <alpha-value>)'
         }
       },
 

@@ -51,7 +51,7 @@ const ContactSection = () => {
     {
       icon: 'ri-map-pin-line',
       label: 'Location',
-      value: 'Turkey',
+      value: 'Istanbul, Türkiye',
       link: null
     }
   ];

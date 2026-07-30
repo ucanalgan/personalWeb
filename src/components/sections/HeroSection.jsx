@@ -112,8 +112,8 @@ const HeroSection = () => {
               </h1>
 
               <div className="text-lead">
-                <span className="text-text-secondary">Full-Stack Developer &</span>{' '}
-                <span className="text-gradient-primary font-semibold">Infrastructure-Minded Developer</span>
+                <span className="text-text-secondary">Backend Team Leader at TOG &</span>{' '}
+                <span className="text-gradient-primary font-semibold">Full-Stack Developer</span>
               </div>
             </div>
 
@@ -121,7 +121,7 @@ const HeroSection = () => {
             <div className="text-body-lg max-w-2xl mx-auto lg:mx-0">
               <p className="leading-relaxed">
                 {userData?.bio ||
-'I turn bold ideas into fast, scalable digital products. My focus is on building intuitive web apps that not only perform flawlessly but also create value for users and businesses alike.'                }
+                  'Information Systems Engineering student leading a six-person backend team, building scalable Node.js and PostgreSQL systems with JWT authentication. I work across the stack — from React interfaces to API design and the infrastructure underneath.'}
               </p>
             </div>
 

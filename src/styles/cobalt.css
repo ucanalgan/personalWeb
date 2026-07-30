@@ -85,6 +85,20 @@
   --glass-border: rgba(137, 165, 214, 0.16);
   --glass-shadow: rgba(0, 0, 0, 0.45);
 
+  /* Bare channel values so Tailwind can apply opacity modifiers
+     (bg-background/85, border-border/50, …) to these colours. */
+  --rgb-bg-primary: 12 17 25;
+  --rgb-bg-secondary: 20 28 40;
+  --rgb-bg-tertiary: 27 37 51;
+  --rgb-bg-card: 27 37 51;
+  --rgb-border: 43 58 78;
+  --rgb-border-light: 36 48 64;
+  --rgb-text-primary: 233 239 247;
+  --rgb-text-secondary: 169 182 198;
+  --rgb-text-muted: 136 150 170;
+  --rgb-accent: 111 163 255;
+  --rgb-primary: 76 141 255;
+  --rgb-primary-dark: 46 111 224;
 }
 
 /* --------------------------------------------------------------------------
@@ -126,6 +140,18 @@
     --glass-border: rgba(31, 85, 176, 0.14);
     --glass-shadow: rgba(16, 23, 34, 0.1);
 
+    --rgb-bg-primary: 250 251 253;
+    --rgb-bg-secondary: 255 255 255;
+    --rgb-bg-tertiary: 241 244 248;
+    --rgb-bg-card: 255 255 255;
+    --rgb-border: 217 225 234;
+    --rgb-border-light: 231 236 242;
+    --rgb-text-primary: 16 23 34;
+    --rgb-text-secondary: 70 83 99;
+    --rgb-text-muted: 97 112 127;
+    --rgb-accent: 46 111 224;
+    --rgb-primary: 46 111 224;
+    --rgb-primary-dark: 31 85 176;
   }
 }
 
@@ -166,4 +192,16 @@
   --glass-border: rgba(31, 85, 176, 0.14);
   --glass-shadow: rgba(16, 23, 34, 0.1);
 
+  --rgb-bg-primary: 250 251 253;
+  --rgb-bg-secondary: 255 255 255;
+  --rgb-bg-tertiary: 241 244 248;
+  --rgb-bg-card: 255 255 255;
+  --rgb-border: 217 225 234;
+  --rgb-border-light: 231 236 242;
+  --rgb-text-primary: 16 23 34;
+  --rgb-text-secondary: 70 83 99;
+  --rgb-text-muted: 97 112 127;
+  --rgb-accent: 46 111 224;
+  --rgb-primary: 46 111 224;
+  --rgb-primary-dark: 31 85 176;
 }

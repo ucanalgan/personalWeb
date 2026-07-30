@@ -15,9 +15,9 @@ const SkillsSection = () => {
       skills: [
         { name: 'React', icon: 'ri-reactjs-line', description: 'Component-based UI development' },
         { name: 'TypeScript', icon: 'ri-code-s-slash-line', description: 'Type-safe development' },
-        { name: 'Tailwind CSS', icon: 'ri-css3-line', description: 'Utility-first styling' },
         { name: 'Next.js', icon: 'ri-layout-line', description: 'Full-stack React framework' },
-        { name: 'Vite', icon: 'ri-flashlight-line', description: 'Modern build tooling' }
+        { name: 'Tailwind CSS', icon: 'ri-css3-line', description: 'Utility-first styling' },
+        { name: 'React Native', icon: 'ri-smartphone-line', description: 'Cross-platform mobile UI' }
       ]
     },
     {
@@ -28,8 +28,8 @@ const SkillsSection = () => {
       skills: [
         { name: 'Node.js', icon: 'ri-nodejs-line', description: 'Server-side JavaScript' },
         { name: 'Express.js', icon: 'ri-route-line', description: 'Web application framework' },
-        { name: 'Python', icon: 'ri-file-code-line', description: 'Backend scripting & APIs' },
-        { name: 'FastAPI', icon: 'ri-rocket-line', description: 'Modern Python web framework' },
+        { name: 'PHP & CodeIgniter', icon: 'ri-file-code-line', description: 'Server-side logic and MVC apps' },
+        { name: 'JWT & OAuth', icon: 'ri-shield-keyhole-line', description: 'Authentication and API security' },
         { name: 'REST APIs', icon: 'ri-api-line', description: 'RESTful service design' }
       ]
     },
@@ -39,9 +39,10 @@ const SkillsSection = () => {
       color: 'from-[#4C8DFF] to-[#1F55B0]',
       description: 'Data management and optimization',
       skills: [
-        { name: 'MySQL', icon: 'ri-database-2-line', description: 'Relational SQL database' },
-        { name: 'MongoDB', icon: 'ri-leaf-line', description: 'NoSQL document storage' },
-        { name: 'SQL', icon: 'ri-table-line', description: 'Core SQL knowledge & queries' }
+        { name: 'PostgreSQL', icon: 'ri-database-2-line', description: 'Primary relational database' },
+        { name: 'Redis', icon: 'ri-flashlight-line', description: 'Caching and session storage' },
+        { name: 'MySQL', icon: 'ri-table-line', description: 'Relational SQL database' },
+        { name: 'Supabase', icon: 'ri-stack-line', description: 'Managed Postgres and auth' }
       ]
     },
     {
@@ -50,9 +51,10 @@ const SkillsSection = () => {
       color: 'from-[#2E6FE0] to-[#143A78]',
       description: 'Deployment and development tools',
       skills: [
-        { name: 'Git', icon: 'ri-git-branch-line', description: 'Version control for collaboration' },
-        { name: 'GitHub Actions', icon: 'ri-github-line', description: 'Basic CI/CD automation workflows' },
-        { name: 'Linux', icon: 'ri-terminal-line', description: 'Command-line and server basics' }
+        { name: 'Git', icon: 'ri-git-branch-line', description: 'Branching strategies for team work' },
+        { name: 'GitHub Actions', icon: 'ri-github-line', description: 'CI/CD automation workflows' },
+        { name: 'Linux (Ubuntu)', icon: 'ri-terminal-line', description: 'Command-line and server administration' },
+        { name: 'Docker', icon: 'ri-box-3-line', description: 'Containerised development' }
       ]
     }
   ];

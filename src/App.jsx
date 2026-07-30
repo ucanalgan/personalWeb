@@ -90,30 +90,6 @@ function App() {
       console.warn('Animations initialization failed:', error);
     }
 
-    // Optimized scroll progress bar
-    const updateScrollProgress = () => {
-      const scrollProgress = document.querySelector('.scroll-progress');
-      if (scrollProgress) {
-        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        scrollProgress.style.width = `${Math.max(0, Math.min(100, scrolled))}%`;
-      }
-    };
-
-    // Throttled scroll listener for performance
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          updateScrollProgress();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    // Use passive listeners for better performance
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
     // Service Worker registration with better error handling
     if ('serviceWorker' in navigator && import.meta.env.PROD) {
       const swUrl = new URL('/personalWeb/sw.js', window.location.origin);
@@ -137,21 +113,13 @@ function App() {
     };
 
     preloadCriticalResources();
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   return (
     <ThemeProvider>
       <GitHubProvider>
         <div className="App min-h-screen">
-          {/* Scroll Progress Bar */}
-          <div className="scroll-progress fixed top-0 left-0 h-1 bg-gradient-to-r from-primary to-primary-dark z-50 transition-all duration-200" />
-
-          {/* Header - Critical component, loaded immediately */}
+          {/* Header renders the scroll progress bar and owns its state. */}
           <Header />
 
           {/* Main Content with Lazy Loading */}

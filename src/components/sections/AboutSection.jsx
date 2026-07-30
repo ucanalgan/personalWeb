@@ -3,7 +3,7 @@ import Button from '../common/Button';
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [animatedStats, setAnimatedStats] = useState({ experience: 0, projects: 0, learning: 0 });
+  const [animatedStats, setAnimatedStats] = useState({});
   const sectionRef = useRef(null);
 
   const skills = [
@@ -15,10 +15,43 @@ const AboutSection = () => {
     { name: 'AWS', level: 70, icon: 'ri-cloud-line', color: 'from-orange-400 to-red-500' }
   ];
 
+  // Most recent first — the ordering is the information here.
+  const experience = [
+    {
+      title: 'Backend Team Leader',
+      org: 'Toplum Gönüllüleri Vakfı (TOG)',
+      period: '02/2026 — present',
+      icon: 'ri-team-line',
+      summary: 'Leading a six-person backend team building a scalable three-repo system on Node.js, Express, PostgreSQL and Redis for volunteer management. Introduced Git branching strategies and JWT-based authentication while moving the architecture toward microservices.'
+    },
+    {
+      title: 'Frontend Developer',
+      org: 'Vera Yazılım & TasarımLife',
+      period: '01/2026 — 04/2026',
+      icon: 'ri-layout-line',
+      summary: 'Delivered 8+ dynamic modules on weekly sprint cycles, building responsive interfaces with pure CSS over PHP and CodeIgniter, and worked through UI/UX and performance bottlenecks to keep delivery on schedule.'
+    },
+    {
+      title: 'IT Intern',
+      org: 'Bellcom Bilgisayar',
+      period: '07/2025 — 08/2025',
+      icon: 'ri-server-line',
+      summary: 'Resolved 50+ hardware, software and network issues across a 20-day corporate internship, handling hardware installation and network configuration with zero downtime.'
+    },
+    {
+      title: 'IT Assistant',
+      org: 'Piri Reis University',
+      period: '09/2023 — 06/2024',
+      icon: 'ri-tools-line',
+      summary: 'Supported daily IT operations for university staff and students over ten months, and delivered infrastructure upgrades including IP security camera integration and smart presentation systems.'
+    }
+  ];
+
   const stats = useMemo(() => [
-    { label: 'Years Experience', value: 2, suffix: '+', icon: 'ri-time-line', color: 'text-primary' },
-    { label: 'Projects Completed', value: 15, suffix: '+', icon: 'ri-trophy-line', color: 'text-primary' },
-    { label: 'Technologies Mastered', value: 10, suffix: '+', icon: 'ri-code-s-slash-line', color: 'text-primary' }
+    { label: 'Team Members Led', value: 6, suffix: '', icon: 'ri-team-line', color: 'text-primary' },
+    { label: 'WER Reduction (ASR)', value: 46, suffix: '%', icon: 'ri-line-chart-line', color: 'text-primary' },
+    // A year is not a quantity — counting up to it reads as a bug.
+    { label: 'Graduating', value: 2027, suffix: '', icon: 'ri-graduation-cap-line', color: 'text-primary', animate: false }
   ], []);
 
   // Intersection Observer for animations
@@ -29,7 +62,7 @@ const AboutSection = () => {
         if (entry.isIntersecting) {
           setIsVisible(true);
           stats.forEach(stat => {
-            animateCounter(stat.label, stat.value);
+            animateCounter(stat.label, stat.value, stat.animate !== false);
           });
         }
       },
@@ -47,7 +80,13 @@ const AboutSection = () => {
     };
   }, [stats]);
 
-  const animateCounter = (label, targetValue) => {
+  // Keyed by label so adding or renaming a stat cannot silently break the
+  // counter, which is what happened with the previous hard-coded mapping.
+  const animateCounter = (label, targetValue, animated) => {
+    if (!animated) {
+      setAnimatedStats(prev => ({ ...prev, [label]: targetValue }));
+      return;
+    }
     let currentValue = 0;
     const increment = targetValue / 50;
     const timer = setInterval(() => {
@@ -56,23 +95,12 @@ const AboutSection = () => {
         currentValue = targetValue;
         clearInterval(timer);
       }
-
-      if (label === 'Years Experience') {
-        setAnimatedStats(prev => ({ ...prev, experience: Math.floor(currentValue) }));
-      } else if (label === 'Projects Completed') {
-        setAnimatedStats(prev => ({ ...prev, projects: Math.floor(currentValue) }));
-      } else if (label === 'Technologies Mastered') {
-        setAnimatedStats(prev => ({ ...prev, learning: Math.floor(currentValue) }));
-      }
+      setAnimatedStats(prev => ({ ...prev, [label]: Math.floor(currentValue) }));
     }, 30);
   };
 
-  const getStatValue = (label, originalValue) => {
-    if (label === 'Years Experience') return animatedStats.experience;
-    if (label === 'Projects Completed') return animatedStats.projects;
-    if (label === 'Technologies Mastered') return animatedStats.learning;
-    return originalValue;
-  };
+  const getStatValue = (label, originalValue) =>
+    animatedStats[label] ?? originalValue;
 
   return (
     <section id="about" className="bg-gradient-to-br from-background via-surface/10 to-background relative overflow-hidden">
@@ -92,12 +120,12 @@ const AboutSection = () => {
                 About Me
               </span>
               <h2 className="display-2xl mb-8">
-                Web & <span className="gradient-text">Network</span>
-                <br />Engineer<span className="gradient-text"> Student </span>
+                Backend Systems &<br />
+                <span className="gradient-text">Full-Stack Delivery</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-                Bridging web technologies and networking principles to build reliable, scalable systems
-                while continuously learning and solving real-world problems.
+                Information Systems Engineering student at Piri Reis University, graduating June 2027.
+                I lead a backend team at TOG and build production systems with Node.js, PostgreSQL and React.
               </p>
             </div>
           </div>
@@ -107,72 +135,34 @@ const AboutSection = () => {
             {/* Story Content */}
             <div className="lg:col-span-2">
               <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                <div className="space-y-8">
-                  <div className="group">
-                    <div className="flex items-start space-x-4 p-6 bg-surface/30 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                      🎓
+                <ol className="space-y-8">
+                  {experience.map((role) => (
+                    <li key={role.org} className="group">
+                      <div className="flex items-start gap-4 p-6 bg-surface/30 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center text-white shadow-lg">
+                          <i className={`${role.icon} text-xl`} aria-hidden="true" />
+                        </div>
+                        <div>
+                          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+                            <h3 className="heading-3 group-hover:text-primary transition-colors duration-300">
+                              {role.title}
+                            </h3>
+                            <span className="text-caption">{role.period}</span>
+                          </div>
+                          <p className="text-sm font-medium text-primary mb-2">{role.org}</p>
+                          <p className="body-base text-text-secondary leading-relaxed">
+                            {role.summary}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300">Academic Development</h3>
-                        <p className="body-base text-text-secondary leading-relaxed">
-                          Studying Information Systems Engineering, I'm building a strong foundation in both
-                          software development and network systems. Through hands-on labs and academic projects,
-                          I've developed skills in data structures, computer networks, and system design—bridging
-                          theory with real-world application.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="group">
-                    <div className="flex items-start space-x-4 p-6 bg-surface/30 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        💻
-                      </div>
-                      <div>
-                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300"> Freelance & Personal Projects</h3>
-                        <p className="body-base text-text-secondary leading-relaxed">
-                          Outside of school, I've worked on several personal and freelance projects to sharpen
-                          my skills. From creating dynamic websites and GitHub-integrated portfolios to building
-                          small web tools, I focus on practical solutions that are both scalable and user-friendly.
-                          These projects reflect my passion for clean architecture and real problem-solving.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="group">
-                    <div className="flex items-start space-x-4 p-6 bg-surface/30 border border-border rounded-2xl backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                        🏢
-                      </div>
-                      <div>
-                        <h3 className="heading-3 mb-3 group-hover:text-primary transition-colors duration-300"> Professional & Work Experience</h3>
-                        <p className="body-base text-text-secondary leading-relaxed">
-                          During my first university year, I worked as an IT Assistant at my school, helping
-                          manage hardware/software systems and supporting technical infrastructure. This real-world
-                          exposure taught me troubleshooting, teamwork, and the operational side of tech. I continue
-                          to explore opportunities that blend my academic focus with real industry experience.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                    </li>
+                  ))}
+                </ol>
 
                 <div className="mt-10 flex flex-col sm:flex-row gap-4">
                   <Button
-                    href="#contact"
-                    icon="ri-download-line"
-                    variant="primary"
-                    size="lg"
-                    className="group"
-                  >
-                    <span className="group-hover:scale-105 transition-transform duration-200">Download Resume</span>
-                  </Button>
-                  <Button
                     href="#projects"
-                    variant="secondary"
+                    variant="primary"
                     size="lg"
                     icon="ri-eye-line"
                     className="group"
