@@ -2,6 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useGitHub } from '../../contexts/GitHubContext';
 import Button from '../common/Button';
 
+// Repos are normalised to camelCase in GitHubContext, and a repo can arrive
+// without a timestamp, so guard against rendering "Invalid Date".
+const formatUpdatedAt = (value) => {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toLocaleDateString('tr');
+};
+
 const ProjectsSection = () => {
   const { featuredRepositories, isLoading } = useGitHub();
   const [filter, setFilter] = useState('all');
@@ -107,11 +115,13 @@ const ProjectsSection = () => {
     >
       <div className="relative bg-surface/40 border border-border rounded-3xl overflow-hidden backdrop-blur-sm hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 transform hover:-translate-y-3 group">
         {/* Project Updated Badge */}
-        <div className="absolute top-4 left-4 z-10">
-          <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-blue-500/20 text-blue-400 border border-blue-500/30">
-            {new Date(project.updated_at).toLocaleDateString('tr')}
-          </span>
-        </div>
+        {formatUpdatedAt(project.updatedAt) && (
+          <div className="absolute top-4 left-4 z-10">
+            <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              {formatUpdatedAt(project.updatedAt)}
+            </span>
+          </div>
+        )}
 
         {/* Project Image/Thumbnail */}
         <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden">
@@ -158,11 +168,11 @@ const ProjectsSection = () => {
               )}
               <div className="flex items-center space-x-1">
                 <i className="ri-star-line text-yellow-400" />
-                <span>{project.stargazers_count || 0}</span>
+                <span>{project.stars || 0}</span>
               </div>
               <div className="flex items-center space-x-1">
                 <i className="ri-git-branch-line text-primary" />
-                <span>{project.forks_count || 0}</span>
+                <span>{project.forks || 0}</span>
               </div>
             </div>
           </div>
@@ -170,7 +180,7 @@ const ProjectsSection = () => {
           {/* Action Buttons */}
           <div className="flex space-x-3">
             <Button
-              href={project.url || project.html_url || `https://github.com/ucanalgan/${project.name}`}
+              href={project.url || `https://github.com/ucanalgan/${project.name}`}
               target="_blank"
               variant="secondary"
               size="sm"

@@ -387,23 +387,15 @@ export class AdvancedAnalytics {
     };
   }
 
-  async sendEvent(eventName, eventData) {
+  sendEvent(eventName, eventData) {
     if (!this.options.enableCustomTracking) return;
 
     try {
-      // Store locally for all environments
+      // The site is hosted statically on GitHub Pages, so there is no
+      // collection endpoint to POST to; events are kept in localStorage only.
       const events = JSON.parse(localStorage.getItem('analytics_events') || '[]');
       events.push(eventData);
       localStorage.setItem('analytics_events', JSON.stringify(events.slice(-100)));
-
-      // Only send to remote endpoint in production
-      if (window.location.hostname !== 'localhost') {
-        await fetch('/api/analytics', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(eventData)
-        });
-      }
     } catch (error) {
       // Silent fail in production, warn in development
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
@@ -432,13 +424,8 @@ export class AdvancedAnalytics {
         errors: this.sessionData.errors.length
       };
 
-      // Use sendBeacon for reliable delivery (only in production)
-      if (navigator.sendBeacon && window.location.hostname !== 'localhost') {
-        navigator.sendBeacon('/api/analytics/session-end', JSON.stringify(sessionSummary));
-      } else {
-        // Store session summary locally for development
-        localStorage.setItem('last_session_summary', JSON.stringify(sessionSummary));
-      }
+      // No collection endpoint on static hosting; keep the summary locally.
+      localStorage.setItem('last_session_summary', JSON.stringify(sessionSummary));
     });
   }
 }

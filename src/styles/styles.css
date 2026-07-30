@@ -16,6 +16,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep section headings clear of the fixed header when jumping to an
+     anchor, including browser-driven scrolls such as scrollIntoView(). */
+  scroll-padding-top: 5rem;
   -webkit-text-size-adjust: 100%;
 }
 
