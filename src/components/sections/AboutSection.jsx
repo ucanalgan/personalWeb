@@ -15,33 +15,33 @@ const AboutSection = () => {
     { name: 'AWS', level: 70, icon: 'ri-cloud-line', color: 'from-orange-400 to-red-500' }
   ];
 
-  // Most recent first — the ordering is the information here.
+  // Most recent first; the ordering is the information here.
   const experience = [
     {
       title: 'Backend Team Leader',
       org: 'Toplum Gönüllüleri Vakfı (TOG)',
-      period: '02/2026 — present',
+      period: '02/2026 - present',
       icon: 'ri-team-line',
       summary: 'Leading a six-person backend team building a scalable three-repo system on Node.js, Express, PostgreSQL and Redis for volunteer management. Introduced Git branching strategies and JWT-based authentication while moving the architecture toward microservices.'
     },
     {
       title: 'Frontend Developer',
       org: 'Vera Yazılım & TasarımLife',
-      period: '01/2026 — 04/2026',
+      period: '01/2026 - 04/2026',
       icon: 'ri-layout-line',
       summary: 'Delivered 8+ dynamic modules on weekly sprint cycles, building responsive interfaces with pure CSS over PHP and CodeIgniter, and worked through UI/UX and performance bottlenecks to keep delivery on schedule.'
     },
     {
       title: 'IT Intern',
       org: 'Bellcom Bilgisayar',
-      period: '07/2025 — 08/2025',
+      period: '07/2025 - 08/2025',
       icon: 'ri-server-line',
       summary: 'Resolved 50+ hardware, software and network issues across a 20-day corporate internship, handling hardware installation and network configuration with zero downtime.'
     },
     {
       title: 'IT Assistant',
       org: 'Piri Reis University',
-      period: '09/2023 — 06/2024',
+      period: '09/2023 - 06/2024',
       icon: 'ri-tools-line',
       summary: 'Supported daily IT operations for university staff and students over ten months, and delivered infrastructure upgrades including IP security camera integration and smart presentation systems.'
     }
@@ -50,7 +50,7 @@ const AboutSection = () => {
   const stats = useMemo(() => [
     { label: 'Team Members Led', value: 6, suffix: '', icon: 'ri-team-line', color: 'text-primary' },
     { label: 'WER Reduction (ASR)', value: 46, suffix: '%', icon: 'ri-line-chart-line', color: 'text-primary' },
-    // A year is not a quantity — counting up to it reads as a bug.
+    // A year is not a quantity, so counting up to it reads as a bug.
     { label: 'Graduating', value: 2027, suffix: '', icon: 'ri-graduation-cap-line', color: 'text-primary', animate: false }
   ], []);
 

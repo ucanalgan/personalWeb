@@ -171,26 +171,35 @@ const ContactSection = () => {
               <div>
                 <h3 className="text-2xl font-bold text-text-primary mb-6">Contact Information</h3>
                 <div className="space-y-4">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-center group">
-                      <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors duration-300">
-                        <i className={`${info.icon} text-primary text-xl`} />
+                  {contactInfo.map((info, index) => {
+                    const body = (
+                      <>
+                        <span className="w-12 h-12 flex-shrink-0 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors duration-300">
+                          <i className={`${info.icon} text-primary text-xl`} aria-hidden="true" />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block text-sm text-text-secondary">{info.label}</span>
+                          <span className="block text-text-primary break-all">{info.value}</span>
+                        </span>
+                      </>
+                    );
+
+                    // Make the whole row the target rather than the text alone,
+                    // which was only 21px tall.
+                    return info.link ? (
+                      <a
+                        key={index}
+                        href={info.link}
+                        className="flex items-center group min-h-[44px] rounded-lg transition-colors duration-300 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary"
+                      >
+                        {body}
+                      </a>
+                    ) : (
+                      <div key={index} className="flex items-center group min-h-[44px]">
+                        {body}
                       </div>
-                      <div>
-                        <div className="text-sm text-text-secondary">{info.label}</div>
-                        {info.link ? (
-                          <a
-                            href={info.link}
-                            className="text-text-primary hover:text-primary transition-colors duration-300"
-                          >
-                            {info.value}
-                          </a>
-                        ) : (
-                          <div className="text-text-primary">{info.value}</div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 

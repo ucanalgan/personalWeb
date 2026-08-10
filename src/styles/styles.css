@@ -6,7 +6,7 @@
 /* Import Design System */
 @import './design-system.css';
 @import './typography.css';
-/* Palette layer — must come last so it wins over design-system defaults. */
+/* Palette layer, must come last so it wins over design-system defaults. */
 @import './cobalt.css';
 /* Type scale & vertical rhythm, layered on top of typography.css. */
 @import './type-scale.css';
@@ -302,6 +302,26 @@ body {
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  /* These classes only carried the shimmer effect, leaving the buttons at
+     27px tall. Give them the same 44px touch target as the Button component. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--brand-primary-500);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
 }
 
 .btn-primary::before, .btn-secondary::before {

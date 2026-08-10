@@ -61,12 +61,12 @@ const FooterSection = () => {
           {/* Quick Links */}
           <div className="md:col-span-1">
             <h4 className="text-lg font-semibold text-text-primary mb-4">Quick Links</h4>
-            <nav className="space-y-2">
+            <nav className="flex flex-col">
               {quickLinks.map((link, index) => (
                 <button
                   key={index}
                   onClick={() => scrollToSection(link.href)}
-                  className="block text-text-secondary hover:text-primary transition-colors duration-300 text-sm"
+                  className="inline-flex items-center min-h-[44px] text-left text-text-secondary hover:text-primary transition-colors duration-300 text-sm"
                 >
                   {link.label}
                 </button>
@@ -77,14 +77,14 @@ const FooterSection = () => {
           {/* Contact Info */}
           <div className="md:col-span-1">
             <h4 className="text-lg font-semibold text-text-primary mb-4">Contact</h4>
-            <div className="space-y-2 text-sm">
+            <div className="text-sm">
               <a
                 href="mailto:umutcanalgan91@gmail.com"
-                className="block text-text-secondary hover:text-primary transition-colors duration-300"
+                className="inline-flex items-center min-h-[44px] text-text-secondary hover:text-primary transition-colors duration-300 break-all"
               >
                 umutcanalgan91@gmail.com
               </a>
-              <p className="text-text-secondary">Turkey</p>
+              <p className="text-text-secondary mt-1">Istanbul, Türkiye</p>
               <p className="text-text-secondary">Available for opportunities</p>
             </div>
           </div>
@@ -99,7 +99,7 @@ const FooterSection = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 bg-surface/30 border border-border rounded-lg flex items-center justify-center text-text-secondary transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 ${social.color}`}
+                  className={`w-11 h-11 bg-surface/30 border border-border rounded-lg flex items-center justify-center text-text-secondary transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 ${social.color}`}
                   aria-label={social.label}
                 >
                   <i className={`${social.icon} text-lg`} />

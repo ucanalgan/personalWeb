@@ -104,7 +104,7 @@ const Header = () => {
 
   return (
     <>
-      {/* Scroll progress. Deliberately not `.scroll-progress` — that class is
+      {/* Scroll progress. Deliberately not `.scroll-progress`; that class is
           styled globally and driven by App.jsx, and two elements sharing it
           rendered a stray bar under the header. */}
       <div className="fixed top-0 left-0 right-0 h-1 z-50">
@@ -124,7 +124,8 @@ const Header = () => {
             {/* Modern Logo */}
             <button
               onClick={() => scrollToSection('hero')}
-              className="group relative text-3xl font-bold transition-all duration-300 hover:scale-105"
+              className="group relative inline-flex items-center min-h-[44px] text-3xl font-bold transition-all duration-300 hover:scale-105"
+              aria-label="Back to top"
             >
               <div className="relative flex items-center space-x-2">
                 <div className="relative">
@@ -251,23 +252,26 @@ const Header = () => {
                     href="https://github.com/ucanalgan"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
+                    className="inline-flex items-center justify-center w-11 h-11 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
+                    aria-label="GitHub profile"
                   >
-                    <i className="ri-github-line text-lg" />
+                    <i className="ri-github-line text-lg" aria-hidden="true" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/ucanalgan"
+                    href="https://linkedin.com/in/umutcanalgan"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
+                    className="inline-flex items-center justify-center w-11 h-11 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
+                    aria-label="LinkedIn profile"
                   >
-                    <i className="ri-linkedin-line text-lg" />
+                    <i className="ri-linkedin-line text-lg" aria-hidden="true" />
                   </a>
                   <a
                     href="mailto:umutcanalgan91@gmail.com"
-                    className="p-2 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
+                    className="inline-flex items-center justify-center w-11 h-11 text-text-secondary hover:text-primary transition-colors duration-300 hover:bg-surface/30 rounded-lg"
+                    aria-label="Send email"
                   >
-                    <i className="ri-mail-line text-lg" />
+                    <i className="ri-mail-line text-lg" aria-hidden="true" />
                   </a>
                 </div>
               </div>

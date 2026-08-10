@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Type scale & vertical rhythm — the "Terminal & Topoloji" direction.
+   Type scale and vertical rhythm for the "Terminal & Topoloji" direction.
 
    Loaded after typography.css and narrows an 17-class scale down to the
    seven steps the components actually use. Display headings switch to the
@@ -30,7 +30,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Display headings — mono, tight, and no gradient by default. The gradient
+   Display headings: mono, tight, and no gradient by default. The gradient
    is kept as an opt-in via .gradient-text so it stays an accent, not a
    default coat of paint on every heading.
    -------------------------------------------------------------------------- */
@@ -95,8 +95,8 @@
   color: var(--text-tertiary);
 }
 
-/* Components also reference these names, which were never defined anywhere —
-   the copy using them was rendering unstyled. Map them onto the same scale. */
+/* Components also reference these names, which were never defined anywhere,
+   so the copy using them was rendering unstyled. Map them onto the same scale. */
 .body-xl {
   font-family: var(--font-body);
   font-size: var(--step-lead);
@@ -126,7 +126,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Vertical rhythm — every section shares one padding value.
+   Vertical rhythm: every section shares one padding value.
    -------------------------------------------------------------------------- */
 section[id] {
   padding-top: var(--section-gap);

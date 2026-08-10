@@ -33,12 +33,13 @@ const Button = forwardRef(({
     select-none whitespace-nowrap
   `;
 
-  // Size variants
+  // Size variants. Every size clears the 44px minimum touch target; the
+  // smaller sizes differ in padding and type, not in tappable height.
   const sizeVariants = {
-    xs: 'px-2.5 py-1.5 text-xs rounded-md min-h-[28px]',
-    sm: 'px-3 py-2 text-sm rounded-md min-h-[32px]',
-    md: 'px-4 py-2.5 text-sm rounded-lg min-h-[40px]',
-    lg: 'px-6 py-3 text-base rounded-lg min-h-[44px]',
+    xs: 'px-2.5 py-1.5 text-xs rounded-md min-h-[44px]',
+    sm: 'px-3 py-2 text-sm rounded-md min-h-[44px]',
+    md: 'px-4 py-2.5 text-sm rounded-lg min-h-[44px]',
+    lg: 'px-6 py-3 text-base rounded-lg min-h-[48px]',
     xl: 'px-8 py-4 text-lg rounded-xl min-h-[52px]'
   };
 

@@ -280,23 +280,27 @@ const ProjectsSection = () => {
               <div className="flex items-center space-x-2 bg-surface/30 border border-border rounded-2xl p-1 backdrop-blur-sm">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded-xl transition-all duration-200 ${
+                  className={`inline-flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-200 ${
                     viewMode === 'grid'
                       ? 'bg-primary text-white shadow-lg'
                       : 'text-text-secondary hover:text-primary'
                   }`}
+                  aria-label="Grid view"
+                  aria-pressed={viewMode === 'grid'}
                 >
-                  <i className="ri-grid-line" />
+                  <i className="ri-grid-line" aria-hidden="true" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-2 rounded-xl transition-all duration-200 ${
+                  className={`inline-flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-200 ${
                     viewMode === 'list'
                       ? 'bg-primary text-white shadow-lg'
                       : 'text-text-secondary hover:text-primary'
                   }`}
+                  aria-label="List view"
+                  aria-pressed={viewMode === 'list'}
                 >
-                  <i className="ri-list-check" />
+                  <i className="ri-list-check" aria-hidden="true" />
                 </button>
               </div>
             </div>

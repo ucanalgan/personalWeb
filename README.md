@@ -50,7 +50,7 @@ The dev server runs at http://localhost:3000.
 | `npm run lint:check` | Run ESLint, failing on any warning |
 
 Deployment is handled by `.github/workflows/deploy.yml` on every push to
-`master` — there is no manual deploy step.
+`master`. There is no manual deploy step.
 
 ## Project structure
 
@@ -74,7 +74,7 @@ Loaded in order from `styles.css`; each layer overrides the one before it.
 |------|------|
 | `design-system.css` | Base tokens: spacing, shadows, legacy scales |
 | `typography.css` | Font loading and base text styles |
-| `cobalt.css` | Colour palette — the source of truth for theme tokens |
+| `cobalt.css` | Colour palette: the source of truth for theme tokens |
 | `type-scale.css` | Type scale and vertical rhythm |
 
 ## Design system
@@ -120,4 +120,4 @@ is a fraction of the total.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

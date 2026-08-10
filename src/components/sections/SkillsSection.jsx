@@ -119,7 +119,7 @@ const SkillsSection = () => {
                 My <span className="gradient-text">Tech Stack</span>
               </h2>
               <p className="body-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
-              A curated set of technologies and tools utilized across the software development lifecycle —
+              A curated set of technologies and tools utilized across the software development lifecycle,
               from user interface design to backend architecture and system optimization.
               </p>
             </div>
@@ -220,17 +220,25 @@ const SkillsSection = () => {
           </div>
 
           {/* Progress Indicators */}
-          <div className={`flex justify-center mt-16 space-x-2 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            {skillCategories.map((_, index) => (
+          <div className={`flex justify-center mt-16 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            {skillCategories.map((category, index) => (
               <button
                 key={index}
                 onClick={() => setActiveCategory(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  activeCategory === index
-                    ? 'bg-primary scale-125'
-                    : 'bg-surface/50 hover:bg-primary/50'
-                }`}
-              />
+                /* The dot stays small; the button around it carries the 44px
+                   touch target. */
+                className="inline-flex items-center justify-center w-11 h-11 rounded-full group"
+                aria-label={`Show ${category.title}`}
+                aria-current={activeCategory === index}
+              >
+                <span
+                  className={`block w-3 h-3 rounded-full transition-all duration-300 ${
+                    activeCategory === index
+                      ? 'bg-primary scale-125'
+                      : 'bg-surface/50 group-hover:bg-primary/50'
+                  }`}
+                />
+              </button>
             ))}
           </div>
 

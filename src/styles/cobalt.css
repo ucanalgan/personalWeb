@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Cobalt — palette layer for the "Terminal & Topoloji" direction.
+   Cobalt palette layer for the "Terminal & Topoloji" direction.
 
    Loaded after design-system.css and deliberately overrides only the
    semantic colour tokens the components actually consume. One accent
@@ -35,7 +35,7 @@
      Components still reference the old purple/pink accent tokens. Rather
      than rewrite every gradient, collapse them onto the cobalt ramp so the
      page reads as one hue. Language chips and status colours are NOT
-     remapped — those encode data, not brand.
+     remapped; those encode data, not brand.
      -------------------------------------------------------------------- */
   --accent-purple-400: var(--cobalt-400);
   --accent-purple-500: var(--cobalt-500);
@@ -47,7 +47,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Dark theme — the site's default ground.
+   Dark theme: the site's default ground.
    -------------------------------------------------------------------------- */
 :root:not([data-theme='light']):not(.light),
 :root[data-theme='dark'],
@@ -86,7 +86,7 @@
   --glass-shadow: rgba(0, 0, 0, 0.45);
 
   /* Bare channel values so Tailwind can apply opacity modifiers
-     (bg-background/85, border-border/50, …) to these colours. */
+     (bg-background/85, border-border/50, etc.) to these colours. */
   --rgb-bg-primary: 12 17 25;
   --rgb-bg-secondary: 20 28 40;
   --rgb-bg-tertiary: 27 37 51;
@@ -102,7 +102,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Light theme — same accent, re-weighted so contrast holds on a pale ground.
+   Light theme: same accent, re-weighted so contrast holds on a pale ground.
    The 500 step is too light on white, so emphasis shifts to 600/700.
    -------------------------------------------------------------------------- */
 @media (prefers-color-scheme: light) {

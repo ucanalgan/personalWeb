@@ -121,7 +121,7 @@ const HeroSection = () => {
             <div className="text-body-lg max-w-2xl mx-auto lg:mx-0">
               <p className="leading-relaxed">
                 {userData?.bio ||
-                  'Information Systems Engineering student leading a six-person backend team, building scalable Node.js and PostgreSQL systems with JWT authentication. I work across the stack — from React interfaces to API design and the infrastructure underneath.'}
+                  'Information Systems Engineering student leading a six-person backend team, building scalable Node.js and PostgreSQL systems with JWT authentication. I work across the stack, from React interfaces to API design and the infrastructure underneath.'}
               </p>
             </div>
 
@@ -222,7 +222,7 @@ const HeroSection = () => {
             <button
               onClick={refreshData}
               disabled={isLoading}
-              className="glass inline-flex items-center gap-2 px-4 py-2 rounded-lg text-text-secondary hover:text-brand-primary-500 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:pointer-events-none group"
+              className="glass inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg text-text-secondary hover:text-brand-primary-500 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:pointer-events-none group"
             >
               <RefreshIcon className={`transition-transform duration-300 ${isLoading ? 'animate-spin' : 'group-hover:rotate-180'}`} />
               <span>Refresh Data</span>
