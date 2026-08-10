@@ -77,7 +77,7 @@ const HeroSection = () => {
     <section
       ref={heroRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-tertiary pt-20 md:pt-0"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-surface to-surface-secondary pt-20 md:pt-0"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -86,8 +86,8 @@ const HeroSection = () => {
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(6, 182, 212, 0.3) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px)
+              linear-gradient(rgb(var(--rgb-primary) / 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgb(var(--rgb-primary) / 0.3) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
             transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`
@@ -107,7 +107,7 @@ const HeroSection = () => {
                   <span className="gradient-text">
                     {userData?.name || 'Umutcan Algan'}
                   </span>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary-400 to-accent-purple-400 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-200" />
+                  <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary-dark rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-200" />
                 </span>
               </h1>
 
@@ -157,13 +157,13 @@ const HeroSection = () => {
               className="relative group cursor-pointer"
             >
               {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-primary-400 to-accent-purple-400 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-dark rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 scale-110" />
 
               {/* Profile container */}
               <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
                 {/* Static elegant border */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-primary-400 via-accent-purple-400 to-accent-pink-400 p-1 shadow-2xl">
-                  <div className="w-full h-full rounded-full bg-bg-primary p-1">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary-dark p-1 shadow-2xl">
+                  <div className="w-full h-full rounded-full bg-background p-1">
                     <img
                       src={profileImage}
                       alt="Umutcan Algan - Full Stack Developer"
@@ -177,7 +177,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Online status */}
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 md:w-10 md:h-10 bg-success-500 rounded-full border-4 border-bg-primary flex items-center justify-center shadow-lg">
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 md:w-10 md:h-10 bg-success-500 rounded-full border-4 border-background flex items-center justify-center shadow-lg">
                   <div className="w-3 h-3 md:w-4 md:h-4 bg-success-400 rounded-full animate-pulse" />
                 </div>
               </div>
@@ -208,7 +208,7 @@ const HeroSection = () => {
                       stat.value
                     )}
                   </div>
-                  <div className="text-caption text-text-tertiary">{stat.label}</div>
+                  <div className="text-caption text-text-muted">{stat.label}</div>
                 </div>
 
                 {/* Hover glow */}
@@ -228,7 +228,7 @@ const HeroSection = () => {
               <span>Refresh Data</span>
             </button>
 
-            <div className="text-text-tertiary">
+            <div className="text-text-muted">
               Last updated: {formatLastUpdate(lastUpdate)}
             </div>
           </div>

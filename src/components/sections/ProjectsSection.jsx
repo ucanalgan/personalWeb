@@ -117,7 +117,7 @@ const ProjectsSection = () => {
         {/* Project Updated Badge */}
         {formatUpdatedAt(project.updatedAt) && (
           <div className="absolute top-4 left-4 z-10">
-            <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-surface text-text-secondary border border-border">
               {formatUpdatedAt(project.updatedAt)}
             </span>
           </div>

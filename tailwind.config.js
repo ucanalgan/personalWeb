@@ -23,6 +23,19 @@ export default {
         background: 'rgb(var(--rgb-bg-primary) / <alpha-value>)',
         accent: 'rgb(var(--rgb-accent) / <alpha-value>)',
 
+        // Status colours, kept separate from the accent so state never reads
+        // as branding. Components referenced these before they existed, which
+        // left the online dot and the error panel unstyled.
+        success: {
+          400: 'rgb(var(--rgb-success) / <alpha-value>)',
+          500: 'rgb(var(--rgb-success) / <alpha-value>)'
+        },
+        error: {
+          300: 'rgb(var(--rgb-error) / <alpha-value>)',
+          400: 'rgb(var(--rgb-error) / <alpha-value>)',
+          500: 'rgb(var(--rgb-error) / <alpha-value>)'
+        },
+
         surface: {
           DEFAULT: 'rgb(var(--rgb-bg-secondary) / <alpha-value>)',
           secondary: 'rgb(var(--rgb-bg-tertiary) / <alpha-value>)',
@@ -50,6 +63,17 @@ export default {
         '18': '4.5rem',
         '88': '22rem',
         '128': '32rem'
+      },
+
+      // Tailwind's stock delay scale stops at 700ms; components reference
+      // these longer staggers.
+      transitionDelay: {
+        '900': '900ms',
+        '2000': '2000ms'
+      },
+      animationDelay: {
+        '900': '900ms',
+        '2000': '2000ms'
       },
 
       animation: {

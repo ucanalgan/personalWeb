@@ -99,6 +99,8 @@
   --rgb-accent: 111 163 255;
   --rgb-primary: 76 141 255;
   --rgb-primary-dark: 46 111 224;
+  --rgb-success: 63 185 132;
+  --rgb-error: 229 103 94;
 }
 
 /* --------------------------------------------------------------------------
@@ -152,6 +154,8 @@
     --rgb-accent: 46 111 224;
     --rgb-primary: 46 111 224;
     --rgb-primary-dark: 31 85 176;
+    --rgb-success: 25 137 92;
+    --rgb-error: 199 62 52;
   }
 }
 
@@ -204,4 +208,6 @@
   --rgb-accent: 46 111 224;
   --rgb-primary: 46 111 224;
   --rgb-primary-dark: 31 85 176;
+  --rgb-success: 25 137 92;
+  --rgb-error: 199 62 52;
 }

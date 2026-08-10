@@ -214,7 +214,7 @@ const AboutSection = () => {
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                     <div className="relative z-10 text-center">
-                      <div className={`w-16 h-16 ${stat.color} bg-gradient-to-br from-current/20 to-current/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                      <div className={`w-16 h-16 ${stat.color} bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                         <i className={`${stat.icon} text-2xl`} />
                       </div>
                       <div className="mb-4">
