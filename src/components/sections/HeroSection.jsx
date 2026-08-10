@@ -188,20 +188,22 @@ const HeroSection = () => {
         {/* Stats Grid */}
         <div className="max-w-6xl mx-auto mt-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            {/* Class names are written out in full: Tailwind scans source
+                text, so a name assembled at runtime is never generated. */}
             {[
-              { label: 'Repositories', value: stats?.repositories || 0, icon: '📚', color: 'brand-primary' },
-              { label: 'GitHub Stars', value: stats?.stars || 0, icon: '⭐', color: 'warning' },
-              { label: 'Followers', value: stats?.followers || 0, icon: '👥', color: 'success' },
-              { label: 'Total Forks', value: stats?.forks || 0, icon: '🚀', color: 'accent-purple' }
+              { label: 'Repositories', value: stats?.repositories || 0, icon: '📚', text: 'text-primary', glow: 'bg-primary/5' },
+              { label: 'GitHub Stars', value: stats?.stars || 0, icon: '⭐', text: 'text-accent', glow: 'bg-accent/5' },
+              { label: 'Followers', value: stats?.followers || 0, icon: '👥', text: 'text-success', glow: 'bg-success/5' },
+              { label: 'Total Forks', value: stats?.forks || 0, icon: '🚀', text: 'text-primary-dark', glow: 'bg-primary/5' }
             ].map((stat, index) => (
               <div
                 key={stat.label}
-                className="glass relative group p-4 rounded-2xl hover:shadow-xl hover:shadow-brand-primary-500/10 transition-all duration-300 hover:-translate-y-1"
+                className="glass relative group p-4 rounded-2xl hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-center space-y-2">
                   <div className="text-2xl">{stat.icon}</div>
-                  <div className={`text-2xl font-bold text-${stat.color}-500`}>
+                  <div className={`text-2xl font-bold ${stat.text}`}>
                     {isLoading ? (
                       <div className="w-6 h-6 border-2 border-current border-t-transparent rounded-full animate-spin mx-auto" />
                     ) : (
@@ -212,7 +214,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Hover glow */}
-                <div className={`absolute inset-0 rounded-2xl bg-${stat.color}-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className={`absolute inset-0 rounded-2xl ${stat.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
               </div>
             ))}
           </div>
@@ -222,7 +224,7 @@ const HeroSection = () => {
             <button
               onClick={refreshData}
               disabled={isLoading}
-              className="glass inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg text-text-secondary hover:text-brand-primary-500 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:pointer-events-none group"
+              className="glass inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg text-text-secondary hover:text-primary transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:pointer-events-none group"
             >
               <RefreshIcon className={`transition-transform duration-300 ${isLoading ? 'animate-spin' : 'group-hover:rotate-180'}`} />
               <span>Refresh Data</span>

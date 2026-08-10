@@ -100,7 +100,9 @@
   --rgb-primary: 76 141 255;
   --rgb-primary-dark: 46 111 224;
   --rgb-success: 63 185 132;
+  --rgb-success-dark: 45 150 105;
   --rgb-error: 229 103 94;
+  --rgb-error-dark: 190 74 66;
 }
 
 /* --------------------------------------------------------------------------
@@ -155,7 +157,9 @@
     --rgb-primary: 46 111 224;
     --rgb-primary-dark: 31 85 176;
     --rgb-success: 25 137 92;
+    --rgb-success-dark: 17 109 72;
     --rgb-error: 199 62 52;
+    --rgb-error-dark: 163 45 37;
   }
 }
 
@@ -209,5 +213,7 @@
   --rgb-primary: 46 111 224;
   --rgb-primary-dark: 31 85 176;
   --rgb-success: 25 137 92;
+  --rgb-success-dark: 17 109 72;
   --rgb-error: 199 62 52;
+  --rgb-error-dark: 163 45 37;
 }

@@ -117,7 +117,7 @@ const ProjectsSection = () => {
         {/* Project Updated Badge */}
         {formatUpdatedAt(project.updatedAt) && (
           <div className="absolute top-4 left-4 z-10">
-            <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-surface text-text-secondary border border-border">
+            <span className="px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm bg-surface/70 text-text-primary border border-border">
               {formatUpdatedAt(project.updatedAt)}
             </span>
           </div>
@@ -222,11 +222,11 @@ const ProjectsSection = () => {
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-10 w-80 h-80 bg-gradient-to-l from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1000ms' }} />
 
         {/* Floating elements */}
         <div className="absolute top-32 left-20 w-2 h-2 bg-primary rounded-full animate-ping" />
-        <div className="absolute top-64 right-32 w-1 h-1 bg-accent rounded-full animate-pulse delay-1000" />
+        <div className="absolute top-64 right-32 w-1 h-1 bg-accent rounded-full animate-pulse" style={{ animationDelay: '1000ms' }} />
         <div className="absolute bottom-40 left-32 w-1.5 h-1.5 bg-primary rounded-full animate-ping delay-500" />
       </div>
 

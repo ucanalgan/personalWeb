@@ -48,38 +48,32 @@ const Button = forwardRef(({
     // Primary - solid accent so it stays legible over the hero ambience
     primary: `
       bg-primary text-white border-0
-      shadow-lg shadow-brand-primary-500/25
-      hover:bg-primary-dark hover:shadow-xl hover:shadow-brand-primary-500/30
-      focus:ring-brand-primary-500
+      shadow-lg shadow-primary/25
+      hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30
+      focus:ring-primary
     `,
 
     // Secondary - Glass effect
     secondary: `
       bg-surface border border-border
-      text-text-primary hover:text-brand-primary-500
+      text-text-primary hover:text-primary
       hover:bg-surface-hover hover:border-border-hover
-      focus:ring-brand-primary-400
+      focus:ring-primary
     `,
 
     // Outline - Modern outline with gradient border
     outline: `
-      bg-transparent border-2 border-brand-primary-500/30
-      text-brand-primary-500 hover:text-white
-      hover:bg-brand-primary-500 hover:border-brand-primary-500
-      focus:ring-brand-primary-400
-      relative overflow-hidden
-      before:absolute before:inset-0 before:bg-gradient-to-r 
-      before:from-brand-primary-500 before:to-accent-purple-500
-      before:opacity-0 before:transition-opacity before:duration-200
-      hover:before:opacity-100
+      bg-transparent border-2 border-primary/30
+      text-primary hover:text-white
+      hover:bg-primary hover:border-primary
+      focus:ring-primary
     `,
 
     // Ghost - Minimal hover effects
     ghost: `
       bg-transparent border-0 text-text-secondary
-      hover:text-brand-primary-500 hover:bg-brand-primary-50
-      focus:ring-brand-primary-400
-      [data-theme="dark"] &:hover:bg-brand-primary-900/20
+      hover:text-primary hover:bg-primary/10
+      focus:ring-primary
     `,
 
     // Destructive - Red gradient
@@ -111,18 +105,17 @@ const Button = forwardRef(({
       bg-surface backdrop-blur-xl border border-border
       text-text-primary
       hover:bg-surface-hover hover:border-border-hover
-      focus:ring-brand-primary-400
+      focus:ring-primary
     `,
 
     // Neon - Glowing effect
     neon: `
-      bg-transparent border-2 border-brand-primary-400
-      text-brand-primary-400 shadow-lg shadow-brand-primary-400/50
-      hover:shadow-xl hover:shadow-brand-primary-400/70
-      hover:text-white hover:bg-brand-primary-400
-      focus:ring-brand-primary-400
+      bg-transparent border-2 border-accent
+      text-accent shadow-lg shadow-accent/50
+      hover:shadow-xl hover:shadow-accent/70
+      hover:text-white hover:bg-accent
+      focus:ring-primary
       relative overflow-hidden
-      animate-pulse
     `
   };
 

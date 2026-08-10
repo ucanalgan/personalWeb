@@ -27,13 +27,17 @@ export default {
         // as branding. Components referenced these before they existed, which
         // left the online dot and the error panel unstyled.
         success: {
+          DEFAULT: 'rgb(var(--rgb-success) / <alpha-value>)',
           400: 'rgb(var(--rgb-success) / <alpha-value>)',
-          500: 'rgb(var(--rgb-success) / <alpha-value>)'
+          500: 'rgb(var(--rgb-success) / <alpha-value>)',
+          600: 'rgb(var(--rgb-success-dark) / <alpha-value>)'
         },
         error: {
+          DEFAULT: 'rgb(var(--rgb-error) / <alpha-value>)',
           300: 'rgb(var(--rgb-error) / <alpha-value>)',
           400: 'rgb(var(--rgb-error) / <alpha-value>)',
-          500: 'rgb(var(--rgb-error) / <alpha-value>)'
+          500: 'rgb(var(--rgb-error) / <alpha-value>)',
+          600: 'rgb(var(--rgb-error-dark) / <alpha-value>)'
         },
 
         surface: {
@@ -66,12 +70,10 @@ export default {
       },
 
       // Tailwind's stock delay scale stops at 700ms; components reference
-      // these longer staggers.
+      // these longer staggers. Note `delay-*` only sets transition-delay,
+      // never animation-delay, so staggering an `animate-*` class needs an
+      // inline animationDelay style instead.
       transitionDelay: {
-        '900': '900ms',
-        '2000': '2000ms'
-      },
-      animationDelay: {
         '900': '900ms',
         '2000': '2000ms'
       },

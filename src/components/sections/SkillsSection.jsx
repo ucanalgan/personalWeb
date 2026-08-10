@@ -99,12 +99,12 @@ const SkillsSection = () => {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-ping" />
-          <div className="absolute top-40 right-32 w-1 h-1 bg-accent rounded-full animate-pulse delay-1000" />
+          <div className="absolute top-40 right-32 w-1 h-1 bg-accent rounded-full animate-pulse" style={{ animationDelay: '1000ms' }} />
           <div className="absolute bottom-32 left-16 w-1.5 h-1.5 bg-primary rounded-full animate-ping delay-500" />
-          <div className="absolute bottom-20 right-20 w-2 h-2 bg-accent rounded-full animate-pulse delay-2000" />
+          <div className="absolute bottom-20 right-20 w-2 h-2 bg-accent rounded-full animate-pulse" style={{ animationDelay: '2000ms' }} />
         </div>
         <div className="absolute top-32 right-10 w-64 h-64 bg-gradient-to-l from-primary/5 to-accent/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-32 left-10 w-80 h-80 bg-gradient-to-r from-accent/5 to-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute bottom-32 left-10 w-80 h-80 bg-gradient-to-r from-accent/5 to-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1000ms' }} />
       </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={sectionRef}>
